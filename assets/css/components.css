@@ -1,0 +1,532 @@
+/* ============================================================
+   COMPONENTS — kart, buton, menü, callout, sayfa altı gezinme…
+   ============================================================ */
+
+/* --- Marka --- */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.brand__logo {
+  height: 26px;
+  width: auto;
+}
+
+.badge {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-invert);
+  background: var(--accent);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+}
+
+/* --- Hamburger (yalnızca mobil) --- */
+.hamburger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  color: var(--text-heading);
+}
+
+.hamburger:hover {
+  background: var(--bg-hover);
+}
+
+@media (max-width: 1023px) {
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* --- Arama (Faz 1: görsel placeholder) --- */
+.search {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: 40px;
+  padding: 0 var(--space-4);
+  color: var(--text-muted);
+  background: var(--bg-page);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.search:hover {
+  border-color: var(--border-strong);
+}
+
+.search__label {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search kbd {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 1px 7px;
+}
+
+/* --- Butonlar --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 38px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.btn:hover {
+  text-decoration: none;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--text-invert);
+}
+
+.btn--primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn--ghost {
+  color: var(--text-heading);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+}
+
+.btn--ghost:hover {
+  border-color: var(--gray-400);
+  background: var(--bg-hover);
+}
+
+/* --- Dil kutusu (panel üstü — Faz 1: görsel) --- */
+.lang {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 42px;
+  padding: 0 var(--space-4);
+  margin-bottom: var(--space-6);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-heading);
+  font-weight: 600;
+  font-size: var(--text-base);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.lang:hover {
+  border-color: var(--gray-400);
+}
+
+.lang .chevron {
+  color: var(--text-muted);
+}
+
+/* --- Sol menü --- */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav__link,
+.nav__group-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  font-size: var(--text-base);
+  text-align: left;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.nav__link:hover,
+.nav__group-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-heading);
+  text-decoration: none;
+}
+
+.nav__link--top,
+.nav__group-btn {
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+/* Aktif sayfa */
+.nav__link.is-active {
+  background: var(--bg-active);
+  color: var(--text-primary);
+}
+
+/* Grup ve alt liste */
+.nav__group-btn .chevron {
+  color: var(--text-muted);
+  transition: transform var(--dur) var(--ease);
+  flex-shrink: 0;
+}
+
+.nav__group.is-open > .nav__group-btn .chevron {
+  transform: rotate(90deg);
+}
+
+.nav__sublist {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dur) var(--ease);
+}
+
+.nav__group.is-open > .nav__sublist {
+  grid-template-rows: 1fr;
+}
+
+.nav__sublist-inner {
+  overflow: hidden;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 2px 0 var(--space-2);
+}
+
+.nav__sublist .nav__link {
+  padding-left: var(--space-6);
+  font-size: var(--text-base);
+}
+
+/* --- Makale öğeleri --- */
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.article h1 {
+  margin-bottom: var(--space-4);
+}
+
+.article h2 {
+  margin: var(--space-10) 0 var(--space-4);
+}
+
+.article > p {
+  margin-bottom: var(--space-4);
+}
+
+.lead {
+  font-size: var(--text-md);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: baseline;
+}
+
+.steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+  background: var(--bg-active);
+  border-radius: var(--radius-pill);
+  transform: translateY(4px);
+}
+
+/* --- Callout --- */
+.callout {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-6) 0;
+  background: var(--bg-soft);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+}
+
+.callout__icon {
+  color: var(--text-primary);
+  flex-shrink: 0;
+  transform: translateY(3px);
+}
+
+/* --- Hub kartları --- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+@media (max-width: 639px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.card:hover {
+  text-decoration: none;
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.card__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  font-size: var(--text-md);
+  font-weight: 650;
+  color: var(--text-heading);
+}
+
+.card__title .arrow {
+  color: var(--text-primary);
+  flex-shrink: 0;
+  transition: transform var(--dur) var(--ease);
+}
+
+.card:hover .card__title .arrow {
+  transform: translateX(3px);
+}
+
+.card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* --- Sayfa altı gezinme (Önceki / Sonraki) --- */
+.pager {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-16);
+}
+
+@media (max-width: 639px) {
+  .pager {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.pager__card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.pager__card:hover {
+  text-decoration: none;
+  box-shadow: var(--shadow-hover);
+}
+
+.pager__card .chevron {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.pager__meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.pager__label {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.pager__title {
+  font-weight: 650;
+  color: var(--text-heading);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pager__card--next {
+  grid-column: 2;
+  justify-content: flex-end;
+  text-align: right;
+  border-color: var(--border-accent);
+}
+
+.pager__card--next:hover {
+  border-color: var(--accent);
+}
+
+.pager__card--next .pager__title {
+  color: var(--text-primary);
+}
+
+@media (max-width: 639px) {
+  .pager__card--next {
+    grid-column: auto;
+  }
+}
+
+.updated {
+  margin-top: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* --- Sağ "Bu sayfada" kolonu --- */
+.toc__caption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.toc__list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.toc__list a {
+  display: block;
+  padding: var(--space-1) 0;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.toc__list a:hover {
+  color: var(--text-heading);
+  text-decoration: none;
+}
+
+.toc__list a.is-active {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* --- Tema anahtarı (Faz 1: görsel; işlev Faz 2) --- */
+.theme-switch {
+  position: fixed;
+  right: var(--space-6);
+  bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  z-index: 30;
+}
+
+.theme-switch__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.theme-switch__btn:hover {
+  color: var(--text-heading);
+}
+
+.theme-switch__btn.is-active {
+  background: var(--bg-active);
+  color: var(--text-primary);
+}
+
+/* --- Bileşenlerin responsive davranışı ---
+   (kaskad sırası gereği bileşen kuralları burada, kendi dosyasında ezilir) */
+@media (max-width: 767px) {
+  .search {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar__actions .btn--ghost {
+    display: none;
+  }
+}

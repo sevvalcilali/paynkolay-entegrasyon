@@ -1,0 +1,93 @@
+/* ============================================================
+   TOKENS — tek doğru kaynak (bkz. TALIMATLAR.md §2-3)
+   Açık tema değerleri :root'ta tanımlıdır.
+   Koyu tema Faz 2'de yalnızca bu değişkenleri
+   [data-theme="dark"] altında yeniden atayarak gelecek.
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* --- Marka paleti (#0C34E7 ailesi) --- */
+  --blue-50:  #F1F4FE;
+  --blue-100: #E4EAFD;
+  --blue-200: #C6D2FA;
+  --blue-600: #0C34E7; /* kurumsal primary — Figma: Primary/Blue */
+  --blue-700: #0A2BC0;
+
+  /* --- Nötr paleti --- */
+  --gray-25:  #F7F8FB;
+  --gray-50:  #F1F3F7;
+  --gray-100: #E5E8F0;
+  --gray-200: #D6DBE6;
+  --gray-400: #9AA3B5;
+  --gray-500: #707A8F;
+  --gray-700: #3D4759;
+  --gray-900: #131C2E;
+
+  /* --- Semantik: zeminler --- */
+  --bg-page:    var(--gray-25);
+  --bg-surface: #FFFFFF;
+  --bg-soft:    var(--blue-50);
+  --bg-active:  var(--blue-100);
+  --bg-hover:   var(--gray-50);
+
+  /* --- Semantik: metin --- */
+  --text-heading: var(--gray-900);
+  --text-body:    var(--gray-700);
+  --text-muted:   var(--gray-500);
+  --text-primary: var(--blue-600);
+  --text-invert:  #FFFFFF;
+
+  /* --- Semantik: çizgi ve vurgu --- */
+  --border:        var(--gray-100);
+  --border-strong: var(--gray-200);
+  --border-accent: var(--blue-200);
+  --accent:        var(--blue-600);
+  --accent-hover:  var(--blue-700);
+  --focus-ring:    color-mix(in srgb, var(--blue-600) 35%, transparent);
+
+  /* --- Tipografi --- */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.8125rem; /* 13px */
+  --text-base: 0.9375rem; /* 15px */
+  --text-md:   1.0625rem; /* 17px */
+  --text-lg:   1.25rem;   /* 20px */
+  --text-xl:   1.5rem;    /* 24px */
+  --text-2xl:  2.125rem;  /* 34px */
+  --leading-tight: 1.25;
+  --leading-body:  1.65;
+
+  /* --- Boşluk ölçeği --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* --- Köşe ve gölge --- */
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+  --shadow-card:  0 1px 2px rgba(19, 28, 46, 0.04), 0 4px 16px rgba(19, 28, 46, 0.05);
+  --shadow-hover: 0 2px 4px rgba(19, 28, 46, 0.05), 0 10px 28px rgba(19, 28, 46, 0.09);
+  --shadow-float: 0 4px 10px rgba(19, 28, 46, 0.08), 0 12px 32px rgba(19, 28, 46, 0.12);
+
+  /* --- Yerleşim ölçüleri --- */
+  --header-h: 64px;
+  --sidebar-w: 288px;
+  --toc-w: 224px;
+  --content-max: 780px;
+
+  /* --- Hareket --- */
+  --ease: cubic-bezier(0.25, 0.6, 0.3, 1);
+  --dur: 200ms;
+}
