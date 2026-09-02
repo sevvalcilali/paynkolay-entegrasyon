@@ -165,6 +165,18 @@ a.vcard:hover {
   background: #0B1140;
 }
 
+.sw-krem {
+  background: #F4F3F0;
+}
+
+.sw-turuncu {
+  background: #F4611E;
+}
+
+.sw-komur {
+  background: #2E2C2A;
+}
+
 .vcard h2 {
   font-size: 22px;
   font-weight: 700;

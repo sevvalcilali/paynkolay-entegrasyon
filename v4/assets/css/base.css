@@ -1,5 +1,5 @@
 /* ============================================================
-   V3 BASE — reset, sıcak kağıt zemin, temel tipografi
+   V4 BASE — reset, sıcak zemin + turuncu ışık, tipografi
    ============================================================ */
 
 *,
@@ -25,23 +25,37 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Sol üstten süzülen turuncu ışık (referanstaki gibi) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(480px 320px at -4% 0%, rgba(244, 97, 30, 0.16), transparent 70%),
+    radial-gradient(380px 260px at 103% 12%, rgba(249, 178, 52, 0.1), transparent 70%);
+}
+
 h1,
 h2,
 h3,
 h4 {
   color: var(--text-heading);
   line-height: var(--leading-tight);
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  font-weight: 750;
+  letter-spacing: -0.02em;
 }
 
 h1 {
   font-size: var(--text-2xl);
-  letter-spacing: -0.025em;
 }
 
 h2 {
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
+}
+
+h3 {
+  font-size: var(--text-md);
 }
 
 p {
@@ -49,7 +63,7 @@ p {
 }
 
 a {
-  color: var(--text-primary);
+  color: var(--accent);
   text-decoration: none;
 }
 
@@ -93,27 +107,8 @@ table {
 }
 
 ::selection {
-  background: var(--mint-tile-2);
+  background: var(--orange-soft);
   color: var(--text-heading);
-}
-
-.scroll-slim {
-  scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) transparent;
-}
-
-.scroll-slim::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-.scroll-slim::-webkit-scrollbar-thumb {
-  background: var(--line-strong);
-  border-radius: var(--radius-pill);
-}
-
-.scroll-slim::-webkit-scrollbar-track {
-  background: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {

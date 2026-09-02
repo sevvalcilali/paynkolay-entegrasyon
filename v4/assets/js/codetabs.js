@@ -1,24 +1,43 @@
-/* Response paneli: JSON'u panoya kopyalama */
+/* V4 davranışları: kesikli sekmeler, akordeon, platform filtresi */
 (function () {
   "use strict";
 
-  var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-copy-resp]"));
+  /* --- Kesikli çerçeveli sekmeler (Kullanım / Örnek İstek / Yanıt) --- */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".dashtab"));
+  var panes = Array.prototype.slice.call(document.querySelectorAll(".dashpane"));
 
-  buttons.forEach(function (btn) {
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      var key = tab.getAttribute("data-tab");
+
+      tabs.forEach(function (other) {
+        other.classList.toggle("is-active", other === tab);
+      });
+      panes.forEach(function (pane) {
+        pane.classList.toggle("is-active", pane.getAttribute("data-pane") === key);
+      });
+    });
+  });
+
+  /* --- Akordeon (Entegrasyon Senaryoları) --- */
+  var items = Array.prototype.slice.call(document.querySelectorAll(".acc__item"));
+
+  items.forEach(function (item) {
+    var btn = item.querySelector(".acc__btn");
+
     btn.addEventListener("click", function () {
-      var box = btn.closest(".respbox");
-      var code = box.querySelector(".respbox__code");
-      if (!code) {
-        return;
-      }
+      var isOpen = item.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
 
-      navigator.clipboard.writeText(code.innerText).then(function () {
-        btn.classList.add("is-done");
-        btn.setAttribute("title", "Kopyalandı ✓");
-        setTimeout(function () {
-          btn.classList.remove("is-done");
-          btn.setAttribute("title", "Kopyala");
-        }, 1600);
+  /* --- Platform filtresi (görsel demo: aktif sekme değişir) --- */
+  var ptabs = Array.prototype.slice.call(document.querySelectorAll(".ptab"));
+
+  ptabs.forEach(function (ptab) {
+    ptab.addEventListener("click", function () {
+      ptabs.forEach(function (other) {
+        other.classList.toggle("is-active", other === ptab);
       });
     });
   });

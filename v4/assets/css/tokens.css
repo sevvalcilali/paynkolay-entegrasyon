@@ -1,8 +1,9 @@
 /* ============================================================
-   V3 "MİNT & MÜREKKEP" TOKENS — tek doğru kaynak
-   Konsept (Plaid referansı): sıcak kağıt zemin, ikonlu sade
-   sol menü, nane yeşili ikon karoları, mürekkep lacivert
-   Response paneli. Logo ve linkler marka mavisinde sabittir.
+   V4 "AMBER" TOKENS — tek doğru kaynak
+   Konsept (Masterpass Türkiye referansı): yan menüsüz üst
+   sekmeli portal, sıcak gri zemin, turuncu enerji, gradyan
+   şeritler, kömür rengi kod blokları. Logo mavi kalır; tip
+   linkleri marka mavisini taşır.
    ============================================================ */
 
 :root {
@@ -10,58 +11,49 @@
 
   /* --- Marka --- */
   --blue-600: #0C34E7;
-  --blue-700: #0A2BC0;
-  --blue-50:  #EFF4FF;
 
-  /* --- Mürekkep nötrleri --- */
-  --ink-900: #111827;
-  --ink-700: #3F4655;
-  --ink-500: #6B7280;
-  --ink-400: #9CA3AF;
-  --line:        #E7E5E0;
-  --line-strong: #D6D3CC;
+  /* --- Amber ailesi --- */
+  --orange-600: #F4611E; /* ana vurgu */
+  --orange-700: #D94E12;
+  --orange-soft: #FDEEE4;
+  --red-500:    #E4351D;
+  --amber-400:  #F9B234;
 
-  /* --- Nane aksanı (ikon karoları) --- */
-  --mint-tile-1: #DDF6EE;
-  --mint-tile-2: #C9F0DE;
-  --mint-ink:    #0E9F81;
+  /* --- İmza gradyanları --- */
+  --gradient-line: linear-gradient(90deg, var(--red-500), var(--orange-600), var(--amber-400));
+  --gradient-cta:  linear-gradient(135deg, #F9884E 0%, var(--orange-600) 100%);
+  --gradient-illus: linear-gradient(135deg, #F05A3C 0%, var(--orange-600) 45%, var(--amber-400) 100%);
 
-  /* --- Semantik zeminler (sıcak kağıt) --- */
-  --bg-page:    #FAFAF7;
+  /* --- Nötrler (sıcak) --- */
+  --ink-900: #1B1917;
+  --ink-700: #47433F;
+  --ink-500: #6E6A64;
+  --ink-400: #9B968F;
+  --line:        #E8E5DF;
+  --line-strong: #D8D4CC;
+
+  /* --- Semantik zeminler --- */
+  --bg-page:    #F4F3F0;
   --bg-surface: #FFFFFF;
-  --bg-side:    #F7F6F3;
-  --bg-hover:   #EFEEE9;
-  --bg-active:  #ECEBE5;
+  --bg-hover:   #F7F1EB;
 
   /* --- Semantik metin --- */
   --text-heading: var(--ink-900);
   --text-body:    var(--ink-700);
   --text-muted:   var(--ink-500);
-  --text-primary: var(--blue-600);
+  --accent:       var(--orange-600);
+  --accent-hover: var(--orange-700);
   --text-invert:  #FFFFFF;
-  --accent:       var(--blue-600);
-  --accent-hover: var(--blue-700);
-  --focus-ring:   rgba(12, 52, 231, 0.35);
+  --type-link:    var(--blue-600); /* parametre tip linkleri mavi */
+  --focus-ring:   rgba(244, 97, 30, 0.35);
 
-  /* --- Düğmeler (Plaid siyahı) --- */
-  --btn-dark:       #16181D;
-  --btn-dark-hover: #000000;
-
-  /* --- Tablo --- */
-  --thead-bg:   #16181D;
-  --thead-text: #FFFFFF;
-  --row-alt:    #F4F3EF;
-
-  /* --- Response paneli (mürekkep lacivert) --- */
-  --resp-bg-1:   #0B1140;
-  --resp-bg-2:   #101B5E;
-  --resp-bar:    #080D33;
-  --resp-line:   rgba(255, 255, 255, 0.1);
-  --resp-text:   #E3E8FA;
-  --resp-muted:  #8B93BF;
-  --resp-key:    #86ACFF;
-  --resp-string: #43D6A9;
-  --resp-number: #FBBF24;
+  /* --- Kod (kömür) --- */
+  --code-bg:     #2E2C2A;
+  --code-frame:  #161412;
+  --code-text:   #EDEBE7;
+  --code-key:    #A6D785;
+  --code-orange: #F9B234;
+  --code-muted:  #9B968F;
 
   /* --- Tipografi --- */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -72,10 +64,10 @@
   --text-sm:   0.8125rem;
   --text-base: 0.9375rem;
   --text-md:   1.0625rem;
-  --text-lg:   1.3125rem;
-  --text-xl:   1.625rem;
-  --text-2xl:  2.375rem;
-  --leading-tight: 1.2;
+  --text-lg:   1.375rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.5rem;
+  --leading-tight: 1.15;
   --leading-body:  1.65;
 
   /* --- Boşluk / köşe / gölge --- */
@@ -89,17 +81,17 @@
   --space-10: 40px;
   --space-12: 48px;
   --space-16: 64px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
   --radius-pill: 999px;
-  --shadow-card:  0 1px 2px rgba(17, 24, 39, 0.05), 0 6px 18px rgba(17, 24, 39, 0.06);
-  --shadow-hover: 0 2px 4px rgba(17, 24, 39, 0.06), 0 12px 28px rgba(17, 24, 39, 0.1);
-  --shadow-float: 0 4px 12px rgba(17, 24, 39, 0.1), 0 14px 36px rgba(17, 24, 39, 0.16);
+  --shadow-card:  0 1px 2px rgba(27, 25, 23, 0.04), 0 6px 18px rgba(27, 25, 23, 0.06);
+  --shadow-hover: 0 2px 4px rgba(27, 25, 23, 0.06), 0 14px 30px rgba(27, 25, 23, 0.1);
+  --shadow-cta:   0 10px 26px rgba(244, 97, 30, 0.35);
 
   /* --- Yerleşim --- */
-  --sidebar-w: 280px;
-  --content-max: 1040px;
+  --wrap-max: 1240px;
+  --topbar-h: 64px;
 
   /* --- Hareket --- */
   --ease: cubic-bezier(0.25, 0.6, 0.3, 1);
