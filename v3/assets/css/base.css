@@ -1,5 +1,5 @@
 /* ============================================================
-   V2 BASE — reset, aurora zemin, temel tipografi
+   V3 BASE — reset, sıcak kağıt zemin, temel tipografi
    ============================================================ */
 
 *,
@@ -25,32 +25,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Aurora: sayfanın arkasındaki pastel ışık yıkamaları */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(560px 420px at 8% -4%, var(--aurora-lavender), transparent 68%),
-    radial-gradient(640px 460px at 96% 0%, var(--aurora-sky), transparent 70%),
-    radial-gradient(520px 420px at 82% 92%, var(--aurora-pink), transparent 70%),
-    radial-gradient(480px 380px at 4% 88%, var(--aurora-mint), transparent 70%);
-}
-
 h1,
 h2,
 h3,
 h4 {
   color: var(--text-heading);
   line-height: var(--leading-tight);
-  font-weight: 650;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  letter-spacing: -0.015em;
 }
 
 h1 {
   font-size: var(--text-2xl);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 h2 {
@@ -106,7 +93,7 @@ table {
 }
 
 ::selection {
-  background: var(--bg-active);
+  background: var(--mint-tile-2);
   color: var(--text-heading);
 }
 

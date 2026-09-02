@@ -153,6 +153,18 @@ a.vcard:hover {
   background: #101426;
 }
 
+.sw-kagit {
+  background: #FAFAF7;
+}
+
+.sw-mint {
+  background: #43D6A9;
+}
+
+.sw-murekkep {
+  background: #0B1140;
+}
+
 .vcard h2 {
   font-size: 22px;
   font-weight: 700;

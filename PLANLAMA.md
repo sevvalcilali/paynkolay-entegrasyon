@@ -146,6 +146,8 @@ Sıralaması ve kapsamı sonra konuşulacak; şimdilik sadece kayıt:
 - **v1 — Lacivert Ray:** Koyu lacivert gradyan sol menü, gradyan hero + kesme işareti motifi, Entegrasyon Yolculuğu şeridi, ikon karolu kartlar, kurumsal üst menü demo'su, TR/EN dil menüsü. *(Eksik: kod gösterimi — karar için her versiyonda farklı denenecek.)*
 - **v2 — Aurora (API-first):** Şevval'in verdiği 3 Sipay/Apidog referansına göre. Pastel aurora zemin (lavanta/gök/pembe ışık yıkamaları — iç renk serbestliği Şevval onaylı, logo/vurgu mavi sabit), cam efektli tam boy sol panel (marka + TR/EN + tema + arama panel içinde), POST rozetli menü öğeleri, yeşil ipucu + gri bilgi callout'ları, erişim adresleri kartı, test bilgisi tablosu, panel yolunu gösteren mini mock kart, uç nokta çubuğu, iki kolonlu parametre listesi (çip + zorunlu/isteğe bağlı) ve **kod özelliği:** koyu Request paneli (Shell/JavaScript/PHP sekmeleri çalışır, kopyalama butonlu) + Response paneli (200 · Başarılı). Alt araçlar: LLMs.txt · Postman · Dışa Aktar.
 
+- **v3 — Mint & Mürekkep (Plaid tarzı):** Şevval'in 5 Plaid/Sipay referansına göre. Sıcak kağıt zemin, **ikonlu** sade sol menü (alt öğeler düz metin), üst şeritte arama + paynkolay.com.tr › + TR/EN + kontur "Panel Giriş" + siyah "API Anahtarlarını Al", çizgi-sanat SVG hero illüstrasyonu, nane gradyan ikon karolu bölüm kartları (**kısa açıklamalar** — Şevval'in isteği), `/Vpos` mono uç başlığı, koyu başlıklı ✅'li parametre tablosu (ref #15), "Yanıt Alanları" listesi (kısa açıklama + iç içe alanlar sol çizgiyle) + yapışkan mürekkep lacivert **Response Object** paneli (güneş + kopyalama ikonlu, ref #13). Sağ TOC bilinçli olarak yok.
+
 ## Revizyon Günlüğü
 
 | Tarih | Değişiklik |

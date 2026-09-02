@@ -1,6 +1,5 @@
 /* ============================================================
-   V2 LAYOUT — Apidog tarzı: tam boy sol panel + içerik + TOC
-   (üst bar yok; marka satırı panelin içindedir)
+   V3 LAYOUT — Plaid tarzı: sol menü + üst şerit + geniş içerik
    ============================================================ */
 
 .app {
@@ -9,46 +8,43 @@
   min-height: 100vh;
 }
 
-/* --- Sol panel: cam efektli, tam boy --- */
+/* --- Sol menü --- */
 .sidebar {
   position: sticky;
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  padding: var(--space-5) var(--space-4) var(--space-8);
-  background: var(--bg-glass);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  padding: var(--space-5) var(--space-3) var(--space-8);
+  background: var(--bg-side);
   border-right: 1px solid var(--line);
 }
 
-/* --- İçerik bölgesi --- */
+/* --- Üst şerit: arama + eylemler --- */
+.topline {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-10);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--line);
+}
+
+/* --- İçerik --- */
 .main {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) var(--toc-w);
-  gap: var(--space-10);
-  padding: var(--space-8) var(--space-10) var(--space-6);
-  align-items: start;
+  padding: 0 var(--space-10) var(--space-8);
 }
 
 .article {
   max-width: var(--content-max);
+  margin-inline: auto;
   width: 100%;
   min-width: 0;
-  margin-inline: auto;
-}
-
-.toc {
-  position: sticky;
-  top: var(--space-8);
-  max-height: calc(100vh - var(--space-16));
-  overflow-y: auto;
 }
 
 /* --- Alt bilgi --- */
 .footer {
   max-width: var(--content-max);
-  margin: var(--space-12) auto 0;
+  margin: var(--space-16) auto 0;
   padding: var(--space-5) 0;
   border-top: 1px solid var(--line);
   display: flex;
@@ -64,7 +60,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(25, 23, 38, 0.45);
+  background: rgba(17, 24, 39, 0.45);
   z-index: 45;
   opacity: 0;
   transition: opacity var(--dur) var(--ease);
@@ -77,16 +73,6 @@
 /* ============================================================
    KIRILIMLAR
    ============================================================ */
-
-@media (max-width: 1359px) {
-  .main {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .toc {
-    display: none;
-  }
-}
 
 @media (max-width: 1023px) {
   .app {
@@ -102,7 +88,6 @@
     transform: translateX(-100%);
     transition: transform var(--dur) var(--ease);
     z-index: 50;
-    background: #ffffff;
   }
 
   .sidebar.is-open {
@@ -114,13 +99,17 @@
     overflow: hidden;
   }
 
+  .topline {
+    padding: var(--space-3) var(--space-4) var(--space-3) 72px;
+  }
+
   .main {
-    padding: var(--space-16) var(--space-5) var(--space-5);
+    padding: 0 var(--space-5) var(--space-5);
   }
 }
 
 @media (max-width: 767px) {
   .main {
-    padding: var(--space-16) var(--space-4) var(--space-4);
+    padding: 0 var(--space-4) var(--space-4);
   }
 }
