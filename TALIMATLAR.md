@@ -21,7 +21,9 @@ Ana palet **beyazlar + kurumsal mavi** üzerine kuruludur:
 
 Kurallar:
 
-- Zemin dünyası beyaz/kırık beyaz; mavi **vurgu** için kullanılır, alan boyamak için değil.
+- Zemin dünyası beyaz/kırık beyaz; içerik alanında mavi **vurgu** için kullanılır.
+- **İstisna — markanın imza alanları:** sol ray (koyu lacivert gradyan), hero paneli ve "Sonraki" kartı gibi bilinçli seçilmiş öğeler marka gradyanıyla boyanır. Gradyan ailesi logodan gelir: `#0C34E7 → #0112C5 → #03036D` (`--gradient-brand`, `--gradient-rail`).
+- **Marka motifi:** logodaki kesme işareti (') büyük ve yarı saydam bir süsleme öğesi olarak kullanılabilir; üst barın altındaki ince gradyan imza çizgisi korunur.
 - Mavinin açık tonları (panel/hover/pasif zeminleri) `#0C34E7`'den türetilir; kesin değerleri tasarım sırasında birlikte netleştirilecek.
 - Metin ve çizgi grileri nötr olur, maviye boyanmış gri kullanılmaz.
 - ⚠️ **Karışıklık uyarısı:** Eski `paynkolay-odeme` projesindeki `#2566E2` ana renk **bu projede geçerli değildir**. Bu projenin primary'si `#0C34E7`'dir.

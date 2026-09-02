@@ -39,6 +39,21 @@
   --text-primary: var(--blue-600);
   --text-invert:  #FFFFFF;
 
+  /* --- Marka imzası: gradyanlar (logo gradyanı ailesi) --- */
+  --gradient-brand: linear-gradient(135deg, #0C34E7 0%, #0112C5 55%, #03036D 100%);
+  --gradient-rail: linear-gradient(180deg, #0A1B9F 0%, #050C52 100%);
+
+  /* --- Sol ray (koyu lacivert panel) --- */
+  --rail-text: rgba(255, 255, 255, 0.74);
+  --rail-text-strong: #FFFFFF;
+  --rail-hover: rgba(255, 255, 255, 0.08);
+  --rail-active: rgba(255, 255, 255, 0.14);
+  --rail-line: rgba(255, 255, 255, 0.18);
+  --rail-muted: rgba(255, 255, 255, 0.55);
+  --rail-accent: #8FA4FF;
+  --rail-scrollbar: rgba(255, 255, 255, 0.25);
+  --focus-ring-invert: rgba(255, 255, 255, 0.45);
+
   /* --- Semantik: çizgi ve vurgu --- */
   --border:        var(--gray-100);
   --border-strong: var(--gray-200);

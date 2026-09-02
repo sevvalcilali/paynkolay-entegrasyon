@@ -139,3 +139,4 @@ Sıralaması ve kapsamı sonra konuşulacak; şimdilik sadece kayıt:
 | 2026-09-02 | İlk taslak oluşturuldu |
 | 2026-09-02 | Şevval'in isteğiyle eklendi: 3 durumlu tema anahtarı (Faz 2'de çalışır, Faz 1'de görsel), panel üstü TR/EN kutusu (Faz 1 görsel), sayfa altı Önceki/Sonraki kartları + "Son güncelleme" satırı (Faz 1 demo). Plan fazlara bölündü, Faz 3+ park alanı açıldı. |
 | 2026-09-02 | Faz 1 uygulandı (A1–A7): kabuk, accordion sol panel, hub sayfası, responsive. Tarayıcıda masaüstü + mobil doğrulandı. A8 (birlikte gözden geçirme) bekliyor. |
+| 2026-09-02 | **Yeniden tasarım (Şevval: "fazla iyzico benzeri"):** Paynkolay imza kimliği eklendi — koyu lacivert gradyan sol ray, gradyan hero paneli + kesme işareti motifi, 5 duraklı "Entegrasyon Yolculuğu" şeridi, ikon karolu kartlar, gradyan dolgulu "Sonraki" kartı, üst bar altı gradyan imza çizgisi. TALIMATLAR §2 imza alanları istisnasıyla güncellendi. |

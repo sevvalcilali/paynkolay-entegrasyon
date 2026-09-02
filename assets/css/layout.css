@@ -12,8 +12,18 @@
   gap: var(--space-6);
   padding: 0 var(--space-6);
   background: var(--bg-surface);
-  border-bottom: 1px solid var(--border);
   z-index: 40;
+}
+
+/* Marka imzası: üst barın altında logo gradyanından ince çizgi */
+.topbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--gradient-brand);
 }
 
 .topbar__left {
@@ -46,8 +56,7 @@
   height: calc(100vh - var(--header-h));
   overflow-y: auto;
   padding: var(--space-6) var(--space-4) var(--space-8);
-  border-right: 1px solid var(--border);
-  background: var(--bg-surface);
+  background: var(--gradient-rail);
 }
 
 /* --- İçerik bölgesi: makale + sağ kolon --- */
