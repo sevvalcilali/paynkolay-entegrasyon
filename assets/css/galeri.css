@@ -169,7 +169,7 @@ a.vcard:hover {
   opacity: 0.55;
 }
 
-.vcard--soon .tag {
+.tag {
   align-self: flex-start;
   font-size: 11px;
   font-weight: 700;
