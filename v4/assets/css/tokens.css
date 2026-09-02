@@ -1,59 +1,66 @@
 /* ============================================================
-   V4 "AMBER" TOKENS — tek doğru kaynak
-   Konsept (Masterpass Türkiye referansı): yan menüsüz üst
-   sekmeli portal, sıcak gri zemin, turuncu enerji, gradyan
-   şeritler, kömür rengi kod blokları. Logo mavi kalır; tip
-   linkleri marka mavisini taşır.
+   V4 "KOBALT" TOKENS — tek doğru kaynak
+   Konsept: yan menüsüz üst sekmeli portal (Masterpass'tan
+   yalnızca yerleşim ilhamı) — renk dünyası tamamen Paynkolay:
+   kurumsal mavi #0C34E7 ailesi, kesme işareti filigranı,
+   sol kenar gradyan şeritli kartlar, lacivert kod blokları.
    ============================================================ */
 
 :root {
   color-scheme: light;
 
-  /* --- Marka --- */
-  --blue-600: #0C34E7;
+  /* --- Marka mavisi ailesi --- */
+  --blue-600: #0C34E7; /* ana vurgu */
+  --blue-700: #0A2BC0;
+  --blue-800: #0112C5;
+  --blue-900: #03036D;
+  --blue-300: #4D7CFF;
+  --accent:       var(--blue-600);
+  --accent-hover: var(--blue-700);
+  --accent-soft:  #E7EDFD;
 
-  /* --- Amber ailesi --- */
-  --orange-600: #F4611E; /* ana vurgu */
-  --orange-700: #D94E12;
-  --orange-soft: #FDEEE4;
-  --red-500:    #E4351D;
-  --amber-400:  #F9B234;
+  /* --- İmza gradyanları (logo gradyanı ailesi) --- */
+  --gradient-line:  linear-gradient(180deg, var(--blue-300), var(--blue-600), var(--blue-900));
+  --gradient-cta:   linear-gradient(135deg, #3D63F2 0%, var(--blue-600) 55%, var(--blue-800) 100%);
+  --gradient-illus: linear-gradient(135deg, #3D63F2 0%, var(--blue-600) 45%, var(--blue-900) 100%);
 
-  /* --- İmza gradyanları --- */
-  --gradient-line: linear-gradient(90deg, var(--red-500), var(--orange-600), var(--amber-400));
-  --gradient-cta:  linear-gradient(135deg, #F9884E 0%, var(--orange-600) 100%);
-  --gradient-illus: linear-gradient(135deg, #F05A3C 0%, var(--orange-600) 45%, var(--amber-400) 100%);
-
-  /* --- Nötrler (sıcak) --- */
-  --ink-900: #1B1917;
-  --ink-700: #47433F;
-  --ink-500: #6E6A64;
-  --ink-400: #9B968F;
-  --line:        #E8E5DF;
-  --line-strong: #D8D4CC;
+  /* --- Nötrler (serin) --- */
+  --ink-900: #131A2E;
+  --ink-700: #414B63;
+  --ink-500: #69718A;
+  --ink-400: #98A0B5;
+  --line:        #E4E7F0;
+  --line-strong: #D3D8E5;
 
   /* --- Semantik zeminler --- */
-  --bg-page:    #F4F3F0;
+  --bg-page:    #F4F5F9;
   --bg-surface: #FFFFFF;
-  --bg-hover:   #F7F1EB;
+  --bg-hover:   #EEF1F9;
 
   /* --- Semantik metin --- */
   --text-heading: var(--ink-900);
   --text-body:    var(--ink-700);
   --text-muted:   var(--ink-500);
-  --accent:       var(--orange-600);
-  --accent-hover: var(--orange-700);
   --text-invert:  #FFFFFF;
-  --type-link:    var(--blue-600); /* parametre tip linkleri mavi */
-  --focus-ring:   rgba(244, 97, 30, 0.35);
+  --type-link:    var(--blue-600);
+  --focus-ring:   rgba(12, 52, 231, 0.35);
 
-  /* --- Kod (kömür) --- */
-  --code-bg:     #2E2C2A;
-  --code-frame:  #161412;
-  --code-text:   #EDEBE7;
-  --code-key:    #A6D785;
-  --code-orange: #F9B234;
-  --code-muted:  #9B968F;
+  /* --- Koyu düğme (lacivert) --- */
+  --btn-dark:       #0B1140;
+  --btn-dark-hover: #060A2B;
+
+  /* --- Tablo --- */
+  --thead-bg:   #12172B;
+  --thead-text: #FFFFFF;
+  --row-alt:    #F1F3F9;
+
+  /* --- Kod (lacivert mürekkep) --- */
+  --code-bg:     #0D1333;
+  --code-frame:  #05081F;
+  --code-text:   #E4E9FA;
+  --code-key:    #8FA9FF;
+  --code-accent: #FBBF24;
+  --code-muted:  #7C86A8;
 
   /* --- Tipografi --- */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -85,9 +92,9 @@
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-pill: 999px;
-  --shadow-card:  0 1px 2px rgba(27, 25, 23, 0.04), 0 6px 18px rgba(27, 25, 23, 0.06);
-  --shadow-hover: 0 2px 4px rgba(27, 25, 23, 0.06), 0 14px 30px rgba(27, 25, 23, 0.1);
-  --shadow-cta:   0 10px 26px rgba(244, 97, 30, 0.35);
+  --shadow-card:  0 1px 2px rgba(19, 26, 46, 0.04), 0 6px 18px rgba(19, 26, 46, 0.06);
+  --shadow-hover: 0 2px 4px rgba(19, 26, 46, 0.06), 0 14px 30px rgba(19, 26, 46, 0.1);
+  --shadow-cta:   0 10px 26px rgba(12, 52, 231, 0.3);
 
   /* --- Yerleşim --- */
   --wrap-max: 1240px;
