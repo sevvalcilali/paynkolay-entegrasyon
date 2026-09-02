@@ -1,0 +1,126 @@
+/* ============================================================
+   V2 LAYOUT — Apidog tarzı: tam boy sol panel + içerik + TOC
+   (üst bar yok; marka satırı panelin içindedir)
+   ============================================================ */
+
+.app {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+/* --- Sol panel: cam efektli, tam boy --- */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-right: 1px solid var(--line);
+}
+
+/* --- İçerik bölgesi --- */
+.main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--toc-w);
+  gap: var(--space-10);
+  padding: var(--space-8) var(--space-10) var(--space-6);
+  align-items: start;
+}
+
+.article {
+  max-width: var(--content-max);
+  width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+}
+
+.toc {
+  position: sticky;
+  top: var(--space-8);
+  max-height: calc(100vh - var(--space-16));
+  overflow-y: auto;
+}
+
+/* --- Alt bilgi --- */
+.footer {
+  max-width: var(--content-max);
+  margin: var(--space-12) auto 0;
+  padding: var(--space-5) 0;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* --- Mobil çekmece karartması --- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(25, 23, 38, 0.45);
+  z-index: 45;
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.overlay.is-visible {
+  opacity: 1;
+}
+
+/* ============================================================
+   KIRILIMLAR
+   ============================================================ */
+
+@media (max-width: 1359px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .toc {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(var(--sidebar-w), 86vw);
+    height: 100dvh;
+    transform: translateX(-100%);
+    transition: transform var(--dur) var(--ease);
+    z-index: 50;
+    background: #ffffff;
+  }
+
+  .sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-float);
+  }
+
+  body.drawer-locked {
+    overflow: hidden;
+  }
+
+  .main {
+    padding: var(--space-16) var(--space-5) var(--space-5);
+  }
+}
+
+@media (max-width: 767px) {
+  .main {
+    padding: var(--space-16) var(--space-4) var(--space-4);
+  }
+}
