@@ -1,94 +1,56 @@
 /* ============================================================
-   LAYOUT — kabuk ızgarası: üst bar, sol panel, içerik, sağ kolon
+   V2 LAYOUT — Apidog tarzı: tam boy sol panel + içerik + TOC
+   (üst bar yok; marka satırı panelin içindedir)
    ============================================================ */
 
-/* --- Üst bar --- */
-.topbar {
-  position: fixed;
-  inset: 0 0 auto 0;
-  height: var(--header-h);
-  display: flex;
-  align-items: center;
-  gap: var(--space-6);
-  padding: 0 var(--space-6);
-  background: var(--bg-surface);
-  z-index: 40;
-}
-
-/* Marka imzası: üst barın altında logo gradyanından ince çizgi */
-.topbar::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background: var(--gradient-brand);
-}
-
-.topbar__left {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  flex-shrink: 0;
-}
-
-.topbar__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  margin-left: auto;
-  flex-shrink: 0;
-}
-
-/* --- Kabuk: sol panel + içerik --- */
-.shell {
+.app {
   display: grid;
   grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
-  padding-top: var(--header-h);
   min-height: 100vh;
 }
 
-/* --- Sol panel --- */
+/* --- Sol panel: cam efektli, tam boy --- */
 .sidebar {
   position: sticky;
-  top: var(--header-h);
-  height: calc(100vh - var(--header-h));
+  top: 0;
+  height: 100vh;
   overflow-y: auto;
-  padding: var(--space-6) var(--space-4) var(--space-8);
-  background: var(--gradient-rail);
+  padding: var(--space-5) var(--space-4) var(--space-8);
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-right: 1px solid var(--line);
 }
 
-/* --- İçerik bölgesi: makale + sağ kolon --- */
-.content {
+/* --- İçerik bölgesi --- */
+.main {
   display: grid;
   grid-template-columns: minmax(0, 1fr) var(--toc-w);
   gap: var(--space-10);
-  padding: var(--space-10) var(--space-10) var(--space-6);
+  padding: var(--space-8) var(--space-10) var(--space-6);
   align-items: start;
 }
 
 .article {
   max-width: var(--content-max);
-  margin-inline: auto;
   width: 100%;
   min-width: 0;
+  margin-inline: auto;
 }
 
-/* --- Sağ "Bu sayfada" kolonu --- */
 .toc {
   position: sticky;
-  top: calc(var(--header-h) + var(--space-10));
-  max-height: calc(100vh - var(--header-h) - var(--space-16));
+  top: var(--space-8);
+  max-height: calc(100vh - var(--space-16));
   overflow-y: auto;
 }
 
 /* --- Alt bilgi --- */
 .footer {
   max-width: var(--content-max);
-  margin: var(--space-16) auto 0;
+  margin: var(--space-12) auto 0;
   padding: var(--space-5) 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -98,11 +60,11 @@
   color: var(--text-muted);
 }
 
-/* --- Mobil çekmece arka karartması --- */
+/* --- Mobil çekmece karartması --- */
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(19, 28, 46, 0.45);
+  background: rgba(25, 23, 38, 0.45);
   z-index: 45;
   opacity: 0;
   transition: opacity var(--dur) var(--ease);
@@ -116,9 +78,8 @@
    KIRILIMLAR
    ============================================================ */
 
-/* Geniş: sağ kolon gizlenir */
-@media (max-width: 1279px) {
-  .content {
+@media (max-width: 1359px) {
+  .main {
     grid-template-columns: minmax(0, 1fr);
   }
 
@@ -127,22 +88,21 @@
   }
 }
 
-/* Tablet ve altı: sol panel çekmeceye dönüşür */
 @media (max-width: 1023px) {
-  .shell {
+  .app {
     grid-template-columns: minmax(0, 1fr);
   }
 
   .sidebar {
     position: fixed;
-    top: var(--header-h);
+    top: 0;
     left: 0;
-    width: min(var(--sidebar-w), 84vw);
-    height: calc(100dvh - var(--header-h));
+    width: min(var(--sidebar-w), 86vw);
+    height: 100dvh;
     transform: translateX(-100%);
     transition: transform var(--dur) var(--ease);
     z-index: 50;
-    box-shadow: none;
+    background: #ffffff;
   }
 
   .sidebar.is-open {
@@ -154,19 +114,13 @@
     overflow: hidden;
   }
 
-  .content {
-    padding: var(--space-8) var(--space-5) var(--space-5);
+  .main {
+    padding: var(--space-16) var(--space-5) var(--space-5);
   }
 }
 
-/* Mobil: boşluklar daralır */
 @media (max-width: 767px) {
-  .topbar {
-    gap: var(--space-3);
-    padding: 0 var(--space-4);
-  }
-
-  .content {
-    padding: var(--space-6) var(--space-4) var(--space-4);
+  .main {
+    padding: var(--space-16) var(--space-4) var(--space-4);
   }
 }

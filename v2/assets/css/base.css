@@ -1,5 +1,5 @@
 /* ============================================================
-   BASE — reset, temel tipografi, semantic öğe stilleri
+   V2 BASE — reset, aurora zemin, temel tipografi
    ============================================================ */
 
 *,
@@ -23,6 +23,19 @@ body {
   color: var(--text-body);
   background: var(--bg-page);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Aurora: sayfanın arkasındaki pastel ışık yıkamaları */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(560px 420px at 8% -4%, var(--aurora-lavender), transparent 68%),
+    radial-gradient(640px 460px at 96% 0%, var(--aurora-sky), transparent 70%),
+    radial-gradient(520px 420px at 82% 92%, var(--aurora-pink), transparent 70%),
+    radial-gradient(480px 380px at 4% 88%, var(--aurora-mint), transparent 70%);
 }
 
 h1,
@@ -78,6 +91,14 @@ button {
   cursor: pointer;
 }
 
+code {
+  font-family: var(--font-mono);
+}
+
+table {
+  border-collapse: collapse;
+}
+
 :focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px var(--focus-ring);
@@ -89,18 +110,18 @@ button {
   color: var(--text-heading);
 }
 
-/* İnce, zarif kaydırma çubukları (sidebar ve toc için) */
 .scroll-slim {
   scrollbar-width: thin;
-  scrollbar-color: var(--gray-200) transparent;
+  scrollbar-color: var(--line-strong) transparent;
 }
 
 .scroll-slim::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 .scroll-slim::-webkit-scrollbar-thumb {
-  background: var(--gray-200);
+  background: var(--line-strong);
   border-radius: var(--radius-pill);
 }
 

@@ -1,81 +1,87 @@
 /* ============================================================
-   TOKENS — tek doğru kaynak (bkz. TALIMATLAR.md §2-3)
-   Açık tema değerleri :root'ta tanımlıdır.
-   Koyu tema Faz 2'de yalnızca bu değişkenleri
-   [data-theme="dark"] altında yeniden atayarak gelecek.
+   V2 "AURORA" TOKENS — tek doğru kaynak
+   Konsept: pastel aurora zemin + API-first koyu kod panelleri.
+   Marka mavisi (#0C34E7) logo, link ve vurgularda sabittir;
+   iç renkler bu versiyonda serbest bırakılmıştır (Şevval onayı).
    ============================================================ */
 
 :root {
   color-scheme: light;
 
-  /* --- Marka paleti (#0C34E7 ailesi) --- */
-  --blue-50:  #F1F4FE;
-  --blue-100: #E4EAFD;
-  --blue-200: #C6D2FA;
-  --blue-600: #0C34E7; /* kurumsal primary — Figma: Primary/Blue */
+  /* --- Marka --- */
+  --blue-600: #0C34E7;
   --blue-700: #0A2BC0;
+  --blue-100: #E4EAFD;
+  --blue-50:  #EFF4FF;
 
-  /* --- Nötr paleti --- */
-  --gray-25:  #F7F8FB;
-  --gray-50:  #F1F3F7;
-  --gray-100: #E5E8F0;
-  --gray-200: #D6DBE6;
-  --gray-400: #9AA3B5;
-  --gray-500: #707A8F;
-  --gray-700: #3D4759;
-  --gray-900: #131C2E;
+  /* --- Aurora yıkamaları (zemin ışıkları) --- */
+  --aurora-lavender: rgba(196, 181, 253, 0.32);
+  --aurora-sky:      rgba(165, 210, 253, 0.30);
+  --aurora-pink:     rgba(251, 207, 232, 0.22);
+  --aurora-mint:     rgba(167, 243, 208, 0.16);
 
-  /* --- Semantik: zeminler --- */
-  --bg-page:    var(--gray-25);
+  /* --- Nötrler (hafif menekşe altyapılı) --- */
+  --ink-900: #191726;
+  --ink-700: #46425A;
+  --ink-500: #6F6A85;
+  --ink-400: #9B96B0;
+  --line:        #EAE7F4;
+  --line-strong: #DBD7EA;
+
+  /* --- Semantik zeminler --- */
+  --bg-page:    #FBFAFE;
   --bg-surface: #FFFFFF;
-  --bg-soft:    var(--blue-50);
-  --bg-active:  var(--blue-100);
-  --bg-hover:   var(--gray-50);
+  --bg-glass:   rgba(255, 255, 255, 0.66);
+  --bg-hover:   #F3F1FA;
+  --bg-active:  #ECEBFD; /* aktif menü hapı (yumuşak menekşe) */
 
-  /* --- Semantik: metin --- */
-  --text-heading: var(--gray-900);
-  --text-body:    var(--gray-700);
-  --text-muted:   var(--gray-500);
+  /* --- Semantik metin --- */
+  --text-heading: var(--ink-900);
+  --text-body:    var(--ink-700);
+  --text-muted:   var(--ink-500);
   --text-primary: var(--blue-600);
   --text-invert:  #FFFFFF;
+  --accent:       var(--blue-600);
+  --accent-hover: var(--blue-700);
+  --focus-ring:   rgba(12, 52, 231, 0.35);
 
-  /* --- Marka imzası: gradyanlar (logo gradyanı ailesi) --- */
-  --gradient-brand: linear-gradient(135deg, #0C34E7 0%, #0112C5 55%, #03036D 100%);
-  --gradient-rail: linear-gradient(180deg, #0A1B9F 0%, #050C52 100%);
+  /* --- Durum renkleri --- */
+  --post-bg:   #F97316; /* POST rozeti */
+  --get-bg:    #10B981;
+  --required:  #F97316;
+  --tip-bg:     #EDFDF4;
+  --tip-border: #BBF7D0;
+  --tip-icon:   #10B981;
+  --info-bg:     #F5F6FB;
+  --info-border: #E3E6F0;
 
-  /* --- Sol ray (koyu lacivert panel) --- */
-  --rail-text: rgba(255, 255, 255, 0.74);
-  --rail-text-strong: #FFFFFF;
-  --rail-hover: rgba(255, 255, 255, 0.08);
-  --rail-active: rgba(255, 255, 255, 0.14);
-  --rail-line: rgba(255, 255, 255, 0.18);
-  --rail-muted: rgba(255, 255, 255, 0.55);
-  --rail-accent: #8FA4FF;
-  --rail-scrollbar: rgba(255, 255, 255, 0.25);
-  --focus-ring-invert: rgba(255, 255, 255, 0.45);
-
-  /* --- Semantik: çizgi ve vurgu --- */
-  --border:        var(--gray-100);
-  --border-strong: var(--gray-200);
-  --border-accent: var(--blue-200);
-  --accent:        var(--blue-600);
-  --accent-hover:  var(--blue-700);
-  --focus-ring:    color-mix(in srgb, var(--blue-600) 35%, transparent);
+  /* --- Kod paneli (koyu) --- */
+  --code-bg:      #101426;
+  --code-bar:     #0B0F1E;
+  --code-line:    rgba(255, 255, 255, 0.08);
+  --code-text:    #DFE4F5;
+  --code-muted:   #7C86A8;
+  --code-prop:    #8AB4FF;
+  --code-string:  #9EE8B4;
+  --code-number:  #FCD34D;
+  --code-var:     #C4B5FD;
 
   /* --- Tipografi --- */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, "Helvetica Neue", Arial, sans-serif;
-  --text-xs:   0.75rem;   /* 12px */
-  --text-sm:   0.8125rem; /* 13px */
-  --text-base: 0.9375rem; /* 15px */
-  --text-md:   1.0625rem; /* 17px */
-  --text-lg:   1.25rem;   /* 20px */
-  --text-xl:   1.5rem;    /* 24px */
-  --text-2xl:  2.125rem;  /* 34px */
+  --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular,
+               Menlo, Consolas, monospace;
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md:   1.0625rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2.125rem;
   --leading-tight: 1.25;
   --leading-body:  1.65;
 
-  /* --- Boşluk ölçeği --- */
+  /* --- Boşluk / köşe / gölge --- */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -86,21 +92,18 @@
   --space-10: 40px;
   --space-12: 48px;
   --space-16: 64px;
-
-  /* --- Köşe ve gölge --- */
   --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
   --radius-pill: 999px;
-  --shadow-card:  0 1px 2px rgba(19, 28, 46, 0.04), 0 4px 16px rgba(19, 28, 46, 0.05);
-  --shadow-hover: 0 2px 4px rgba(19, 28, 46, 0.05), 0 10px 28px rgba(19, 28, 46, 0.09);
-  --shadow-float: 0 4px 10px rgba(19, 28, 46, 0.08), 0 12px 32px rgba(19, 28, 46, 0.12);
+  --shadow-card:  0 1px 2px rgba(25, 23, 38, 0.04), 0 6px 20px rgba(25, 23, 38, 0.05);
+  --shadow-hover: 0 2px 4px rgba(25, 23, 38, 0.05), 0 12px 30px rgba(25, 23, 38, 0.09);
+  --shadow-float: 0 4px 12px rgba(25, 23, 38, 0.08), 0 14px 36px rgba(25, 23, 38, 0.14);
 
-  /* --- Yerleşim ölçüleri --- */
-  --header-h: 64px;
-  --sidebar-w: 288px;
-  --toc-w: 224px;
-  --content-max: 780px;
+  /* --- Yerleşim --- */
+  --sidebar-w: 300px;
+  --toc-w: 210px;
+  --content-max: 900px;
 
   /* --- Hareket --- */
   --ease: cubic-bezier(0.25, 0.6, 0.3, 1);

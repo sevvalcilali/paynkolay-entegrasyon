@@ -141,6 +141,11 @@ Sıralaması ve kapsamı sonra konuşulacak; şimdilik sadece kayıt:
 
 ---
 
+## Versiyon Kayıtları
+
+- **v1 — Lacivert Ray:** Koyu lacivert gradyan sol menü, gradyan hero + kesme işareti motifi, Entegrasyon Yolculuğu şeridi, ikon karolu kartlar, kurumsal üst menü demo'su, TR/EN dil menüsü. *(Eksik: kod gösterimi — karar için her versiyonda farklı denenecek.)*
+- **v2 — Aurora (API-first):** Şevval'in verdiği 3 Sipay/Apidog referansına göre. Pastel aurora zemin (lavanta/gök/pembe ışık yıkamaları — iç renk serbestliği Şevval onaylı, logo/vurgu mavi sabit), cam efektli tam boy sol panel (marka + TR/EN + tema + arama panel içinde), POST rozetli menü öğeleri, yeşil ipucu + gri bilgi callout'ları, erişim adresleri kartı, test bilgisi tablosu, panel yolunu gösteren mini mock kart, uç nokta çubuğu, iki kolonlu parametre listesi (çip + zorunlu/isteğe bağlı) ve **kod özelliği:** koyu Request paneli (Shell/JavaScript/PHP sekmeleri çalışır, kopyalama butonlu) + Response paneli (200 · Başarılı). Alt araçlar: LLMs.txt · Postman · Dışa Aktar.
+
 ## Revizyon Günlüğü
 
 | Tarih | Değişiklik |

@@ -145,6 +145,14 @@ a.vcard:hover {
   background: #F7F8FB;
 }
 
+.sw-lavanta {
+  background: #C4B5FD;
+}
+
+.sw-kod {
+  background: #101426;
+}
+
 .vcard h2 {
   font-size: 22px;
   font-weight: 700;
