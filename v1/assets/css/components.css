@@ -149,10 +149,150 @@
 }
 
 /* ============================================================
+   DROPDOWN — ortak açılır menü bileşeni (üst menü + dil kutusu)
+   ============================================================ */
+.dropdown {
+  position: relative;
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 230px;
+  padding: var(--space-2);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-float);
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease),
+    visibility var(--dur) var(--ease);
+}
+
+.dropdown.is-open > .dropdown__menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown__item {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--text-body);
+  font-size: var(--text-base);
+  white-space: nowrap;
+}
+
+.dropdown__item:hover {
+  background: var(--bg-hover);
+  color: var(--text-heading);
+  text-decoration: none;
+}
+
+.dropdown__item.is-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.dropdown__item.is-selected::after {
+  content: "✓";
+  font-weight: 700;
+}
+
+/* Açıkken chevron 180° döner */
+.dropdown > [data-dropdown] .chevron {
+  transition: transform var(--dur) var(--ease);
+}
+
+.dropdown.is-open > [data-dropdown] .chevron {
+  transform: rotate(180deg);
+}
+
+/* ============================================================
+   ÜST MENÜ — kurumsal gezinme (Ürünlerimiz, Hakkımızda…)
+   ============================================================ */
+.mainnav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.mainnav__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-heading);
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.mainnav__btn:hover {
+  background: var(--bg-hover);
+}
+
+.mainnav__btn .chevron {
+  color: var(--text-muted);
+}
+
+/* Aktif bölüm: mavi metin + altta imza çizgisi */
+.mainnav__btn.is-current {
+  color: var(--text-primary);
+}
+
+.mainnav__btn.is-current .chevron {
+  color: var(--text-primary);
+}
+
+.mainnav__btn.is-current::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: -8px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+
+/* Dar ekranda kurumsal menü gizlenir (çekmece esas menüdür) */
+@media (max-width: 1279px) {
+  .mainnav {
+    display: none;
+  }
+}
+
+/* ============================================================
    SOL RAY (koyu lacivert panel)
    ============================================================ */
 
 /* --- Dil kutusu --- */
+.dropdown--lang {
+  margin-bottom: var(--space-6);
+}
+
+.dropdown--lang .lang {
+  margin-bottom: 0;
+}
+
+.dropdown--lang .dropdown__menu {
+  width: 100%;
+  min-width: 0;
+}
+
 .lang {
   display: flex;
   align-items: center;

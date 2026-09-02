@@ -24,6 +24,65 @@
       </a>
     </div>
 
+    <nav class="mainnav" aria-label="Site menüsü">
+      <div class="dropdown">
+        <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
+          Ürünlerimiz
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="#">Sanal POS</a>
+          <a class="dropdown__item" href="#">Fiziki POS</a>
+          <a class="dropdown__item" href="#">CepnPOS</a>
+          <a class="dropdown__item" href="#">Link ile Ödeme Al</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
+          Hakkımızda
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="#">Biz Kimiz?</a>
+          <a class="dropdown__item" href="#">Duyurular</a>
+          <a class="dropdown__item" href="#">Kariyer</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
+          İletişim
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="#">Destek Merkezi</a>
+          <a class="dropdown__item" href="#">Bize Ulaşın</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="mainnav__btn is-current" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
+          Entegrasyon
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu">
+          <a class="dropdown__item" href="index.html">Dokümantasyon</a>
+          <a class="dropdown__item" href="#">API Referansı</a>
+          <a class="dropdown__item" href="#">Test Kartları</a>
+          <a class="dropdown__item" href="#">Sıkça Sorulan Sorular</a>
+        </div>
+      </div>
+    </nav>
+
     <button class="search" type="button" aria-label="Dokümanlarda ara (yakında)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
         <circle cx="11" cy="11" r="7"/>
@@ -42,12 +101,18 @@
   <div class="shell">
 
     <aside class="sidebar scroll-slim" id="sidebar" aria-label="Doküman menüsü">
-      <button class="lang" type="button" aria-label="Dil: Türkçe (seçim yakında)">
-        <span>TR</span>
-        <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m6 9 6 6 6-6"/>
-        </svg>
-      </button>
+      <div class="dropdown dropdown--lang">
+        <button class="lang" type="button" data-dropdown aria-expanded="false" aria-haspopup="listbox" aria-label="Dil seçimi">
+          <span id="lang-label">TR</span>
+          <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu" role="listbox" aria-label="Diller">
+          <a class="dropdown__item is-selected" href="#" role="option" data-lang="TR">Türkçe</a>
+          <a class="dropdown__item" href="#" role="option" data-lang="EN">English</a>
+        </div>
+      </div>
 
       <nav class="nav">
         <a class="nav__link nav__link--top is-active" href="index.html" aria-current="page">Başlangıç</a>
@@ -366,5 +431,6 @@
   </div>
 
   <script src="assets/js/sidebar.js"></script>
+  <script src="assets/js/dropdown.js"></script>
 </body>
 </html>
