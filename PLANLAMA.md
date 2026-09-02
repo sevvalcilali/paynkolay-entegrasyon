@@ -4,6 +4,15 @@
 
 Fazlar küçük ve gösterilebilir tutulur: **Faz 1** kabuğu ayağa kaldırır, **Faz 2** tema + dili çalışır yapar, sonrası (Faz 3+) park alanında bekler — büyük ayrıntılar oraya geldiğimizde birlikte konuşulur.
 
+## Çalışma modeli: Tasarım Versiyonları
+
+Şevval'in kararı (2026-09-02): Tasarım tek bir yön olarak değil, **versiyonlar halinde** ilerler.
+
+- Repo kökündeki `index.html` koyu temalı bir **galeri** sayfasıdır; her versiyon bir karttır, karta tıklayınca o versiyonun prototipi açılır.
+- Her versiyon kendi klasöründe, **kendi içinde bağımsız** yaşar: `v1/`, `v2/`, … (kendi assets'iyle; versiyonlar birbirinin dosyasına bağımlanmaz).
+- `v1` = Lacivert Ray (mevcut tasarım). Şevval'in aklındaki ~5 fikir geldikçe `v2+` olarak eklenecek; beğenilen yön seçilip derinleştirilecek.
+- Her versiyon sayfasında sol altta galeriye dönüş rozeti (`v1 · Versiyonlar`) bulunur.
+
 ---
 
 ## FAZ 1 — Doküman Kabuğu + Açılır Sol Panel

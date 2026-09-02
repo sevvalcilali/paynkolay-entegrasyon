@@ -720,6 +720,34 @@
   color: var(--text-primary);
 }
 
+/* --- Versiyon rozeti (galeriye dönüş — tasarımın parçası değil, meta) --- */
+.version-pill {
+  position: fixed;
+  left: var(--space-6);
+  bottom: var(--space-6);
+  z-index: 30;
+  padding: 6px 14px;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--rail-text-strong);
+  background: rgba(5, 12, 82, 0.85);
+  border: 1px solid var(--rail-line);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-card);
+  transition: background var(--dur) var(--ease);
+}
+
+.version-pill:hover {
+  background: rgba(5, 12, 82, 1);
+  text-decoration: none;
+}
+
+@media (max-width: 1023px) {
+  .version-pill {
+    display: none; /* mobilde çekmeceyle çakışmasın */
+  }
+}
+
 /* --- Bileşenlerin responsive davranışı ---
    (kaskad sırası gereği bileşen kuralları burada, kendi dosyasında ezilir) */
 @media (max-width: 767px) {
