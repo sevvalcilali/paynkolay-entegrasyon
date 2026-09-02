@@ -271,6 +271,73 @@
   transform: rotate(180deg);
 }
 
+/* ============ ÜST ŞERİT — kurumsal gezinme (cam efektli) ============ */
+.mainbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding: 0 var(--space-10);
+  background: var(--bg-glass);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+
+.mainnav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.mainnav__btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-heading);
+  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.mainnav__btn:hover {
+  background: var(--bg-hover);
+}
+
+.mainnav__btn .chevron {
+  color: var(--text-muted);
+}
+
+.mainnav__btn.is-current {
+  color: var(--text-primary);
+}
+
+.mainnav__btn.is-current .chevron {
+  color: var(--text-primary);
+}
+
+.mainnav__btn.is-current::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: -9px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+}
+
+@media (max-width: 1023px) {
+  .mainbar {
+    display: none;
+  }
+}
+
 /* ============ MOBİL: yüzen menü düğmesi ============ */
 .fab-menu {
   display: none;
