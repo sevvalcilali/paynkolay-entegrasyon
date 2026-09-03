@@ -972,6 +972,83 @@ a.chip:hover {
   background: var(--rail-active);
 }
 
+/* Grup başlığı: etiket sayfaya götürür, chevron açar/kapar */
+.nav__group-head {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav__group-head .nav__group-link {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+}
+
+.nav__group-toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  color: var(--rail-muted);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.nav__group-toggle:hover {
+  background: var(--rail-hover);
+  color: var(--rail-text-strong);
+}
+
+.nav__group-toggle .chevron {
+  transition: transform var(--dur) var(--ease);
+}
+
+.nav__group.is-open .nav__group-toggle .chevron {
+  transform: rotate(90deg);
+}
+
+/* Hub sayfası: sade başlık kartları (iyzico Ön Hazırlıklar tarzı) */
+.simplegrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+@media (max-width: 1023px) {
+  .simplegrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .simplegrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.simplecard {
+  display: block;
+  padding: var(--space-5) var(--space-6);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  font-weight: 650;
+  color: var(--text-primary);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
+}
+
+.simplecard:hover {
+  text-decoration: none;
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
 /* --- Hub kartları (ikon karolu) --- */
 .cards {
   display: grid;

@@ -2,11 +2,16 @@
 (function () {
   "use strict";
 
-  /* --- Accordion --- */
+  /* --- Accordion ---
+     İki başlık biçimi desteklenir: düz buton (.nav__group-btn) ve
+     sayfaya götüren etiket + ayrı chevron (.nav__group-toggle). */
   var groups = document.querySelectorAll(".nav__group");
 
   groups.forEach(function (group) {
-    var btn = group.querySelector(".nav__group-btn");
+    var btn = group.querySelector(".nav__group-btn, .nav__group-toggle");
+    if (!btn) {
+      return;
+    }
 
     btn.addEventListener("click", function () {
       var isOpen = group.classList.toggle("is-open");
