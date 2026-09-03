@@ -1006,7 +1006,7 @@ a.chip:hover {
   transition: transform var(--dur) var(--ease);
 }
 
-.nav__group.is-open .nav__group-toggle .chevron {
+.nav__group.is-open > .nav__group-head > .nav__group-toggle .chevron {
   transform: rotate(90deg);
 }
 
@@ -1071,6 +1071,93 @@ a.chip:hover {
   font-weight: 700;
   white-space: nowrap;
 }
+
+/* --- İç içe gruplar (API ağacı gibi) --- */
+.nav__sublist .nav__group-head .nav__group-link {
+  padding-left: var(--space-6);
+  font-weight: 500;
+  color: var(--rail-text);
+}
+
+.nav__sublist .nav__group-head .nav__group-link:hover {
+  color: var(--rail-text-strong);
+}
+
+.nav__sublist .nav__sublist {
+  margin-left: var(--space-5);
+  border-left: 1px solid var(--rail-line);
+}
+
+.nav__sublist .nav__sublist .nav__link {
+  padding-left: var(--space-4);
+}
+
+.nav__sublist .nav__sublist .nav__group-head .nav__group-link {
+  padding-left: var(--space-4);
+}
+
+/* --- Kod bloğu (v1 kimliği: lacivert mürekkep) --- */
+.codeblock {
+  margin: var(--space-4) 0;
+  background: #071033;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-hover);
+}
+
+.codeblock__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.codeblock__title {
+  color: #ffffff;
+  font-size: var(--text-sm);
+  font-weight: 650;
+}
+
+.copybtn--dark {
+  border-color: rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.copybtn--dark:hover,
+.copybtn--dark.is-done {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
+}
+
+.codeblock__code {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #dce4f9;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.codeblock__code::-webkit-scrollbar {
+  height: 6px;
+}
+
+.codeblock__code::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-pill);
+}
+
+.tk-k { color: #8fa9ff; }
+.tk-s { color: #9ee8b4; }
+.tk-n { color: #fcd34d; }
+.tk-c { color: #7c86a8; }
 
 /* Hub sayfası: sade başlık kartları (iyzico Ön Hazırlıklar tarzı) */
 .simplegrid {
