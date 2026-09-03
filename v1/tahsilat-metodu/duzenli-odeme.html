@@ -216,18 +216,63 @@
         <article class="article">
           <p class="eyebrow"><a href="index.html">Tahsilat Metodu</a></p>
           <h1>Düzenli Ödeme</h1>
-          <p class="lead">Kayıtlı kart talimatıyla abonelik tahsilatlarını belirlenen dönemlerde otomatik alırsınız.</p>
+          <p class="lead">Talimat oluşturursunuz; tahsilat, belirlenen dönemlerde müşterinin kayıtlı kartından otomatik alınır.</p>
 
           <h2 id="genel">Genel Bakış</h2>
-          <p>Aidat ve abonelik modelleri için: müşterinin kartı güvenli biçimde saklanır, talimat tanımlanır ve tahsilat her dönem otomatik gerçekleşir.</p>
+          <p>Düzenli Ödeme, aidat ve abonelik modelleri için tasarlanmıştır: bir <strong>talimat</strong> tanımlarsınız; ödeme, <strong>30 günlük dönemlerle</strong> ve en fazla <strong>12 tekrar</strong> olacak şekilde otomatik tahsil edilir. Talimat, ilk ödemeyi hemen ya da ileri bir tarihte başlatabilir.</p>
 
-          <div class="callout">
-            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M12 8h.01M12 11v5"/>
-            </svg>
-            <p>Bu sayfanın entegrasyon adımları, parametre tabloları ve kod örnekleri birlikte doldurulacak.</p>
-          </div>
+          <h2 id="olusturma">Talimat Oluşturma</h2>
+          <div class="access"><p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/api/RecurringPaymentCreate</code></p><p class="access__row"><span class="access__label">Gövde</span><span><code>application/json</code></span></p></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek İstek — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  <span class="tk-k">"sx"</span>: <span class="tk-s">"118591467|W8a1JLU8A5Cw…FbOO5A=="</span>,
+  <span class="tk-k">"Instalment"</span>: <span class="tk-n">6</span>,
+  <span class="tk-k">"InstalmentPeriod"</span>: <span class="tk-n">30</span>,
+  <span class="tk-k">"CustomerName"</span>: <span class="tk-s">"Ayşe"</span>,
+  <span class="tk-k">"CustomerSurname"</span>: <span class="tk-s">"Yılmaz"</span>,
+  <span class="tk-k">"ClientRefCode"</span>: <span class="tk-s">"TAL-2026-000042"</span>,
+  <span class="tk-k">"PaymentStartChose"</span>: <span class="tk-n">1</span>,
+  <span class="tk-k">"PaymentStartDate"</span>: <span class="tk-s">"03/09/2026"</span>,
+  <span class="tk-k">"Email"</span>: <span class="tk-s">"ayse@mail.com"</span>,
+  <span class="tk-k">"Gsm"</span>: <span class="tk-s">"5553900000"</span>,
+  <span class="tk-k">"Amount"</span>: <span class="tk-n">149.90</span>,
+  <span class="tk-k">"cardHolderIP"</span>: <span class="tk-s">"85.100.20.15"</span>,
+  <span class="tk-k">"hashDatav2"</span>: <span class="tk-s">"lunnRyNfDu6pdpNjjlFrlATE…"</span>
+}</code></pre></div>
+          <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
+                <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Size verilen sx değeriniz</td></tr>
+                <tr><td class="mono">Instalment</td><td>integer</td><td>✅</td><td>Ödemenin kaç defa alınacağı (en fazla 12)</td></tr>
+                <tr><td class="mono">InstalmentPeriod</td><td>integer</td><td>✅</td><td>Dönem — 30'dan farklı olamaz</td></tr>
+                <tr><td class="mono">CustomerName / CustomerSurname</td><td>string</td><td>✅</td><td>Müşteri adı ve soyadı (CustomerMiddleName opsiyonel)</td></tr>
+                <tr><td class="mono">ClientRefCode</td><td>string</td><td>✅</td><td>Kendi referans numaranız — benzersiz gönderin</td></tr>
+                <tr><td class="mono">PaymentStartChose</td><td>integer</td><td>✅</td><td>1 = hemen, 2 = ileri tarihli</td></tr>
+                <tr><td class="mono">PaymentStartDate</td><td>string</td><td>✅</td><td>İlk ödeme tarihi (DD/MM/YYYY) — 1 seçildiyse bugünün tarihi</td></tr>
+                <tr><td class="mono">Email / Gsm</td><td>string</td><td>✅</td><td>Müşteri e-posta ve cep telefonu</td></tr>
+                <tr><td class="mono">Amount</td><td>decimal</td><td>✅</td><td>Her bir ödemenin tutarı</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|Gsm|Amount|ClientRefCode|merchantSecretKey</td></tr>
+                <tr><td class="mono">cardHolderIP</td><td>string</td><td>✅</td><td>Müşterinin IP adresi</td></tr>
+                <tr><td class="mono">Description / language</td><td>string</td><td>—</td><td>Açıklama; dil boşsa Türkçe</td></tr>
+</tbody></table></div>
+
+          <h2 id="iptal">Talimat İptal</h2>
+          <div class="access"><p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/api/RecurringPaymentCancel</code></p><p class="access__row"><span class="access__label">Gövde</span><span><code>application/json</code></span></p></div>
+          <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
+                <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Size verilen sx değeriniz</td></tr>
+                <tr><td class="mono">InstructionNumber</td><td>string</td><td>✅</td><td>İptal edilecek talimat numarası</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|InstructionNumber|merchantSecretKey</td></tr>
+                <tr><td class="mono">cardHolderIP</td><td>string</td><td>✅</td><td>Müşterinin IP adresi</td></tr>
+</tbody></table></div>
+
+          <h2 id="listeleme">Talimat Listeleme</h2>
+          <p>Bu servis <strong>sx-list</strong> değerini kullanır. Opsiyonel filtrelerle (ad-soyad, GSM ya da talimat numarası) sonuçları daraltabilirsiniz.</p>
+          <div class="access"><p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/api/RecurringPaymentList</code></p><p class="access__row"><span class="access__label">Gövde</span><span><code>application/json</code></span></p></div>
+          <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
+                <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Listeleme (sx-list) değeriniz</td></tr>
+                <tr><td class="mono">startDate</td><td>string</td><td>✅</td><td>Başlangıç tarihi (DD.MM.YYYY)</td></tr>
+                <tr><td class="mono">endDate</td><td>string</td><td>✅</td><td>Bitiş tarihi (DD.MM.YYYY)</td></tr>
+                <tr><td class="mono">nameSurname</td><td>string</td><td>—</td><td>Ad soyad filtresi</td></tr>
+                <tr><td class="mono">gsm</td><td>string</td><td>—</td><td>GSM filtresi</td></tr>
+                <tr><td class="mono">instructionNumber</td><td>string</td><td>—</td><td>Listeleme yanıtındaki INSTRUCTION_ID değeri</td></tr>
+</tbody></table></div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
   <a class="pager__card" href="on-provizyon.html">
@@ -257,6 +302,9 @@
         </p>
         <ul class="toc__list">
           <li><a class="is-active" href="#genel">Genel Bakış</a></li>
+          <li><a href="#olusturma">Talimat Oluşturma</a></li>
+          <li><a href="#iptal">Talimat İptal</a></li>
+          <li><a href="#listeleme">Talimat Listeleme</a></li>
         </ul>
       </aside>
 
