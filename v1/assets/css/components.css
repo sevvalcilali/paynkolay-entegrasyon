@@ -1010,6 +1010,95 @@ a.chip:hover {
   transform: rotate(90deg);
 }
 
+/* --- Avantaj ikonları (iyzico Avantajlar uyarlaması) --- */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .benefits {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.benefit__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--bg-soft);
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.benefit__title {
+  display: block;
+  font-weight: 650;
+  color: var(--text-heading);
+  margin-bottom: var(--space-1);
+}
+
+.benefit__desc {
+  display: block;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* --- Akış illüstrasyon kartları --- */
+.flowgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+@media (max-width: 700px) {
+  .flowgrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.flowcard {
+  padding: var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.flowcard svg {
+  width: 100%;
+  height: auto;
+  margin-bottom: var(--space-3);
+}
+
+.flowcard__cap {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-body);
+}
+
+.flowcard__no {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-brand);
+  color: #ffffff;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  transform: translateY(3px);
+}
+
 /* --- Doküman tablosu --- */
 .table-wrap {
   overflow-x: auto;
