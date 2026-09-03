@@ -64,7 +64,7 @@ Ana başlıklar (Şevval'in belirlediği 7'li):
 | # | Ana başlık | Taslak alt başlıklar (eski sayfalardan eşleme) |
 |---|---|---|
 | 1 | **Başlangıç** | (tek sayfa — karşılama/hub, alt menüsü yok) |
-| 2 | **Ön Hazırlık** | Test ortamı bilgileri · Canlı bilgileri panelden alma · Sistem gereksinimleri · Test kartları |
+| 2 | **Ön Hazırlık** | Başvuru ve İlk Adımlar · Hangi Yöntem Size Uygun? · Entegrasyon Kontrol Listesi · Test Ortamı (Sandbox) · Test vs Canlı Ortam · Test Kartları *(2026-09-03: Şevval'in isteğiyle Paratika "İlk Adımlar" + iyzico "Ön Hazırlıklar" harmanı olarak yeniden kuruldu — önce yol gösterme, sonra test bilgileri)* |
 | 3 | **Tahsilat Metodu** | Ortak Ödeme (Form) · Ortak Ödeme (Link) · Linkli Ödeme · API ile Ödeme |
 | 4 | **Ürünler** | Pazaryeri · Masterpass · Sigorta Ödemesi |
 | 5 | **Ek Servisler** | Kart Saklama · Tekrarlayan Ödeme · Ön Provizyon · Taksit Servisi · Raporlama · İptal & İade |

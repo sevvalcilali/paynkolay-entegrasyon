@@ -126,9 +126,11 @@
           </button>
           <div class="nav__sublist" id="grp-hazirlik">
             <div class="nav__sublist-inner">
-              <a class="nav__link is-active" href="#test-ortami">Test Ortamı Bilgileri</a>
-              <a class="nav__link" href="#canli-bilgiler">Canlı Bilgileri Panelden Alma</a>
-              <a class="nav__link" href="#gereksinimler">Sistem Gereksinimleri</a>
+              <a class="nav__link is-active" href="#basvuru">Başvuru ve İlk Adımlar</a>
+              <a class="nav__link" href="#yontem">Hangi Yöntem Size Uygun?</a>
+              <a class="nav__link" href="#kontrol">Entegrasyon Kontrol Listesi</a>
+              <a class="nav__link" href="#test-ortami">Test Ortamı (Sandbox)</a>
+              <a class="nav__link" href="#ortamlar">Test vs Canlı Ortam</a>
               <a class="nav__link" href="#test-kartlari">Test Kartları</a>
             </div>
           </div>
@@ -217,60 +219,59 @@
         <article class="article">
           <p class="eyebrow">Entegrasyon Dokümantasyonu</p>
           <h1>Ön Hazırlık</h1>
-          <p class="lead">Entegrasyona başlamadan önce ihtiyacınız olan her şey burada: test ortamı bilgileri, ortam adresleri, sistem gereksinimleri ve test kartları.</p>
+          <p class="lead">Buraya bir fikirle gelmiş olabilirsiniz — bu sayfa ne yapacağınızı, ne kullanacağınızı ve hangi yoldan ilerleyeceğinizi netleştirir. Test bilgilerine geçmeden önce yolunuzu seçin.</p>
 
-          <h2 id="rehber">Hazırlık Rehberi</h2>
+          <h2 id="basvuru">Başvuru ve İlk Adımlar</h2>
           <ol class="guide">
-            <li>
-              <span class="guide__dot">1</span>
-              <span>
-                <span class="guide__title">Başvurunuzu tamamlayın</span>
-                <span class="guide__desc">Üye işyeri hesabınız açılır, panel erişim bilgileriniz size iletilir.</span>
-              </span>
-            </li>
-            <li>
-              <span class="guide__dot">2</span>
-              <span>
-                <span class="guide__title">Test ortamı bilgilerinizi alın</span>
-                <span class="guide__desc">Aşağıdaki sx ve Merchant Secret Key değerleriyle 273 numaralı test üye işyerini kullanın.</span>
-              </span>
-            </li>
-            <li>
-              <span class="guide__dot">3</span>
-              <span>
-                <span class="guide__title">Sistem gereksinimlerini karşılayın</span>
-                <span class="guide__desc">TLS 1.2+, UTF-8 ve HTTPS zorunludur; sonuç adresleriniz geçerli SSL sertifikasına sahip olmalıdır.</span>
-              </span>
-            </li>
-            <li>
-              <span class="guide__dot">4</span>
-              <span>
-                <span class="guide__title">Test kartlarıyla uçtan uca deneyin</span>
-                <span class="guide__desc">Gerçek kart kullanmadan tüm ödeme senaryolarını test ortamında doğrulayın.</span>
-              </span>
-            </li>
-            <li>
-              <span class="guide__dot">5</span>
-              <span>
-                <span class="guide__title">Canlı bilgilerinizi panelden alın</span>
-                <span class="guide__desc">Yayına geçmeden önce size özel sx ve Merchant Secret Key değerlerinizi panelden edinin.</span>
-              </span>
-            </li>
+<li><span class="guide__dot">1</span><span><span class="guide__title">Başvuru ve ön görüşme</span><span class="guide__desc">Başvurunuzun ardından satış temsilcimiz sizinle iletişime geçer, ihtiyacınızı dinler ve size en uygun çözümü birlikte belirlersiniz.</span></span></li>
+<li><span class="guide__dot">2</span><span><span class="guide__title">Sözleşme ve hesap açılışı</span><span class="guide__desc">Şirket bilgileriniz ve belgeleriniz alınır, sözleşmeniz onaylanır; üye işyeri hesabınız açılır ve panel giriş bilgileriniz size iletilir.</span></span></li>
+<li><span class="guide__dot">3</span><span><span class="guide__title">Panel erişimi ve entegrasyon bilgileri</span><span class="guide__desc">Panelinize girip entegrasyonda kullanacağınız bilgileri edinirsiniz — aşağıdaki üç bilgi tüm yöntemlerin ortak anahtarıdır.</span></span></li>
+<li><span class="guide__dot">4</span><span><span class="guide__title">Entegrasyon, test ve canlıya geçiş</span><span class="guide__desc">Seçtiğiniz yöntemi test ortamında uçtan uca deneyip onay sonrasında canlı bilgilerinizle yayına geçersiniz.</span></span></li>
           </ol>
-
-          <h2 id="test-ortami">Test Ortamı Bilgileri</h2>
-          <p>Tüm geliştirme, <strong>273 numaralı test üye işyeri</strong> üzerinde aşağıdaki bilgilerle yapılır — hiçbir aşamada gerçek kart ya da gerçek para kullanılmaz.</p>
 
           <div class="access">
             <p class="access__row">
-              <span class="access__label">Test Ortamı</span>
-              <code>https://paynkolaytest.nkolayislem.com.tr/Vpos</code>
+              <span class="access__label">Üye İşyeri No</span>
+              <span>Panelinizde <strong>Bilgilerim</strong> ekranında yer alır.</span>
             </p>
             <p class="access__row">
-              <span class="access__label">Canlı Ortam</span>
-              <code>https://paynkolay.nkolayislem.com.tr/Vpos</code>
+              <span class="access__label">sx</span>
+              <span><strong>Ayarlar → Entegrasyon Bilgileri</strong> adımından edinilir; isteklerinizin kimliğidir.</span>
+            </p>
+            <p class="access__row">
+              <span class="access__label">Secret Key</span>
+              <span>Aynı ekrandan edinilir; hash imzası için kullanılır ve <strong>yalnızca sunucunuzda</strong> saklanır.</span>
             </p>
           </div>
+
+          <h2 id="yontem">Hangi Yöntem Size Uygun?</h2>
+          <p>Hangi durumda olduğunuzu bulun — önerdiğimiz yol sizi doğru bölüme götürür. Hangi yolu seçerseniz seçin ilk adım aynıdır: panel erişiminizi alın ve entegrasyon bilgilerinizi edinin.</p>
+          <div class="cards">
+<a class="card" href="#"><span class="card__tag">Önerilen: Linkli Ödeme</span><span class="card__title">Web siteniz yok, hızlı tahsilat istiyorsunuz<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Panelden ödeme linki oluşturur, SMS veya e-posta ile gönderirsiniz. Teknik bilgi gerektirmez.</span></a>
+<a class="card" href="#"><span class="card__tag">Önerilen: Hazır Eklentiler</span><span class="card__title">Hazır e-ticaret altyapısı kullanıyorsunuz<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">WooCommerce, OpenCart, Magento gibi altyapılarda eklentiyi kurup bilgilerinizi girmeniz yeterli — kod yazılmaz.</span></a>
+<a class="card" href="#"><span class="card__tag">Önerilen: Ortak Ödeme (Form / Link)</span><span class="card__title">Siteniz var, kart güvenliği bizde kalsın<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Müşteri kart bilgilerini Paynkolay ortak ödeme sayfasında girer; PCI DSS yükü Paynkolay tarafındadır.</span></a>
+<a class="card" href="#"><span class="card__tag">Önerilen: API ile Ödeme</span><span class="card__title">Tam kontrol ve kendi arayüzünüz<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Ödeme akışını kendi arayüzünüzden RESTful API ile yönetirsiniz. Geliştirici desteği gerektirir.</span></a>
+          </div>
+
+          <h2 id="kontrol">Entegrasyon Kontrol Listesi</h2>
+          <p>Canlıya geçmeden önce bu listenin tamamını işaretleyebiliyor olmalısınız:</p>
+          <ul class="checklist">
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Panel erişimim var ve üye işyerimde <strong>API yetkisi</strong> tanımlı.</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span><strong>sx</strong> ve <strong>Merchant Secret Key</strong> değerlerimi edindim; Secret Key yalnızca sunucumda duruyor.</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span><code>successUrl</code> ve <code>failUrl</code> adreslerim geçerli <strong>SSL sertifikalı</strong>.</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Sistemim <strong>TLS 1.2+</strong>, <strong>UTF-8</strong> ve <strong>HTTPS</strong> ile çalışıyor.</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Hash imzasını <strong>sunucu tarafında</strong> üretiyorum, yanıt hash'ini de doğruluyorum.</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Test kartlarıyla başarılı, başarısız ve 3D senaryolarının tamamını koştum.</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Canlı <strong>sx</strong> ve <strong>Secret Key</strong> değerlerimi panelden aldım, test değerleriyle karıştırmıyorum.</span></li>
+          </ul>
+
+          <h2 id="hizli">Hızlı Linkler</h2>
+          <div class="chips">
+<a class="chip" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Panel Giriş</a><a class="chip" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Başvuru</a><a class="chip" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Test Kartları</a><a class="chip" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Postman Koleksiyonu</a><a class="chip" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Hash Aracı</a><a class="chip" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Destek</a>
+          </div>
+
+          <h2 id="test-ortami">Test Ortamı (Sandbox)</h2>
+          <p>Tüm geliştirme, <strong>273 numaralı test üye işyeri</strong> üzerinde aşağıdaki bilgilerle yapılır — hiçbir aşamada gerçek kart ya da gerçek para kullanılmaz.</p>
 
           <div class="tokens">
             <div class="tokenrow">
@@ -308,8 +309,39 @@
             <p><strong>Merchant Secret Key</strong> yalnızca sunucu tarafında saklanır; tarayıcıya, mobil uygulamaya veya üçüncü kişilere asla gönderilmez. Hash üretimi her zaman sunucunuzda yapılır.</p>
           </div>
 
-          <h2 id="canli-bilgiler">Canlı Bilgileri Panelden Alma</h2>
-          <p>Canlıya geçerken size özel <strong>sx</strong> ve <strong>Merchant Secret Key</strong> değerlerine panelinizden ulaşırsınız: ilgili üye işyerini seçtikten sonra <strong>Ayarlar → Entegrasyon Bilgileri</strong> adımını izlemeniz yeterli.</p>
+          <h2 id="ortamlar">Test vs Canlı Ortam</h2>
+          <p>Paynkolay iki ortama sahiptir; test ve canlı için <strong>ayrı bilgiler</strong> kullanılır:</p>
+          <div class="envgrid">
+            <div class="env">
+              <span class="env__title">Test Ortamı (Sandbox)</span>
+              <ul>
+                <li>Gerçek para hiçbir zaman geçmez</li>
+                <li>273 numaralı test üye işyeri kullanılır</li>
+                <li>Tüm senaryolar burada denenir ve doğrulanır</li>
+              </ul>
+            </div>
+            <div class="env">
+              <span class="env__title">Canlı Ortam</span>
+              <ul>
+                <li>Gerçek işlemler burada gerçekleşir</li>
+                <li>Size özel sx ve Secret Key değerleri kullanılır</li>
+                <li>Testler tamamlanmadan geçiş yapılmaz</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="access">
+            <p class="access__row">
+              <span class="access__label">Test Ortamı</span>
+              <code>https://paynkolaytest.nkolayislem.com.tr/Vpos</code>
+            </p>
+            <p class="access__row">
+              <span class="access__label">Canlı Ortam</span>
+              <code>https://paynkolay.nkolayislem.com.tr/Vpos</code>
+            </p>
+          </div>
+
+          <p>Canlı bilgilerinize panelinizden ulaşırsınız: ilgili üye işyerini seçtikten sonra <strong>Ayarlar → Entegrasyon Bilgileri</strong>.</p>
           <div class="mock" aria-hidden="true">
             <div class="mock__head">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -333,38 +365,6 @@
             <p><strong>Bu bilgileri panelde göremiyor musunuz?</strong> Nedeni genellikle üye işyerinizde <strong>API yetkisinin tanımlı olmaması</strong> ya da <strong>ana kullanıcı olmamanızdır</strong> — <a href="mailto:kolayposdestek@nkolay.com.tr">kolayposdestek@nkolay.com.tr</a> adresine yazmanız yeterli; ekibimiz gerekli yetkiyi tanımlar.</p>
           </div>
 
-          <h2 id="gereksinimler">Sistem Gereksinimleri</h2>
-          <div class="reqgrid">
-            <div class="req">
-              <span class="req__label">TLS</span>
-              <span class="req__value">Minimum 1.2</span>
-            </div>
-            <div class="req">
-              <span class="req__label">Karakter Seti</span>
-              <span class="req__value">UTF-8</span>
-            </div>
-            <div class="req">
-              <span class="req__label">Veri Formatı</span>
-              <span class="req__value">JSON / Form-Data</span>
-            </div>
-            <div class="req">
-              <span class="req__label">Protokol</span>
-              <span class="req__value">HTTPS zorunlu</span>
-            </div>
-          </div>
-
-          <h2 id="ozellikler">Desteklenen Özellikler</h2>
-          <div class="chips">
-            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Visa · Mastercard · Troy · Amex</span>
-            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>3D Secure</span>
-            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Taksitli Ödeme</span>
-            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Kart Saklama</span>
-            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tekrarlayan Ödeme</span>
-            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>İade &amp; İptal</span>
-            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ön Provizyon</span>
-            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SMS / E-posta Bildirimleri</span>
-          </div>
-
           <h2 id="test-kartlari">Test Kartları</h2>
           <p>Ödeme akışlarını denemek için test kartlarını kullanın; bu kartlar yalnızca test ortamında çalışır.</p>
           <div class="cards">
@@ -377,9 +377,7 @@
               </span>
               <span class="card__title">
                 Test Kartları Listesi
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
               </span>
               <span class="card__desc">Kart numaraları, 3D şifreleri ve senaryolar bu alt sayfada listelenecek.</span>
             </a>
@@ -423,11 +421,12 @@
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#rehber">Hazırlık Rehberi</a></li>
-          <li><a href="#test-ortami">Test Ortamı Bilgileri</a></li>
-          <li><a href="#canli-bilgiler">Canlı Bilgileri Panelden Alma</a></li>
-          <li><a href="#gereksinimler">Sistem Gereksinimleri</a></li>
-          <li><a href="#ozellikler">Desteklenen Özellikler</a></li>
+          <li><a class="is-active" href="#basvuru">Başvuru ve İlk Adımlar</a></li>
+          <li><a href="#yontem">Hangi Yöntem Size Uygun?</a></li>
+          <li><a href="#kontrol">Entegrasyon Kontrol Listesi</a></li>
+          <li><a href="#hizli">Hızlı Linkler</a></li>
+          <li><a href="#test-ortami">Test Ortamı (Sandbox)</a></li>
+          <li><a href="#ortamlar">Test vs Canlı Ortam</a></li>
           <li><a href="#test-kartlari">Test Kartları</a></li>
         </ul>
       </aside>
