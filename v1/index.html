@@ -234,6 +234,10 @@
             <p>Başlamadan önce: test ortamı bilgileri ve test kartları <strong>Ön Hazırlık</strong> bölümünde yer alır. Gerçek kart bilgisi kullanmadan tüm akışları deneyebilirsiniz.</p>
           </div>
 
+          <h2 id="nedir">Paynkolay Nedir?</h2>
+          <p>Paynkolay, güvenli ve hızlı online ödeme işlemleri için geliştirilmiş bir ödeme sistemidir. E-ticaret sitenize kolayca entegre edebileceğiniz çeşitli ödeme yöntemleri sunar; kart bilgilerinin güvenliği ve PCI DSS gereklilikleri Paynkolay tarafından karşılanır.</p>
+          <p>İster hazır ortak ödeme sayfasını kullanın, ister linkle tahsilat yapın, ister API ile kendi akışınızı kurun — bu doküman her yol için sizi adım adım yönlendirir.</p>
+
           <h2 id="bolumler">Bölümler</h2>
           <div class="cards">
             <a class="card" href="#">
@@ -332,6 +336,18 @@
             </a>
           </div>
 
+          <h2 id="erisim">Erişim Adresleri</h2>
+          <div class="access">
+            <p class="access__row">
+              <span class="access__label">Test Ortamı</span>
+              <code>https://paynkolaytest.nkolayislem.com.tr/Vpos</code>
+            </p>
+            <p class="access__row">
+              <span class="access__label">Canlı Ortam</span>
+              <code>https://paynkolay.nkolayislem.com.tr/Vpos</code>
+            </p>
+          </div>
+
           <h2 id="yolculuk">Entegrasyon Yolculuğu</h2>
           <ol class="journey">
             <li class="journey__step">
@@ -371,6 +387,81 @@
             </li>
           </ol>
 
+          <h2 id="ozellikler">Desteklenen Özellikler</h2>
+          <div class="chips">
+            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Visa · Mastercard · Troy · Amex</span>
+            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>3D Secure</span>
+            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Taksitli Ödeme</span>
+            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Kart Saklama</span>
+            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tekrarlayan Ödeme</span>
+            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>İade &amp; İptal</span>
+            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ön Provizyon</span>
+            <span class="chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>SMS / E-posta Bildirimleri</span>
+          </div>
+
+          <h2 id="gereksinimler">Sistem Gereksinimleri</h2>
+          <div class="reqgrid">
+            <div class="req">
+              <span class="req__label">TLS</span>
+              <span class="req__value">Minimum 1.2</span>
+            </div>
+            <div class="req">
+              <span class="req__label">Karakter Seti</span>
+              <span class="req__value">UTF-8</span>
+            </div>
+            <div class="req">
+              <span class="req__label">Veri Formatı</span>
+              <span class="req__value">JSON / Form-Data</span>
+            </div>
+            <div class="req">
+              <span class="req__label">Protokol</span>
+              <span class="req__value">HTTPS zorunlu</span>
+            </div>
+          </div>
+
+          <div class="callout callout--warn">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/>
+              <path d="M12 9v4m0 4h.01"/>
+            </svg>
+            <p><strong>Canlıya geçerken:</strong> Size özel canlı bilgilerinize (sx, Merchant Secret Key) panelinizden ulaşırsınız. Panelde göremiyorsanız nedeni genellikle üye işyerinizde <strong>API yetkisinin tanımlı olmaması</strong> ya da <strong>ana kullanıcı olmamanızdır</strong> — <a href="mailto:kolayposdestek@nkolay.com.tr">kolayposdestek@nkolay.com.tr</a> adresine yazmanız yeterli.</p>
+          </div>
+
+          <h2 id="destek">Yardım &amp; Destek</h2>
+          <div class="cards">
+            <a class="card" href="#">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5Z"/>
+                  <path d="M9.6 9.5a2.4 2.4 0 0 1 4.7.8c0 1.6-2.3 2.2-2.3 3.2"/>
+                  <path d="M12 16.5h.01"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Sıkça Sorulan Sorular
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">TLS bağlantı sorunları, hash hataları ve en çok merak edilen konular.</span>
+            </a>
+            <a class="card" href="mailto:kolayposdestek@nkolay.com.tr">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-10 6L2 7"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Teknik Destek
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">Takıldığınız her adımda ekibimize yazın: kolayposdestek@nkolay.com.tr</span>
+            </a>
+          </div>
+
           <nav class="pager" aria-label="Sayfalar arası gezinme">
             <a class="pager__card pager__card--next" href="#">
               <span class="pager__meta">
@@ -400,8 +491,13 @@
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#bolumler">Bölümler</a></li>
+          <li><a class="is-active" href="#nedir">Paynkolay Nedir?</a></li>
+          <li><a href="#bolumler">Bölümler</a></li>
+          <li><a href="#erisim">Erişim Adresleri</a></li>
           <li><a href="#yolculuk">Entegrasyon Yolculuğu</a></li>
+          <li><a href="#ozellikler">Desteklenen Özellikler</a></li>
+          <li><a href="#gereksinimler">Sistem Gereksinimleri</a></li>
+          <li><a href="#destek">Yardım &amp; Destek</a></li>
         </ul>
       </aside>
     </div>
