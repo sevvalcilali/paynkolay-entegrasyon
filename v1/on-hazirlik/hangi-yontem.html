@@ -137,18 +137,19 @@
         </div>
 
         <div class="nav__group">
-          <button class="nav__group-btn" aria-expanded="false" aria-controls="grp-tahsilat">
-            Tahsilat Metodu
-            <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m9 6 6 6-6 6"/>
-            </svg>
-          </button>
+          <div class="nav__group-head">
+            <a class="nav__link nav__link--top nav__group-link" href="../tahsilat-metodu/index.html">Tahsilat Metodu</a>
+            <button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-tahsilat" aria-label="Tahsilat Metodu alt başlıkları">
+              <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
           <div class="nav__sublist" id="grp-tahsilat">
             <div class="nav__sublist-inner">
-              <a class="nav__link" href="#">Ortak Ödeme (Form)</a>
-              <a class="nav__link" href="#">Ortak Ödeme (Link)</a>
-              <a class="nav__link" href="#">Linkli Ödeme</a>
-              <a class="nav__link" href="#">API ile Ödeme</a>
+              <a class="nav__link" href="../tahsilat-metodu/api.html">API (3D · NON3D)</a>
+              <a class="nav__link" href="../tahsilat-metodu/form-ile-odeme.html">Form ile Ödeme</a>
+              <a class="nav__link" href="../tahsilat-metodu/linkli-odeme.html">Linkli Ödeme</a>
+              <a class="nav__link" href="../tahsilat-metodu/on-provizyon.html">Ön Provizyon</a>
+              <a class="nav__link" href="../tahsilat-metodu/duzenli-odeme.html">Düzenli Ödeme</a>
             </div>
           </div>
         </div>
@@ -224,10 +225,10 @@
           <h2 id="senaryolar">Senaryonuzu Seçin</h2>
           <p>Hangi durumda olduğunuzu bulun — önerdiğimiz yol sizi doğru bölüme götürür. Hangi yolu seçerseniz seçin ilk adım aynıdır: panel erişiminizi alın ve entegrasyon bilgilerinizi edinin.</p>
           <div class="cards">
-<a class="card" href="#"><span class="card__tag">Önerilen: Linkli Ödeme</span><span class="card__title">Web siteniz yok, hızlı tahsilat istiyorsunuz<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Panelden ödeme linki oluşturur, SMS veya e-posta ile gönderirsiniz. Teknik bilgi gerektirmez.</span></a>
+<a class="card" href="../tahsilat-metodu/linkli-odeme.html"><span class="card__tag">Önerilen: Linkli Ödeme</span><span class="card__title">Web siteniz yok, hızlı tahsilat istiyorsunuz<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Panelden ödeme linki oluşturur, SMS veya e-posta ile gönderirsiniz. Teknik bilgi gerektirmez.</span></a>
 <a class="card" href="#"><span class="card__tag">Önerilen: Hazır Eklentiler</span><span class="card__title">Hazır e-ticaret altyapısı kullanıyorsunuz<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">WooCommerce, OpenCart, Magento gibi altyapılarda eklentiyi kurup bilgilerinizi girmeniz yeterli — kod yazılmaz.</span></a>
-<a class="card" href="#"><span class="card__tag">Önerilen: Ortak Ödeme (Form / Link)</span><span class="card__title">Siteniz var, kart güvenliği bizde kalsın<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Müşteri kart bilgilerini Paynkolay ortak ödeme sayfasında girer; PCI DSS yükü Paynkolay tarafındadır.</span></a>
-<a class="card" href="#"><span class="card__tag">Önerilen: API ile Ödeme</span><span class="card__title">Tam kontrol ve kendi arayüzünüz<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Ödeme akışını kendi arayüzünüzden RESTful API ile yönetirsiniz. Geliştirici desteği gerektirir.</span></a>
+<a class="card" href="../tahsilat-metodu/form-ile-odeme.html"><span class="card__tag">Önerilen: Ortak Ödeme (Form / Link)</span><span class="card__title">Siteniz var, kart güvenliği bizde kalsın<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Müşteri kart bilgilerini Paynkolay ortak ödeme sayfasında girer; PCI DSS yükü Paynkolay tarafındadır.</span></a>
+<a class="card" href="../tahsilat-metodu/api.html"><span class="card__tag">Önerilen: API ile Ödeme</span><span class="card__title">Tam kontrol ve kendi arayüzünüz<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Ödeme akışını kendi arayüzünüzden RESTful API ile yönetirsiniz. Geliştirici desteği gerektirir.</span></a>
           </div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">

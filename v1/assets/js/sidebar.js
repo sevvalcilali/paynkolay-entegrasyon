@@ -19,6 +19,24 @@
     });
   });
 
+  /* Grup etiketi: alt başlıklar açıkken tıklanırsa gezinmek yerine kapatır;
+     kapalıyken normal davranır (sayfaya gider, sayfa grubu açık getirir). */
+  var groupLinks = document.querySelectorAll(".nav__group-link");
+
+  groupLinks.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var group = link.closest(".nav__group");
+      if (group.classList.contains("is-open")) {
+        event.preventDefault();
+        group.classList.remove("is-open");
+        var toggle = group.querySelector(".nav__group-toggle");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      }
+    });
+  });
+
   /* --- Mobil çekmece --- */
   var sidebar = document.getElementById("sidebar");
   var hamburger = document.getElementById("hamburger");

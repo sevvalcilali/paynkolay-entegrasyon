@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Başvuru ve İlk Adımlar — Paynkolay Docs</title>
+  <title>Düzenli Ödeme — Paynkolay Docs</title>
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/layout.css">
@@ -117,39 +117,39 @@
       <nav class="nav">
         <a class="nav__link nav__link--top" href="../index.html">Başlangıç</a>
 
-        <div class="nav__group is-open is-current">
+        <div class="nav__group">
           <div class="nav__group-head">
-            <a class="nav__link nav__link--top nav__group-link" href="index.html">Ön Hazırlık</a>
-            <button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-hazirlik" aria-label="Ön Hazırlık alt başlıkları">
+            <a class="nav__link nav__link--top nav__group-link" href="../on-hazirlik/index.html">Ön Hazırlık</a>
+            <button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-hazirlik" aria-label="Ön Hazırlık alt başlıkları">
               <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
             </button>
           </div>
           <div class="nav__sublist" id="grp-hazirlik">
             <div class="nav__sublist-inner">
-              <a class="nav__link is-active" href="basvuru-ve-ilk-adimlar.html" aria-current="page">Başvuru ve İlk Adımlar</a>
-              <a class="nav__link" href="hangi-yontem.html">Hangi Yöntem Size Uygun?</a>
-              <a class="nav__link" href="kontrol-listesi.html">Entegrasyon Kontrol Listesi</a>
-              <a class="nav__link" href="test-ortami.html">Test Ortamı (Sandbox)</a>
-              <a class="nav__link" href="ortamlar.html">Test vs Canlı Ortam</a>
-              <a class="nav__link" href="test-kartlari.html">Test Kartları</a>
+              <a class="nav__link" href="../on-hazirlik/basvuru-ve-ilk-adimlar.html">Başvuru ve İlk Adımlar</a>
+              <a class="nav__link" href="../on-hazirlik/hangi-yontem.html">Hangi Yöntem Size Uygun?</a>
+              <a class="nav__link" href="../on-hazirlik/kontrol-listesi.html">Entegrasyon Kontrol Listesi</a>
+              <a class="nav__link" href="../on-hazirlik/test-ortami.html">Test Ortamı (Sandbox)</a>
+              <a class="nav__link" href="../on-hazirlik/ortamlar.html">Test vs Canlı Ortam</a>
+              <a class="nav__link" href="../on-hazirlik/test-kartlari.html">Test Kartları</a>
             </div>
           </div>
         </div>
 
-        <div class="nav__group">
+        <div class="nav__group is-open is-current">
           <div class="nav__group-head">
-            <a class="nav__link nav__link--top nav__group-link" href="../tahsilat-metodu/index.html">Tahsilat Metodu</a>
-            <button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-tahsilat" aria-label="Tahsilat Metodu alt başlıkları">
+            <a class="nav__link nav__link--top nav__group-link" href="index.html">Tahsilat Metodu</a>
+            <button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-tahsilat" aria-label="Tahsilat Metodu alt başlıkları">
               <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
             </button>
           </div>
           <div class="nav__sublist" id="grp-tahsilat">
             <div class="nav__sublist-inner">
-              <a class="nav__link" href="../tahsilat-metodu/api.html">API (3D · NON3D)</a>
-              <a class="nav__link" href="../tahsilat-metodu/form-ile-odeme.html">Form ile Ödeme</a>
-              <a class="nav__link" href="../tahsilat-metodu/linkli-odeme.html">Linkli Ödeme</a>
-              <a class="nav__link" href="../tahsilat-metodu/on-provizyon.html">Ön Provizyon</a>
-              <a class="nav__link" href="../tahsilat-metodu/duzenli-odeme.html">Düzenli Ödeme</a>
+              <a class="nav__link" href="api.html">API (3D · NON3D)</a>
+              <a class="nav__link" href="form-ile-odeme.html">Form ile Ödeme</a>
+              <a class="nav__link" href="linkli-odeme.html">Linkli Ödeme</a>
+              <a class="nav__link" href="on-provizyon.html">Ön Provizyon</a>
+              <a class="nav__link is-active" href="duzenli-odeme.html" aria-current="page">Düzenli Ödeme</a>
             </div>
           </div>
         </div>
@@ -218,40 +218,28 @@
     <div class="content">
       <main>
         <article class="article">
-          <p class="eyebrow"><a href="index.html">Ön Hazırlık</a></p>
-          <h1>Başvuru ve İlk Adımlar</h1>
-          <p class="lead">Paynkolay'a başvurudan panel erişimine uzanan süreç ve entegrasyon boyunca elinizde olması gereken bilgiler.</p>
+          <p class="eyebrow"><a href="index.html">Tahsilat Metodu</a></p>
+          <h1>Düzenli Ödeme</h1>
+          <p class="lead">Kayıtlı kart talimatıyla abonelik tahsilatlarını belirlenen dönemlerde otomatik alırsınız.</p>
 
-          <h2 id="surec">Başvuru Süreci</h2>
-          <ol class="guide">
-<li><span class="guide__dot">1</span><span><span class="guide__title">Başvuru ve ön görüşme</span><span class="guide__desc">Başvurunuzun ardından satış temsilcimiz sizinle iletişime geçer, ihtiyacınızı dinler ve size en uygun çözümü birlikte belirlersiniz.</span></span></li>
-<li><span class="guide__dot">2</span><span><span class="guide__title">Sözleşme ve hesap açılışı</span><span class="guide__desc">Şirket bilgileriniz ve belgeleriniz alınır, sözleşmeniz onaylanır; üye işyeri hesabınız açılır ve panel giriş bilgileriniz size iletilir.</span></span></li>
-<li><span class="guide__dot">3</span><span><span class="guide__title">Panel erişimi ve entegrasyon bilgileri</span><span class="guide__desc">Panelinize girip entegrasyonda kullanacağınız bilgileri edinirsiniz — aşağıdaki üç bilgi tüm yöntemlerin ortak anahtarıdır.</span></span></li>
-<li><span class="guide__dot">4</span><span><span class="guide__title">Entegrasyon, test ve canlıya geçiş</span><span class="guide__desc">Seçtiğiniz yöntemi test ortamında uçtan uca deneyip onay sonrasında canlı bilgilerinizle yayına geçersiniz.</span></span></li>
-          </ol>
+          <h2 id="genel">Genel Bakış</h2>
+          <p>Aidat ve abonelik modelleri için: müşterinin kartı güvenli biçimde saklanır, talimat tanımlanır ve tahsilat her dönem otomatik gerçekleşir.</p>
 
-          <div class="access">
-            <p class="access__row">
-              <span class="access__label">Üye İşyeri No</span>
-              <span>Panelinizde <strong>Bilgilerim</strong> ekranında yer alır.</span>
-            </p>
-            <p class="access__row">
-              <span class="access__label">sx</span>
-              <span><strong>Ayarlar → Entegrasyon Bilgileri</strong> adımından edinilir; isteklerinizin kimliğidir.</span>
-            </p>
-            <p class="access__row">
-              <span class="access__label">Secret Key</span>
-              <span>Aynı ekrandan edinilir; hash imzası için kullanılır ve <strong>yalnızca sunucunuzda</strong> saklanır.</span>
-            </p>
+          <div class="callout">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 8h.01M12 11v5"/>
+            </svg>
+            <p>Bu sayfanın entegrasyon adımları, parametre tabloları ve kod örnekleri birlikte doldurulacak.</p>
           </div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
-  <a class="pager__card" href="index.html">
+  <a class="pager__card" href="on-provizyon.html">
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
-    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">Ön Hazırlık</span></span>
+    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">Ön Provizyon</span></span>
   </a>
-  <a class="pager__card pager__card--next" href="hangi-yontem.html">
-    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Hangi Yöntem Size Uygun?</span></span>
+  <a class="pager__card pager__card--next" href="#">
+    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Ürünler</span></span>
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
   </a>
 </nav>
@@ -272,9 +260,11 @@
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#surec">Başvuru Süreci</a></li>
+          <li><a class="is-active" href="#genel">Genel Bakış</a></li>
         </ul>
       </aside>
+
+      
     </div>
 
   </div>

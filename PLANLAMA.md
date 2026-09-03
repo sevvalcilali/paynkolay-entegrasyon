@@ -65,7 +65,7 @@ Ana başlıklar (Şevval'in belirlediği 7'li):
 |---|---|---|
 | 1 | **Başlangıç** | (tek sayfa — karşılama/hub, alt menüsü yok) |
 | 2 | **Ön Hazırlık** | Başvuru ve İlk Adımlar · Hangi Yöntem Size Uygun? · Entegrasyon Kontrol Listesi · Test Ortamı (Sandbox) · Test vs Canlı Ortam · Test Kartları *(2026-09-03: Şevval'in isteğiyle Paratika "İlk Adımlar" + iyzico "Ön Hazırlıklar" harmanı olarak yeniden kuruldu — önce yol gösterme, sonra test bilgileri)* |
-| 3 | **Tahsilat Metodu** | Ortak Ödeme (Form) · Ortak Ödeme (Link) · Linkli Ödeme · API ile Ödeme |
+| 3 | **Tahsilat Metodu** | API (3D · NON3D) · Form ile Ödeme · Linkli Ödeme · Ön Provizyon · Düzenli Ödeme *(2026-09-03: Şevval'in belirlediği yeni liste; hub + 5 alt sayfa iskeleti kuruldu, içerikler tek tek dolacak)* |
 | 4 | **Ürünler** | Pazaryeri · Masterpass · Sigorta Ödemesi |
 | 5 | **Ek Servisler** | Kart Saklama · Tekrarlayan Ödeme · Ön Provizyon · Taksit Servisi · Raporlama · İptal & İade |
 | 6 | **Open Source Entegrasyonlar** | WooCommerce · OpenCart · Magento 2.x · Magento 1.9 · PrestaShop · GiveWP · WHMCS |
