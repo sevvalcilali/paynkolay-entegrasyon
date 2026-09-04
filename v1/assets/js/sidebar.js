@@ -13,6 +13,11 @@
       return;
     }
 
+    /* Mouse tıklaması odak halkası bırakmasın (klavye odağı etkilenmez) */
+    btn.addEventListener("mousedown", function (event) {
+      event.preventDefault();
+    });
+
     btn.addEventListener("click", function () {
       var isOpen = group.classList.toggle("is-open");
       btn.setAttribute("aria-expanded", isOpen ? "true" : "false");

@@ -479,7 +479,16 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 2px 0 var(--space-2);
+}
+
+/* Boşluklar padding yerine margin'le: kapalı (0fr) durumda padding kutuda
+   kalıp ilk satırın üstünü sızdırıyordu; margin içerikle birlikte kırpılır */
+.nav__sublist-inner > :first-child {
+  margin-top: 2px;
+}
+
+.nav__sublist-inner > :last-child {
+  margin-bottom: var(--space-2);
 }
 
 .nav__sublist .nav__link {
