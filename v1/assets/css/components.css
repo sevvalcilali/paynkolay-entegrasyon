@@ -2013,9 +2013,9 @@ a.chip:hover {
   position: absolute;
   left: 50%;
   top: 50%;
-  height: 110%;
+  height: 100%;
   width: auto;
-  transform: translate(-50%, -50%) rotateY(calc(var(--rx) * 1.7 - 10deg)) rotateX(calc(var(--ry) * 1.7 + 2deg)) translateZ(60px);
+  transform: translate(-50%, -50%) rotateY(calc(var(--rx) * 1.6)) rotateX(calc(var(--ry) * 1.6)) translateZ(60px);
   transition: transform 200ms ease-out;
   will-change: transform;
   filter: drop-shadow(0 24px 22px rgba(7, 16, 51, 0.18));
