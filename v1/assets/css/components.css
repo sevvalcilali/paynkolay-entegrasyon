@@ -116,6 +116,8 @@
 
 .btn--primary:hover {
   background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
 }
 
 .btn--ghost {
@@ -127,6 +129,7 @@
 .btn--ghost:hover {
   border-color: var(--gray-400);
   background: var(--bg-hover);
+  transform: translateY(-1px);
 }
 
 /* Hero üzerindeki buton çeşitleri (koyu zemin) */
@@ -189,8 +192,8 @@
 }
 
 .dropdown__item:hover {
-  background: var(--bg-hover);
-  color: var(--text-heading);
+  background: var(--bg-soft);
+  color: var(--text-primary);
   text-decoration: none;
 }
 
@@ -222,8 +225,22 @@
 }
 
 .richitem:hover {
-  background: var(--bg-hover);
+  background: var(--bg-soft);
   text-decoration: none;
+}
+
+.richitem:hover .richitem__title {
+  color: var(--text-primary);
+}
+
+.richitem:hover .richitem__icon {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.richitem__icon,
+.richitem__title {
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
 .richitem__icon {
@@ -313,8 +330,31 @@
   transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
 }
 
+.mainnav__btn::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: -8px;
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur) var(--ease);
+}
+
 .mainnav__btn:hover {
-  background: var(--bg-hover);
+  background: var(--bg-soft);
+  color: var(--text-primary);
+}
+
+.mainnav__btn:hover .chevron {
+  color: var(--text-primary);
+}
+
+.mainnav__btn:hover::after {
+  transform: scaleX(1);
 }
 
 .mainnav__btn .chevron {
@@ -331,14 +371,7 @@
 }
 
 .mainnav__btn.is-current::after {
-  content: "";
-  position: absolute;
-  left: var(--space-3);
-  right: var(--space-3);
-  bottom: -8px;
-  height: 3px;
-  border-radius: var(--radius-pill);
-  background: var(--accent);
+  transform: scaleX(1);
 }
 
 /* Dar ekranda kurumsal menü gizlenir (çekmece esas menüdür) */
@@ -1386,6 +1419,30 @@ a.chip:hover {
   padding: var(--space-5);
   color: var(--text-muted);
   text-align: center;
+}
+
+/* --- Metin linkleri: soldan dolan alt çizgi (hover dili) --- */
+.article p a,
+.article li a,
+.article td a,
+.faq__body a,
+.footer a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-size: 0% 1.5px;
+  background-position: 0 100%;
+  padding-bottom: 1px;
+  transition: background-size var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.article p a:hover,
+.article li a:hover,
+.article td a:hover,
+.faq__body a:hover,
+.footer a:hover {
+  text-decoration: none;
+  color: var(--accent-hover);
+  background-size: 100% 1.5px;
 }
 
 /* --- SSS akordeonu (native details/summary) --- */
