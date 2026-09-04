@@ -1576,6 +1576,61 @@ a.chip:hover {
   color: var(--text-primary);
 }
 
+/* --- Ürün hero'su (büyük başlık · cihaz görseli · tanıtım linkleri) --- */
+.prodhero {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.8fr) minmax(0, 1.7fr) minmax(190px, 1fr);
+  align-items: center;
+  gap: var(--space-6);
+  margin: var(--space-6) 0 var(--space-10);
+}
+
+.prodhero__title {
+  margin: 0;
+  font-size: clamp(32px, 3.6vw, 46px);
+  line-height: 1.05;
+}
+
+.prodhero__tagline {
+  margin-top: var(--space-3);
+  font-size: var(--text-xl);
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.prodhero__visual {
+  min-width: 0;
+}
+
+.prodhero__visual svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prodhero__info p {
+  color: var(--text-body);
+}
+
+.prodhero__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.prodhero__link svg {
+  flex-shrink: 0;
+  transition: transform var(--dur) var(--ease);
+}
+
+.prodhero__link:hover svg {
+  transform: translateX(3px);
+}
+
 /* --- Versiyon rozeti (galeriye dönüş — tasarımın parçası değil, meta) --- */
 .version-pill {
   position: fixed;
@@ -1606,6 +1661,17 @@ a.chip:hover {
 
 /* --- Bileşenlerin responsive davranışı ---
    (kaskad sırası gereği bileşen kuralları burada, kendi dosyasında ezilir) */
+@media (max-width: 900px) {
+  .prodhero {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+
+  .prodhero__tagline br {
+    display: none; /* tek satıra sığar, zorla kırma */
+  }
+}
+
 @media (max-width: 767px) {
   .search {
     display: none;
