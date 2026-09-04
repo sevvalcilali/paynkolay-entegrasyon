@@ -638,6 +638,7 @@
   justify-content: center;
   width: 32px;
   height: 32px;
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
   border-radius: var(--radius-pill);
   background: var(--gradient-brand);
   color: #ffffff;
@@ -657,10 +658,83 @@
   margin-bottom: var(--space-1);
 }
 
-.journey__desc {
-  display: block;
+/* Hover balonu: açıklama, durağın üstünde lacivert konuşma balonunda belirir */
+.journey__step {
+  position: relative;
+}
+
+.journey__tip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  width: 210px;
+  transform: translate(-50%, 8px);
+  padding: var(--space-3) var(--space-4);
+  background: var(--gradient-rail);
+  color: rgba(255, 255, 255, 0.92);
   font-size: var(--text-sm);
-  color: var(--text-muted);
+  line-height: 1.5;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-float);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease),
+    visibility var(--dur) var(--ease);
+}
+
+.journey__tip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -6px;
+  border: 6px solid transparent;
+  border-top-color: #050C52;
+}
+
+.journey__step:hover .journey__tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* Kenar duraklarda balon şeride hizalanır */
+.journey__step:first-child .journey__tip {
+  left: 0;
+  transform: translate(0, 8px);
+}
+
+.journey__step:first-child:hover .journey__tip {
+  transform: translate(0, 0);
+}
+
+.journey__step:first-child .journey__tip::after {
+  left: 22px;
+  margin-left: 0;
+}
+
+.journey__step:last-child .journey__tip {
+  left: auto;
+  right: 0;
+  transform: translate(0, 8px);
+}
+
+.journey__step:last-child:hover .journey__tip {
+  transform: translate(0, 0);
+}
+
+.journey__step:last-child .journey__tip::after {
+  left: auto;
+  right: 22px;
+  margin-left: 0;
+}
+
+.journey__step:hover .journey__dot {
+  transform: scale(1.12);
+  box-shadow: 0 0 0 5px var(--bg-active);
 }
 
 @media (max-width: 767px) {
@@ -2141,6 +2215,24 @@ a.chip:hover {
 
 @media (max-width: 767px) {
   .search {
+    display: none;
+  }
+
+  /* Dokunmatikte hover yok: balon statik açıklama olarak görünür */
+  .journey__tip {
+    position: static;
+    width: auto;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--text-muted);
+    text-align: left;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .journey__tip::after {
     display: none;
   }
 
