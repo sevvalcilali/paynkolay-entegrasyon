@@ -1988,25 +1988,11 @@ a.chip:hover {
   white-space: nowrap;
 }
 
-/* "Sonraki" kartı: marka gradyanıyla dolu — imza öğesi */
+/* "Sonraki" kartı: yön farkı sadece hizadadır, iki kart da aynı görünür */
 .pager__card--next {
   grid-column: 2;
   justify-content: flex-end;
   text-align: right;
-  background: var(--gradient-brand);
-  border-color: transparent;
-}
-
-.pager__card--next .pager__label {
-  color: rgba(255, 255, 255, 0.75);
-}
-
-.pager__card--next .pager__title {
-  color: #ffffff;
-}
-
-.pager__card--next .chevron {
-  color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 639px) {
