@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="successUrl'e dönmek başarı demek değildir — sonucu doğru okumanın tek yolu buradaki kontrollerdir.">
+  <meta property="og:title" content="Ödeme Sonucu — Paynkolay Docs">
+  <meta property="og:description" content="successUrl'e dönmek başarı demek değildir — sonucu doğru okumanın tek yolu buradaki kontrollerdir.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0C34E7">
   <title>Ödeme Sonucu — Paynkolay Docs</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
   <link rel="stylesheet" href="../assets/css/tokens.css">
@@ -212,20 +217,19 @@
           </ol>
 
           <h2 id="kod">Hazır Kontrol Fonksiyonu</h2>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">isPaymentSuccessful — PHP</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">function</span> isPaymentSuccessful(<span class="tk-k">array</span> $result): <span class="tk-k">bool</span>
+          <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">JavaScript</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code><span class="tk-k">function</span> isPaymentSuccessful(<span class="tk-k">array</span> $result): <span class="tk-k">bool</span>
 {
     $code = $result[<span class="tk-s">'RESPONSE_CODE'</span>] ?? <span class="tk-n">null</span>;
     $auth = trim((<span class="tk-k">string</span>)($result[<span class="tk-s">'AUTH_CODE'</span>] ?? <span class="tk-s">''</span>));
     <span class="tk-c">// RESPONSE_CODE 2 olmalı VE AUTH_CODE gerçek bir değer olmalı</span>
     <span class="tk-k">return</span> (<span class="tk-k">string</span>)$code == <span class="tk-s">'2'</span>
         &amp;&amp; !in_array($auth, [<span class="tk-s">''</span>, <span class="tk-s">'0'</span>, <span class="tk-s">'00'</span>], <span class="tk-n">true</span>);
-}</code></pre></div>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">isPaymentSuccessful — JavaScript</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">function</span> isPaymentSuccessful(result) {
+}</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code><span class="tk-k">function</span> isPaymentSuccessful(result) {
   <span class="tk-k">const</span> code = String(result.RESPONSE_CODE ?? <span class="tk-s">''</span>);
   <span class="tk-k">const</span> auth = String(result.AUTH_CODE ?? <span class="tk-s">''</span>).trim();
   <span class="tk-c">// RESPONSE_CODE 2 olmalı VE AUTH_CODE gerçek bir değer olmalı</span>
   <span class="tk-k">return</span> code == <span class="tk-s">'2'</span> &amp;&amp; ![<span class="tk-s">''</span>, <span class="tk-s">'0'</span>, <span class="tk-s">'00'</span>].includes(auth);
-}</code></pre></div>
+}</code></pre></div></div>
 
           <h2 id="donus">Örnek Dönüş (3D · AutoComplete)</h2>
           <p>Başarılı işlem <code>successUrl</code> adresinize, başarısız işlem <code>failUrl</code> adresinize POST edilir.</p>
@@ -255,7 +259,14 @@
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
   </a>
 </nav>
-<p class="updated">Son güncelleme: 4 Eylül 2026</p>
+<div class="feedback" data-feedback>
+            <span>Bu sayfa yardımcı oldu mu?</span>
+            <button class="feedback__btn" type="button" data-vote="up" aria-label="Evet, yardımcı oldu">👍</button>
+            <button class="feedback__btn" type="button" data-vote="down" aria-label="Hayır, olmadı">👎</button>
+            <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
+            <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
+          </div>
+          <p class="updated">Son güncelleme: 4 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -310,6 +321,8 @@
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/tocspy.js"></script>
   <script src="../assets/js/search.js"></script>
+  <script src="../assets/js/feedback.js"></script>
+  <script src="../assets/js/codetabs.js"></script>
   <script src="../assets/js/copy.js"></script>
 </body>
 </html>

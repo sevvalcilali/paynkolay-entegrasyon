@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mastercard'ın dijital ödeme çözümü: kullanıcı kart bilgisi girmez, Masterpass'e kayıtlı kartıyla cep telefonu numarası ve SMS onayı üzerinden öder.">
+  <meta property="og:title" content="Pazaryeri: Masterpass — Paynkolay Docs">
+  <meta property="og:description" content="Mastercard'ın dijital ödeme çözümü: kullanıcı kart bilgisi girmez, Masterpass'e kayıtlı kartıyla cep telefonu numarası ve SMS onayı üzerinden öder.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0C34E7">
   <title>Pazaryeri: Masterpass — Paynkolay Docs</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
   <link rel="stylesheet" href="../assets/css/tokens.css">
@@ -280,6 +285,13 @@ if (payment.data.success &amp;&amp; payment.data.data.form) {
 <a class="pager__card pager__card--next" href="raporlama.html"><span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Raporlama</span></span><svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
 </nav>
           
+          <div class="feedback" data-feedback>
+            <span>Bu sayfa yardımcı oldu mu?</span>
+            <button class="feedback__btn" type="button" data-vote="up" aria-label="Evet, yardımcı oldu">👍</button>
+            <button class="feedback__btn" type="button" data-vote="down" aria-label="Hayır, olmadı">👎</button>
+            <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
+            <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
+          </div>
           <p class="updated">Son güncelleme: 5 Eylül 2026</p>
         </article>
 
@@ -339,5 +351,6 @@ if (payment.data.success &amp;&amp; payment.data.data.form) {
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/tocspy.js"></script>
   <script src="../assets/js/search.js"></script>
+  <script src="../assets/js/feedback.js"></script>
 </body>
 </html>

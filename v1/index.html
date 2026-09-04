@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Paynkolay entegrasyon dokümantasyonu — test bilgileri, API servisleri ve hazır eklentiler.">
+  <meta property="og:title" content="Başlangıç — Paynkolay Docs">
+  <meta property="og:description" content="Paynkolay entegrasyon dokümantasyonu — test bilgileri, API servisleri ve hazır eklentiler.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0C34E7">
   <title>Başlangıç — Paynkolay Docs</title>
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/tokens.css">
@@ -439,6 +444,13 @@
             </a>
           </nav>
 
+          <div class="feedback" data-feedback>
+            <span>Bu sayfa yardımcı oldu mu?</span>
+            <button class="feedback__btn" type="button" data-vote="up" aria-label="Evet, yardımcı oldu">👍</button>
+            <button class="feedback__btn" type="button" data-vote="down" aria-label="Hayır, olmadı">👎</button>
+            <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
+            <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
+          </div>
           <p class="updated">Son güncelleme: 2 Eylül 2026</p>
         </article>
 
@@ -492,5 +504,6 @@
   <script src="assets/js/dropdown.js"></script>
   <script src="assets/js/tocspy.js"></script>
   <script src="assets/js/search.js"></script>
+  <script src="assets/js/feedback.js"></script>
 </body>
 </html>

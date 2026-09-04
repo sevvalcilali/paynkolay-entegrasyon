@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sayfa Bulunamadı — Paynkolay Docs</title>
+  <meta name="theme-color" content="#0C34E7">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" id="fav">
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, #0A1B9F 0%, #050C52 100%);
+      color: #131C2E;
+    }
+    .panel {
+      width: min(460px, 100%);
+      background: #FFFFFF;
+      border-radius: 18px;
+      padding: 40px 36px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(3, 3, 60, 0.45);
+    }
+    .mark { font-size: 56px; font-weight: 800; color: #0C34E7; line-height: 1; }
+    h1 { font-size: 22px; margin-top: 12px; }
+    p { margin-top: 10px; color: #707A8F; line-height: 1.55; }
+    .actions { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+    a.btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      color: #FFFFFF;
+      background: #0C34E7;
+    }
+    a.btn--ghost { color: #131C2E; background: #FFFFFF; border: 1px solid #D6DBE6; }
+    a.btn:hover { filter: brightness(1.06); }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <div class="mark">4'04</div>
+    <h1>Sayfa bulunamadı</h1>
+    <p>Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir. Dokümantasyonda Ctrl&nbsp;K ile arama yapabilirsiniz.</p>
+    <div class="actions">
+      <a class="btn" id="to-docs" href="/v1/index.html">Dokümana Dön</a>
+      <a class="btn btn--ghost" id="to-home" href="/">Tasarım Galerisi</a>
+    </div>
+  </main>
+  <script>
+    /* GitHub Pages alt yolunda da doğru köke git */
+    (function () {
+      var seg = window.location.pathname.split("/")[1];
+      var base = seg && seg.indexOf(".") === -1 && seg !== "v1" ? "/" + seg + "/" : "/";
+      document.getElementById("to-docs").href = base + "v1/index.html";
+      document.getElementById("to-home").href = base;
+      document.getElementById("fav").href = base + "assets/img/favicon.svg";
+    })();
+  </script>
+</body>
+</html>

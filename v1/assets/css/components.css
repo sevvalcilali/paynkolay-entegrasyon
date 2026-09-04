@@ -1542,6 +1542,80 @@ a.chip:hover {
   background-size: 100% 1.5px;
 }
 
+/* --- Kod bloğu dil sekmeleri --- */
+.codetabs__bar {
+  gap: var(--space-3);
+}
+
+.codetabs__tabs {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.codetabs__tab {
+  padding: 3px 12px;
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.codetabs__tab:hover {
+  color: #ffffff;
+}
+
+.codetabs__tab.is-active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.codetabs__panel {
+  display: none;
+}
+
+.codetabs__panel.is-active {
+  display: block;
+}
+
+/* --- Sayfa geri bildirimi --- */
+.feedback {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.feedback__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+
+.feedback__btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-hover);
+}
+
+.feedback[data-done] .feedback__btn {
+  display: none;
+}
+
 /* --- SSS akordeonu (native details/summary) --- */
 .faq {
   background: var(--bg-surface);
