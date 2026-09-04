@@ -1099,6 +1099,54 @@ a.chip:hover {
   transform: translateY(3px);
 }
 
+/* --- SSS akordeonu (native details/summary) --- */
+.faq {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+}
+
+.faq + .faq {
+  margin-top: var(--space-2);
+}
+
+.faq summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  font-weight: 650;
+  color: var(--text-heading);
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary .chevron {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform var(--dur) var(--ease);
+}
+
+.faq[open] summary .chevron {
+  transform: rotate(180deg);
+}
+
+.faq__body {
+  padding: 0 var(--space-5) var(--space-4);
+  color: var(--text-body);
+}
+
+.faq__body p + p,
+.faq__body ul {
+  margin-top: var(--space-2);
+}
+
 /* --- Doküman tablosu --- */
 .table-wrap {
   overflow-x: auto;
