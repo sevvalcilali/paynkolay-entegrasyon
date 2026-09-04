@@ -194,57 +194,40 @@
             </div>
 
             <div class="prodhero__visual">
-              <svg viewBox="0 0 560 320" role="img" aria-label="Ödeme Alındı ekranı gösteren Paynkolay fiziki POS cihazı">
-                <defs>
-                  <linearGradient id="ph-panel" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0" stop-color="#DCE6FF"/>
-                    <stop offset="0.55" stop-color="#EDF2FF"/>
-                    <stop offset="1" stop-color="#F6F9FF"/>
-                  </linearGradient>
-                  <linearGradient id="ph-screen" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stop-color="#EFF4FF"/>
-                    <stop offset="1" stop-color="#FFFFFF"/>
-                  </linearGradient>
-                  <radialGradient id="ph-glow" cx="0.5" cy="0.5" r="0.5">
-                    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.9"/>
-                    <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-                  </radialGradient>
-                  <clipPath id="ph-clip"><rect x="30" y="40" width="500" height="240" rx="26"/></clipPath>
-                </defs>
+              <div class="prodhero__scene" data-tilt>
+                <div class="prodhero__panel" aria-hidden="true">
+                  <span class="prodhero__blob prodhero__blob--1"></span>
+                  <span class="prodhero__blob prodhero__blob--2"></span>
+                  <span class="prodhero__blob prodhero__blob--3"></span>
+                  <span class="prodhero__dots"></span>
+                </div>
 
-                <rect x="30" y="40" width="500" height="240" rx="26" fill="url(#ph-panel)"/>
-                <g clip-path="url(#ph-clip)">
-                  <rect x="392" y="10" width="72" height="320" rx="36" transform="rotate(28 428 170)" fill="#FFFFFF" opacity="0.45"/>
-                  <rect x="458" y="50" width="54" height="320" rx="27" transform="rotate(28 485 210)" fill="#0C34E7" opacity="0.05"/>
-                  <rect x="36" y="140" width="58" height="230" rx="29" transform="rotate(28 65 255)" fill="#FFFFFF" opacity="0.35"/>
-                  <circle cx="280" cy="152" r="108" fill="url(#ph-glow)"/>
-                  <g fill="#0C34E7" opacity="0.22">
-                    <circle cx="118" cy="96" r="2"/><circle cx="134" cy="96" r="2"/><circle cx="150" cy="96" r="2"/><circle cx="166" cy="96" r="2"/>
-                    <circle cx="118" cy="112" r="2"/><circle cx="134" cy="112" r="2"/><circle cx="150" cy="112" r="2"/><circle cx="166" cy="112" r="2"/>
-                    <circle cx="118" cy="128" r="2"/><circle cx="134" cy="128" r="2"/><circle cx="150" cy="128" r="2"/><circle cx="166" cy="128" r="2"/>
+                <svg class="prodhero__device" viewBox="0 0 240 330" role="img" aria-label="Ödeme Alındı ekranı gösteren Paynkolay fiziki POS cihazı">
+                  <defs>
+                    <linearGradient id="ph2-screen" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#EFF4FF"/>
+                      <stop offset="1" stop-color="#FFFFFF"/>
+                    </linearGradient>
+                  </defs>
+                  <g transform="rotate(-14 120 165)">
+                    <rect x="48" y="25" width="144" height="264" rx="24" fill="#FFFFFF" stroke="#D9E0F2"/>
+                    <rect x="60" y="43" width="120" height="192" rx="12" fill="url(#ph2-screen)" stroke="#E1E7F6"/>
+
+                    <text x="120" y="75" text-anchor="middle" font-size="13" font-weight="700" fill="#0C34E7">pay'nkolay</text>
+                    <circle cx="120" cy="123" r="20" fill="#0C34E7"/>
+                    <path d="m111.5 123 6 6 11.5-11.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    <text x="120" y="169" text-anchor="middle" font-size="14" font-weight="700" fill="#0A1B9F">Ödeme Alındı</text>
+                    <text x="120" y="191" text-anchor="middle" font-size="12" fill="#707A8F">₺ 1.250,00 · Temassız</text>
+
+                    <g fill="none" stroke="#B9C3DC" stroke-width="1.6" stroke-linejoin="round">
+                      <rect x="85" y="248" width="9" height="9" rx="2"/>
+                      <circle cx="120" cy="252.5" r="5"/>
+                      <path d="m146 248 8 4.5-8 4.5Z"/>
+                    </g>
+                    <rect x="80" y="269" width="80" height="7" rx="3.5" fill="#E3E9F8"/>
                   </g>
-                </g>
-
-                <ellipse cx="286" cy="298" rx="118" ry="13" fill="#071033" opacity="0.08"/>
-
-                <g transform="rotate(-14 280 160)">
-                  <rect x="208" y="28" width="144" height="264" rx="24" fill="#FFFFFF" stroke="#D9E0F2"/>
-                  <rect x="220" y="46" width="120" height="192" rx="12" fill="url(#ph-screen)" stroke="#E1E7F6"/>
-
-                  <text x="280" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#0C34E7">pay'nkolay</text>
-                  <circle cx="280" cy="126" r="20" fill="#0C34E7"/>
-                  <path d="m271.5 126 6 6 11.5-11.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                  <text x="280" y="172" text-anchor="middle" font-size="14" font-weight="700" fill="#0A1B9F">Ödeme Alındı</text>
-                  <text x="280" y="194" text-anchor="middle" font-size="12" fill="#707A8F">₺ 1.250,00 · Temassız</text>
-
-                  <g fill="none" stroke="#B9C3DC" stroke-width="1.6" stroke-linejoin="round">
-                    <rect x="245" y="251" width="9" height="9" rx="2"/>
-                    <circle cx="280" cy="255.5" r="5"/>
-                    <path d="m306 251 8 4.5-8 4.5Z"/>
-                  </g>
-                  <rect x="240" y="272" width="80" height="7" rx="3.5" fill="#E3E9F8"/>
-                </g>
-              </svg>
+                </svg>
+              </div>
             </div>
 
             <div class="prodhero__info">
@@ -328,5 +311,6 @@
 
   <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/dropdown.js"></script>
+  <script src="../assets/js/tilt.js"></script>
 </body>
 </html>

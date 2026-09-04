@@ -1686,12 +1686,6 @@ a.chip:hover {
   min-width: 0;
 }
 
-.prodhero__visual svg {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
 .prodhero__info p {
   color: var(--text-body);
 }
@@ -1712,6 +1706,114 @@ a.chip:hover {
 
 .prodhero__link:hover svg {
   transform: translateX(3px);
+}
+
+/* 3B sahne: mouse tilt + canlı degrade arka plan */
+.prodhero__scene {
+  position: relative;
+  aspect-ratio: 7 / 4;
+  perspective: 900px;
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+}
+
+.prodhero__panel {
+  position: absolute;
+  inset: 11% 0;
+  border-radius: 26px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #DCE6FF 0%, #EDF2FF 55%, #F6F9FF 100%);
+  transform: rotateY(var(--rx)) rotateX(var(--ry));
+  transition: transform 200ms ease-out;
+}
+
+/* Mouse'u izleyen spot ışığı */
+.prodhero__panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(240px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.65), transparent 70%);
+}
+
+.prodhero__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(28px);
+  animation: prodhero-drift 11s ease-in-out infinite alternate;
+}
+
+.prodhero__blob--1 {
+  width: 46%;
+  height: 70%;
+  left: -8%;
+  top: -18%;
+  background: rgba(12, 52, 231, 0.16);
+}
+
+.prodhero__blob--2 {
+  width: 52%;
+  height: 80%;
+  right: -12%;
+  top: 10%;
+  background: rgba(143, 164, 255, 0.35);
+  animation-duration: 14s;
+  animation-delay: -4s;
+}
+
+.prodhero__blob--3 {
+  width: 34%;
+  height: 55%;
+  left: 30%;
+  bottom: -22%;
+  background: rgba(1, 18, 197, 0.12);
+  animation-duration: 9s;
+  animation-delay: -7s;
+}
+
+@keyframes prodhero-drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(9%, 14%) scale(1.18);
+  }
+}
+
+.prodhero__dots {
+  position: absolute;
+  left: 9%;
+  top: 24%;
+  width: 72px;
+  height: 48px;
+  background-image: radial-gradient(circle, rgba(12, 52, 231, 0.25) 1.5px, transparent 1.6px);
+  background-size: 16px 16px;
+}
+
+/* Cihaz: panelden bağımsız katman, mouse ile daha güçlü eğilir ve öne çıkar */
+.prodhero__device {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  transform: translate(-50%, -50%) rotateY(calc(var(--rx) * 1.7)) rotateX(calc(var(--ry) * 1.7)) translateZ(46px);
+  transition: transform 200ms ease-out;
+  will-change: transform;
+  filter: drop-shadow(0 24px 22px rgba(7, 16, 51, 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prodhero__blob {
+    animation: none;
+  }
+
+  .prodhero__panel,
+  .prodhero__device {
+    transition: none;
+  }
 }
 
 /* --- Versiyon rozeti (galeriye dönüş — tasarımın parçası değil, meta) --- */
@@ -1775,4 +1877,32 @@ a.chip:hover {
 
 :root[data-theme="dark"] .callout--warn .callout__icon {
   color: #E3B341;
+}
+
+:root[data-theme="dark"] .prodhero__panel {
+  background: linear-gradient(135deg, #17224E 0%, #121B3D 55%, #0E1530 100%);
+}
+
+:root[data-theme="dark"] .prodhero__panel::after {
+  background: radial-gradient(240px circle at var(--mx) var(--my), rgba(143, 164, 255, 0.28), transparent 70%);
+}
+
+:root[data-theme="dark"] .prodhero__blob--1 {
+  background: rgba(92, 119, 255, 0.28);
+}
+
+:root[data-theme="dark"] .prodhero__blob--2 {
+  background: rgba(143, 164, 255, 0.18);
+}
+
+:root[data-theme="dark"] .prodhero__blob--3 {
+  background: rgba(12, 52, 231, 0.4);
+}
+
+:root[data-theme="dark"] .prodhero__dots {
+  background-image: radial-gradient(circle, rgba(143, 164, 255, 0.4) 1.5px, transparent 1.6px);
+}
+
+:root[data-theme="dark"] .prodhero__device {
+  filter: drop-shadow(0 24px 26px rgba(0, 0, 0, 0.55));
 }
