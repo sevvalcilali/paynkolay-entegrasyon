@@ -254,6 +254,33 @@
   color: var(--text-muted);
 }
 
+/* Ürünlerimiz: iki sütunlu zengin menü + alt bağlantı şeridi */
+.dropdown__menu--products {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  min-width: 620px;
+}
+
+.dropdown__footer {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  padding: var(--space-3);
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dropdown__footer:hover {
+  background: var(--bg-hover);
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
 /* Açıkken chevron 180° döner */
 .dropdown > [data-dropdown] .chevron {
   transition: transform var(--dur) var(--ease);
