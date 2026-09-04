@@ -1278,6 +1278,107 @@ a.chip:hover {
   display: none;
 }
 
+/* --- Arama paneli (Ctrl/Cmd K) --- */
+.searchbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12vh var(--space-4) var(--space-4);
+  background: rgba(5, 12, 40, 0.55);
+}
+
+.searchbox[hidden] {
+  display: none;
+}
+
+.searchbox__panel {
+  width: min(640px, 100%);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-float);
+  overflow: hidden;
+}
+
+.searchbox__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.searchbox__head input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--text-lg);
+  color: var(--text-heading);
+}
+
+.searchbox__head input::placeholder {
+  color: var(--text-muted);
+}
+
+.searchbox__head kbd {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  background: var(--bg-page);
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  padding: 1px 7px;
+}
+
+.searchbox__list {
+  max-height: min(52vh, 420px);
+  overflow-y: auto;
+  padding: var(--space-2);
+}
+
+.searchbox__item {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+}
+
+.searchbox__item:hover,
+.searchbox__item.is-sel {
+  background: var(--bg-hover);
+  text-decoration: none;
+}
+
+.searchbox__crumb {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.searchbox__title {
+  display: block;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.searchbox__title mark {
+  background: var(--bg-active);
+  color: var(--text-primary);
+  border-radius: 3px;
+  padding: 0 1px;
+}
+
+.searchbox__empty {
+  padding: var(--space-5);
+  color: var(--text-muted);
+  text-align: center;
+}
+
 /* --- SSS akordeonu (native details/summary) --- */
 .faq {
   background: var(--bg-surface);
