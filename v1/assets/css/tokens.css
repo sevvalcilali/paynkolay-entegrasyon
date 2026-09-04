@@ -108,3 +108,29 @@
   --ease: cubic-bezier(0.25, 0.6, 0.3, 1);
   --dur: 200ms;
 }
+
+/* --- Koyu tema ---
+   theme.js seçime göre <html data-theme="dark|light"> atar;
+   "system" seçiliyken prefers-color-scheme'i izler. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-page: #0A0F1F;
+  --bg-surface: #101830;
+  --bg-soft: #141E3E;
+  --bg-active: #1B2752;
+  --bg-hover: #16203F;
+
+  --text-heading: #EDF0FC;
+  --text-body: #C2C9E0;
+  --text-muted: #8A93B2;
+  --text-primary: #8FA4FF;
+
+  --border: #212B4E;
+  --border-strong: #2B3765;
+  --border-accent: #35418D;
+
+  --accent-hover: #2E51FF;
+  --focus-ring: color-mix(in srgb, #8FA4FF 40%, transparent);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 16px rgba(0, 0, 0, 0.35);
+}

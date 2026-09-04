@@ -1099,6 +1099,16 @@ a.chip:hover {
   transform: translateY(3px);
 }
 
+/* --- İndirme linki (sol menüde ikonlu) --- */
+.nav__link--dl {
+  justify-content: flex-start;
+  gap: var(--space-2);
+}
+
+.nav__link--dl svg {
+  flex-shrink: 0;
+}
+
 /* --- SSS akordeonu (native details/summary) --- */
 .faq {
   background: var(--bg-surface);
@@ -1682,4 +1692,14 @@ a.chip:hover {
   .topbar__actions .btn--ghost {
     display: none;
   }
+}
+
+/* --- Koyu tema bileşen ince ayarları (sabit renkli bileşenler) --- */
+:root[data-theme="dark"] .callout--warn {
+  background: #261F0E;
+  border-color: #4E4120;
+}
+
+:root[data-theme="dark"] .callout--warn .callout__icon {
+  color: #E3B341;
 }
