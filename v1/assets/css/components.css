@@ -1182,6 +1182,23 @@ a.chip:hover {
   flex-shrink: 0;
 }
 
+/* --- Akış diyagramı (sequence; SVG renkleri token'lardan gelir) --- */
+.seqdiag {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-4);
+  overflow-x: auto;
+}
+
+.seqdiag svg {
+  display: block;
+  min-width: 680px;
+  width: 100%;
+  height: auto;
+}
+
 /* --- SSS akordeonu (native details/summary) --- */
 .faq {
   background: var(--bg-surface);
