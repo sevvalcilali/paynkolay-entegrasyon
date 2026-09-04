@@ -2015,7 +2015,7 @@ a.chip:hover {
   top: 50%;
   height: 110%;
   width: auto;
-  transform: translate(-50%, -50%) rotateY(calc(var(--rx) * 1.7 - 17deg)) rotateX(calc(var(--ry) * 1.7 + 3deg)) translateZ(60px);
+  transform: translate(-50%, -50%) rotateY(calc(var(--rx) * 1.7 - 10deg)) rotateX(calc(var(--ry) * 1.7 + 2deg)) translateZ(60px);
   transition: transform 200ms ease-out;
   will-change: transform;
   filter: drop-shadow(0 24px 22px rgba(7, 16, 51, 0.18));
