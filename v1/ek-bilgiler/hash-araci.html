@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ön Provizyon — Paynkolay Docs</title>
+  <title>Hash Aracı — Paynkolay Docs</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
@@ -149,21 +149,21 @@
               <a class="nav__link" href="../on-hazirlik/kontrol-listesi.html">Entegrasyon Kontrol Listesi</a>
               <a class="nav__link" href="../on-hazirlik/test-ortami.html">Test Ortamı (Sandbox)</a>
               <a class="nav__link" href="../on-hazirlik/ortamlar.html">Test vs Canlı Ortam</a>
-              <a class="nav__link" href="../on-hazirlik/test-kartlari.html">Test Kartları</a><a class="nav__link" href="../ek-bilgiler/hash-araci.html">Hash Aracı</a>
+              <a class="nav__link" href="../on-hazirlik/test-kartlari.html">Test Kartları</a><a class="nav__link is-active" href="hash-araci.html" aria-current="page">Hash Aracı</a>
             </div>
           </div>
         </div>
 
-        <div class="nav__group is-open is-current">
+        <div class="nav__group">
           <div class="nav__group-head">
-            <a class="nav__link nav__link--top nav__group-link" href="index.html">Tahsilat Metodu</a>
-            <button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-tahsilat" aria-label="Tahsilat Metodu alt başlıkları">
+            <a class="nav__link nav__link--top nav__group-link" href="../tahsilat-metodu/index.html">Tahsilat Metodu</a>
+            <button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-tahsilat" aria-label="Tahsilat Metodu alt başlıkları">
               <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
             </button>
           </div>
           <div class="nav__sublist" id="grp-tahsilat">
             <div class="nav__sublist-inner">
-<div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api.html">API (3D · NON3D)</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-api" aria-label="API (3D · NON3D) alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-api"><div class="nav__sublist-inner"><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-non3ds.html">Non-3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-non3ds" aria-label="Non-3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-non3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-non3ds.html#istek">Ödeme Oluşturma</a><a class="nav__link" href="api-non3ds.html#yanit">Ödeme Sorgulama</a></div></div></div><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-3ds.html">3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-3ds" aria-label="3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-3ds.html#baslatma">3DS Başlatma</a><a class="nav__link" href="api-3ds.html#tamamlama">3DS Tamamlama</a></div></div></div></div></div></div><a class="nav__link" href="form-ile-odeme.html">Form ile Ödeme</a><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="linkli-odeme.html">Linkli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-linkli" aria-label="Linkli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-linkli"><div class="nav__sublist-inner"><a class="nav__link" href="linkli-odeme-olusturma.html">Ödeme Linki Oluşturma</a><a class="nav__link" href="linkli-odeme-gonderme.html">Ödeme Linki Gönderme</a><a class="nav__link" href="linkli-odeme-silme.html">Ödeme Linki Silme</a></div></div></div><a class="nav__link is-active" href="on-provizyon.html">Ön Provizyon</a><a class="nav__link" href="duzenli-odeme.html">Düzenli Ödeme</a><a class="nav__link" href="taksit-servisi.html">Taksit Servisi</a><a class="nav__link" href="sigorta-odemeleri.html">Sigorta Ödemeleri</a>
+<div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="../tahsilat-metodu/api.html">API (3D · NON3D)</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-api" aria-label="API (3D · NON3D) alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-api"><div class="nav__sublist-inner"><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="../tahsilat-metodu/api-non3ds.html">Non-3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-non3ds" aria-label="Non-3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-non3ds"><div class="nav__sublist-inner"><a class="nav__link" href="../tahsilat-metodu/api-non3ds.html#istek">Ödeme Oluşturma</a><a class="nav__link" href="../tahsilat-metodu/api-non3ds.html#yanit">Ödeme Sorgulama</a></div></div></div><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="../tahsilat-metodu/api-3ds.html">3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-3ds" aria-label="3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-3ds"><div class="nav__sublist-inner"><a class="nav__link" href="../tahsilat-metodu/api-3ds.html#baslatma">3DS Başlatma</a><a class="nav__link" href="../tahsilat-metodu/api-3ds.html#tamamlama">3DS Tamamlama</a></div></div></div></div></div></div><a class="nav__link" href="../tahsilat-metodu/form-ile-odeme.html">Form ile Ödeme</a><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="../tahsilat-metodu/linkli-odeme.html">Linkli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-linkli" aria-label="Linkli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-linkli"><div class="nav__sublist-inner"><a class="nav__link" href="../tahsilat-metodu/linkli-odeme-olusturma.html">Ödeme Linki Oluşturma</a><a class="nav__link" href="../tahsilat-metodu/linkli-odeme-gonderme.html">Ödeme Linki Gönderme</a><a class="nav__link" href="../tahsilat-metodu/linkli-odeme-silme.html">Ödeme Linki Silme</a></div></div></div><a class="nav__link" href="../tahsilat-metodu/on-provizyon.html">Ön Provizyon</a><a class="nav__link" href="../tahsilat-metodu/duzenli-odeme.html">Düzenli Ödeme</a><a class="nav__link" href="../tahsilat-metodu/taksit-servisi.html">Taksit Servisi</a><a class="nav__link" href="../tahsilat-metodu/sigorta-odemeleri.html">Sigorta Ödemeleri</a>
             </div>
           </div>
         </div>
@@ -176,7 +176,7 @@
 
         <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="../open-source/index.html">Open Source Entegrasyonlar</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-opensource" aria-label="Open Source Entegrasyonlar alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-opensource"><div class="nav__sublist-inner"><a class="nav__link" href="../open-source/woocommerce.html">WooCommerce</a><a class="nav__link" href="../open-source/opencart.html">OpenCart</a><a class="nav__link" href="../open-source/magento-2-x.html">Magento 2.x</a><a class="nav__link" href="../open-source/magento-1-9.html">Magento 1.9</a><a class="nav__link" href="../open-source/prestashop.html">PrestaShop</a><a class="nav__link" href="../open-source/givewp.html">GiveWP</a><a class="nav__link" href="../open-source/whmcs.html">WHMCS</a></div></div></div>
 
-        <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="../ek-bilgiler/index.html">Ek Bilgiler</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-ekbilgi" aria-label="Ek Bilgiler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-ekbilgi"><div class="nav__sublist-inner"><a class="nav__link nav__link--dl" href="../assets/paynkolay.postman_collection.json" download="paynkolay.postman_collection.json"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Postman Koleksiyonu</a><a class="nav__link" href="../on-hazirlik/test-kartlari.html">Test Kartları</a><a class="nav__link" href="../ek-bilgiler/hata-kodlari.html">Hata Kodları</a><a class="nav__link" href="../ek-bilgiler/banka-kodlari.html">Banka Kodları</a><a class="nav__link" href="../ek-bilgiler/tls-hatalari.html">TLS Hataları</a></div></div></div>
+        <div class="nav__group is-open is-current"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="index.html">Ek Bilgiler</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-ekbilgi" aria-label="Ek Bilgiler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-ekbilgi"><div class="nav__sublist-inner"><a class="nav__link nav__link--dl" href="../assets/paynkolay.postman_collection.json" download="paynkolay.postman_collection.json"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Postman Koleksiyonu</a><a class="nav__link" href="../on-hazirlik/test-kartlari.html">Test Kartları</a><a class="nav__link" href="hata-kodlari.html">Hata Kodları</a><a class="nav__link" href="banka-kodlari.html">Banka Kodları</a><a class="nav__link" href="tls-hatalari.html">TLS Hataları</a></div></div></div>
 
         <a class="nav__link nav__link--top" href="../sss.html">Sıkça Sorulan Sorular</a>
       </nav>
@@ -187,86 +187,59 @@
     <div class="content">
       <main>
         <article class="article">
-          <p class="eyebrow"><a href="index.html">Tahsilat Metodu</a></p>
-          <h1>Ön Provizyon</h1>
-          <p class="lead">Tutarı önce karta bloke eder, işlemi daha sonra onaylayarak tahsil eder ya da iptal ederek blokeyi kaldırırsınız.</p>
+          <p class="eyebrow">Ek Bilgiler</p>
+          <h1>Hash Aracı</h1>
+          <p class="lead">hashDatav2 imzanızı tarayıcıda üretin ve kendi implementasyonunuzla karşılaştırın.</p>
+          <div class="callout callout--warn"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p>Hesaplama <strong>tamamen tarayıcınızda</strong> yapılır (Web Crypto API); girdiğiniz hiçbir değer ağa gönderilmez. Yine de canlı ortam Secret Key'inizi yalnızca güvendiğiniz bir makinede girin.</p></div></div>
 
-          <h2 id="genel">Ön Provizyon Nedir?</h2>
-          <p>Ön provizyon (pre-authorization), kart sahibinin hesabından belirli bir tutarın <strong>bloke edilmesidir</strong>: tutar çekilmez, yalnızca rezerve edilir ve kullanılabilir limitten düşülür. Daha sonra blokeyi <strong>onaylayarak</strong> (post-authorization) tahsilatı gerçekleştirir ya da <strong>iptal ederek</strong> kaldırırsınız.</p>
-          <p>Tipik kullanım örnekleri: otel rezervasyonları, araç kiralama depoziti, kargo öncesi stok teyidi, sipariş hazırlığında tutarın garanti altına alınması.</p>
+          <h2 id="odeme">Ödeme İmzası (hashDatav2)</h2>
+          <p>Standart ödeme formülü: <code>sx | clientRefCode | amount | successUrl | failUrl | rnd | customerKey | merchantSecretKey</code>. Kart saklamıyorsanız <code>customerKey</code> boş bırakılır — borusu korunur.</p>
+          <form class="tool" id="hash-form">
+            <div class="tool__grid">
+              <div class="field field--full"><label for="f-sx">sx</label><input type="text" id="f-sx" value="" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="f-ref">clientRefCode</label><input type="text" id="f-ref" value="" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="f-amount">amount <small>nokta ile ondalık, ör. 10.00</small></label><input type="text" id="f-amount" value="" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="f-success">successUrl</label><input type="text" id="f-success" value="" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="f-fail">failUrl</label><input type="text" id="f-fail" value="" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="f-rnd">rnd <small>ör. 04-09-2026 14:25:11</small></label><input type="text" id="f-rnd" value="" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="f-customer">customerKey <small>kart saklamıyorsanız boş bırakın</small></label><input type="text" id="f-customer" value="" autocomplete="off" spellcheck="false"></div>
+              <div class="field field--full"><label for="f-secret">merchantSecretKey</label><input type="text" id="f-secret" value="" autocomplete="off" spellcheck="false"></div>
+            </div>
+            <div class="tool__actions">
+              <button class="btn btn--primary" type="submit">Hash Üret</button>
+              <button class="btn btn--ghost" type="button" id="fill-test">Test değerlerini doldur</button>
+            </div>
+            <div class="tool__out" id="out-payment" hidden><div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hash String</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code id="str-payment"></code></pre></div><div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">hashDatav2 (SHA-512 → Base64)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code id="hash-payment"></code></pre></div></div>
+          </form>
 
-          <div class="callout">
-            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
-            <p>Ön provizyon başlatmak için <a href="api-non3ds.html">ödeme API'sini</a> <code>transactionType=PRESALES</code> ile çağırmanız yeterlidir — diğer tüm parametreler standart ödemeyle aynıdır.</p>
-          </div>
+          <h2 id="serbest">Serbest Mod</h2>
+          <p>Farklı bir servisin formülünü mü doğruluyorsunuz? Boru (<code>|</code>) ile birleştirilmiş string'i olduğu gibi yapıştırın:</p>
+          <form class="tool" id="free-form">
+            <div class="field field--full">
+              <label for="free-input">Hash string <small>ör. sx|startDate|endDate|clientRefCode|secret</small></label>
+              <textarea id="free-input" autocomplete="off" spellcheck="false"></textarea>
+            </div>
+            <div class="tool__actions">
+              <button class="btn btn--primary" type="submit">Hash Üret</button>
+            </div>
+            <div class="tool__out" id="out-free" hidden><div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hash String</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code id="str-free"></code></pre></div><div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">hashDatav2 (SHA-512 → Base64)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code id="hash-free"></code></pre></div></div>
+          </form>
 
-          <div class="callout callout--warn">
-            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
-            <p>Onaylanmayan ya da iptal edilmeyen ön provizyonlar, bankaya bağlı olarak genellikle <strong>15–30 gün içinde kendiliğinden düşer</strong>. Yine de müşteri deneyimi açısından erken iptal her zaman daha doğrudur.</p>
-          </div>
-
-          <h2 id="listeleme">Ön Provizyon Listeleme</h2>
-          <p>Belirli tarih aralığındaki açık ön provizyonları listeler; aralık en fazla <strong>30 gün</strong> olabilir. Bu servis <strong>sx-list</strong> değerini kullanır (satış sx'inden farklıdır — panelinizdeki Ayarlar bölümünden kontrol edin).</p>
-          <div class="access"><p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/Payment/PreAuthorizationList</code></p><p class="access__row"><span class="access__label">Gövde</span><span><code>multipart/form-data</code></span></p></div>
-          <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
-                <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Listeleme (sx-list) değeriniz — satış sx'inden farklıdır</td></tr>
-                <tr><td class="mono">startDate</td><td>string</td><td>✅</td><td>Başlangıç tarihi (YYYY-MM-DD)</td></tr>
-                <tr><td class="mono">endDate</td><td>string</td><td>✅</td><td>Bitiş tarihi (YYYY-MM-DD) — aralık en fazla 30 gün</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|endDate|startDate|merchantSecretKey</td></tr>
-</tbody></table></div>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Başarılı Yanıt — 200</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
-  <span class="tk-k">"RAPOR_LIST"</span>: [
-    {
-      <span class="tk-k">"REFERENCE_CODE"</span>: <span class="tk-s">"IKSIRPF433925"</span>,
-      <span class="tk-k">"TRANSACTION_TYPE"</span>: <span class="tk-s">"Ön Provizyon"</span>,
-      <span class="tk-k">"TRANSACTION_AMOUNT"</span>: <span class="tk-s">"16.00000000"</span>,
-      <span class="tk-k">"BANK_CODE"</span>: <span class="tk-s">"AKBANK T.A.Ş."</span>,
-      <span class="tk-k">"INSTALLMENT"</span>: <span class="tk-s">"1"</span>,
-      <span class="tk-k">"DATE"</span>: <span class="tk-s">"15.05.2025 13:26:46"</span>,
-      <span class="tk-k">"TRX_DATE"</span>: <span class="tk-s">"15.05.2025 00:00:00"</span>
-    }
-  ],
-  <span class="tk-k">"TOTAL_COUNT"</span>: <span class="tk-n">4</span>,
-  <span class="tk-k">"RESPONSE_CODE"</span>: <span class="tk-n">2</span>,
-  <span class="tk-k">"RESPONSE_DATA"</span>: <span class="tk-s">"İşlem başarılı"</span>
-}</code></pre></div>
-
-          <h2 id="onaylama">Ön Provizyon Onaylama</h2>
-          <p>Bloke edilen tutarı tahsil eder (post-authorization).</p>
-          <div class="access"><p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/Payment/PreAuthorizationAprove</code></p><p class="access__row"><span class="access__label">Gövde</span><span><code>multipart/form-data</code></span></p></div>
-          <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
-                <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Size verilen sx değeriniz</td></tr>
-                <tr><td class="mono">amount</td><td>decimal</td><td>✅</td><td>Onaylanacak tutar</td></tr>
-                <tr><td class="mono">referenceCode</td><td>string</td><td>✅</td><td>Ön provizyon işleminin referans kodu</td></tr>
-                <tr><td class="mono">trxDate</td><td>string</td><td>✅</td><td>Ön provizyon tarihi (YYYY-MM-DD)</td></tr>
-                <tr><td class="mono">transactionType</td><td>string</td><td>✅</td><td>Onaylama için SALE</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|trxDate|amount|referenceCode|merchantSecretKey</td></tr>
-                <tr><td class="mono">cardHolderIP</td><td>string</td><td>—</td><td>Müşterinin IP adresi</td></tr>
-</tbody></table></div>
-
-          <h2 id="iptal">Ön Provizyon İptali</h2>
-          <p>Bloke edilen tutarı serbest bırakır.</p>
-          <div class="access"><p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/Payment/PreAuthorizationCancel</code></p><p class="access__row"><span class="access__label">Gövde</span><span><code>multipart/form-data</code></span></p></div>
-          <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
-                <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Size verilen sx değeriniz</td></tr>
-                <tr><td class="mono">amount</td><td>decimal</td><td>✅</td><td>Ön provizyon tutarı</td></tr>
-                <tr><td class="mono">referenceCode</td><td>string</td><td>✅</td><td>Ön provizyon işleminin referans kodu</td></tr>
-                <tr><td class="mono">trxDate</td><td>string</td><td>✅</td><td>Ön provizyon tarihi (YYYY-MM-DD)</td></tr>
-                <tr><td class="mono">transactionType</td><td>string</td><td>✅</td><td>İptal için cancel</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|trxDate|amount|referenceCode|transactionType|merchantSecretKey</td></tr>
-</tbody></table></div>
+          <h2 id="formuller">Formül Kopya Kağıdı</h2>
+<div class="table-wrap"><table class="dtable"><thead><tr><th>Servis</th><th>Formül</th></tr></thead><tbody><tr><td>Ödeme (Payment)</td><td>sx | clientRefCode | amount | successUrl | failUrl | rnd | customerKey | secret</td></tr>
+<tr><td>Taksit (GetMerchandInformation)</td><td>sx | date | secret</td></tr>
+<tr><td>İşlem Doğrulama (PaymentList)</td><td>sx | startDate | endDate | clientRefCode | secret</td></tr>
+<tr><td>Raporlama (PfTransactionReportList)</td><td>sx | startDate | endDate | clientReferenceCode | referenceCode | secret</td></tr>
+<tr><td>İptal / İade</td><td>sx | referenceCode | type | amount | trxDate | secret</td></tr>
+<tr><td>Kart Silme</td><td>sx | customerKey | tranId | token | secret</td></tr>
+<tr><td>Link Oluşturma (by-link-create)</td><td>sx | FULL_NAME | EMAIL | GSM | AMOUNT | LINK_EXPIRATION_TIME | secret</td></tr></tbody></table></div>
+          <p>Tüm formüllerde sonuç <strong>SHA-512</strong> ile hashlenip <strong>Base64</strong>'e çevrilir; metin <strong>UTF-8</strong> olmalıdır. Ayrıntılar için ilgili servis sayfalarına bakın.</p>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
-  <a class="pager__card" href="linkli-odeme-silme.html">
-    <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
-    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">Ödeme Linki Silme</span></span>
-  </a>
-  <a class="pager__card pager__card--next" href="duzenli-odeme.html">
-    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Düzenli Ödeme</span></span>
-    <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
-  </a>
+<a class="pager__card" href="tls-hatalari.html"><svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg><span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">TLS Hataları</span></span></a>
+<a class="pager__card pager__card--next" href="../sss.html"><span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Sıkça Sorulan Sorular</span></span><svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a>
 </nav>
-<p class="updated">Son güncelleme: 3 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 5 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -283,10 +256,9 @@
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#genel">Ön Provizyon Nedir?</a></li>
-          <li><a href="#listeleme">Listeleme</a></li>
-          <li><a href="#onaylama">Onaylama</a></li>
-          <li><a href="#iptal">İptal</a></li>
+          <li><a class="is-active" href="#odeme">Ödeme İmzası</a></li>
+          <li><a href="#serbest">Serbest Mod</a></li>
+          <li><a href="#formuller">Formül Kopya Kağıdı</a></li>
         </ul>
       </aside>
 
@@ -320,5 +292,7 @@
   <script src="../assets/js/sidebar.js"></script>
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/tocspy.js"></script>
+  <script src="../assets/js/copy.js"></script>
+  <script src="../assets/js/hashtool.js"></script>
 </body>
 </html>
