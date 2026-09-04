@@ -370,10 +370,6 @@
   color: var(--text-primary);
 }
 
-.mainnav__btn.is-current::after {
-  transform: scaleX(1);
-}
-
 /* Dar ekranda kurumsal menü gizlenir (çekmece esas menüdür) */
 @media (max-width: 1279px) {
   .mainnav {
