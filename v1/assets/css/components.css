@@ -1402,6 +1402,11 @@ a.chip:hover {
   border-left: 1px solid var(--rail-line);
 }
 
+/* Kapalı grupta kılavuz çizgisi kalıntı bırakmasın */
+.nav__group:not(.is-open) > .nav__sublist {
+  border-left-color: transparent;
+}
+
 .nav__sublist .nav__sublist .nav__link {
   padding-left: var(--space-4);
 }
