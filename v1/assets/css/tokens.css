@@ -115,20 +115,20 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --bg-page: #0A0F1F;
-  --bg-surface: #101830;
-  --bg-soft: #141E3E;
-  --bg-active: #1B2752;
-  --bg-hover: #16203F;
+  --bg-page: #0E1430;
+  --bg-surface: #162044;
+  --bg-soft: #1B2650;
+  --bg-active: #253270;
+  --bg-hover: #1D2854;
 
   --text-heading: #EDF0FC;
-  --text-body: #C2C9E0;
-  --text-muted: #8A93B2;
+  --text-body: #CBD2E8;
+  --text-muted: #9AA4C6;
   --text-primary: #8FA4FF;
 
-  --border: #212B4E;
-  --border-strong: #2B3765;
-  --border-accent: #35418D;
+  --border: #2B3766;
+  --border-strong: #3A477C;
+  --border-accent: #4453A8;
 
   --accent-hover: #2E51FF;
   --focus-ring: color-mix(in srgb, #8FA4FF 40%, transparent);

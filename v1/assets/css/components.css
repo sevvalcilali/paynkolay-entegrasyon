@@ -2344,6 +2344,14 @@ a.chip:hover {
   color: #E3B341;
 }
 
+:root[data-theme="dark"] .brand__logo {
+  filter: brightness(0) invert(1); /* mavi logo koyu zeminde kaybolmasın */
+}
+
+:root[data-theme="dark"] .codeblock {
+  border: 1px solid var(--border);
+}
+
 :root[data-theme="dark"] .prodhero__panel {
   background: linear-gradient(135deg, #17224E 0%, #121B3D 55%, #0E1530 100%);
 }
