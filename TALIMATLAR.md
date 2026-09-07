@@ -54,5 +54,5 @@ Kurallar:
 
 1. **Önce sor → onay al → yap → raporla.** Plana kendiliğinden madde eklenmez.
 2. Onaylanmış plan dışına çıkılmaz; yaratıcı fikirler "öneri" olarak sunulur.
-3. Commit/push sadece Şevval isteyince yapılır.
+3. ~~Commit/push sadece Şevval isteyince yapılır.~~ **(2026-09-07, Şevval'in talimatıyla değişti:)** Her tamamlanan iş anlamlı bir commit'le kaydedilir ve **otomatik olarak GitHub'a pushlanır** (`origin/main`). Ayrıca sormaya gerek yok.
 4. Her adımda ne yapıldığı ve neden yapıldığı kısaca açıklanır (öğrenme hedefi var).
