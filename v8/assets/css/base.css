@@ -120,7 +120,7 @@ table {
   top: -48px;
   z-index: 120;
   padding: var(--space-2) var(--space-4);
-  background: var(--brand);
+  background: var(--brand-fill);
   color: #FFFFFF;
   font-weight: 600;
   border-radius: var(--radius-md);

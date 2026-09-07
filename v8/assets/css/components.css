@@ -56,13 +56,13 @@
 }
 
 .btn--blue {
-  background: var(--brand);
+  background: var(--brand-fill);
   color: #FFFFFF;
-  border: 1px solid var(--brand);
+  border: 1px solid var(--brand-fill);
 }
 
 .btn--blue:hover {
-  background: var(--brand-deep);
+  background: var(--brand-fill-hover);
 }
 
 .btn--ghost {
@@ -757,7 +757,7 @@
 }
 
 .richitem:hover .richitem__icon {
-  background: var(--brand);
+  background: var(--brand-fill);
   color: #ffffff;
 }
 
@@ -1077,7 +1077,7 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
-  background: var(--brand);
+  background: var(--brand-fill);
   color: #ffffff;
   font-weight: 600;
   font-size: var(--text-sm);
@@ -1671,7 +1671,7 @@ a.chip:hover {
 }
 
 .card:hover .card__icon {
-  background: var(--brand);
+  background: var(--brand-fill);
   color: #ffffff;
 }
 
@@ -2200,4 +2200,107 @@ a.chip:hover {
 
 .folio__hub:hover .arrow {
   transform: translateX(3px);
+}
+
+/* ============================================================
+   TEMA — üst bar anahtarı + koyu tema bileşen ince ayarları
+   ============================================================ */
+.theme-switch {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-pill);
+  background: var(--paper);
+}
+
+.theme-switch__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-pill);
+  color: var(--ink-500);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.theme-switch__btn:hover {
+  color: var(--ink-900);
+}
+
+.theme-switch__btn.is-active {
+  background: var(--paper-soft);
+  color: var(--brand);
+  outline: 1px solid var(--line-bright);
+}
+
+/* --- Koyu tema ince ayarları (sabit renkli öğeler) --- */
+:root[data-theme="dark"] .brand__logo {
+  filter: brightness(0) invert(1); /* mavi logo koyu zeminde kaybolmasın */
+}
+
+:root[data-theme="dark"] body::before {
+  background:
+    repeating-radial-gradient(circle at 106% -12%, transparent 0 9px, rgba(143, 164, 255, 0.06) 9px 10px, transparent 10px 19px),
+    repeating-radial-gradient(circle at -8% 108%, transparent 0 11px, rgba(143, 164, 255, 0.05) 11px 12px, transparent 12px 23px);
+}
+
+:root[data-theme="dark"] ::selection {
+  background: rgba(143, 164, 255, 0.3);
+}
+
+:root[data-theme="dark"] .callout--warn {
+  background: #261F0E;
+  border-color: #4E4120;
+  border-left-color: #E3B341;
+}
+
+:root[data-theme="dark"] .callout--warn .callout__icon {
+  color: #E3B341;
+}
+
+:root[data-theme="dark"] .searchbox__title mark {
+  background: rgba(143, 164, 255, 0.25);
+}
+
+/* Kart illüstrasyonu: gravür çizgileri koyuda periwinkle */
+:root[data-theme="dark"] .hero__art [stroke="#0C34E7"] { stroke: #8FA4FF; }
+:root[data-theme="dark"] .hero__art [fill="#0C34E7"] { fill: #8FA4FF; }
+:root[data-theme="dark"] .hero__art [fill="#0F1E4D"] { fill: #F4F6FF; }
+:root[data-theme="dark"] .hero__art [fill="#5A6784"] { fill: #9AA8D8; }
+:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.3)"] { stroke: rgba(143, 164, 255, 0.35); }
+:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.24)"] { stroke: rgba(143, 164, 255, 0.28); }
+:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.6)"] { stroke: rgba(143, 164, 255, 0.6); }
+:root[data-theme="dark"] .hero__art [stroke="rgba(15,30,77,0.25)"] { stroke: rgba(244, 246, 255, 0.3); }
+
+/* 3B ürün sahnesi koyu zemine uyarlanır */
+:root[data-theme="dark"] .prodhero__panel {
+  background: linear-gradient(135deg, #17224E 0%, #121B3D 55%, #0E1530 100%);
+  border-color: var(--line-soft);
+}
+
+:root[data-theme="dark"] .prodhero__panel::after {
+  background: radial-gradient(240px circle at var(--mx) var(--my), rgba(143, 164, 255, 0.28), transparent 70%);
+}
+
+:root[data-theme="dark"] .prodhero__blob--1 {
+  background: rgba(92, 119, 255, 0.28);
+}
+
+:root[data-theme="dark"] .prodhero__blob--2 {
+  background: rgba(143, 164, 255, 0.18);
+}
+
+:root[data-theme="dark"] .prodhero__blob--3 {
+  background: rgba(12, 52, 231, 0.4);
+}
+
+:root[data-theme="dark"] .prodhero__dots {
+  background-image: radial-gradient(circle, rgba(143, 164, 255, 0.4) 1.5px, transparent 1.6px);
+}
+
+:root[data-theme="dark"] .prodhero__device {
+  filter: drop-shadow(0 24px 26px rgba(0, 0, 0, 0.55));
 }

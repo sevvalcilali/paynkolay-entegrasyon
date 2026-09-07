@@ -21,11 +21,14 @@
   /* --- Marka mavisi --- */
   --brand:      #0C34E7;
   --brand-deep: #0A2BC0;
+  --brand-fill:       var(--brand);      /* dolgu yüzeyler: buton, mock başlığı */
+  --brand-fill-hover: var(--brand-deep);
   --live:       #047857; /* CANLI durum rozeti */
 
   /* --- Çizgiler --- */
   --line-bright: rgba(12, 52, 231, 0.4);
   --line-soft:   rgba(15, 30, 77, 0.16);
+  --topbar-bg:   rgba(255, 255, 255, 0.88);
 
   /* --- Semantik --- */
   --bg-page:    var(--page);
@@ -91,4 +94,34 @@
   /* --- Hareket --- */
   --ease: cubic-bezier(0.25, 0.6, 0.3, 1);
   --dur: 200ms;
+}
+
+/* --- Koyu tema: "mavi baskı" ---
+   theme.js seçime göre <html data-theme="dark|light"> atar; "system"
+   prefers-color-scheme'i izler. Koyu zeminde #0C34E7 kontrast için
+   yetersiz kaldığından vurgu periwinkle'a döner; dolgu butonlar
+   marka mavisinde kalır. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper:      #0B1747;
+  --paper-soft: #111E58;
+  --page:       #04081F;
+
+  --ink-900: #F4F6FF;
+  --ink-700: #D5DCF6;
+  --ink-500: #9AA8D8;
+
+  --brand:      #8FA4FF;
+  --brand-deep: #B7C4FF;
+  --brand-fill:       #2E51FF;
+  --brand-fill-hover: #0C34E7;
+  --live: #4ADE9C;
+
+  --line-bright: rgba(143, 164, 255, 0.4);
+  --line-soft:   rgba(244, 246, 255, 0.14);
+  --topbar-bg:   rgba(4, 8, 31, 0.85);
+  --plate-line:  rgba(143, 164, 255, 0.35);
+  --focus-ring:  rgba(143, 164, 255, 0.5);
+  --shadow-panel: 0 1px 0 rgba(244, 246, 255, 0.06) inset, 0 14px 40px rgba(0, 0, 0, 0.4);
 }

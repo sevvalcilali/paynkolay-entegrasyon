@@ -11,7 +11,7 @@
   gap: var(--space-5);
   height: 64px;
   padding: 0 var(--space-6);
-  background: rgba(255, 255, 255, 0.88);
+  background: var(--topbar-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line-bright);
