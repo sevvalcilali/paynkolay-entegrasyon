@@ -104,4 +104,13 @@
   /* --- Hareket --- */
   --ease: cubic-bezier(0.25, 0.6, 0.3, 1);
   --dur: 200ms;
+
+  /* --- İçerik göçü takma adları ---
+     v1'den taşınan içerik bileşenleri ve satır içi SVG diyagramlar bu
+     isimleri kullanır; değerleri Mint & Mürekkep paletine bağlanmıştır. */
+  --bg-soft: var(--mint-tile-1);
+  --border: var(--line);
+  --border-strong: var(--line-strong);
+  --border-accent: #CFD9FB;
+  --rail-accent: var(--mint-ink);
 }

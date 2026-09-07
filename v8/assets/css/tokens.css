@@ -1,0 +1,87 @@
+/* ============================================================
+   V8 "GRAVÜR" TOKENS — tek doğru kaynak
+   Konsept: gravür estetiği, AÇIK TEMA. Beyaz kağıt zemin,
+   lacivert mürekkep metin, ince gravür çizgileri doğrudan
+   marka mavisi #0C34E7; kod plakası koyu lacivert kalır.
+   ============================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* --- Kağıt zeminler --- */
+  --paper:      #FFFFFF;
+  --paper-soft: #F4F7FF;
+  --page:       #FDFDFF;
+
+  /* --- Mürekkep metinler --- */
+  --ink-900: #0F1E4D;
+  --ink-700: #35415E;
+  --ink-500: #5A6784;
+
+  /* --- Marka mavisi --- */
+  --brand:      #0C34E7;
+  --brand-deep: #0A2BC0;
+  --live:       #047857; /* CANLI durum rozeti */
+
+  /* --- Çizgiler --- */
+  --line-bright: rgba(12, 52, 231, 0.4);
+  --line-soft:   rgba(15, 30, 77, 0.16);
+
+  /* --- Semantik --- */
+  --bg-page:    var(--page);
+  --bg-surface: var(--paper);
+  --text-heading: var(--ink-900);
+  --text-body:    var(--ink-700);
+  --text-muted:   var(--ink-500);
+  --accent:       var(--brand);
+  --focus-ring:   rgba(12, 52, 231, 0.35);
+
+  /* --- Kod plakası (koyu lacivert kalır) --- */
+  --plate-bg-1:  #0A1140;
+  --plate-bg-2:  #101C5E;
+  --plate-line:  rgba(143, 164, 255, 0.3);
+  --code-text:   #D5DCF6;
+  --code-key:    #B7C4FF;
+  --code-string: #7EE2B8;
+  --code-number: #FFD166;
+  --code-comment:#8C97C0;
+
+  /* --- Tipografi --- */
+  --font-display: "Iowan Old Style", "Palatino", Georgia, "Times New Roman", serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, SFMono-Regular,
+               Menlo, Consolas, monospace;
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.9375rem;
+  --text-md:   1.0625rem;
+  --text-lg:   1.4375rem;
+  --text-xl:   1.875rem;
+  --text-2xl:  3rem;
+  --leading-tight: 1.08;
+  --leading-body:  1.7;
+
+  /* --- Boşluk / köşe / gölge --- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --radius-sm: 3px;  /* gravür: köşeler keskine yakın */
+  --radius-md: 6px;
+  --radius-pill: 999px;
+  --shadow-panel: 0 1px 2px rgba(15, 30, 77, 0.05), 0 14px 40px rgba(15, 30, 77, 0.08);
+
+  /* --- Yerleşim --- */
+  --content-max: 1080px;
+
+  /* --- Hareket --- */
+  --ease: cubic-bezier(0.25, 0.6, 0.3, 1);
+  --dur: 200ms;
+}

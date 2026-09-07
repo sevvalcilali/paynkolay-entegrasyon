@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Başlangıç — Paynkolay Docs (v2 Aurora)</title>
+  <meta name="description" content="Paynkolay entegrasyon dokümantasyonu — test bilgileri, API servisleri ve hazır eklentiler.">
+  <meta property="og:title" content="Başlangıç — Paynkolay Docs">
+  <meta property="og:description" content="Paynkolay entegrasyon dokümantasyonu — test bilgileri, API servisleri ve hazır eklentiler.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0C34E7">
+  <title>Başlangıç — Paynkolay Docs</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/layout.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
 </head>
 <body>
 
@@ -22,8 +29,10 @@
     <aside class="sidebar scroll-slim" id="sidebar" aria-label="Doküman menüsü">
 
       <div class="side-brand">
-        <img class="side-brand__logo" src="assets/img/paynkolay-logo.svg" alt="Paynkolay">
-        <span class="side-brand__docs">DOCS</span>
+        <a class="side-brand__home" href="index.html">
+          <img class="side-brand__logo" src="assets/img/paynkolay-logo.svg" alt="Paynkolay">
+          <span class="side-brand__docs">DOCS</span>
+        </a>
         <span class="side-brand__spacer"></span>
         <div class="dropdown">
           <button class="langbtn" type="button" data-dropdown aria-expanded="false" aria-haspopup="listbox" aria-label="Dil seçimi">
@@ -45,7 +54,7 @@
         </button>
       </div>
 
-      <button class="search" type="button" aria-label="Dokümanlarda ara (yakında)">
+      <button class="search" type="button" aria-label="Dokümanlarda ara">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
           <circle cx="11" cy="11" r="7"/>
           <path d="m20 20-3.5-3.5"/>
@@ -58,92 +67,58 @@
         <a class="nav__link nav__link--top is-active" href="index.html" aria-current="page">Başlangıç</a>
 
         <div class="nav__group">
-          <button class="nav__group-btn" aria-expanded="false" aria-controls="grp-hazirlik">
-            Ön Hazırlık
-            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m9 6 6 6-6 6"/>
-            </svg>
-          </button>
+          <div class="nav__group-head">
+            <a class="nav__link nav__link--top nav__group-link" href="on-hazirlik/index.html">Ön Hazırlık</a>
+            <button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-hazirlik" aria-label="Ön Hazırlık alt başlıkları">
+              <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
           <div class="nav__sublist" id="grp-hazirlik">
             <div class="nav__sublist-inner">
-              <a class="nav__link" href="#">Test Ortamı Bilgileri</a>
-              <a class="nav__link" href="#">Canlı Bilgileri Panelden Alma</a>
-              <a class="nav__link" href="#">Sistem Gereksinimleri</a>
-              <a class="nav__link" href="#">Test Kartları</a>
+              <a class="nav__link" href="on-hazirlik/basvuru-ve-ilk-adimlar.html">Başvuru ve İlk Adımlar</a>
+              <a class="nav__link" href="on-hazirlik/hangi-yontem.html">Hangi Yöntem Size Uygun?</a>
+              <a class="nav__link" href="on-hazirlik/kontrol-listesi.html">Entegrasyon Kontrol Listesi</a>
+              <a class="nav__link" href="on-hazirlik/test-ortami.html">Test Ortamı (Sandbox)</a>
+              <a class="nav__link" href="on-hazirlik/ortamlar.html">Test vs Canlı Ortam</a>
+              <a class="nav__link" href="on-hazirlik/test-kartlari.html">Test Kartları</a>
             </div>
           </div>
         </div>
 
-        <div class="nav__group is-open">
-          <button class="nav__group-btn" aria-expanded="true" aria-controls="grp-tahsilat">
-            Tahsilat Metodu
-            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m9 6 6 6-6 6"/>
-            </svg>
-          </button>
+        <div class="nav__group">
+          <div class="nav__group-head">
+            <a class="nav__link nav__link--top nav__group-link" href="tahsilat-metodu/index.html">Tahsilat Metodu</a>
+            <button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-tahsilat" aria-label="Tahsilat Metodu alt başlıkları">
+              <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+            </button>
+          </div>
           <div class="nav__sublist" id="grp-tahsilat">
             <div class="nav__sublist-inner">
-              <a class="nav__link" href="#">Ortak Ödeme (Form) <span class="method method--post">POST</span></a>
-              <a class="nav__link" href="#">Ortak Ödeme (Link) <span class="method method--post">POST</span></a>
-              <a class="nav__link" href="#">Linkli Ödeme <span class="method method--post">POST</span></a>
-              <a class="nav__link" href="#">API ile Ödeme <span class="method method--post">POST</span></a>
+<div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="tahsilat-metodu/api.html">API (3D · NON3D)</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-api" aria-label="API (3D · NON3D) alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-api"><div class="nav__sublist-inner"><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="tahsilat-metodu/api-non3ds.html">Non-3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-non3ds" aria-label="Non-3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-non3ds"><div class="nav__sublist-inner"><a class="nav__link" href="tahsilat-metodu/api-non3ds.html#istek">Ödeme Oluşturma</a><a class="nav__link" href="tahsilat-metodu/api-non3ds.html#yanit">Ödeme Sorgulama</a></div></div></div><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="tahsilat-metodu/api-3ds.html">3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-3ds" aria-label="3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-3ds"><div class="nav__sublist-inner"><a class="nav__link" href="tahsilat-metodu/api-3ds.html#baslatma">3DS Başlatma</a><a class="nav__link" href="tahsilat-metodu/api-3ds.html#tamamlama">3DS Tamamlama</a></div></div></div></div></div></div><a class="nav__link" href="tahsilat-metodu/form-ile-odeme.html">Form ile Ödeme <span class="method method--post">POST</span></a><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="tahsilat-metodu/linkli-odeme.html">Linkli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-linkli" aria-label="Linkli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-linkli"><div class="nav__sublist-inner"><a class="nav__link" href="tahsilat-metodu/linkli-odeme-olusturma.html">Ödeme Linki Oluşturma <span class="method method--post">POST</span></a><a class="nav__link" href="tahsilat-metodu/linkli-odeme-gonderme.html">Ödeme Linki Gönderme <span class="method method--post">POST</span></a><a class="nav__link" href="tahsilat-metodu/linkli-odeme-silme.html">Ödeme Linki Silme <span class="method method--post">POST</span></a></div></div></div><a class="nav__link" href="tahsilat-metodu/on-provizyon.html">Ön Provizyon <span class="method method--post">POST</span></a><a class="nav__link" href="tahsilat-metodu/duzenli-odeme.html">Düzenli Ödeme <span class="method method--post">POST</span></a><a class="nav__link" href="tahsilat-metodu/taksit-servisi.html">Taksit Servisi <span class="method method--post">POST</span></a><a class="nav__link" href="tahsilat-metodu/sigorta-odemeleri.html">Sigorta Ödemeleri <span class="method method--post">POST</span></a>
             </div>
           </div>
         </div>
 
-        <div class="nav__group">
-          <button class="nav__group-btn" aria-expanded="false" aria-controls="grp-urunler">
-            Ürünler
-            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m9 6 6 6-6 6"/>
-            </svg>
-          </button>
-          <div class="nav__sublist" id="grp-urunler">
-            <div class="nav__sublist-inner">
-              <a class="nav__link" href="#">Pazaryeri</a>
-              <a class="nav__link" href="#">Masterpass</a>
-              <a class="nav__link" href="#">Sigorta Ödemesi</a>
-            </div>
-          </div>
-        </div>
+        <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="urunler/index.html">Ürünler</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-urunler" aria-label="Ürünler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-urunler"><div class="nav__sublist-inner"><a class="nav__link" href="urunler/sanal-pos.html">Sanal POS</a><a class="nav__link" href="urunler/fiziki-pos.html">Fiziki POS</a><a class="nav__link" href="urunler/komisyon-iadeli-pos.html">Komisyon İadeli POS</a><a class="nav__link" href="urunler/linkten-odeme.html">Linkten Ödeme Alın</a><a class="nav__link" href="urunler/duzenli-odeme-al.html">Düzenli Ödeme Alın</a><a class="nav__link" href="urunler/cepnpos.html">CepnPOS</a><a class="nav__link" href="urunler/ortak-odeme-sayfasi.html">Ortak Ödeme Sayfası</a><a class="nav__link" href="urunler/para-transferi.html">Para Transferi</a><a class="nav__link" href="urunler/acik-bankacilik.html">Açık Bankacılık</a><a class="nav__link" href="urunler/pazaryeri.html">Pazaryeri</a><a class="nav__link" href="urunler/bayi-tahsilat.html">Bayi Tahsilat</a><a class="nav__link" href="urunler/fatura-odemeleri.html">Fatura Ödemeleri</a></div></div></div>
 
-        <div class="nav__group">
-          <button class="nav__group-btn" aria-expanded="false" aria-controls="grp-servisler">
-            Ek Servisler
-            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m9 6 6 6-6 6"/>
-            </svg>
-          </button>
-          <div class="nav__sublist" id="grp-servisler">
-            <div class="nav__sublist-inner">
-              <a class="nav__link" href="#">İptal &amp; İade <span class="method method--post">POST</span></a>
-              <a class="nav__link" href="#">Kart Saklama <span class="method method--post">POST</span></a>
-              <a class="nav__link" href="#">Tekrarlayan Ödeme <span class="method method--post">POST</span></a>
-              <a class="nav__link" href="#">Taksit Servisi <span class="method method--post">POST</span></a>
-              <a class="nav__link" href="#">Raporlama <span class="method method--post">POST</span></a>
-            </div>
-          </div>
-        </div>
+        <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="ek-servisler/index.html">Ek Servisler</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-servisler" aria-label="Ek Servisler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-servisler"><div class="nav__sublist-inner"><a class="nav__link" href="ek-servisler/kart-saklama.html">Kart Saklama <span class="method method--post">POST</span></a><a class="nav__link" href="ek-servisler/kayitli-karttan-odeme.html">Kayıtlı Karttan Ödeme <span class="method method--post">POST</span></a><a class="nav__link" href="ek-servisler/iptal-ve-iade.html">İptal ve İade <span class="method method--post">POST</span></a><a class="nav__link" href="ek-servisler/odeme-sonucu.html">Ödeme Sonucu</a><a class="nav__link" href="ek-servisler/islem-dogrulama.html">İşlem Doğrulama <span class="method method--post">POST</span></a><a class="nav__link" href="ek-servisler/raporlama.html">Raporlama Servisi <span class="method method--post">POST</span></a></div></div></div>
 
-        <div class="nav__group">
-          <button class="nav__group-btn" aria-expanded="false" aria-controls="grp-opensource">
-            Open Source Entegrasyonlar
-            <svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="m9 6 6 6-6 6"/>
-            </svg>
-          </button>
-          <div class="nav__sublist" id="grp-opensource">
-            <div class="nav__sublist-inner">
-              <a class="nav__link" href="#">WooCommerce</a>
-              <a class="nav__link" href="#">OpenCart</a>
-              <a class="nav__link" href="#">Magento 2.x</a>
-              <a class="nav__link" href="#">PrestaShop</a>
-            </div>
-          </div>
-        </div>
+        <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="pazaryeri/index.html">Pazaryeri Entegrasyonu</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-pazaryeri" aria-label="Pazaryeri Entegrasyonu alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-pazaryeri"><div class="nav__sublist-inner"><a class="nav__link" href="pazaryeri/index.html">Genel Bakış</a><a class="nav__link" href="pazaryeri/kimlik-dogrulama.html">Kimlik Doğrulama</a><a class="nav__link" href="pazaryeri/hash-hesaplama.html">Hash Hesaplama</a><a class="nav__link" href="pazaryeri/odeme-profili.html">Ödeme Profili Yönetimi <span class="method method--post">POST</span></a><a class="nav__link" href="pazaryeri/satici-yonetimi.html">Satıcı Yönetimi <span class="method method--post">POST</span></a><a class="nav__link" href="pazaryeri/odeme-islemleri.html">Ödeme İşlemleri <span class="method method--post">POST</span></a><a class="nav__link" href="pazaryeri/iptal-ve-iade.html">İptal ve İade <span class="method method--post">POST</span></a><a class="nav__link" href="pazaryeri/masterpass.html">Masterpass</a><a class="nav__link" href="pazaryeri/raporlama.html">Raporlama <span class="method method--post">POST</span></a></div></div></div>
 
-        <a class="nav__link nav__link--top" href="#">Sıkça Sorulan Sorular</a>
+        <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="open-source/index.html">Open Source Entegrasyonlar</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-opensource" aria-label="Open Source Entegrasyonlar alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-opensource"><div class="nav__sublist-inner"><a class="nav__link" href="open-source/woocommerce.html">WooCommerce</a><a class="nav__link" href="open-source/opencart.html">OpenCart</a><a class="nav__link" href="open-source/magento-2-x.html">Magento 2.x</a><a class="nav__link" href="open-source/magento-1-9.html">Magento 1.9</a><a class="nav__link" href="open-source/prestashop.html">PrestaShop</a><a class="nav__link" href="open-source/givewp.html">GiveWP</a><a class="nav__link" href="open-source/whmcs.html">WHMCS</a></div></div></div>
+
+        <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="ek-bilgiler/index.html">Ek Bilgiler</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-ekbilgi" aria-label="Ek Bilgiler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-ekbilgi"><div class="nav__sublist-inner"><a class="nav__link nav__link--dl" href="assets/paynkolay.postman_collection.json" download="paynkolay.postman_collection.json"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Postman Koleksiyonu</a><a class="nav__link" href="on-hazirlik/test-kartlari.html">Test Kartları</a><a class="nav__link" href="ek-bilgiler/hash-araci.html">Hash Aracı</a><a class="nav__link" href="ek-bilgiler/hata-kodlari.html">Hata Kodları</a><a class="nav__link" href="ek-bilgiler/banka-kodlari.html">Banka Kodları</a><a class="nav__link" href="ek-bilgiler/tls-hatalari.html">TLS Hataları</a></div></div></div>
+
+        <a class="nav__link nav__link--top" href="sss.html">Sıkça Sorulan Sorular</a>
       </nav>
+
+      <a class="gitbook" href="https://www.gitbook.com/?utm_source=content&amp;utm_medium=trademark&amp;utm_campaign=eLHaxaDcKZbQ525oCtWD&amp;utm_content=site_KNYQ8" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m12 4 9 4.5L12 13 3 8.5 12 4Z"/>
+          <path d="m5.5 10.8-2.5 1.2 9 4.5 9-4.5-2.5-1.2"/>
+        </svg>
+        Powered by GitBook
+      </a>
     </aside>
 
     <div class="overlay" id="overlay" hidden></div>
@@ -151,60 +126,82 @@
     <div>
       <div class="mainbar">
         <nav class="mainnav" aria-label="Site menüsü">
-          <div class="dropdown">
-            <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
-              Ürünlerimiz
-              <svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
-            </button>
-            <div class="dropdown__menu">
-              <a class="dropdown__item" href="#">Sanal POS</a>
-              <a class="dropdown__item" href="#">Fiziki POS</a>
-              <a class="dropdown__item" href="#">CepnPOS</a>
-              <a class="dropdown__item" href="#">Link ile Ödeme Al</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
-              Hakkımızda
-              <svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
-            </button>
-            <div class="dropdown__menu">
-              <a class="dropdown__item" href="#">Biz Kimiz?</a>
-              <a class="dropdown__item" href="#">Duyurular</a>
-              <a class="dropdown__item" href="#">Kariyer</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
-              İletişim
-              <svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
-            </button>
-            <div class="dropdown__menu">
-              <a class="dropdown__item" href="#">Destek Merkezi</a>
-              <a class="dropdown__item" href="#">Bize Ulaşın</a>
-            </div>
-          </div>
-          <div class="dropdown">
-            <button class="mainnav__btn is-current" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
-              Entegrasyon
-              <svg class="chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="m6 9 6 6 6-6"/>
-              </svg>
-            </button>
-            <div class="dropdown__menu">
-              <a class="dropdown__item" href="index.html">Dokümantasyon</a>
-              <a class="dropdown__item" href="#">API Referansı</a>
-              <a class="dropdown__item" href="#">Test Kartları</a>
-              <a class="dropdown__item" href="#">Sıkça Sorulan Sorular</a>
-            </div>
-          </div>
-        </nav>
+      <div class="dropdown">
+        <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
+          Ürünlerimiz
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu dropdown__menu--rich dropdown__menu--products">
+          <a class="richitem" href="urunler/sanal-pos.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 9.5h18M6.5 15h4"/></svg></span><span class="richitem__text"><span class="richitem__title">Sanal POS</span><span class="richitem__desc">Kolayca Ödeme Alın</span></span></a>
+          <a class="richitem" href="urunler/fiziki-pos.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2.5"/><rect x="9.5" y="6" width="5" height="6" rx="1"/><path d="M10 17.5h4"/></svg></span><span class="richitem__text"><span class="richitem__title">Fiziki POS</span><span class="richitem__desc">Hızlı Çözüm</span></span></a>
+          <a class="richitem" href="urunler/komisyon-iadeli-pos.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="2.2"/><circle cx="16" cy="16" r="2.2"/><path d="m6 18 12-12"/></svg></span><span class="richitem__text"><span class="richitem__title">Komisyon İadeli POS</span><span class="richitem__desc">Ertesi Gün + %0 Komisyon</span></span></a>
+          <a class="richitem" href="urunler/linkten-odeme.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 3-9.5 9.5M21 3l-6 18-3.5-8.5L3 9l18-6Z"/></svg></span><span class="richitem__text"><span class="richitem__title">Linkten Ödeme Alın</span><span class="richitem__desc">Ödeme Linki</span></span></a>
+          <a class="richitem" href="urunler/duzenli-odeme-al.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-3.5M4 13a8 8 0 0 0 14.5 3.5"/><path d="M5.5 3.5v4h4M18.5 20.5v-4h-4"/></svg></span><span class="richitem__text"><span class="richitem__title">Düzenli Ödeme Alın</span><span class="richitem__desc">Talimat ile Ödeme</span></span></a>
+          <a class="richitem" href="urunler/cepnpos.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span class="richitem__text"><span class="richitem__title">CepnPOS</span><span class="richitem__desc">Mobil App</span></span></a>
+          <a class="richitem" href="urunler/ortak-odeme-sayfasi.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 8.5h18M7 13h6m-6 3h3"/></svg></span><span class="richitem__text"><span class="richitem__title">Ortak Ödeme Sayfası</span><span class="richitem__desc">Kolay Ödeme</span></span></a>
+          <a class="richitem" href="urunler/para-transferi.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h14m0 0-3.5-3.5M18 8l-3.5 3.5M20 16H6m0 0 3.5-3.5M6 16l3.5 3.5"/></svg></span><span class="richitem__text"><span class="richitem__title">Para Transferi</span><span class="richitem__desc">FAST ile Anlık Transfer</span></span></a>
+          <a class="richitem" href="urunler/acik-bankacilik.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5H3l9-5ZM5 10v7m4.5-7v7m5-7v7M19 10v7M3 20h18"/></svg></span><span class="richitem__text"><span class="richitem__title">Açık Bankacılık</span><span class="richitem__desc">Tüm Hesaplarınız Tek Ekranda</span></span></a>
+          <a class="richitem" href="urunler/pazaryeri.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16l-1 4.5a2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0L4 7Zm1 6v8h14v-8M10 21v-5h4v5"/><path d="M6 7V4h12v3"/></svg></span><span class="richitem__text"><span class="richitem__title">Pazaryeri</span><span class="richitem__desc">Tahsilat Çözümü</span></span></a>
+          <a class="richitem" href="urunler/bayi-tahsilat.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M15.5 14.6a4.9 4.9 0 0 1 5 4.4"/></svg></span><span class="richitem__text"><span class="richitem__title">Bayi Tahsilat</span><span class="richitem__desc">Otomatik Tahsilat Aktarımı</span></span></a>
+          <a class="richitem" href="urunler/fatura-odemeleri.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-2-1.5L14 21l-2-1.5L10 21l-2-1.5L6 21V3Z"/><path d="M9.5 8h5m-5 4h5"/></svg></span><span class="richitem__text"><span class="richitem__title">Fatura Ödemeleri</span><span class="richitem__desc">7/24 Kolay Fatura Ödeme</span></span></a>
+          <a class="dropdown__footer" href="urunler/index.html">Tüm Ürünleri İncele <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
+          Hakkımızda
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu dropdown__menu--rich">
+          <a class="richitem" href="https://paynkolay.com.tr/kurumsal-bilgiler" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h2m2 0h2M9 11h2m2 0h2M9 15h2m2 0h2"/><path d="M10 21v-3h4v3"/></svg></span><span class="richitem__text"><span class="richitem__title">Kurumsal</span><span class="richitem__desc">N Kolay Ödeme Kuruluşu A.Ş.</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/nkolay-odeme-kurulusu" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="16.5" cy="9.5" r="2.4"/><path d="M15.5 14.6a4.9 4.9 0 0 1 5 4.4"/></svg></span><span class="richitem__text"><span class="richitem__title">Bizi Tanıyın</span><span class="richitem__desc">Hakkımızda</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/vizyon-misyon" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12Z"/><circle cx="12" cy="12" r="3"/></svg></span><span class="richitem__text"><span class="richitem__title">Vizyon &amp; Misyon</span><span class="richitem__desc">paynkolay</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/sss" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.2a2.5 2.5 0 0 1 4.8 1c0 1.6-2.4 2-2.4 3.3M12 16.8h.01"/></svg></span><span class="richitem__text"><span class="richitem__title">Sık Sorulan Sorular</span><span class="richitem__desc">Cevabı Bulun</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/kisisel-verilerin-korunmasi" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/><path d="m9.3 12 2 2 3.6-3.8"/></svg></span><span class="richitem__text"><span class="richitem__title">Kişisel Verilerin Korunması</span><span class="richitem__desc">KVK</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/erisilebilirlik" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="1.8"/><path d="M5 9.5c4.7 1 9.3 1 14 0M12 10.5v4m0 0-3 6m3-6 3 6"/></svg></span><span class="richitem__text"><span class="richitem__title">Erişilebilirlik</span><span class="richitem__desc">Herkes İçin Erişim</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/blog/" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 12.5h8M8 16h5"/></svg></span><span class="richitem__text"><span class="richitem__title">Blog</span><span class="richitem__desc">Güncel Makaleler</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/basin/" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h13v13H6a2 2 0 0 1-2-2V6Z"/><path d="M17 9h2a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2h-1"/><path d="M7.5 9.5h6M7.5 12.5h6M7.5 15.5h3.5"/></svg></span><span class="richitem__text"><span class="richitem__title">Basında Biz</span><span class="richitem__desc">Haberler &amp; Basın</span></span></a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="mainnav__btn" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
+          İletişim
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu dropdown__menu--rich">
+          <a class="richitem" href="https://paynkolay.nkolayislem.com.tr/onboarding/application-new" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m14.2 8.2 1.6 1.6M9 15l.7-2.5 5-5a1.13 1.13 0 0 1 1.6 1.6l-5 5L9 15Z"/></svg></span><span class="richitem__text"><span class="richitem__title">Başvurun</span><span class="richitem__desc">POS Başvurusu</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/iletisim#bize-yazin" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></svg></span><span class="richitem__text"><span class="richitem__title">Bize Yazın</span><span class="richitem__desc">İletişim Formu</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/iletisim" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.2-6.5-10a6.5 6.5 0 0 1 13 0c0 4.8-6.5 10-6.5 10Z"/><circle cx="12" cy="10.6" r="2.4"/></svg></span><span class="richitem__text"><span class="richitem__title">İletişim</span><span class="richitem__desc">Bize Ulaşın</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/basvuru-durumu-sorgula" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4M8.5 11h5M11 8.5v5"/></svg></span><span class="richitem__text"><span class="richitem__title">Başvuru Durumu</span><span class="richitem__desc">Başvuru Sorgulama</span></span></a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="mainnav__btn is-current" type="button" data-dropdown aria-expanded="false" aria-haspopup="true">
+          Entegrasyon
+          <svg class="chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+        <div class="dropdown__menu dropdown__menu--rich">
+          <a class="richitem" href="index.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9l-6-6Z"/><path d="M13 3v6h6"/><path d="m10 13-1.8 2L10 17m4-4 1.8 2L14 17"/></svg></span><span class="richitem__text"><span class="richitem__title">Entegrasyon Dokümanı</span><span class="richitem__desc">Sanal POS</span></span></a>
+          <a class="richitem" href="open-source/index.html"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9.5" cy="19" r="1.6"/><circle cx="17.5" cy="19" r="1.6"/><path d="M3 4h2.5l2.3 11.5h10.9L21 8H7"/></svg></span><span class="richitem__text"><span class="richitem__title">E-Ticaret Platformları</span><span class="richitem__desc">Open Source</span></span></a>
+          <a class="richitem" href="https://paynkolay.com.tr/hazir-altyapi-entegrasyonlari" target="_blank" rel="noopener"><span class="richitem__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7V3m6 4V3M7 7h10v5a5 5 0 0 1-10 0V7Zm5 10v4"/></svg></span><span class="richitem__text"><span class="richitem__title">Hazır Alt Yapı Entegrasyonları</span><span class="richitem__desc">Çözüm Ortaklarımız</span></span></a>
+        </div>
+      </div>
+    </nav>
+        <div class="mainbar__actions">
+          <a class="btn btn--ghost" href="https://paynkolay.nkolayislem.com.tr" target="_blank" rel="noopener">Panel Giriş</a>
+          <a class="btn btn--primary" href="https://paynkolay.com.tr" target="_blank" rel="noopener">Başvurun</a>
+        </div>
       </div>
 
       <div class="main">
@@ -213,7 +210,7 @@
 
           <div class="pagebar">
             <span class="crumb">Genel Bakış</span>
-            <button class="copybtn" type="button" aria-label="Sayfayı kopyala (yakında)">
+            <button class="copybtn" type="button" aria-label="Sayfa metnini kopyala">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="9" y="9" width="12" height="12" rx="2"/>
                 <path d="M5 15V5a2 2 0 0 1 2-2h10"/>
@@ -222,261 +219,283 @@
             </button>
           </div>
 
-          <h1>Başlangıç</h1>
-          <p class="lead">Bu doküman, Paynkolay ödeme sisteminin genel işleyişini anlatır; üye işyerlerinin ve geliştiricilerin entegrasyona en hızlı yoldan başlamasına yardımcı olur.</p>
-
-          <div class="callout callout--tip">
-            <svg class="callout__icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 18h6m-5 3h4"/>
-              <path d="M12 2a7 7 0 0 1 4.6 12.3c-.7.6-1.1 1.4-1.3 2.3l-.1.4H8.8l-.1-.4c-.2-.9-.6-1.7-1.3-2.3A7 7 0 0 1 12 2Z"/>
-            </svg>
-            <div class="callout__body">
-              <p>Canlıya geçmeden önce tüm uçlar <strong>test ortamında</strong> uçtan uca denenmelidir: entegrasyonun doğruluğu, istek/yanıt yapıları ve sistem davranışı test kartlarıyla doğrulanmalıdır.</p>
+          <section class="hero">
+            <p class="hero__eyebrow">Paynkolay Docs</p>
+            <h1>Entegrasyona hoş geldiniz</h1>
+            <p class="hero__lead">Ödeme kabul etmeye başlamak için ihtiyacınız olan her şey: test bilgileri, tahsilat metodları, API ve hazır eklentiler — tek yerde, adım adım.</p>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#yolculuk">Hemen Başlayın</a>
+              <a class="btn btn--ghost" href="#bolumler">Bölümlere Göz Atın</a>
             </div>
-          </div>
+            <span class="hero__mark" aria-hidden="true">&rsquo;</span>
+          </section>
 
-          <h2 id="erisim">Erişim Adresleri</h2>
-          <div class="access">
-            <p class="access__row"><strong>Test Ortamı:</strong> <a href="#">https://paynkolaytest.nkolayislem.com.tr/Vpos</a></p>
-            <p class="access__row"><strong>Canlı Ortam:</strong> <a href="#">https://paynkolay.nkolayislem.com.tr/Vpos</a></p>
-          </div>
-
-          <h2 id="test-bilgileri">Test Üye İşyeri Bilgileri</h2>
-          <p>İlk entegrasyon testleri için aşağıdaki test bilgilerini kullanın.</p>
-          <div class="table-wrap">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Parametre</th>
-                  <th>Açıklama</th>
-                  <th>Değer</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Üye İşyeri No</td>
-                  <td>Test üye işyeri numarası</td>
-                  <td><code>273</code></td>
-                </tr>
-                <tr>
-                  <td>sx</td>
-                  <td>İsteklerde kullanılan üye işyeri token'ı</td>
-                  <td><code>118591467|W8a1JLU8A5Cw…FbOO5A==</code></td>
-                </tr>
-                <tr>
-                  <td>Merchant Secret Key</td>
-                  <td>Hash üretiminde kullanılan gizli anahtar — yalnızca sunucu tarafında saklanır</td>
-                  <td><code>_viH5wUS4HiBmmw9uGybN</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="callout callout--info">
-            <svg class="callout__icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <div class="callout">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
               <circle cx="12" cy="12" r="9"/>
               <path d="M12 8h.01M12 11v5"/>
             </svg>
-            <div class="callout__body">
-              <p>Canlı API bilgilerinize panelden <strong>Ayarlar &gt; Entegrasyon Bilgileri</strong> adımıyla ulaşabilirsiniz:</p>
-              <div class="mock" aria-hidden="true">
-                <div class="mock__head">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="3"/>
-                    <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h.1a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/>
-                  </svg>
-                  Ayarlar
-                </div>
-                <ul class="mock__list">
-                  <li class="is-on">Entegrasyon Bilgileri</li>
-                  <li>Ödeme Yöntemleri</li>
-                  <li>Kullanıcı Yönetimi</li>
-                </ul>
-              </div>
-            </div>
+            <p>Başlamadan önce: test ortamı bilgileri ve test kartları <strong>Ön Hazırlık</strong> bölümünde yer alır. Gerçek kart bilgisi kullanmadan tüm akışları deneyebilirsiniz.</p>
           </div>
 
-          <h2 id="ornek-uc">Örnek Uç — Ortak Ödeme (Form)</h2>
-          <p>İstenen alanlar POST edilir; kart bilgileri Paynkolay ortak ödeme sayfasında alınır, PCI DSS yükü Paynkolay tarafındadır.</p>
+          <h2 id="nedir">Paynkolay Nedir?</h2>
+          <p>Paynkolay, güvenli ve hızlı online ödeme işlemleri için geliştirilmiş bir ödeme sistemidir. E-ticaret sitenize kolayca entegre edebileceğiniz çeşitli ödeme yöntemleri sunar; kart bilgilerinin güvenliği ve PCI DSS gereklilikleri Paynkolay tarafından karşılanır.</p>
+          <p>İster hazır ortak ödeme sayfasını kullanın, ister linkle tahsilat yapın, ister API ile kendi akışınızı kurun — bu doküman her yol için sizi adım adım yönlendirir.</p>
 
-          <div class="endpoint">
-            <span class="method method--post">POST</span>
-            <span class="endpoint__path"><span class="endpoint__base">https://paynkolaytest.nkolayislem.com.tr</span>/Vpos</span>
+          <h2 id="bolumler">Bölümler</h2>
+          <div class="cards">
+            <a class="card" href="on-hazirlik/index.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="8" y="2" width="8" height="4" rx="1"/>
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                  <path d="m9 14 2 2 4-4"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Ön Hazırlık
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">Test ortamı bilgileri, panel erişimi ve sistem gereksinimleri — başlamadan önce gerekenler.</span>
+            </a>
+            <a class="card" href="tahsilat-metodu/index.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="5" width="20" height="14" rx="2"/>
+                  <path d="M2 10h20"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Tahsilat Metodu
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">API (3D/NON3D), form ile ödeme, linkli ödeme, ön provizyon, düzenli ödeme, taksit ve sigorta servisleri.</span>
+            </a>
+            <a class="card" href="urunler/index.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+                  <path d="M3.3 7 12 12l8.7-5"/>
+                  <path d="M12 22V12"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Ürünler
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">Sanal POS'tan Açık Bankacılığa, Pazaryeri'nden CepnPOS'a tüm Paynkolay ürün ailesi.</span>
+            </a>
+            <a class="card" href="ek-servisler/index.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m12 2 8.5 4.5-8.5 4.5-8.5-4.5L12 2Z"/>
+                  <path d="m3.5 11.5 8.5 4.5 8.5-4.5"/>
+                  <path d="m3.5 16.5 8.5 4.5 8.5-4.5"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Ek Servisler
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">Kart saklama, kayıtlı karttan ödeme, iptal &amp; iade, ödeme sonucu ve raporlama servisleri.</span>
+            </a>
+            <a class="card" href="pazaryeri/index.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 7h16l-1 4.5a2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0L4 7Zm1 6v8h14v-8M10 21v-5h4v5"/><path d="M6 7V4h12v3"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Pazaryeri Entegrasyonu
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">Alt satıcılar, ödeme profilleri, komisyon dağıtımı ve raporlama — pazaryerleri için uçtan uca API.</span>
+            </a>
+            <a class="card" href="open-source/index.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m16 18 6-6-6-6"/>
+                  <path d="m8 6-6 6 6 6"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Open Source Entegrasyonlar
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">WooCommerce, OpenCart, Magento ve diğer hazır e-ticaret eklentileri.</span>
+            </a>
+            <a class="card" href="ek-bilgiler/index.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v10m0 0 3.5-3.5M12 13 8.5 9.5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Ek Bilgiler
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">Postman koleksiyonu, Hash Aracı, hata ve banka kodları, TLS sorun giderme kılavuzu.</span>
+            </a>
+            <a class="card" href="sss.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5Z"/>
+                  <path d="M9.6 9.5a2.4 2.4 0 0 1 4.7.8c0 1.6-2.3 2.2-2.3 3.2"/>
+                  <path d="M12 16.5h.01"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Sıkça Sorulan Sorular
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">En çok merak edilen konular ve çözüm adımları.</span>
+            </a>
           </div>
 
-          <div class="api-grid">
-            <div class="params">
-              <div class="param">
-                <div class="param__head">
-                  <span class="param__name">sx</span>
-                  <span class="param__type">string</span>
-                  <span class="param__req">zorunlu</span>
-                </div>
-                <p class="param__desc">Üye işyerine özel token. Panelinizden alınır, istemci tarafında saklanmaz.</p>
-              </div>
-              <div class="param">
-                <div class="param__head">
-                  <span class="param__name">amount</span>
-                  <span class="param__type">decimal</span>
-                  <span class="param__req">zorunlu</span>
-                </div>
-                <p class="param__desc">Ödeme tutarı. Kuruş ayıracı olarak nokta kullanılır — ör. <code>102.50</code>.</p>
-              </div>
-              <div class="param">
-                <div class="param__head">
-                  <span class="param__name">successUrl</span>
-                  <span class="param__type">string</span>
-                  <span class="param__req">zorunlu</span>
-                </div>
-                <p class="param__desc">Başarılı işlem sonucunun POST edileceği adres. Geçerli SSL sertifikası zorunludur.</p>
-              </div>
-              <div class="param">
-                <div class="param__head">
-                  <span class="param__name">failUrl</span>
-                  <span class="param__type">string</span>
-                  <span class="param__req">zorunlu</span>
-                </div>
-                <p class="param__desc">Başarısız işlem sonucunun POST edileceği adres.</p>
-              </div>
-              <div class="param">
-                <div class="param__head">
-                  <span class="param__name">rnd</span>
-                  <span class="param__type">string</span>
-                  <span class="param__req">zorunlu</span>
-                </div>
-                <p class="param__desc">Her istekte üretilen tekil değer; hash'e dahildir, tekrar saldırılarını önler.</p>
-              </div>
-              <div class="param">
-                <div class="param__head">
-                  <span class="param__name">hashData</span>
-                  <span class="param__type">string</span>
-                  <span class="param__req">zorunlu</span>
-                </div>
-                <p class="param__desc">Alanların <code>|</code> ile birleştirilip SHA-512 + Base64 ile imzalanmış hâli. Sunucu tarafında üretilir.</p>
-              </div>
-              <div class="param">
-                <div class="param__head">
-                  <span class="param__name">agentCode</span>
-                  <span class="param__type">string</span>
-                  <span class="param__req param__req--optional">isteğe bağlı</span>
-                </div>
-                <p class="param__desc">Alt temsilcilik üzerinden işlem yapılıyorsa temsilci kodu.</p>
-              </div>
-            </div>
+          <h2 id="yolculuk">Entegrasyon Yolculuğu</h2>
+          <ol class="journey">
+            <li class="journey__step">
+              <span class="journey__dot" aria-hidden="true"></span>
+              <span>
+                <span class="journey__title">Başvuru</span>
+                <span class="journey__tip">Üye işyeri hesabınız açılır, panel erişiminiz gelir.</span>
+              </span>
+            </li>
+            <li class="journey__step">
+              <span class="journey__dot" aria-hidden="true"></span>
+              <span>
+                <span class="journey__title">Test Bilgileri</span>
+                <span class="journey__tip">Ön Hazırlık'tan test token'larınızı alın.</span>
+              </span>
+            </li>
+            <li class="journey__step">
+              <span class="journey__dot" aria-hidden="true"></span>
+              <span>
+                <span class="journey__title">Yöntem Seçimi</span>
+                <span class="journey__tip">Form, link, API veya hazır eklenti — size uygun olanı seçin.</span>
+              </span>
+            </li>
+            <li class="journey__step">
+              <span class="journey__dot" aria-hidden="true"></span>
+              <span>
+                <span class="journey__title">Test İşlemi</span>
+                <span class="journey__tip">Test kartlarıyla uçtan uca ödeme deneyin.</span>
+              </span>
+            </li>
+            <li class="journey__step">
+              <span class="journey__dot" aria-hidden="true"></span>
+              <span>
+                <span class="journey__title">Canlıya Geçiş</span>
+                <span class="journey__tip">Canlı bilgilerinizle yayına çıkın.</span>
+              </span>
+            </li>
+          </ol>
 
-            <div class="code-stack">
-              <div class="codebox">
-                <div class="codebox__bar">
-                  <span class="codebox__title">Request</span>
-                  <div class="codebox__tabs" role="tablist">
-                    <button class="codebox__tab is-active" type="button" data-tab="shell">Shell</button>
-                    <button class="codebox__tab" type="button" data-tab="js">JavaScript</button>
-                    <button class="codebox__tab" type="button" data-tab="php">PHP</button>
-                  </div>
-                  <button class="codebox__copy" type="button">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                      <rect x="9" y="9" width="12" height="12" rx="2"/>
-                      <path d="M5 15V5a2 2 0 0 1 2-2h10"/>
-                    </svg>
-                    <span>Kopyala</span>
-                  </button>
-                </div>
-                <pre class="codebox__pane is-active" data-pane="shell"><code><span class="t-c"># Hash: alanlar | ile birleşir, SHA-512 + Base64</span>
-<span class="t-v">hashstr</span>=<span class="t-s">"${sx}|${amount}|${successUrl}|${failUrl}|${rnd}${secretKey}"</span>
-<span class="t-v">hashData</span>=$(printf <span class="t-s">"%s"</span> <span class="t-s">"$hashstr"</span> | openssl dgst -sha512 -binary | base64)
+          <div class="callout callout--warn">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/>
+              <path d="M12 9v4m0 4h.01"/>
+            </svg>
+            <p><strong>Canlıya geçerken:</strong> Size özel canlı bilgilerinize (sx, Merchant Secret Key) panelinizden ulaşırsınız. Panelde göremiyorsanız nedeni genellikle üye işyerinizde <strong>API yetkisinin tanımlı olmaması</strong> ya da <strong>ana kullanıcı olmamanızdır</strong> — <a href="mailto:kolayposdestek@nkolay.com.tr">kolayposdestek@nkolay.com.tr</a> adresine yazmanız yeterli.</p>
+          </div>
 
-curl -X <span class="t-n">POST</span> <span class="t-s">"https://paynkolaytest.nkolayislem.com.tr/Vpos"</span> \
-  -d <span class="t-s">"sx=${sx}"</span> \
-  -d <span class="t-s">"amount=102.50"</span> \
-  -d <span class="t-s">"successUrl=https://magaza.com/odeme/basarili"</span> \
-  -d <span class="t-s">"failUrl=https://magaza.com/odeme/hata"</span> \
-  -d <span class="t-s">"rnd=${rnd}"</span> \
-  -d <span class="t-s">"hashData=${hashData}"</span></code></pre>
-                <pre class="codebox__pane" data-pane="js"><code><span class="t-c">// Hash sunucu tarafında üretilir (Node.js)</span>
-<span class="t-v">const</span> hashData = crypto
-  .createHash(<span class="t-s">"sha512"</span>)
-  .update(<span class="t-s">`${sx}|${amount}|${successUrl}|${failUrl}|${rnd}${secretKey}`</span>, <span class="t-s">"utf8"</span>)
-  .digest(<span class="t-s">"base64"</span>);
-
-<span class="t-v">const</span> body = <span class="t-v">new</span> URLSearchParams({
-  <span class="t-p">sx</span>, <span class="t-p">amount</span>: <span class="t-s">"102.50"</span>, <span class="t-p">successUrl</span>, <span class="t-p">failUrl</span>, <span class="t-p">rnd</span>, <span class="t-p">hashData</span>
-});
-
-<span class="t-v">await</span> fetch(<span class="t-s">"https://paynkolaytest.nkolayislem.com.tr/Vpos"</span>, {
-  <span class="t-p">method</span>: <span class="t-s">"POST"</span>, <span class="t-p">body</span>
-});</code></pre>
-                <pre class="codebox__pane" data-pane="php"><code><span class="t-c">// Hash sunucu tarafında üretilir</span>
-<span class="t-v">$hashstr</span>  = <span class="t-v">$sx</span>.<span class="t-s">"|"</span>.<span class="t-v">$amount</span>.<span class="t-s">"|"</span>.<span class="t-v">$successUrl</span>.<span class="t-s">"|"</span>.<span class="t-v">$failUrl</span>.<span class="t-s">"|"</span>.<span class="t-v">$rnd</span>.<span class="t-v">$secretKey</span>;
-<span class="t-v">$hashData</span> = base64_encode(hash(<span class="t-s">"sha512"</span>, <span class="t-v">$hashstr</span>, <span class="t-n">true</span>));
-
-<span class="t-v">$ch</span> = curl_init(<span class="t-s">"https://paynkolaytest.nkolayislem.com.tr/Vpos"</span>);
-curl_setopt(<span class="t-v">$ch</span>, CURLOPT_POST, <span class="t-n">true</span>);
-curl_setopt(<span class="t-v">$ch</span>, CURLOPT_POSTFIELDS, [
-  <span class="t-s">"sx"</span> =&gt; <span class="t-v">$sx</span>, <span class="t-s">"amount"</span> =&gt; <span class="t-s">"102.50"</span>,
-  <span class="t-s">"successUrl"</span> =&gt; <span class="t-v">$successUrl</span>, <span class="t-s">"failUrl"</span> =&gt; <span class="t-v">$failUrl</span>,
-  <span class="t-s">"rnd"</span> =&gt; <span class="t-v">$rnd</span>, <span class="t-s">"hashData"</span> =&gt; <span class="t-v">$hashData</span>
-]);
-curl_exec(<span class="t-v">$ch</span>);</code></pre>
-              </div>
-
-              <div class="codebox">
-                <div class="codebox__bar">
-                  <span class="codebox__title">Response</span>
-                  <span class="codebox__status">200 · Başarılı</span>
-                </div>
-                <pre class="codebox__pane is-active" data-pane="json"><code>{
-  <span class="t-p">"RESPONSE_CODE"</span>: <span class="t-n">2</span>,
-  <span class="t-p">"RESPONSE_DATA"</span>: <span class="t-s">"İşlem başarıyla tamamlandı"</span>,
-  <span class="t-p">"AUTH_CODE"</span>: <span class="t-s">"P57624"</span>,
-  <span class="t-p">"REFERENCE_CODE"</span>: <span class="t-s">"100034280"</span>,
-  <span class="t-p">"USE_3D"</span>: <span class="t-n">true</span>,
-  <span class="t-p">"RND"</span>: <span class="t-s">"20260902154210"</span>,
-  <span class="t-p">"HASHDATA"</span>: <span class="t-s">"vLXSb0Y3Swm4tMr…"</span>
-}</code></pre>
-              </div>
-            </div>
+          <h2 id="destek">Yardım &amp; Destek</h2>
+          <div class="cards">
+            <a class="card" href="sss.html">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5Z"/>
+                  <path d="M9.6 9.5a2.4 2.4 0 0 1 4.7.8c0 1.6-2.3 2.2-2.3 3.2"/>
+                  <path d="M12 16.5h.01"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Sıkça Sorulan Sorular
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">TLS bağlantı sorunları, hash hataları ve en çok merak edilen konular.</span>
+            </a>
+            <a class="card" href="mailto:kolayposdestek@nkolay.com.tr">
+              <span class="card__icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-10 6L2 7"/>
+                </svg>
+              </span>
+              <span class="card__title">
+                Teknik Destek
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+                </svg>
+              </span>
+              <span class="card__desc">Takıldığınız her adımda ekibimize yazın: kolayposdestek@nkolay.com.tr</span>
+            </a>
           </div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
-            <a class="pager__card pager__card--next" href="#">
+            <a class="pager__card pager__card--next" href="on-hazirlik/index.html">
               <span class="pager__meta">
                 <span class="pager__label">Sonraki</span>
-                <span class="pager__title">Test Kartları</span>
+                <span class="pager__title">Ön Hazırlık</span>
               </span>
-              <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14m-6-6 6 6-6 6"/>
+              <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m9 6 6 6-6 6"/>
               </svg>
             </a>
           </nav>
 
+          <div class="feedback" data-feedback>
+            <span>Bu sayfa yardımcı oldu mu?</span>
+            <button class="feedback__btn" type="button" data-vote="up" aria-label="Evet, yardımcı oldu">👍</button>
+            <button class="feedback__btn" type="button" data-vote="down" aria-label="Hayır, olmadı">👎</button>
+            <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
+            <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
+          </div>
           <p class="updated">Son güncelleme: 2 Eylül 2026</p>
-
-          <footer class="footer">
-            <div class="footer__tools">
-              <a href="#">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/>
-                  <path d="M14 2v6h6"/>
-                </svg>
-                LLMs.txt
-              </a>
-              <a href="#">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
-                </svg>
-                Postman Koleksiyonu
-              </a>
-              <a href="#">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                  <path d="m7 10 5 5 5-5M12 15V3"/>
-                </svg>
-                Dışa Aktar
-              </a>
-            </div>
-            <span>© 2026 N Kolay Ödeme ve Elektronik Para Kuruluşu A.Ş.</span>
-          </footer>
         </article>
+
+        <footer class="footer">
+          <div class="footer__tools">
+            <a href="assets/paynkolay.postman_collection.json" download="paynkolay.postman_collection.json">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+              </svg>
+              Postman Koleksiyonu
+            </a>
+            <a href="ek-bilgiler/hash-araci.html">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>
+              </svg>
+              Hash Aracı
+            </a>
+            <a href="on-hazirlik/test-kartlari.html">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="5" width="20" height="14" rx="2"/>
+                <path d="M2 10h20"/>
+              </svg>
+              Test Kartları
+            </a>
+          </div>
+          <span>© 2026 N Kolay Ödeme ve Elektronik Para Kuruluşu A.Ş. · <a href="mailto:kolayposdestek@nkolay.com.tr">kolayposdestek@nkolay.com.tr</a></span>
+        </footer>
       </main>
 
       <aside class="toc scroll-slim" aria-label="Bu sayfada">
@@ -487,9 +506,10 @@ curl_exec(<span class="t-v">$ch</span>);</code></pre>
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#erisim">Erişim Adresleri</a></li>
-          <li><a href="#test-bilgileri">Test Üye İşyeri Bilgileri</a></li>
-          <li><a href="#ornek-uc">Örnek Uç — Ortak Ödeme</a></li>
+          <li><a class="is-active" href="#nedir">Paynkolay Nedir?</a></li>
+          <li><a href="#bolumler">Bölümler</a></li>
+          <li><a href="#yolculuk">Entegrasyon Yolculuğu</a></li>
+          <li><a href="#destek">Yardım &amp; Destek</a></li>
         </ul>
       </aside>
       </div>
@@ -501,6 +521,9 @@ curl_exec(<span class="t-v">$ch</span>);</code></pre>
 
   <script src="assets/js/sidebar.js"></script>
   <script src="assets/js/dropdown.js"></script>
-  <script src="assets/js/codetabs.js"></script>
+  <script src="assets/js/tocspy.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/feedback.js"></script>
+  <script src="assets/js/pagecopy.js"></script>
 </body>
 </html>

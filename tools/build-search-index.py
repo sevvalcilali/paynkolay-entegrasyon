@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""v1 arama indeksini üretir: v1/assets/search-index.json
+"""Arama indeksini üretir: <versiyon>/assets/search-index.json
 
 Her sayfa için bir kayıt (başlık + lead) ve her h2 bölümü için bir alt kayıt yazar.
-Yeni sayfa eklendiğinde bu script yeniden çalıştırılır:  python3 tools/build-search-index.py
+Yeni sayfa eklendiğinde yeniden çalıştırılır:  python3 tools/build-search-index.py [v1|v2]
 """
 import json
 import re
+import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent / "v1"
+VERSION = sys.argv[1] if len(sys.argv) > 1 else "v1"
+ROOT = Path(__file__).resolve().parent.parent / VERSION
 
 SECTIONS = {
-    "v1": "Başlangıç",
+    VERSION: "Başlangıç",
     "on-hazirlik": "Ön Hazırlık",
     "tahsilat-metodu": "Tahsilat Metodu",
     "urunler": "Ürünler",
@@ -30,7 +32,7 @@ def text_of(html):
 records = []
 for page in sorted(ROOT.rglob("*.html")):
     rel = page.relative_to(ROOT).as_posix()
-    folder = page.parent.name if page.parent != ROOT else "v1"
+    folder = page.parent.name if page.parent != ROOT else VERSION
     section = SECTIONS.get(folder, folder)
 
     s = page.read_text(encoding="utf-8")

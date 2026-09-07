@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Paynkolay entegrasyon dokümantasyonu — gravür estetiği kavram çalışması (v8 Gravür).">
+  <meta name="theme-color" content="#0C34E7">
+  <title>Başlangıç — Paynkolay Docs (v8 Gravür)</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+  <a class="skiplink" href="#icerik">İçeriğe atla</a>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img class="brand__logo" src="assets/img/paynkolay-logo.svg" alt="Paynkolay">
+      <span class="brand__docs">DOCS</span>
+    </a>
+    <nav class="topnav" aria-label="Sayfa bölümleri">
+      <a href="#hat">Yolculuk</a>
+      <a href="#uclar">Uçlar</a>
+      <a href="#istek">Örnek İstek</a>
+      <a href="#foyler">Bölümler</a>
+      <a href="#sss">SSS</a>
+    </nav>
+    <span class="topbar__spacer"></span>
+    <a class="btn btn--ghost" href="https://paynkolay.nkolayislem.com.tr" target="_blank" rel="noopener">Panel Giriş</a>
+    <a class="btn btn--blue" href="https://paynkolay.com.tr" target="_blank" rel="noopener">Başvurun</a>
+  </header>
+
+  <main class="wrap" id="icerik">
+
+    <section class="plate">
+      <span class="plate__tip plate__tip--tl" aria-hidden="true"></span>
+      <span class="plate__tip plate__tip--tr" aria-hidden="true"></span>
+      <span class="plate__tip plate__tip--bl" aria-hidden="true"></span>
+      <span class="plate__tip plate__tip--br" aria-hidden="true"></span>
+      <div class="hero">
+        <div>
+          <p class="hero__eyebrow">PAYNKOLAY DOCS · ENTEGRASYON</p>
+          <h1>Entegrasyona hoş geldiniz</h1>
+          <p class="hero__lead">Ödeme kabul etmeye başlamak için ihtiyacınız olan her şey: test bilgileri, tahsilat metodları, API ve hazır eklentiler — tek yerde, adım adım.</p>
+          <div class="hero__actions">
+            <a class="btn btn--blue" href="#hat">Hemen Başlayın</a>
+            <a class="btn btn--ghost" href="#istek">Örnek İsteğe Bakın</a>
+          </div>
+          <p class="hero__note">DESTEK: kolayposdestek@nkolay.com.tr — GENELLİKLE AYNI GÜN DÖNÜŞ</p>
+        </div>
+        <svg class="hero__art" viewBox="0 0 400 230" fill="none" role="img" aria-label="Gravür üslubunda ödeme kartı çizimi">
+          <rect x="30" y="30" width="340" height="180" rx="16" stroke="#0C34E7" stroke-width="1.6"/>
+          <rect x="38" y="38" width="324" height="164" rx="11" stroke="rgba(15,30,77,0.25)" stroke-width="0.8"/>
+          <path d="M30 78c50 12 100-20 170-8s120 26 170 12" stroke="rgba(12,52,231,0.3)" stroke-width="0.8"/>
+          <path d="M30 176c50-12 100 20 170 8s120-26 170-12" stroke="rgba(12,52,231,0.24)" stroke-width="0.8"/>
+          <rect x="58" y="94" width="52" height="38" rx="7" stroke="#0C34E7" stroke-width="1.4"/>
+          <path d="M58 107h52M58 119h52M75 94v38M93 94v38" stroke="rgba(12,52,231,0.6)" stroke-width="0.8"/>
+          <path d="M330 96a26 26 0 0 1 0 36M320 104a15 15 0 0 1 0 20M311 110a6 6 0 0 1 0 8" stroke="#0C34E7" stroke-width="1.6" stroke-linecap="round"/>
+          <text x="58" y="164" font-family="ui-monospace, Menlo, monospace" font-size="17" letter-spacing="3" fill="#0F1E4D">5200 19•• •••• 1495</text>
+          <text x="58" y="190" font-family="ui-monospace, Menlo, monospace" font-size="9.5" letter-spacing="1.4" fill="#5A6784">SKT 2030/01 · CVC 462 · TEST KARTI</text>
+          <text x="228" y="68" font-family="Georgia, serif" font-size="18" fill="#0F1E4D">PAY'NKOLAY</text>
+          <text x="345" y="190" font-family="Georgia, serif" font-size="30" font-weight="700" fill="#0C34E7">&rsquo;</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="section" id="hat">
+      <div class="rule"><span class="rule__badge">ENTEGRASYON YOLCULUĞU</span></div>
+      <h2>Beş adımda canlıya</h2>
+      <p class="section__sub">Hangi tahsilat metodunu seçerseniz seçin yol aynıdır — beş durak, tek hedef: canlıda ödeme.</p>
+      <ol class="mints">
+        <li><span class="mints__seal" aria-hidden="true"></span><span class="mints__title">Başvuru</span><span class="mints__desc">Üye işyeri hesabınız açılır, panel erişiminiz gelir.</span></li>
+        <li><span class="mints__seal" aria-hidden="true"></span><span class="mints__title">Test Bilgileri</span><span class="mints__desc">sx ve Secret Key değerlerinizi panelden alın.</span></li>
+        <li><span class="mints__seal" aria-hidden="true"></span><span class="mints__title">Yöntem Seçimi</span><span class="mints__desc">Form, link, API veya hazır eklenti.</span></li>
+        <li><span class="mints__seal" aria-hidden="true"></span><span class="mints__title">Test İşlemi</span><span class="mints__desc">Test kartlarıyla uçtan uca ödeme deneyin.</span></li>
+        <li><span class="mints__seal" aria-hidden="true"></span><span class="mints__title">Canlıya Geçiş</span><span class="mints__desc">Canlı bilgilerinizle yayına çıkın.</span></li>
+      </ol>
+    </section>
+
+    <section class="section" id="uclar">
+      <div class="rule"><span class="rule__badge">ERİŞİM UÇLARI</span></div>
+      <h2>Test ve canlı ortam</h2>
+      <p class="section__sub">Tüm istekler <code>application/x-www-form-urlencoded</code> gövdeyle POST edilir; canlıya geçerken yalnızca taban adres değişir.</p>
+      <div class="ledger">
+        <div class="ledger__row">
+          <span class="ledger__tag">TEST</span>
+          <code>https://paynkolaytest.nkolayislem.com.tr/Vpos</code>
+          <button class="copychip" type="button" data-copy="https://paynkolaytest.nkolayislem.com.tr/Vpos"><span>Kopyala</span></button>
+        </div>
+        <div class="ledger__row">
+          <span class="ledger__tag ledger__tag--live">CANLI</span>
+          <code>https://paynkolay.nkolayislem.com.tr/Vpos</code>
+          <button class="copychip" type="button" data-copy="https://paynkolay.nkolayislem.com.tr/Vpos"><span>Kopyala</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="istek">
+      <div class="rule"><span class="rule__badge">ÖRNEK İSTEK</span></div>
+      <h2>Ortak Ödeme (Form) — POST /Vpos</h2>
+      <p class="section__sub">Kart bilgileri Paynkolay ortak ödeme sayfasında alınır; PCI DSS yükü Paynkolay tarafındadır.</p>
+      <div class="table-wrap">
+        <table class="ptable">
+          <thead>
+            <tr><th>PARAMETRE</th><th>TİP</th><th>ZORUNLU</th><th>AÇIKLAMA</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>sx</td><td>string</td><td><span class="req">EVET</span></td><td>Üye işyerine özel token; panelinizden alınır, istemcide saklanmaz</td></tr>
+            <tr><td>amount</td><td>decimal</td><td><span class="req">EVET</span></td><td>Ödeme tutarı — kuruş ayıracı nokta, ör. <code>102.50</code></td></tr>
+            <tr><td>successUrl</td><td>string</td><td><span class="req">EVET</span></td><td>Başarılı sonucun POST edileceği adres (geçerli SSL zorunlu)</td></tr>
+            <tr><td>failUrl</td><td>string</td><td><span class="req">EVET</span></td><td>Başarısız sonucun POST edileceği adres</td></tr>
+            <tr><td>rnd</td><td>string</td><td><span class="req">EVET</span></td><td>Her istekte üretilen tekil değer; hash'e dahildir</td></tr>
+            <tr><td>hashData</td><td>string</td><td><span class="req">EVET</span></td><td>Alanların <code>|</code> ile birleşip SHA-512 + Base64 ile imzalanmış hâli</td></tr>
+            <tr><td>agentCode</td><td>string</td><td><span class="req req--opt">HAYIR</span></td><td>Alt temsilcilik üzerinden işlemde temsilci kodu</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="codeplate">
+        <div class="codeplate__bar">
+          <span class="codeplate__title">İSTEK · FORM-DATA</span>
+          <button class="copychip" type="button" data-copy="sx={sx}&amount=102.50&successUrl=https://magaza.com/odeme/basarili&failUrl=https://magaza.com/odeme/hata&rnd={rnd}&hashData={hashData}"><span>Kopyala</span></button>
+        </div>
+        <pre class="codeplate__code"><code><span class="k-c"># hash: alanlar | ile birleşir, SHA-512 + Base64 (sunucu tarafında)</span>
+<span class="k-k">sx</span>=<span class="k-s">118591467|W8a1JLU8A5Cw…FbOO5A==</span>
+<span class="k-k">amount</span>=<span class="k-n">102.50</span>
+<span class="k-k">successUrl</span>=<span class="k-s">https://magaza.com/odeme/basarili</span>
+<span class="k-k">failUrl</span>=<span class="k-s">https://magaza.com/odeme/hata</span>
+<span class="k-k">rnd</span>=<span class="k-s">07-09-2026 14:25:11</span>
+<span class="k-k">hashData</span>=<span class="k-s">vLXSb0Y3Swm4tMr…</span></code></pre>
+      </div>
+
+      <div class="codeplate">
+        <div class="codeplate__bar">
+          <span class="codeplate__title">YANIT · 200</span>
+          <button class="copychip" type="button" data-copy='{"RESPONSE_CODE":2,"RESPONSE_DATA":"İşlem başarıyla tamamlandı","AUTH_CODE":"P57624","REFERENCE_CODE":"100034280","USE_3D":true}'><span>Kopyala</span></button>
+        </div>
+        <pre class="codeplate__code"><code>{
+  <span class="k-k">"RESPONSE_CODE"</span>: <span class="k-n">2</span>,
+  <span class="k-k">"RESPONSE_DATA"</span>: <span class="k-s">"İşlem başarıyla tamamlandı"</span>,
+  <span class="k-k">"AUTH_CODE"</span>: <span class="k-s">"P57624"</span>,
+  <span class="k-k">"REFERENCE_CODE"</span>: <span class="k-s">"100034280"</span>,
+  <span class="k-k">"USE_3D"</span>: <span class="k-n">true</span>,
+  <span class="k-k">"HASHDATA"</span>: <span class="k-s">"vLXSb0Y3Swm4tMr…"</span>
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="section" id="foyler">
+      <div class="rule"><span class="rule__badge">DOKÜMAN BÖLÜMLERİ</span></div>
+      <h2>Sekiz bölümde tüm sistem</h2>
+      <p class="section__sub">Tam sürümde her bölüm kendi alt sayfalarına açılır; bu kavram sayfasında yerleşim gösterilir.</p>
+      <div class="folios">
+        <a class="folio" href="#hat"><span class="folio__no">BÖLÜM 01</span><span class="folio__title">Ön Hazırlık</span><span class="folio__desc">Test ortamı, panel erişimi, kontrol listesi, test kartları.</span></a>
+        <a class="folio" href="#istek"><span class="folio__no">BÖLÜM 02</span><span class="folio__title">Tahsilat Metodu</span><span class="folio__desc">API (3D · NON3D), form, linkli ödeme, düzenli ödeme.</span></a>
+        <a class="folio" href="#foyler"><span class="folio__no">BÖLÜM 03</span><span class="folio__title">Ürünler</span><span class="folio__desc">Sanal POS'tan Açık Bankacılığa 12 ürünlük aile.</span></a>
+        <a class="folio" href="#foyler"><span class="folio__no">BÖLÜM 04</span><span class="folio__title">Ek Servisler</span><span class="folio__desc">Kart saklama, iptal &amp; iade, raporlama.</span></a>
+        <a class="folio" href="#foyler"><span class="folio__no">BÖLÜM 05</span><span class="folio__title">Pazaryeri</span><span class="folio__desc">Alt satıcılar, ödeme profilleri, komisyon dağıtımı.</span></a>
+        <a class="folio" href="#foyler"><span class="folio__no">BÖLÜM 06</span><span class="folio__title">Open Source</span><span class="folio__desc">WooCommerce, OpenCart, Magento ve diğer eklentiler.</span></a>
+        <a class="folio" href="#uclar"><span class="folio__no">BÖLÜM 07</span><span class="folio__title">Ek Bilgiler</span><span class="folio__desc">Postman, Hash Aracı, hata ve banka kodları.</span></a>
+        <a class="folio" href="#sss"><span class="folio__no">BÖLÜM 08</span><span class="folio__title">SSS</span><span class="folio__desc">En çok merak edilen konular ve çözüm adımları.</span></a>
+      </div>
+    </section>
+
+    <section class="section" id="sss">
+      <div class="rule"><span class="rule__badge">SSS</span></div>
+      <h2>Sıkça sorulan sorular</h2>
+      <p class="section__sub">Aradığınızı bulamazsanız destek ekibi bir e-posta uzağınızda.</p>
+      <details class="faq">
+        <summary>Canlı sx ve Secret Key değerlerimi nereden alırım? <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__body"><p>Panelde <strong>Ayarlar → Entegrasyon Bilgileri</strong> adımından. Göremiyorsanız üye işyerinizde API yetkisi tanımlı olmayabilir.</p></div>
+      </details>
+      <details class="faq">
+        <summary>Hash uyuşmuyor, ne yapmalıyım? <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__body"><p>Alan sırasını ve boş <code>customerKey</code> borusunu kontrol edin; imzanızı Hash Aracı çıktısıyla karşılaştırın.</p></div>
+      </details>
+      <details class="faq">
+        <summary>Web sitem yok — tahsilat yapabilir miyim? <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="faq__body"><p>Evet — Linkli Ödeme ile panelden link oluşturup SMS/e-posta ile gönderirsiniz; teknik bilgi gerektirmez.</p></div>
+      </details>
+    </section>
+
+    <section class="section">
+      <div class="plate band">
+        <span class="plate__tip plate__tip--tl" aria-hidden="true"></span>
+        <span class="plate__tip plate__tip--tr" aria-hidden="true"></span>
+        <span class="plate__tip plate__tip--bl" aria-hidden="true"></span>
+        <span class="plate__tip plate__tip--br" aria-hidden="true"></span>
+        <div>
+          <h2>Takıldığınız adım mı var?</h2>
+          <p>Entegrasyon ekibimiz her adımda yanınızda — genellikle aynı gün dönüş.</p>
+        </div>
+        <a class="btn btn--blue" href="mailto:kolayposdestek@nkolay.com.tr">kolayposdestek@nkolay.com.tr</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 N Kolay Ödeme ve Elektronik Para Kuruluşu A.Ş.</span>
+      <a href="mailto:kolayposdestek@nkolay.com.tr">kolayposdestek@nkolay.com.tr</a>
+    </footer>
+  </main>
+
+  <a class="version-pill" href="../index.html" title="Tüm tasarım versiyonları">v8 · Versiyonlar</a>
+
+  <script src="assets/js/copy.js"></script>
+</body>
+</html>

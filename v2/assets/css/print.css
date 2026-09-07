@@ -1,0 +1,68 @@
+/* ============================================================
+   PRINT — sunum/PDF çıktısı: gezinme gizlenir, içerik tam genişlik
+   ============================================================ */
+@page {
+  margin: 1.6cm;
+}
+
+body::before,
+.fab-menu,
+.mainbar,
+.sidebar,
+.overlay,
+.toc,
+.pagebar,
+.version-pill,
+.pager,
+.feedback,
+.copybtn,
+.search {
+  display: none !important;
+}
+
+body {
+  background: #ffffff;
+  color: #111111;
+}
+
+.app,
+.main {
+  display: block;
+}
+
+.main {
+  padding: 0;
+}
+
+.article {
+  max-width: none;
+}
+
+a {
+  color: #111111;
+  text-decoration: none;
+}
+
+/* Kod panelleri: mürekkep dostu açık zemin */
+.codebox__bar {
+  background: #eeeeee;
+  color: #111111;
+}
+
+.codebox__title {
+  color: #111111;
+}
+
+.codebox__pane,
+.codebox__pane * {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+
+.codebox,
+.faq,
+.seqdiag,
+.card,
+.env {
+  break-inside: avoid;
+}

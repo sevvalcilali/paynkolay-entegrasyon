@@ -2,15 +2,43 @@
 (function () {
   "use strict";
 
-  /* --- Accordion --- */
+  /* --- Accordion ---
+     İki başlık biçimi desteklenir: düz buton (.nav__group-btn) ve
+     sayfaya götüren etiket + ayrı chevron (.nav__group-toggle). */
   var groups = document.querySelectorAll(".nav__group");
 
   groups.forEach(function (group) {
-    var btn = group.querySelector(".nav__group-btn");
+    var btn = group.querySelector(".nav__group-btn, .nav__group-toggle");
+    if (!btn) {
+      return;
+    }
+
+    /* Mouse tıklaması odak halkası bırakmasın (klavye odağı etkilenmez) */
+    btn.addEventListener("mousedown", function (event) {
+      event.preventDefault();
+    });
 
     btn.addEventListener("click", function () {
       var isOpen = group.classList.toggle("is-open");
       btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+
+  /* Grup etiketi: alt başlıklar açıkken tıklanırsa gezinmek yerine kapatır;
+     kapalıyken normal davranır (sayfaya gider, sayfa grubu açık getirir). */
+  var groupLinks = document.querySelectorAll(".nav__group-link");
+
+  groupLinks.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      var group = link.closest(".nav__group");
+      if (group.classList.contains("is-open")) {
+        event.preventDefault();
+        group.classList.remove("is-open");
+        var toggle = group.querySelector(".nav__group-toggle");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", "false");
+        }
+      }
     });
   });
 

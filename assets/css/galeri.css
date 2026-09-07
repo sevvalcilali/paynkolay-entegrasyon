@@ -177,6 +177,15 @@ a.vcard:hover {
   background: #2E2C2A;
 }
 
+.sw-buz {
+  background: #E9EEFD;
+}
+
+.sw-gece {
+  background: #081026;
+}
+
+
 .vcard h2 {
   font-size: 22px;
   font-weight: 700;

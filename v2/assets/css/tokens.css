@@ -108,4 +108,14 @@
   /* --- Hareket --- */
   --ease: cubic-bezier(0.25, 0.6, 0.3, 1);
   --dur: 200ms;
+
+  /* --- İçerik göçü takma adları ---
+     v1'den taşınan içerik bileşenleri ve satır içi SVG diyagramlar bu
+     isimleri kullanır; değerleri Aurora paletine bağlanmıştır. */
+  --blue-200: #C6D2FA;
+  --bg-soft: var(--blue-50);
+  --border: var(--line);
+  --border-strong: var(--line-strong);
+  --border-accent: #CFD9FB;
+  --rail-accent: #8FA4FF;
 }
