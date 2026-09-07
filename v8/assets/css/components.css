@@ -2344,7 +2344,7 @@ a.chip:hover {
   top: 0;
   left: 0;
   height: 100dvh;
-  width: min(310px, 86vw);
+  width: var(--drawer-w);
   transform: translateX(-100%);
   transition: transform var(--dur) var(--ease);
   z-index: 70;
@@ -2563,4 +2563,16 @@ body.drawer-locked {
 /* Koyu temada karartma biraz daha derin */
 :root[data-theme="dark"] .overlay {
   background: rgba(0, 0, 0, 0.6);
+}
+
+/* --- Drawer açıkken arka plan sağa kayar (push) --- */
+.topbar,
+.content {
+  transition: transform var(--dur) var(--ease);
+  will-change: transform;
+}
+
+body.drawer-locked .topbar,
+body.drawer-locked .content {
+  transform: translateX(var(--drawer-w));
 }

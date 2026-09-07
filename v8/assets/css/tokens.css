@@ -90,6 +90,7 @@
 
   /* --- Yerleşim --- */
   --content-max: 1080px;
+  --drawer-w: min(310px, 86vw);
 
   /* --- Hareket --- */
   --ease: cubic-bezier(0.25, 0.6, 0.3, 1);
