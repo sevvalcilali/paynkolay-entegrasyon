@@ -49,3 +49,49 @@
     padding: var(--space-8) var(--space-4) var(--space-12);
   }
 }
+
+/* --- Alt sayfalar: ortalanmış içerik + sağ "Bu Sayfada" --- */
+.content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: var(--space-12);
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6) var(--space-16);
+  align-items: start;
+}
+
+.article {
+  max-width: 880px;
+  width: 100%;
+  min-width: 0;
+  margin-inline: auto;
+}
+
+.toc {
+  position: sticky;
+  top: calc(64px + var(--space-8));
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+}
+
+.scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-bright) transparent;
+}
+
+@media (max-width: 1359px) {
+  .content {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .toc {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .content {
+    padding: var(--space-8) var(--space-4) var(--space-12);
+  }
+}
