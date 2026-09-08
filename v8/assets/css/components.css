@@ -20,17 +20,6 @@
   width: auto;
 }
 
-.brand__docs {
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--brand);
-  border: 1px solid var(--line-bright);
-  border-radius: var(--radius-sm);
-  padding: 2px 9px;
-}
-
 .topbar__spacer {
   flex: 1;
 }
