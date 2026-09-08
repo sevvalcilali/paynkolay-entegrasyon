@@ -221,11 +221,17 @@
 /* --- Yolculuk: altın mühür durakları --- */
 .mints {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--space-4);
   list-style: none;
   padding: 0;
   counter-reset: seal;
+}
+
+@media (max-width: 1200px) {
+  .mints {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 900px) {
