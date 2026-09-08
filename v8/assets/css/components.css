@@ -161,6 +161,11 @@
 .hero__art {
   width: 100%;
   height: auto;
+  filter: drop-shadow(0 14px 28px rgba(15, 30, 77, 0.12));
+}
+
+.hero__art .cardface {
+  fill: #FFFFFF;
 }
 
 /* --- Altın ayraç başlık --- */
@@ -2271,15 +2276,23 @@ a.chip:hover {
   background: rgba(143, 164, 255, 0.25);
 }
 
-/* Kart illüstrasyonu: gravür çizgileri koyuda periwinkle */
-:root[data-theme="dark"] .hero__art [stroke="#0C34E7"] { stroke: #8FA4FF; }
-:root[data-theme="dark"] .hero__art [fill="#0C34E7"] { fill: #8FA4FF; }
-:root[data-theme="dark"] .hero__art [fill="#0F1E4D"] { fill: #F4F6FF; }
-:root[data-theme="dark"] .hero__art [fill="#5A6784"] { fill: #9AA8D8; }
-:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.3)"] { stroke: rgba(143, 164, 255, 0.35); }
-:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.24)"] { stroke: rgba(143, 164, 255, 0.28); }
-:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.6)"] { stroke: rgba(143, 164, 255, 0.6); }
-:root[data-theme="dark"] .hero__art [stroke="rgba(15,30,77,0.25)"] { stroke: rgba(244, 246, 255, 0.3); }
+/* Kart illüstrasyonu: gravür çizgileri koyuda parlak periwinkle + ışıma */
+:root[data-theme="dark"] .hero__art {
+  filter: drop-shadow(0 0 30px rgba(143, 164, 255, 0.25));
+}
+
+:root[data-theme="dark"] .hero__art .cardface {
+  fill: rgba(143, 164, 255, 0.12);
+}
+
+:root[data-theme="dark"] .hero__art [stroke="#0C34E7"] { stroke: #AEBFFF; }
+:root[data-theme="dark"] .hero__art [fill="#0C34E7"] { fill: #AEBFFF; }
+:root[data-theme="dark"] .hero__art [fill="#0F1E4D"] { fill: #FFFFFF; }
+:root[data-theme="dark"] .hero__art [fill="#5A6784"] { fill: #B3C0EC; }
+:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.3)"] { stroke: rgba(174, 191, 255, 0.5); }
+:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.24)"] { stroke: rgba(174, 191, 255, 0.4); }
+:root[data-theme="dark"] .hero__art [stroke="rgba(12,52,231,0.6)"] { stroke: rgba(174, 191, 255, 0.8); }
+:root[data-theme="dark"] .hero__art [stroke="rgba(15,30,77,0.25)"] { stroke: rgba(244, 246, 255, 0.4); }
 
 /* 3B ürün sahnesi koyu zemine uyarlanır */
 :root[data-theme="dark"] .prodhero__panel {
