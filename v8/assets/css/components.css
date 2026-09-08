@@ -183,6 +183,16 @@
   background: linear-gradient(90deg, var(--line-bright), transparent);
 }
 
+.rule--pager {
+  gap: 0;
+  margin-top: var(--space-16);
+  margin-bottom: 0;
+}
+
+.rule--pager + .pager {
+  margin-top: var(--space-8);
+}
+
 .rule__badge {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
