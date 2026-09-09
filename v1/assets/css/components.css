@@ -863,6 +863,19 @@
   box-shadow: var(--shadow-card);
 }
 
+.guide li > span:not(.guide__dot) {
+  flex: 1;
+  min-width: 0;
+}
+
+.guide .shot {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
 .guide__dot {
   flex-shrink: 0;
   display: inline-flex;
