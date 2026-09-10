@@ -122,3 +122,31 @@
   select.addEventListener("change", render);
   render();
 })();
+
+/* #belge-panel'e giden linkler paneli açıp oraya kaydırır
+   (details kapalıyken tarayıcı çapaya atlamaz). */
+(function () {
+  "use strict";
+
+  var panel = document.getElementById("belge-panel");
+  if (!panel) {
+    return;
+  }
+
+  function reveal() {
+    panel.open = true;
+    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  document.querySelectorAll('a[href="#belge-panel"]').forEach(function (link) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      reveal();
+      history.replaceState(null, "", "#belge-panel");
+    });
+  });
+
+  if (location.hash === "#belge-panel") {
+    reveal();
+  }
+})();
