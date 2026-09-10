@@ -109,6 +109,14 @@
   --dur: 200ms;
 }
 
+/* --- Dil desteği: [data-lang] attribute'u ile TR/EN içerik gösterimi --- */
+html[data-lang="tr"] [data-en] { display: none !important; }
+html[data-lang="en"] [data-tr] { display: none !important; }
+
+/* Ortak blok/satır elementleri için */
+html[data-lang="tr"] [data-en]:is(p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, strong, em, code, kbd, label, button, div, section, article, nav, aside, header, footer) { display: none !important; }
+html[data-lang="en"] [data-tr]:is(p, h1, h2, h3, h4, h5, h6, span, a, li, td, th, strong, em, code, kbd, label, button, div, section, article, nav, aside, header, footer) { display: none !important; }
+
 /* --- Koyu tema ---
    theme.js seçime göre <html data-theme="dark|light"> atar;
    "system" seçiliyken prefers-color-scheme'i izler. */
