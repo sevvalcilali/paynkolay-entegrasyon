@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Paynkolay entegrasyon dokümantasyonu — test bilgileri, API servisleri ve hazır eklentiler.">
-  <meta property="og:title" content="Başlangıç — Paynkolay Docs">
-  <meta property="og:description" content="Paynkolay entegrasyon dokümantasyonu — test bilgileri, API servisleri ve hazır eklentiler.">
+  <meta name="description" content="Masterpass entegrasyonu: CVV&#x27;siz işlem yetkisi ön koşulu, Masterpass&#x27;e iletilecek bilgiler, özellikler ve destek kanalları.">
+  <meta property="og:title" content="Masterpass — Paynkolay Docs">
+  <meta property="og:description" content="Masterpass entegrasyonu: CVV&#x27;siz işlem yetkisi ön koşulu, Masterpass&#x27;e iletilecek bilgiler, özellikler ve destek kanalları.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0C34E7">
-  <title>Başlangıç — Paynkolay Docs</title>
+  <title>Masterpass — Paynkolay Docs</title>
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -84,7 +84,7 @@
       </div>
 
       <nav class="nav">
-        <a class="nav__link nav__link--top is-active" href="index.html" aria-current="page">Başlangıç</a>
+        <a class="nav__link nav__link--top" href="index.html">Başlangıç</a>
 
         <div class="nav__group">
           <div class="nav__group-head">
@@ -122,7 +122,7 @@
 
         <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="ek-servisler/index.html">Ek Servisler</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-servisler" aria-label="Ek Servisler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-servisler"><div class="nav__sublist-inner"><a class="nav__link" href="ek-servisler/kart-saklama.html">Kart Saklama</a><a class="nav__link" href="ek-servisler/kayitli-karttan-odeme.html">Kayıtlı Karttan Ödeme</a><a class="nav__link" href="ek-servisler/iptal-ve-iade.html">İptal ve İade</a><a class="nav__link" href="ek-servisler/odeme-sonucu.html">Ödeme Sonucu</a><a class="nav__link" href="ek-servisler/islem-dogrulama.html">İşlem Doğrulama</a><a class="nav__link" href="ek-servisler/raporlama.html">Raporlama Servisi</a></div></div></div>
 
-        <a class="nav__link nav__link--top" href="masterpass.html">Masterpass</a>
+        <a class="nav__link nav__link--top is-active" href="masterpass.html" aria-current="page">Masterpass</a>
 
         <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="pazaryeri/index.html">Pazaryeri Entegrasyonu</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-pazaryeri" aria-label="Pazaryeri Entegrasyonu alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-pazaryeri"><div class="nav__sublist-inner"><a class="nav__link" href="pazaryeri/index.html">Genel Bakış</a><a class="nav__link" href="pazaryeri/kimlik-dogrulama.html">Kimlik Doğrulama</a><a class="nav__link" href="pazaryeri/hash-hesaplama.html">Hash Hesaplama</a><a class="nav__link" href="pazaryeri/odeme-profili.html">Ödeme Profili Yönetimi</a><a class="nav__link" href="pazaryeri/satici-yonetimi.html">Satıcı Yönetimi</a><a class="nav__link" href="pazaryeri/odeme-islemleri.html">Ödeme İşlemleri</a><a class="nav__link" href="pazaryeri/iptal-ve-iade.html">İptal ve İade</a><a class="nav__link" href="pazaryeri/masterpass.html">Masterpass</a><a class="nav__link" href="pazaryeri/raporlama.html">Raporlama</a><a class="nav__link nav__link--dl" href="assets/paynkolay-pazaryeri.postman_collection.json" download="paynkolay-pazaryeri.postman_collection.json"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Postman Koleksiyonu</a></div></div></div>
 
@@ -148,245 +148,69 @@
     <div class="content">
       <main>
         <article class="article">
-          <section class="hero">
-            <p class="hero__eyebrow">Paynkolay Docs</p>
-            <h1>Entegrasyon Dokümantasyonu</h1>
-            <p class="hero__lead">Ödeme kabul etmeye başlamak için ihtiyacınız olan her şey: test bilgileri, tahsilat metodları, API ve hazır eklentiler — tek yerde, adım adım.</p>
-            <div class="hero__actions">
-              <a class="btn btn--light" href="#yolculuk">Hemen Başlayın</a>
-              <a class="btn btn--outline-light" href="#bolumler">Bölümlere Göz Atın</a>
-            </div>
-            <span class="hero__mark" aria-hidden="true">&rsquo;</span>
-          </section>
+          <p class="eyebrow">Entegrasyon Dokümantasyonu</p>
+          <h1>Masterpass</h1>
+          <p class="lead">Mastercard'ın dijital cüzdanı Masterpass ile müşterileriniz kart bilgisi girmeden, kayıtlı kartları ve SMS onayıyla öder. Bu sayfa, tekil üye işyeri entegrasyonunun ön koşullarını ve Masterpass'e iletmeniz gereken bilgileri özetler.</p>
 
-          <div class="callout">
-            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-              <circle cx="12" cy="12" r="9"/>
-              <path d="M12 8h.01M12 11v5"/>
-            </svg>
-            <p>Başlamadan önce: test ortamı bilgileri ve test kartları <strong>Ön Hazırlık</strong> bölümünde yer alır. Gerçek kart bilgisi kullanmadan tüm akışları deneyebilirsiniz.</p>
-          </div>
-
-          <h2 id="nedir">Paynkolay Nedir?</h2>
-          <p>Paynkolay, güvenli ve hızlı online ödeme işlemleri için geliştirilmiş bir ödeme sistemidir. E-ticaret sitenize kolayca entegre edebileceğiniz çeşitli ödeme yöntemleri sunar; kart bilgilerinin güvenliği ve PCI DSS gereklilikleri Paynkolay tarafından karşılanır.</p>
-          <p>İster hazır ortak ödeme sayfasını kullanın, ister linkle tahsilat yapın, ister API ile kendi akışınızı kurun — bu doküman her yol için sizi adım adım yönlendirir.</p>
-
-          <h2 id="bolumler">Bölümler</h2>
-          <div class="cards">
-            <a class="card" href="on-hazirlik/index.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="8" y="2" width="8" height="4" rx="1"/>
-                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                  <path d="m9 14 2 2 4-4"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Ön Hazırlık
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">Test ortamı bilgileri, panel erişimi ve sistem gereksinimleri — başlamadan önce gerekenler.</span>
-            </a>
-            <a class="card" href="tahsilat-metodu/index.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="2" y="5" width="20" height="14" rx="2"/>
-                  <path d="M2 10h20"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Tahsilat Metodu
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">API (3D/NON3D), form ile ödeme, linkli ödeme, ön provizyon, düzenli ödeme, taksit ve sigorta servisleri.</span>
-            </a>
-            <a class="card" href="urunler/index.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
-                  <path d="M3.3 7 12 12l8.7-5"/>
-                  <path d="M12 22V12"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Ürünler
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">Sanal POS'tan Açık Bankacılığa, Pazaryeri'nden CepnPOS'a tüm Paynkolay ürün ailesi.</span>
-            </a>
-            <a class="card" href="ek-servisler/index.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="m12 2 8.5 4.5-8.5 4.5-8.5-4.5L12 2Z"/>
-                  <path d="m3.5 11.5 8.5 4.5 8.5-4.5"/>
-                  <path d="m3.5 16.5 8.5 4.5 8.5-4.5"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Ek Servisler
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">Kart saklama, kayıtlı karttan ödeme, iptal &amp; iade, ödeme sonucu ve raporlama servisleri.</span>
-            </a>
-            <a class="card" href="pazaryeri/index.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 7h16l-1 4.5a2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0 2.5 2.5 0 0 1-5 0L4 7Zm1 6v8h14v-8M10 21v-5h4v5"/><path d="M6 7V4h12v3"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Pazaryeri Entegrasyonu
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">Alt satıcılar, ödeme profilleri, komisyon dağıtımı ve raporlama — pazaryerleri için uçtan uca API.</span>
-            </a>
-            <a class="card" href="open-source/index.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="m16 18 6-6-6-6"/>
-                  <path d="m8 6-6 6 6 6"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Open Source Entegrasyonlar
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">WooCommerce, OpenCart, Magento ve diğer hazır e-ticaret eklentileri.</span>
-            </a>
-            <a class="card" href="ek-bilgiler/index.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 3v10m0 0 3.5-3.5M12 13 8.5 9.5"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Ek Bilgiler
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">Postman koleksiyonu, Hash Aracı, hata ve banka kodları, TLS sorun giderme kılavuzu.</span>
-            </a>
-            <a class="card" href="sss.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5Z"/>
-                  <path d="M9.6 9.5a2.4 2.4 0 0 1 4.7.8c0 1.6-2.3 2.2-2.3 3.2"/>
-                  <path d="M12 16.5h.01"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Sıkça Sorulan Sorular
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">En çok merak edilen konular ve çözüm adımları.</span>
-            </a>
-          </div>
-
-          <h2 id="yolculuk">Entegrasyon Yolculuğu</h2>
-          <ol class="journey">
-            <li class="journey__step">
-              <span class="journey__dot" aria-hidden="true"></span>
-              <span>
-                <span class="journey__title">Başvuru</span>
-                <span class="journey__tip">Üye işyeri hesabınız açılır, panel erişiminiz gelir.</span>
-              </span>
-            </li>
-            <li class="journey__step">
-              <span class="journey__dot" aria-hidden="true"></span>
-              <span>
-                <span class="journey__title">Test Bilgileri</span>
-                <span class="journey__tip">Ön Hazırlık'tan test token'larınızı alın.</span>
-              </span>
-            </li>
-            <li class="journey__step">
-              <span class="journey__dot" aria-hidden="true"></span>
-              <span>
-                <span class="journey__title">Yöntem Seçimi</span>
-                <span class="journey__tip">Form, link, API veya hazır eklenti — size uygun olanı seçin.</span>
-              </span>
-            </li>
-            <li class="journey__step">
-              <span class="journey__dot" aria-hidden="true"></span>
-              <span>
-                <span class="journey__title">Test İşlemi</span>
-                <span class="journey__tip">Test kartlarıyla uçtan uca ödeme deneyin.</span>
-              </span>
-            </li>
-            <li class="journey__step">
-              <span class="journey__dot" aria-hidden="true"></span>
-              <span>
-                <span class="journey__title">Canlıya Geçiş</span>
-                <span class="journey__tip">Canlı bilgilerinizle yayına çıkın.</span>
-              </span>
-            </li>
-          </ol>
-
+          <h2 id="kosullar">Ön Koşullar</h2>
           <div class="callout callout--warn">
-            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/>
-              <path d="M12 9v4m0 4h.01"/>
-            </svg>
-            <p><strong>Canlıya geçerken:</strong> Size özel canlı bilgilerinize (sx, Merchant Secret Key) panelinizden ulaşırsınız. Panelde göremiyorsanız nedeni genellikle üye işyerinizde <strong>API yetkisinin tanımlı olmaması</strong> ya da <strong>ana kullanıcı olmamanızdır</strong> — <a href="mailto:kolayposdestek@nkolay.com.tr">kolayposdestek@nkolay.com.tr</a> adresine yazmanız yeterli.</p>
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
+            <p><strong>CVV'siz işlem yetkisi zorunludur:</strong> Masterpass ödemeleri CVV bilgisi gerektirmediği için üye işyerinizde bu yetkinin aktif olması gerekir. Yetkinizi satış temsilcinizden ya da <a href="mailto:kolayposdestek@nkolay.com.tr">destek ekibinden</a> teyit edin.</p>
           </div>
 
-          <h2 id="destek">Yardım &amp; Destek</h2>
-          <div class="cards">
-            <a class="card" href="sss.html">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.5 0-3-.4-4.2-1.1L3 20l1.1-5.3A8.5 8.5 0 1 1 21 11.5Z"/>
-                  <path d="M9.6 9.5a2.4 2.4 0 0 1 4.7.8c0 1.6-2.3 2.2-2.3 3.2"/>
-                  <path d="M12 16.5h.01"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Sıkça Sorulan Sorular
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">TLS bağlantı sorunları, hash hataları ve en çok merak edilen konular.</span>
-            </a>
-            <a class="card" href="mailto:kolayposdestek@nkolay.com.tr">
-              <span class="card__icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/>
-                  <path d="m22 7-10 6L2 7"/>
-                </svg>
-              </span>
-              <span class="card__title">
-                Teknik Destek
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
-                </svg>
-              </span>
-              <span class="card__desc">Takıldığınız her adımda ekibimize yazın: kolayposdestek@nkolay.com.tr</span>
-            </a>
+          <h2 id="bilgiler">Entegrasyon İçin Gerekli Bilgiler</h2>
+          <p>Masterpass entegrasyonu için aşağıdaki bilgileri Masterpass'e iletmeniz yeterlidir:</p>
+          <div class="table-wrap"><table class="dtable"><thead><tr><th>Bilgi</th><th>Açıklama</th></tr></thead><tbody>
+                <tr><td class="mono">Üye İşyeri İsmi</td><td>Masterpass'te görünecek işletme adınız</td></tr>
+                <tr><td class="mono">Üye İşyeri No</td><td>Size tahsis edilen benzersiz işyeri numaranız</td></tr>
+                <tr><td class="mono">Satış Token (sx)</td><td>Ödeme işlemleri için kullanılan token</td></tr>
+                <tr><td class="mono">İptal Token (sx İptal)</td><td>İptal/iade işlemleri için kullanılan token</td></tr>
+                <tr><td class="mono">MerchantSecretKey</td><td>Hash imzası için kullanılan gizli anahtar</td></tr>
+          </tbody></table></div>
+
+          <h2 id="ozellikler">Özellikler</h2>
+          <ul class="checklist">
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span><strong>Hızlı ödeme</strong> — tek tıklamayla ödeme imkânı</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span><strong>Güvenli saklama</strong> — kart bilgileri Masterpass altyapısında saklanır</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span><strong>CVV gerektirmez</strong> — saklanmış kartlarla CVV&#x27;siz işlem</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span><strong>Mobil uyumlu</strong> — tüm cihazlardan kullanım</span></li>
+          </ul>
+
+          <h2 id="destek">Destek</h2>
+          <p>Masterpass entegrasyonuyla ilgili tüm sorularınız için:</p>
+          <div class="access">
+            <p class="access__row">
+              <span class="access__label">Masterpass</span>
+              <span><a href="mailto:masterpass.support@paycore.com">masterpass.support@paycore.com</a></span>
+            </p>
+            <p class="access__row">
+              <span class="access__label">Mastercard TR</span>
+              <span><a href="mailto:Masterpass_Turkey_Merchant_Support@mastercard.com">Masterpass_Turkey_Merchant_Support@mastercard.com</a></span>
+            </p>
+          </div>
+
+          <h2 id="notlar">Notlar</h2>
+          <ul class="checklist">
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Entegrasyon öncesinde CVV&#x27;siz işlem yetkisinin aktif olduğundan emin olun</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Bilgilerin doğru ve eksiksiz iletilmesi entegrasyon sürecini hızlandırır</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Test aşamasında karşılaştığınız sorunları destek ekibiyle paylaşın</span></li>
+          </ul>
+          <div class="callout">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+            <p><strong>Pazaryeri üzerinden mi çalışıyorsunuz?</strong> Pazaryeri API'sinde Masterpass ödemesi ayrı bir uçla başlatılır — ayrıntılar için <a href="pazaryeri/masterpass.html">Pazaryeri › Masterpass</a> sayfasına bakın.</p>
           </div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
-  <a class="pager__card pager__card--next" href="on-hazirlik/index.html">
-    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Ön Hazırlık</span></span>
+  <a class="pager__card" href="ek-servisler/raporlama.html">
+    <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">Raporlama Servisi</span></span>
+  </a>
+  <a class="pager__card pager__card--next" href="pazaryeri/index.html">
+    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Pazaryeri Entegrasyonu</span></span>
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
   </a>
 </nav>
-
-          <div class="feedback" data-feedback>
+<div class="feedback" data-feedback>
             <span>Bu sayfa yardımcı oldu mu?</span>
             <button class="feedback__btn" type="button" data-vote="up" aria-label="Evet, yardımcı oldu">👍</button>
             <button class="feedback__btn" type="button" data-vote="down" aria-label="Hayır, olmadı">👎</button>
@@ -410,10 +234,11 @@
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#nedir">Paynkolay Nedir?</a></li>
-          <li><a href="#bolumler">Bölümler</a></li>
-          <li><a href="#yolculuk">Entegrasyon Yolculuğu</a></li>
-          <li><a href="#destek">Yardım &amp; Destek</a></li>
+          <li><a class="is-active" href="#kosullar">Ön Koşullar</a></li>
+          <li><a href="#bilgiler">Gerekli Bilgiler</a></li>
+          <li><a href="#ozellikler">Özellikler</a></li>
+          <li><a href="#destek">Destek</a></li>
+          <li><a href="#notlar">Notlar</a></li>
         </ul>
       </aside>
     </div>
