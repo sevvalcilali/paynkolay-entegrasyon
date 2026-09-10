@@ -161,8 +161,21 @@
 <li><span class="guide__dot">4</span><span><span class="guide__title">Tutarı karşılaştırın</span><span class="guide__desc">AUTHORIZATION_AMOUNT, gönderdiğiniz amount'a eşit ya da ondan büyük olmalıdır.</span></span></li>
           </ol>
 
+
+          <h2 id="imza">Yanıt İmzasını Doğrulama (Response Hash)</h2>
+          <p>Yanıttaki <code>hashDataV2</code>, aşağıdaki alanlardan üretilir; aynı imzayı kendiniz hesaplayıp karşılaştırmadan sonucu güvenilir saymayın:</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Response Hash Formülü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>MERCHANT_NO | REFERENCE_CODE | AUTH_CODE | RESPONSE_CODE | USE_3D | RND | INSTALLMENT | AUTHORIZATION_AMOUNT | CURRENCY_CODE | merchantSecretKey
+<span class="tk-c"># SHA-512 → Base64 (UTF-8)</span></code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Doğrulama — PHP</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">$hashstr</span> = <span class="tk-k">$MERCHANT_NO</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$REFERENCE_CODE</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$AUTH_CODE</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$RESPONSE_CODE</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$USE_3D</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$RND</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$INSTALLMENT</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$AUTHORIZATION_AMOUNT</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$CURRENCY_CODE</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$merchantSecretKey</span>;
+<span class="tk-k">$beklenen</span> = base64_encode(hash(<span class="tk-s">"sha512"</span>, <span class="tk-k">$hashstr</span>, <span class="tk-n">true</span>));
+<span class="tk-c">// $beklenen, yanıttaki hashDataV2 ile birebir aynı olmalı</span></code></pre></div>
+          <div class="callout callout--warn">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
+            <p>Yanıttaki <strong>RND</strong>, istekte gönderdiğiniz <code>rnd</code> değerinden <strong>farklıdır</strong> — imzayı yanıtta dönen değerlerle hesaplayın. Hash'ler eşleşmiyorsa yanıt Paynkolay'dan gelmiyor olabilir; işlemi sonlandırın.</p>
+          </div>
+
           <h2 id="kod">Hazır Kontrol Fonksiyonu</h2>
-          <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">JavaScript</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code><span class="tk-k">function</span> isPaymentSuccessful(<span class="tk-k">array</span> $result): <span class="tk-k">bool</span>
+          <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">JavaScript</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Python</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">C#</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Java</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code><span class="tk-k">function</span> isPaymentSuccessful(<span class="tk-k">array</span> $result): <span class="tk-k">bool</span>
 {
     $code = $result[<span class="tk-s">'RESPONSE_CODE'</span>] ?? <span class="tk-n">null</span>;
     $auth = trim((<span class="tk-k">string</span>)($result[<span class="tk-s">'AUTH_CODE'</span>] ?? <span class="tk-s">''</span>));
@@ -174,21 +187,65 @@
   <span class="tk-k">const</span> auth = String(result.AUTH_CODE ?? <span class="tk-s">''</span>).trim();
   <span class="tk-c">// RESPONSE_CODE 2 olmalı VE AUTH_CODE gerçek bir değer olmalı</span>
   <span class="tk-k">return</span> code == <span class="tk-s">'2'</span> &amp;&amp; ![<span class="tk-s">''</span>, <span class="tk-s">'0'</span>, <span class="tk-s">'00'</span>].includes(auth);
+}</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>def is_payment_successful(result: dict) -&gt; bool:
+    code = str(result.get(&quot;RESPONSE_CODE&quot;, &quot;&quot;))
+    auth = str(result.get(&quot;AUTH_CODE&quot;, &quot;&quot;)).strip()
+
+    # RESPONSE_CODE 2 olmalı VE AUTH_CODE gerçek bir değer olmalı
+    return code == &quot;2&quot; and auth not in (&quot;&quot;, &quot;0&quot;, &quot;00&quot;)</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>public static bool IsPaymentSuccessful(IDictionary&lt;string, string&gt; result)
+{
+    result.TryGetValue(&quot;RESPONSE_CODE&quot;, out var code);
+    result.TryGetValue(&quot;AUTH_CODE&quot;, out var auth);
+    auth = (auth ?? &quot;&quot;).Trim();
+
+    // RESPONSE_CODE 2 olmalı VE AUTH_CODE gerçek bir değer olmalı
+    return code == &quot;2&quot;
+        &amp;&amp; auth != &quot;&quot; &amp;&amp; auth != &quot;0&quot; &amp;&amp; auth != &quot;00&quot;;
+}</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>public static boolean isPaymentSuccessful(Map&lt;String, String&gt; result) {
+    String code = result.getOrDefault(&quot;RESPONSE_CODE&quot;, &quot;&quot;);
+    String auth = result.getOrDefault(&quot;AUTH_CODE&quot;, &quot;&quot;).trim();
+
+    // RESPONSE_CODE 2 olmalı VE AUTH_CODE gerçek bir değer olmalı
+    return code.equals(&quot;2&quot;)
+        &amp;&amp; !auth.equals(&quot;&quot;) &amp;&amp; !auth.equals(&quot;0&quot;) &amp;&amp; !auth.equals(&quot;00&quot;);
 }</code></pre></div></div>
 
-          <h2 id="donus">Örnek Dönüş (3D · AutoComplete)</h2>
-          <p>Başarılı işlem <code>successUrl</code> adresinize, başarısız işlem <code>failUrl</code> adresinize POST edilir.</p>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">successUrl'e POST edilen sonuç</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">RESPONSE_CODE</span>: <span class="tk-n">2</span>
+          <h2 id="donus">Örnek Dönüşler</h2>
+          <p>Başarılı işlem <code>successUrl</code> adresinize, başarısız işlem <code>failUrl</code> adresinize POST edilir. Alan listesi 3D ve Non-3D akışında küçük farklarla aynıdır:</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Non-3D işlem dönüşü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">RESPONSE_CODE</span>: <span class="tk-n">2</span>
+<span class="tk-k">RESPONSE_DATA</span>: <span class="tk-s">İşlem Başarılı</span>
+<span class="tk-k">USE_3D</span>: <span class="tk-n">false</span>
+<span class="tk-k">RND</span>: <span class="tk-s">1630051651137</span>
+<span class="tk-k">MERCHANT_NO</span>: <span class="tk-s">400000001</span>
+<span class="tk-k">AUTH_CODE</span>: <span class="tk-s">S00586</span>
+<span class="tk-k">REFERENCE_CODE</span>: <span class="tk-s">IKSIRPF102168</span>
+<span class="tk-k">CLIENT_REFERENCE_CODE</span>: <span class="tk-s">42794212</span>
+<span class="tk-k">TIMESTAMP</span>: <span class="tk-s">2021-08-27</span>
+<span class="tk-k">TRANSACTION_AMOUNT</span>: <span class="tk-n">1.00</span>
+<span class="tk-k">AUTHORIZATION_AMOUNT</span>: <span class="tk-n">1.00</span>
+<span class="tk-k">COMMISION</span>: <span class="tk-n">0.00000000</span>
+<span class="tk-k">COMMISION_RATE</span>: <span class="tk-s">null</span>
+<span class="tk-k">INSTALLMENT</span>: <span class="tk-n">1</span>
+<span class="tk-k">hashData</span>: <span class="tk-s">bjb49lGdnE2D/D5Jze2/sn7Xfk0=</span>
+<span class="tk-k">hashDataV2</span>: <span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE4PjUluM8…</span></code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">3D işlem dönüşü (AutoComplete)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">RESPONSE_CODE</span>: <span class="tk-n">2</span>
 <span class="tk-k">RESPONSE_DATA</span>: <span class="tk-s">İşlem Başarılı.</span>
 <span class="tk-k">REFERENCE_CODE</span>: <span class="tk-s">IKSIRPF142277040</span>
 <span class="tk-k">USE_3D</span>: <span class="tk-n">true</span>
+<span class="tk-k">MERCHANT_NO</span>: <span class="tk-s">400000002</span>
 <span class="tk-k">AUTH_CODE</span>: <span class="tk-s">345344</span>
 <span class="tk-k">CLIENT_REFERENCE_CODE</span>: <span class="tk-s">24809740|988922</span>
+<span class="tk-k">TIMESTAMP</span>: <span class="tk-s">2022-02-24 13:58:36.353</span>
 <span class="tk-k">TRANSACTION_AMOUNT</span>: <span class="tk-n">1.00</span>
 <span class="tk-k">AUTHORIZATION_AMOUNT</span>: <span class="tk-n">1.00</span>
+<span class="tk-k">COMMISION</span>: <span class="tk-n">0.00</span>
+<span class="tk-k">COMMISION_RATE</span>: <span class="tk-n">0.0000</span>
 <span class="tk-k">INSTALLMENT</span>: <span class="tk-n">1</span>
 <span class="tk-k">RND</span>: <span class="tk-s">1645700316156</span>
-<span class="tk-k">hashDataV2</span>: <span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE4PjUluM8…</span></code></pre></div>
+<span class="tk-k">hashData</span>: <span class="tk-s">+wDy2xeI1hOCnwaatSqylWhtj9E=</span>
+<span class="tk-k">hashDataV2</span>: <span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE4PjUluM8…</span>
+<span class="tk-k">BANK_RESULT</span>: <span class="tk-s">Response : IKSIRPF142277040 …</span>
+<span class="tk-k">ERROR_CODE</span>: <span class="tk-n">0</span></code></pre></div>
           <div class="callout callout--warn">
             <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
             <p>Yanıttaki <code>hashDataV2</code>, istek imzasından <strong>farklı</strong> hesaplanır (Response Hash). Doğrulamadan siparişi asla onaylamayın. Hatalı işlemde <code>RESPONSE_CODE = 0</code> döner ve <code>AUTH_CODE</code> boştur.</p>
@@ -211,7 +268,7 @@
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 4 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -230,8 +287,9 @@
         <ul class="toc__list">
           <li><a class="is-active" href="#kural">Altın Kural</a></li>
           <li><a href="#karar">Karar Akışı</a></li>
+          <li><a href="#imza">Yanıt İmzası</a></li>
           <li><a href="#kod">Hazır Kontrol Fonksiyonu</a></li>
-          <li><a href="#donus">Örnek Dönüş</a></li>
+          <li><a href="#donus">Örnek Dönüşler</a></li>
         </ul>
       </aside>
 
