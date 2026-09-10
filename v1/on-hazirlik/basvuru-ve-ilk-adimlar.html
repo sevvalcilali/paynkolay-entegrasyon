@@ -206,26 +206,39 @@
 
           <h2 id="surec">Başvuru Süreci</h2>
           <ol class="guide">
-<li><span class="guide__dot">1</span><span><span class="guide__title">Başvuru ve ön görüşme</span><span class="guide__desc">Başvurunuzun ardından satış temsilcimiz sizinle iletişime geçer, ihtiyacınızı dinler ve size en uygun çözümü birlikte belirlersiniz.</span></span></li>
-<li><span class="guide__dot">2</span><span><span class="guide__title">Sözleşme ve hesap açılışı</span><span class="guide__desc">Şirket bilgileriniz ve belgeleriniz alınır, sözleşmeniz onaylanır; üye işyeri hesabınız açılır ve panel giriş bilgileriniz size iletilir.</span></span></li>
-<li><span class="guide__dot">3</span><span><span class="guide__title">Panel erişimi ve entegrasyon bilgileri</span><span class="guide__desc">Panelinize girip entegrasyonda kullanacağınız bilgileri edinirsiniz — aşağıdaki üç bilgi tüm yöntemlerin ortak anahtarıdır.</span></span></li>
-<li><span class="guide__dot">4</span><span><span class="guide__title">Entegrasyon, test ve canlıya geçiş</span><span class="guide__desc">Seçtiğiniz yöntemi test ortamında uçtan uca deneyip onay sonrasında canlı bilgilerinizle yayına geçersiniz.</span></span></li>
+<li><span class="guide__dot">1</span><span><span class="guide__title">Başvuru ve ön görüşme</span><span class="guide__desc">Başvurunuzun ardından satış temsilcimiz sizinle iletişime geçer, ihtiyacınızı dinler ve size en uygun çözümü birlikte belirlersiniz. <a href="https://paynkolay.nkolayislem.com.tr/onboarding/application-new" target="_blank" rel="noopener">Hemen başvurun →</a></span></span></li>
+<li><span class="guide__dot">2</span><span><span class="guide__title">Sözleşme ve hesap açılışı</span><span class="guide__desc">Şirket bilgileriniz ve belgeleriniz alınır, sözleşmeniz onaylanır; üye işyeri hesabınız açılır ve panel giriş bilgileriniz size iletilir. <a href="https://paynkolay.com.tr/basvuru-durumu-sorgula" target="_blank" rel="noopener">Başvuru durumunuzu sorgulayın →</a></span></span></li>
+<li><span class="guide__dot">3</span><span><span class="guide__title">Panel erişimi ve entegrasyon bilgileri</span><span class="guide__desc">Panelinize girip entegrasyonda kullanacağınız bilgileri edinirsiniz — aşağıdaki üç bilgi tüm yöntemlerin ortak anahtarıdır. <a href="ortamlar.html#canli">Detayları görün →</a></span></span></li>
+<li><span class="guide__dot">4</span><span><span class="guide__title">Entegrasyon, test ve canlıya geçiş</span><span class="guide__desc">Seçtiğiniz yöntemi test ortamında uçtan uca deneyip onay sonrasında canlı bilgilerinizle yayına geçersiniz. <a href="kontrol-listesi.html">Canlıya geçiş listesi →</a></span></span></li>
           </ol>
+
+          <h2 id="bilgiler">Entegrasyon Bilgileriniz</h2>
+          <p>Hangi tahsilat yöntemini seçerseniz seçin, aşağıdaki üç bilgi tüm isteklerin ortak anahtarıdır. Üçünü de panelinizden bir kez edinir, entegrasyon boyunca kullanırsınız; test ortamındaki hazır karşılıkları <a href="test-ortami.html">Test Ortamı (Sandbox)</a> sayfasındadır.</p>
 
           <div class="access">
             <p class="access__row">
               <span class="access__label">Üye İşyeri No</span>
-              <span>Panelinizde <strong>Bilgilerim</strong> ekranında yer alır.</span>
+              <span>Panelinizde <strong>Bilgilerim</strong> ekranında yer alır; işyerinizi tanımlayan numaradır ve destek taleplerinizde sizden ilk istenen bilgidir. Test ortamında <code>400000273</code> numaralı işyeri kullanılır.</span>
             </p>
             <p class="access__row">
               <span class="access__label">sx</span>
-              <span><strong>Ayarlar → Entegrasyon Bilgileri</strong> adımından edinilir; isteklerinizin kimliğidir.</span>
+              <span><strong>Ayarlar → Entegrasyon Bilgileri</strong> adımından edinilir; isteklerinizin kimliğidir. Üç ayrı değeri vardır ve karıştırılmamalıdır: <strong>satış sx</strong> (ödeme işlemleri), <strong>sx List</strong> (listeleme ve raporlama) ve <strong>sx İptal</strong> (iptal ve iade). Her servis kendi sx değeriyle çağrılır.</span>
             </p>
             <p class="access__row">
               <span class="access__label">Secret Key</span>
-              <span>Aynı ekrandan edinilir; hash imzası için kullanılır ve <strong>yalnızca sunucunuzda</strong> saklanır.</span>
+              <span>Aynı ekrandan edinilir; istek imzası <code>hashDatav2</code>'yi üretmek için kullanılır ve <strong>yalnızca sunucunuzda</strong> saklanır — tarayıcıya, mobil uygulamaya veya üçüncü kişilere asla gönderilmez.</span>
             </p>
           </div>
+
+          <div class="callout callout--warn">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/>
+              <path d="M12 9v4m0 4h.01"/>
+            </svg>
+            <p><strong>Bu bilgileri panelde göremiyor musunuz?</strong> Nedeni genellikle üye işyerinizde <strong>API yetkisinin tanımlı olmaması</strong> ya da <strong>ana kullanıcı olmamanızdır</strong>. İki durum da hızla çözülür: satış temsilcinize veya <a href="mailto:kolayposdestek@nkolay.com.tr">kolayposdestek@nkolay.com.tr</a> adresine yazmanız yeterli.</p>
+          </div>
+
+          <p>Panelde hangi ekrana nereden ulaşacağınızı adım adım görmek için <a href="ortamlar.html#canli">Canlı Bilgilerinizi Alma</a> rehberine bakın.</p>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
   <a class="pager__card" href="index.html">
@@ -244,7 +257,7 @@
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 3 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -262,6 +275,7 @@
         </p>
         <ul class="toc__list">
           <li><a class="is-active" href="#surec">Başvuru Süreci</a></li>
+          <li><a href="#bilgiler">Entegrasyon Bilgileriniz</a></li>
         </ul>
       </aside>
     </div>
