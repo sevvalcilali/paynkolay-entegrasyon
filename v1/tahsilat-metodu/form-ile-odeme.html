@@ -215,19 +215,515 @@
             </div>
           </div>
 
-          <h2 id="ornek">Örnek Form</h2>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek Form — HTML</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-c">&lt;!-- Müşteri "Öde"ye bastığında bu form ortak ödeme sayfasına gönderilir --&gt;</span>
-&lt;<span class="tk-k">form</span> <span class="tk-k">method</span>=<span class="tk-s">"POST"</span> <span class="tk-k">action</span>=<span class="tk-s">"https://paynkolaytest.nkolayislem.com.tr/Vpos"</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"sx"</span>            <span class="tk-k">value</span>=<span class="tk-s">"118591467|W8a1JLU8A5Cw…FbOO5A=="</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"clientRefCode"</span> <span class="tk-k">value</span>=<span class="tk-s">"SIP-2026-000123"</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"amount"</span>        <span class="tk-k">value</span>=<span class="tk-s">"249.90"</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"successUrl"</span>    <span class="tk-k">value</span>=<span class="tk-s">"https://magaza.com/odeme/basarili"</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"failUrl"</span>       <span class="tk-k">value</span>=<span class="tk-s">"https://magaza.com/odeme/hata"</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"use3D"</span>         <span class="tk-k">value</span>=<span class="tk-s">"true"</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"transactionType"</span> <span class="tk-k">value</span>=<span class="tk-s">"sales"</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"rnd"</span>           <span class="tk-k">value</span>=<span class="tk-s">"03-09-2026 15:04:22"</span>&gt;
-  &lt;<span class="tk-k">input</span> <span class="tk-k">name</span>=<span class="tk-s">"hashData"</span>      <span class="tk-k">value</span>=<span class="tk-s">"lunnRyNfDu6pdpNjjlFrlATE…"</span>&gt;
-&lt;/<span class="tk-k">form</span>&gt;</code></pre></div>
+          <h2 id="ornek">Örnek Kod</h2>
+          <p>Aşağıdaki örnekler <strong>çalışır durumda tam sayfalardır</strong>: test bilgileriyle hash'i sunucu tarafında üretir, müşteri IP'sini tespit eder ve ortak ödeme sayfasına gönderen formu basar. Canlıya geçerken form action adresi <code>https://paynkolay.nkolayislem.com.tr/Vpos</code> olur; <code>sx</code> ve <code>merchantSecretKey</code> panelinizdeki canlı değerlerle değiştirilir.</p>
+          <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">.NET C#</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">.NET CSHTML</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Python</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Node.js</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Sanal POS entegrasyonu örnek PHP sayfamız&lt;/title&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;?php
+// sx değeriniz size verilecektir
+$sx=&quot;118591467|W8a1JLU8A5Cw+HfadVcO6HiR/GGGxr0NkWr2OGythr8fo0YWdw70cvnI6oKMqvzra3Qu+Wa5u0NRil9gRdJmjocVNd4XciDwfD9+pkVqDErw7/pVZfpcSO+GePg+ZvcqFbOO5A==&quot;;
+$merchantSecretKey=&quot;_viH5wUS4HiBmmw9uGybN&quot;; // size özel - special to you
+$successUrl=&quot;https://paynkolay.com.tr/test/success&quot;;
+$failUrl=&quot;https://paynkolay.com.tr/test/fail&quot;;
+$amount=&quot;5.00&quot;;
+$currencyCode=&quot;949&quot;;
+$clientRefCode=&quot;2352345&quot;;
+$use3D=&quot;true&quot;;
+$rnd = date(&quot;d-m-Y H:i:s&quot;);
+$agentCode=&quot;1236&quot;;
+$transactionType=&quot;SALES&quot;;
+$customerKey = &quot;&quot;;
+$instalments = &quot;&quot;;
+$hashstr = $sx . &quot;|&quot; . $clientRefCode . &quot;|&quot; . $amount . &quot;|&quot; . $successUrl . &quot;|&quot; . $failUrl . &quot;|&quot; . $rnd . &quot;|&quot; . $customerKey . &quot;|&quot; . $merchantSecretKey;
+
+$hash = mb_convert_encoding($hashstr, &#x27;UTF-8&#x27;);
+$hashedBytes = hash(&quot;sha512&quot;, $hash, true);
+$hashDataV2 = base64_encode($hashedBytes);
+
+function getClientIpAddress(): string
+{
+    // A list of headers to check in order of priority
+    $headers = [
+        &#x27;HTTP_CLIENT_IP&#x27;,
+        &#x27;HTTP_X_FORWARDED_FOR&#x27;,
+        &#x27;HTTP_X_FORWARDED&#x27;,
+        &#x27;HTTP_X_CLUSTER_CLIENT_IP&#x27;,
+        &#x27;HTTP_FORWARDED_FOR&#x27;,
+        &#x27;HTTP_FORWARDED&#x27;,
+        &#x27;REMOTE_ADDR&#x27;
+    ];
+
+    foreach ($headers as $header) {
+        if (isset($_SERVER[$header])) {
+            // HTTP_X_FORWARDED_FOR can contain a comma-separated list of IPs.
+            // The first one is the original client IP.
+            $ipList = explode(&#x27;,&#x27;, $_SERVER[$header]);
+            $ip = trim($ipList[0]);
+
+            // Validate the IP address
+            if (filter_var($ip, FILTER_VALIDATE_IP)) {
+                return $ip;
+            }
+        }
+    }
+
+    return &#x27;UNKNOWN&#x27;;
+}
+
+// How to use the function
+$cardHolderIP = getClientIpAddress();
+
+?&gt;
+
+&lt;!-- Canlı ortam için form action linki &quot;https://paynkolay.nkolayislem.com.tr/Vpos&quot; olmalıdır. --&gt;
+&lt;form method=&quot;post&quot; action=&quot;https://paynkolaytest.nkolayislem.com.tr/Vpos&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;sx&quot; value=&quot;&lt;?= $sx ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;successUrl&quot; value=&quot;&lt;?= $successUrl ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;failUrl&quot; value=&quot;&lt;?= $failUrl ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;amount&quot; value=&quot;&lt;?= $amount ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;currencyCode&quot; value=&quot;&lt;?= $currencyCode ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;clientRefCode&quot; value=&quot;&lt;?= $clientRefCode ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;use3D&quot; value=&quot;&lt;?= $use3D ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;rnd&quot; value=&quot;&lt;?= $rnd ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;agentCode&quot; value=&quot;&lt;?= $agentCode ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;transactionType&quot; value=&quot;&lt;?= $transactionType ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;hashDataV2&quot; value=&quot;&lt;?= $hashDataV2 ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;cardHolderIP&quot; value=&quot;&lt;?= $cardHolderIP ?&gt;&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;instalments&quot; value=&quot;&lt;?= $instalments ?&gt;&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Gönder&quot; /&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Configuration;
+using System.Security.Cryptography;
+using System.Text;
+using System.Globalization;
+using System.Linq;
+using System.Net;
+
+namespace MyApi.Pages
+{
+    public class SanalPosModel : PageModel
+    {
+        private readonly IConfiguration _config;
+        public SanalPosModel(IConfiguration config) =&gt; _config = config;
+
+        public string Sx { get; private set; } =
+            &quot;118591467|W8a1JLU8A5Cw+HfadVcO6HiR/GGGxr0NkWr2OGythr8fo0YWdw70cvnI6oKMqvzra3Qu+Wa5u0NRil9gRdJmjocVNd4XciDwfD9+pkVqDErw7/pVZfpcSO+GePg+ZvcqFbOO5A==&quot;;
+        public string SuccessUrl { get; private set; } = &quot;https://paynkolay.com.tr/test/success&quot;;
+        public string FailUrl    { get; private set; } = &quot;https://paynkolay.com.tr/test/fail&quot;;
+        public string Amount     { get; private set; } = &quot;5&quot;;
+        public string CurrencyCode { get; private set; } = &quot;949&quot;;
+        public string ClientRefCode { get; private set; } = &quot;2352345&quot;;
+        public string Use3D      { get; private set; } = &quot;true&quot;;
+        public string AgentCode  { get; private set; } = &quot;1236&quot;;
+        public string Detail     { get; private set; } = &quot;false&quot;;
+        public string TransactionType { get; private set; } = &quot;SALES&quot;;
+        public string CustomerKey { get; private set; } = &quot;&quot;;
+        public string Instalments { get; private set; } = &quot;&quot;;
+        public string Rnd { get; private set; } = &quot;&quot;;
+        public string HashDataV2 { get; private set; } = &quot;&quot;;
+
+        public string cardHolderIP { get; private set; } = &quot;&quot;;
+
+        /// &lt;summary&gt;
+        /// Gets the client&#x27;s IP address by checking various headers, similar to the PHP example.
+        /// This is more reliable when the application is behind a proxy or load balancer.
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;The client&#x27;s IP address as a string, or &quot;UNKNOWN&quot;.&lt;/returns&gt;
+        private string GetClientIpAddress()
+        {
+            // A list of headers to check in order of priority.
+            // These correspond to the $_SERVER variables in the PHP example.
+            var headers = new[]
+            {
+                &quot;Client-IP&quot;,
+                &quot;X-Forwarded-For&quot;,
+                &quot;X-Forwarded&quot;,
+                &quot;X-Cluster-Client-IP&quot;,
+                &quot;Forwarded-For&quot;,
+                &quot;Forwarded&quot;
+            };
+
+            foreach (var header in headers)
+            {
+                // Try to get the value of the header
+                var ipHeaderValue = HttpContext.Request.Headers[header].FirstOrDefault();
+
+                if (!string.IsNullOrEmpty(ipHeaderValue))
+                {
+                    // The &quot;X-Forwarded-For&quot; header can contain a comma-separated list of IPs.
+                    // The first IP in the list is the original client&#x27;s IP.
+                    var ipList = ipHeaderValue.Split(&#x27;,&#x27;).Select(ip =&gt; ip.Trim());
+                    var firstIp = ipList.FirstOrDefault();
+
+                    // Validate that the first IP in the list is a valid IP address
+                    if (firstIp != null &amp;&amp; IPAddress.TryParse(firstIp, out _))
+                    {
+                        return firstIp;
+                    }
+                }
+            }
+
+            // If no valid IP is found in the headers, fall back to the remote IP address of the connection
+            var remoteIp = HttpContext.Connection.RemoteIpAddress;
+            if (remoteIp != null)
+            {
+                // Map to IPv4 if possible to ensure a consistent format, then convert to string
+                return remoteIp.MapToIPv4().ToString();
+            }
+
+            return &quot;UNKNOWN&quot;;
+        }
+
+
+        public void OnGet()
+        {
+            // optional: override from env/appsettings (safer)
+            Sx              = _config[&quot;PaynKolay:Sx&quot;] ?? Sx;
+            SuccessUrl      = _config[&quot;PaynKolay:SuccessUrl&quot;] ?? SuccessUrl;
+            FailUrl         = _config[&quot;PaynKolay:FailUrl&quot;] ?? FailUrl;
+            Amount          = _config[&quot;PaynKolay:Amount&quot;] ?? Amount;
+            ClientRefCode   = _config[&quot;PaynKolay:ClientRefCode&quot;] ?? ClientRefCode;
+            Use3D           = _config[&quot;PaynKolay:Use3D&quot;] ?? Use3D;
+            AgentCode       = _config[&quot;PaynKolay:AgentCode&quot;] ?? AgentCode;
+            Detail          = _config[&quot;PaynKolay:Detail&quot;] ?? Detail;
+            TransactionType = _config[&quot;PaynKolay:TransactionType&quot;] ?? TransactionType;
+            CustomerKey     = _config[&quot;PaynKolay:CustomerKey&quot;] ?? CustomerKey;
+
+            var merchantSecretKey = _config[&quot;PaynKolay:MerchantSecretKey&quot;] ?? &quot;_viH5wUS4HiBmmw9uGybN&quot;;
+
+            // Call the new, more robust method to get the client&#x27;s IP address
+            cardHolderIP = GetClientIpAddress();
+
+            Rnd = DateTime.Now.ToString(&quot;dd-MM-yyyy HH:mm:ss&quot;, CultureInfo.InvariantCulture);
+
+            var raw = $&quot;{Sx}|{ClientRefCode}|{Amount}|{SuccessUrl}|{FailUrl}|{Rnd}|{CustomerKey}|{merchantSecretKey}&quot;;
+            using var sha512 = SHA512.Create();
+            HashDataV2 = Convert.ToBase64String(sha512.ComputeHash(Encoding.UTF8.GetBytes(raw)));
+        }
+    }
+}</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>@page &quot;/sanalpos&quot;
+@model MyApi.Pages.SanalPosModel
+&lt;!doctype html&gt;
+&lt;html lang=&quot;tr&quot;&gt;
+&lt;head&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;title&gt;Sanal POS Örnek&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Canlı ortam için form action linki &quot;https://paynkolay.nkolayislem.com.tr/Vpos&quot; olmalıdır. --&gt;
+    &lt;form method=&quot;post&quot; action=&quot;https://paynkolaytest.nkolayislem.com.tr/Vpos&quot;&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;sx&quot;              value=&quot;@Model.Sx&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;successUrl&quot;      value=&quot;@Model.SuccessUrl&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;failUrl&quot;         value=&quot;@Model.FailUrl&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;amount&quot;          value=&quot;@Model.Amount&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;currencyCode&quot;    value=&quot;@Model.CurrencyCode&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;clientRefCode&quot;   value=&quot;@Model.ClientRefCode&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;use3D&quot;           value=&quot;@Model.Use3D&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;rnd&quot;             value=&quot;@Model.Rnd&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;agentCode&quot;       value=&quot;@Model.AgentCode&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;detail&quot;          value=&quot;@Model.Detail&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;transactionType&quot; value=&quot;@Model.TransactionType&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;hashDataV2&quot;      value=&quot;@Model.HashDataV2&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;cardHolderIP&quot;    value=&quot;@Model.cardHolderIP&quot; /&gt;
+        &lt;input type=&quot;hidden&quot; name=&quot;instalments&quot;     value=&quot;@Model.Instalments&quot; /&gt;
+        &lt;button type=&quot;submit&quot;&gt;Gönder&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>import hashlib
+import base64
+from datetime import datetime
+from flask import Flask, request
+import ipaddress
+
+app = Flask(__name__)
+
+def get_client_ip():
+    &quot;&quot;&quot;
+    Gets the client&#x27;s IP address by checking various headers,
+    replicating the logic from the provided PHP example.
+    &quot;&quot;&quot;
+    # A list of headers to check in order of priority.
+    # In Flask, these are in the `request.environ` dictionary.
+    headers = [
+        &#x27;HTTP_CLIENT_IP&#x27;,
+        &#x27;HTTP_X_FORWARDED_FOR&#x27;,
+        &#x27;HTTP_X_FORWARDED&#x27;,
+        &#x27;HTTP_X_CLUSTER_CLIENT_IP&#x27;,
+        &#x27;HTTP_FORWARDED_FOR&#x27;,
+        &#x27;HTTP_FORWARDED&#x27;,
+        &#x27;REMOTE_ADDR&#x27;
+    ]
+
+    for header in headers:
+        if header in request.environ:
+            # Some headers can contain a comma-separated list of IPs.
+            # The client&#x27;s IP is typically the first one.
+            ip_list = request.environ.get(header).split(&#x27;,&#x27;)
+            ip = ip_list[0].strip()
+
+            # Validate the IP address
+            try:
+                ipaddress.ip_address(ip)
+                return ip
+            except ValueError:
+                # Not a valid IP, so we continue to the next header
+                pass
+
+    return &#x27;UNKNOWN&#x27;
+
+@app.route(&#x27;/&#x27;)
+def generate_payment_form():
+    &quot;&quot;&quot;
+    Generates an HTML form for the payment gateway with a calculated hash.
+    This function replicates the logic from the original PHP script.
+    &quot;&quot;&quot;
+    # Get client IP address using the robust function
+    card_holder_ip = get_client_ip()
+
+    # 1. Define your payment parameters
+    # This value will be provided to you by the payment gateway
+    sx = &quot;118591467|W8a1JLU8A5Cw+HfadVcO6HiR/GGGxr0NkWr2OGythr8fo0YWdw70cvnI6oKMqvzra3Qu+Wa5u0NRil9gRdJmjocVNd4XciDwfD9+pkVqDErw7/pVZfpcSO+GePg+ZvcqFbOO5A==&quot;
+    merchant_secret_key = &quot;_viH5wUS4HiBmmw9uGybN&quot;  # Your unique secret key
+    success_url = &quot;https://paynkolay.com.tr/test/success&quot;
+    fail_url = &quot;https://paynkolay.com.tr/test/fail&quot;
+    amount = &quot;5.00&quot;
+    currency_code = &quot;949&quot;
+    client_ref_code = &quot;2352345&quot;
+    use_3d = &quot;true&quot;
+    agent_code = &quot;1236&quot;
+    transaction_type = &quot;SALES&quot;
+    customer_key = &quot;&quot;
+    instalments = &quot;&quot;
+
+    # Get the current timestamp in the required format
+    rnd = datetime.now().strftime(&quot;%d-%m-%Y %H:%M:%S&quot;)
+
+    # 2. Create the hash string by concatenating the values
+    # The order of concatenation is crucial and must match the payment gateway&#x27;s documentation.
+    hash_str_parts = [
+        sx,
+        client_ref_code,
+        amount,
+        success_url,
+        fail_url,
+        rnd,
+        customer_key,
+        merchant_secret_key
+    ]
+    hash_str = &quot;|&quot;.join(hash_str_parts)
+
+    # 3. Calculate the SHA-512 hash and then Base64 encode it
+    # First, encode the string to bytes using UTF-8
+    hash_bytes = hash_str.encode(&#x27;utf-8&#x27;)
+
+    # Calculate the SHA-512 hash, getting the raw binary output (digest)
+    sha512_hash_digest = hashlib.sha512(hash_bytes).digest()
+
+    # Base64 encode the raw hash digest
+    hash_data_v2_bytes = base64.b64encode(sha512_hash_digest)
+
+    # Decode the Base64 bytes into a string to use in the HTML form
+    hash_data_v2 = hash_data_v2_bytes.decode(&#x27;utf-8&#x27;)
+
+    # 4. Generate the HTML content using an f-string
+    html_content = f&quot;&quot;&quot;
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Sanal POS entegrasyonu örnek Python sayfamız&lt;/title&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Payment Form (Generated by Python)&lt;/h2&gt;
+&lt;p&gt;Click the button below to proceed to the payment page.&lt;/p&gt;
+
+&lt;!-- Canlı ortam için form action linki &quot;https://paynkolay.nkolayislem.com.tr/Vpos&quot; olmalıdır. --&gt;
+&lt;form method=&quot;post&quot; action=&quot;https://paynkolaytest.nkolayislem.com.tr/Vpos&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;sx&quot; value=&quot;{sx}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;successUrl&quot; value=&quot;{success_url}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;failUrl&quot; value=&quot;{fail_url}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;amount&quot; value=&quot;{amount}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;currencyCode&quot; value=&quot;{currency_code}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;clientRefCode&quot; value=&quot;{client_ref_code}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;use3D&quot; value=&quot;{use_3d}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;rnd&quot; value=&quot;{rnd}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;agentCode&quot; value=&quot;{agent_code}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;transactionType&quot; value=&quot;{transaction_type}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;hashDataV2&quot; value=&quot;{hash_data_v2}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;cardHolderIP&quot; value=&quot;{card_holder_ip}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;instalments&quot; value=&quot;{instalments}&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Gönder&quot; style=&quot;padding: 10px 20px; font-size: 16px; cursor: pointer;&quot; /&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+&quot;&quot;&quot;
+
+    # 5. Return the generated HTML content
+    return html_content
+
+
+if __name__ == &quot;__main__&quot;:
+    # To run this application, you first need to install Flask:
+    # pip install Flask
+    #
+    # After installation, run this script:
+    # python sanalpos.py
+    #
+    # It will start a local web server. You can access the payment form by opening
+    # http://127.0.0.1:5000 in your web browser.
+    app.run(debug=True)</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>const express = require(&#x27;express&#x27;);
+const crypto = require(&#x27;crypto&#x27;);
+const net = require(&#x27;net&#x27;);
+
+const app = express();
+const port = 3000;
+
+function getClientIp(req) {
+    const headers = [
+        &#x27;x-client-ip&#x27;,
+        &#x27;x-forwarded-for&#x27;,
+        &#x27;x-forwarded&#x27;,
+        &#x27;x-cluster-client-ip&#x27;,
+        &#x27;forwarded-for&#x27;,
+        &#x27;forwarded&#x27;,
+    ];
+
+    for (const header of headers) {
+        if (req.headers[header]) {
+            const ipList = req.headers[header].split(&#x27;,&#x27;);
+            const ip = ipList[0].trim();
+            if (net.isIP(ip)) {
+                return ip;
+            }
+        }
+    }
+
+    if (req.socket &amp;&amp; req.socket.remoteAddress) {
+        const remoteAddress = req.socket.remoteAddress;
+        // Handle IPv6-mapped IPv4 addresses
+        if (remoteAddress.substr(0, 7) == &quot;::ffff:&quot;) {
+            const ipv4 = remoteAddress.substr(7)
+            if (net.isIP(ipv4)) {
+                return ipv4;
+            }
+        }
+        if (net.isIP(remoteAddress)) {
+            return remoteAddress;
+        }
+    }
+
+    return &#x27;UNKNOWN&#x27;;
+}
+
+function generatePaymentForm(cardHolderIP) {
+    // 1. Define your payment parameters
+    const sx = &quot;118591467|W8a1JLU8A5Cw+HfadVcO6HiR/GGGxr0NkWr2OGythr8fo0YWdw70cvnI6oKMqvzra3Qu+Wa5u0NRil9gRdJmjocVNd4XciDwfD9+pkVqDErw7/pVZfpcSO+GePg+ZvcqFbOO5A==&quot;;
+    const merchantSecretKey = &quot;_viH5wUS4HiBmmw9uGybN&quot;; // Your unique secret key
+    const successUrl = &quot;https://paynkolay.com.tr/test/success&quot;;
+    const failUrl = &quot;https://paynkolay.com.tr/test/fail&quot;;
+    const amount = &quot;5.00&quot;;
+    const currencyCode = &quot;949&quot;;
+    const clientRefCode = &quot;2352345&quot;;
+    const use3D = &quot;true&quot;;
+    const agentCode = &quot;1236&quot;;
+    const transactionType = &quot;SALES&quot;;
+    const customerKey = &quot;&quot;;
+    const instalments = &quot;&quot;;
+
+    // Helper function to format the date as &quot;dd.mm.yyyy HH:MM:SS&quot;
+    const getFormattedDate = () =&gt; {
+        const now = new Date();
+        const pad = (num) =&gt; num.toString().padStart(2, &#x27;0&#x27;);
+
+        const day = pad(now.getDate());
+        const month = pad(now.getMonth() + 1); // Months are 0-indexed
+        const year = now.getFullYear();
+
+        const hours = pad(now.getHours());
+        const minutes = pad(now.getMinutes());
+        const seconds = pad(now.getSeconds());
+
+        return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+    };
+
+    const rnd = getFormattedDate();
+
+    // 2. Create the hash string by concatenating the values
+    // The order of concatenation is crucial.
+    const hashStrParts = [
+        sx,
+        clientRefCode,
+        amount,
+        successUrl,
+        failUrl,
+        rnd,
+        customerKey,
+        merchantSecretKey
+    ];
+    const hashStr = hashStrParts.join(&quot;|&quot;);
+
+    // 3. Calculate the SHA-512 hash and then Base64 encode it
+    const hash = crypto.createHash(&#x27;sha512&#x27;);
+    hash.update(hashStr, &#x27;utf-8&#x27;);
+    const hashDataV2 = hash.digest(&#x27;base64&#x27;);
+
+    // 4. Generate the HTML content using a template literal
+    const htmlContent = `
+&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Sanal POS entegrasyonu örnek Node.js sayfamız&lt;/title&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;h2&gt;Payment Form (Generated by Node.js)&lt;/h2&gt;
+&lt;p&gt;Your IP address is: ${cardHolderIP}&lt;/p&gt;
+&lt;p&gt;Click the button below to proceed to the payment page.&lt;/p&gt;
+
+&lt;!-- Canlı ortam için form action linki &quot;https://paynkolay.nkolayislem.com.tr/Vpos&quot; olmalıdır. --&gt;
+&lt;form method=&quot;post&quot; action=&quot;https://paynkolaytest.nkolayislem.com.tr/Vpos&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;sx&quot; value=&quot;${sx}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;successUrl&quot; value=&quot;${successUrl}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;failUrl&quot; value=&quot;${failUrl}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;amount&quot; value=&quot;${amount}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;currencyCode&quot; value=&quot;${currencyCode}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;clientRefCode&quot; value=&quot;${clientRefCode}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;use3D&quot; value=&quot;${use3D}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;rnd&quot; value=&quot;${rnd}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;agentCode&quot; value=&quot;${agentCode}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;transactionType&quot; value=&quot;${transactionType}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;cardHolderIP&quot; value=&quot;${cardHolderIP}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;hashDataV2&quot; value=&quot;${hashDataV2}&quot;&gt;
+  &lt;input type=&quot;hidden&quot; name=&quot;instalments&quot; value=&quot;${instalments}&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Gönder&quot; style=&quot;padding: 10px 20px; font-size: 16px; cursor: pointer;&quot; /&gt;
+&lt;/form&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+`;
+
+    return htmlContent;
+}
+
+app.get(&#x27;/payment&#x27;, (req, res) =&gt; {
+  const ip = getClientIp(req);
+  const htmlForm = generatePaymentForm(ip);
+  res.send(htmlForm);
+});
+
+app.listen(port, () =&gt; {
+  console.log(`Server running on port ${port}`);
+  console.log(`Access the payment form at http://localhost:${port}/payment`);
+});</code></pre></div></div>
           <div class="callout">
             <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
             <p><code>hashData</code>, <a href="api-non3ds.html">API ile aynı formülle</a> sunucu tarafında üretilir: <code>sx|clientRefCode|amount|successUrl|failUrl|rnd|customerKey|merchantSecretKey</code> → SHA-512 → Base64.</p>
@@ -295,7 +791,7 @@
           <li><a href="#avantajlar">Avantajlar</a></li>
           <li><a href="#akis">Ödeme Akışı</a></li>
           <li><a href="#kullanim">Kullanım Seçenekleri</a></li>
-          <li><a href="#ornek">Örnek Form</a></li>
+          <li><a href="#ornek">Örnek Kod</a></li>
           <li><a href="#parametreler">Parametreler</a></li>
         </ul>
       </aside>
@@ -312,6 +808,7 @@
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/tocspy.js"></script>
   <script src="../assets/js/search.js"></script>
+  <script src="../assets/js/codetabs.js"></script>
   <script src="../assets/js/feedback.js"></script>
 </body>
 </html>
