@@ -122,7 +122,7 @@
 
         <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="../ek-servisler/index.html">Ek Servisler</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-servisler" aria-label="Ek Servisler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-servisler"><div class="nav__sublist-inner"><a class="nav__link" href="../ek-servisler/kart-saklama.html">Kart Saklama</a><a class="nav__link" href="../ek-servisler/kayitli-karttan-odeme.html">Kayıtlı Karttan Ödeme</a><a class="nav__link" href="../ek-servisler/iptal-ve-iade.html">İptal ve İade</a><a class="nav__link" href="../ek-servisler/odeme-sonucu.html">Ödeme Sonucu</a><a class="nav__link" href="../ek-servisler/islem-dogrulama.html">İşlem Doğrulama</a><a class="nav__link" href="../ek-servisler/raporlama.html">Raporlama Servisi</a></div></div></div>
 
-        <div class="nav__group is-open is-current"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="index.html">Pazaryeri Entegrasyonu</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-pazaryeri" aria-label="Pazaryeri Entegrasyonu alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-pazaryeri"><div class="nav__sublist-inner"><a class="nav__link" href="index.html">Genel Bakış</a><a class="nav__link" href="kimlik-dogrulama.html">Kimlik Doğrulama</a><a class="nav__link" href="hash-hesaplama.html">Hash Hesaplama</a><a class="nav__link" href="odeme-profili.html">Ödeme Profili Yönetimi</a><a class="nav__link" href="satici-yonetimi.html">Satıcı Yönetimi</a><a class="nav__link is-active" href="odeme-islemleri.html" aria-current="page">Ödeme İşlemleri</a><a class="nav__link" href="iptal-ve-iade.html">İptal ve İade</a><a class="nav__link" href="masterpass.html">Masterpass</a><a class="nav__link" href="raporlama.html">Raporlama</a></div></div></div>
+        <div class="nav__group is-open is-current"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="index.html">Pazaryeri Entegrasyonu</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-pazaryeri" aria-label="Pazaryeri Entegrasyonu alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-pazaryeri"><div class="nav__sublist-inner"><a class="nav__link" href="index.html">Genel Bakış</a><a class="nav__link" href="kimlik-dogrulama.html">Kimlik Doğrulama</a><a class="nav__link" href="hash-hesaplama.html">Hash Hesaplama</a><a class="nav__link" href="odeme-profili.html">Ödeme Profili Yönetimi</a><a class="nav__link" href="satici-yonetimi.html">Satıcı Yönetimi</a><a class="nav__link is-active" href="odeme-islemleri.html" aria-current="page">Ödeme İşlemleri</a><a class="nav__link" href="iptal-ve-iade.html">İptal ve İade</a><a class="nav__link" href="masterpass.html">Masterpass</a><a class="nav__link" href="raporlama.html">Raporlama</a><a class="nav__link nav__link--dl" href="../assets/paynkolay-pazaryeri.postman_collection.json" download="paynkolay-pazaryeri.postman_collection.json"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Postman Koleksiyonu</a></div></div></div>
 
         <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="../open-source/index.html">Open Source Entegrasyonlar</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-opensource" aria-label="Open Source Entegrasyonlar alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-opensource"><div class="nav__sublist-inner"><a class="nav__link" href="../open-source/woocommerce.html">WooCommerce</a><a class="nav__link" href="../open-source/opencart.html">OpenCart</a><a class="nav__link" href="../open-source/magento-2-x.html">Magento 2.x</a><a class="nav__link" href="../open-source/magento-1-9.html">Magento 1.9</a><a class="nav__link" href="../open-source/prestashop.html">PrestaShop</a><a class="nav__link" href="../open-source/givewp.html">GiveWP</a><a class="nav__link" href="../open-source/whmcs.html">WHMCS</a></div></div></div>
 
@@ -271,6 +271,21 @@ app.post('/payment-callback', (req, res) =&gt; {
   "trxCode": "ORDER_12345"
 }</code></pre></div>
           <p><code>refCode</code> veya <code>trxCode</code>'dan en az birini göndermeniz yeterlidir.</p>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: [
+    {
+      &quot;trxStatus&quot;: &quot;SUCCESS&quot;,
+      &quot;trxCode&quot;: &quot;ORDER_12345&quot;,
+      &quot;refCode&quot;: &quot;REF123456789&quot;,
+      &quot;trxType&quot;: &quot;SALES&quot;,
+      &quot;trxAmount&quot;: 150.00,
+      &quot;trxCurrency&quot;: &quot;TRY&quot;
+    }
+  ],
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
 <div class="table-wrap"><table class="dtable"><thead><tr><th>Durum</th><th>Açıklama</th></tr></thead><tbody><tr><td class="mono">SUCCESS</td><td>Başarılı işlem</td></tr>
 <tr><td class="mono">PENDING</td><td>İşlem devam ediyor</td></tr>
 <tr><td class="mono">FAILED</td><td>Başarısız işlem</td></tr>
@@ -286,6 +301,34 @@ app.post('/payment-callback', (req, res) =&gt; {
   "apiKey": "calculated_api_key"
 }</code></pre></div>
           <div class="callout"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p>Bu servisin <code>apiKey</code> değeri ödeme formülünden farklıdır: <code>Base64(SHA512(apiSecretKey | mpCustomerKey | merchantSecretKey))</code> — bkz. <a href="hash-hesaplama.html">Saklı Kart ApiKey</a>.</p></div></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: {
+    &quot;cardTotalCount&quot;: 2,
+    &quot;storedCardList&quot;: [
+      {
+        &quot;cardToken&quot;: &quot;token_abc123&quot;,
+        &quot;cardTranId&quot;: &quot;tran_xyz789&quot;,
+        &quot;cardMaskedPan&quot;: &quot;454671******7894&quot;,
+        &quot;cardIssuer&quot;: &quot;Akbank&quot;,
+        &quot;cardType&quot;: &quot;Credit&quot;,
+        &quot;cardBrand&quot;: &quot;VISA&quot;,
+        &quot;cardAlias&quot;: &quot;İş Kartım&quot;
+      },
+      {
+        &quot;cardToken&quot;: &quot;token_def456&quot;,
+        &quot;cardTranId&quot;: &quot;tran_uvw321&quot;,
+        &quot;cardMaskedPan&quot;: &quot;540061******1234&quot;,
+        &quot;cardIssuer&quot;: &quot;İş Bankası&quot;,
+        &quot;cardType&quot;: &quot;Debit&quot;,
+        &quot;cardBrand&quot;: &quot;MASTERCARD&quot;,
+        &quot;cardAlias&quot;: &quot;Kişisel Kart&quot;
+      }
+    ]
+  },
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
           <p>Yanıtta müşterinin kartları <code>cardToken</code>, <code>cardTranId</code>, maskeli PAN ve banka bilgileriyle listelenir. Saklı kartla ödemede kart bilgileri gönderilmez:</p>
 <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Saklı Kartla Ödeme — JavaScript</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>await createPayment({
   // ...diğer parametreler
@@ -314,7 +357,70 @@ app.post('/payment-callback', (req, res) =&gt; {
 <tr><td class="mono">cardNumber</td><td>String</td><td>✅</td><td>Kart numarasının ilk 6-8 hanesi veya tamamı</td></tr>
 <tr><td class="mono">amount</td><td>BigDecimal</td><td>✅</td><td>İşlem tutarı</td></tr>
 <tr><td class="mono">isCardValid</td><td>Boolean</td><td>❌</td><td>true ise kart geçerliliği kontrol edilir</td></tr></tbody></table></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: {
+    &quot;cardScope&quot;: &quot;WORLD&quot;,
+    &quot;paymentInstallments&quot;: [
+      {
+        &quot;installment&quot;: 1,
+        &quot;installmentAmount&quot;: 1000.00,
+        &quot;cardTrxType&quot;: &quot;CREDIT&quot;,
+        &quot;bankCode&quot;: &quot;0046&quot;,
+        &quot;commissionAmount&quot;: 0.00,
+        &quot;commissionRate&quot;: 0.00,
+        &quot;trxAmount&quot;: 1000.00,
+        &quot;currencyCode&quot;: &quot;TRY&quot;,
+        &quot;currencyNumber&quot;: &quot;949&quot;,
+        &quot;program&quot;: &quot;WORLD&quot;,
+        &quot;cardBankNo&quot;: &quot;0046&quot;,
+        &quot;plusInstallment&quot;: 0,
+        &quot;encodedValue&quot;: &quot;encoded_value_1&quot;
+      },
+      {
+        &quot;installment&quot;: 2,
+        &quot;installmentAmount&quot;: 510.00,
+        &quot;cardTrxType&quot;: &quot;CREDIT&quot;,
+        &quot;bankCode&quot;: &quot;0046&quot;,
+        &quot;commissionAmount&quot;: 20.00,
+        &quot;commissionRate&quot;: 2.00,
+        &quot;trxAmount&quot;: 1020.00,
+        &quot;currencyCode&quot;: &quot;TRY&quot;,
+        &quot;currencyNumber&quot;: &quot;949&quot;,
+        &quot;program&quot;: &quot;WORLD&quot;,
+        &quot;cardBankNo&quot;: &quot;0046&quot;,
+        &quot;plusInstallment&quot;: 0,
+        &quot;encodedValue&quot;: &quot;encoded_value_2&quot;
+      }
+    ]
+  },
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
           <p>Yanıttaki her taksit seçeneği <code>installmentAmount</code>, komisyon bilgileri ve bir <code>encodedValue</code> içerir. Kullanıcının seçtiği taksidin <code>encodedValue</code>'sunu CreatePayment'ta <code>isFetchInstallments: true</code> ile gönderirsiniz.</p>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Taksit Seçimi ve Ödeme — JavaScript</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>// 1. Taksit seçeneklerini çek
+const installments = await fetchPaymentInstallments({
+  mpCode: &#x27;MP12345&#x27;,
+  apiSecretKey: &#x27;sx&#x27;,
+  cardNumber: cardNumber.substring(0, 8),
+  amount: 1000.00
+});
+
+// 2. Kullanıcıya taksit seçeneklerini göster
+installments.data.paymentInstallments.forEach(inst =&gt; {
+  console.log(`${inst.installment} Taksit: ${inst.installmentAmount} TL`);
+});
+
+// 3. Kullanıcı seçim yaptı (örn: 2 taksit)
+const selectedInstallment = installments.data.paymentInstallments[1];
+
+// 4. Ödemeyi oluştur
+await createPayment({
+  // ... diğer parametreler
+  installment: selectedInstallment.installment,
+  isFetchInstallments: true,
+  encodedValue: selectedInstallment.encodedValue
+});</code></pre></div>
 
           <h2 id="komisyon">UpdatePaymentCommission</h2>
 <div class="access"><p class="access__row"><span class="access__label">TEST</span><code>POST https://apitest.paynkolay.com.tr/marketplace/v1/payment/updateCommission</code></p><p class="access__row"><span class="access__label">PROD</span><code>POST https://api.paynkolay.com.tr/marketplace/v1/payment/updateCommission</code></p></div>
@@ -327,6 +433,36 @@ app.post('/payment-callback', (req, res) =&gt; {
   ]
 }</code></pre></div>
           <div class="callout callout--warn"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p>Bu servis <strong>yalnızca ödeme işlemiyle aynı gün</strong> kullanılabilir; ertesi gün çalışmaz. Stopaj bilgisini de güncellemeyi unutmayın.</p></div></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: [
+    {
+      &quot;mpCode&quot;: &quot;MP12345&quot;,
+      &quot;refCode&quot;: &quot;REF123456789&quot;,
+      &quot;trxCode&quot;: &quot;ORDER_12345&quot;,
+      &quot;trxCurrency&quot;: &quot;TRY&quot;,
+      &quot;trxAmount&quot;: 100.00,
+      &quot;trxStatus&quot;: &quot;SUCCESS&quot;,
+      &quot;sellerTransactionList&quot;: [
+        {
+          &quot;sellerName&quot;: &quot;Ahmet Yılmaz&quot;,
+          &quot;trxAmount&quot;: 100.00,
+          &quot;trxCurrency&quot;: &quot;TRY&quot;,
+          &quot;trxStatus&quot;: &quot;SUCCESS&quot;,
+          &quot;pfCommissionRate&quot;: 2.50,
+          &quot;pfCommissionAmount&quot;: 2.50,
+          &quot;mpCommissionRate&quot;: 5.00,
+          &quot;mpCommissionAmount&quot;: 5.00,
+          &quot;mpCost&quot;: 0.50,
+          &quot;trxType&quot;: &quot;SALES&quot;,
+          &quot;withholdingTax&quot;: 0.80
+        }
+      ]
+    }
+  ],
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
 
           <h2 id="complete-external">CompletePaymentExternal</h2>
           <p><code>autoComplete = false</code> olan pazaryerlerinde ödeme otomatik tamamlanmaz: form akışı bitince callback önce sizin servisinize gelir; kendi validasyon ve kayıt işlemlerinizden sonra bu servisi çağırarak akışı tamamlarsınız.</p>
@@ -348,6 +484,98 @@ app.post('/payment-callback', (req, res) =&gt; {
 <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody><tr><td class="mono">referenceCode</td><td>String</td><td>✅</td><td>Callback'te REFERENCE_CODE alanında gelen Base64 değer — değiştirilmeden gönderilir, tek kullanımlıktır</td></tr>
 <tr><td class="mono">apiSecretKey</td><td>String</td><td>✅</td><td>Satış SX değeri</td></tr></tbody></table></div>
           <p>Başarılı yanıt <code>responseCode: "2"</code> ile işlem detaylarını (authCode, tutarlar, komisyon, hash…) döner. Hata durumlarında da HTTP 200 gelir — sonucu <code>success</code> ve <code>responseCode</code> alanlarından kontrol edin. Aynı <code>referenceCode</code> ile ikinci deneme "Aynı referans kodu ile birden fazla deneme yapılmıştır." hatası verir.</p>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;success&quot;: true,
+  &quot;message&quot;: null,
+  &quot;responseCode&quot;: &quot;2&quot;,
+  &quot;responseMessage&quot;: &quot;İşlem Başarılı&quot;,
+  &quot;trxCode&quot;: &quot;ORDER_12345&quot;,
+  &quot;referenceCode&quot;: &quot;IKSIRPF123456&quot;,
+  &quot;authCode&quot;: &quot;S35971&quot;,
+  &quot;timestamp&quot;: &quot;2026-07-27 16:43:47+0300&quot;,
+  &quot;currencyCode&quot;: &quot;949&quot;,
+  &quot;hash&quot;: &quot;I6mMIL2JW1yREC+RW1kos/pJzAN/L8+d5oaMY6Pe9RtuEcnP+NievGxC/R1IYAxG+vhBE4i4i1zyNvzR0pyuHQ==&quot;,
+  &quot;commissionRate&quot;: &quot;1.3000&quot;,
+  &quot;commissionAmount&quot;: &quot;25.9900&quot;,
+  &quot;installment&quot;: &quot;1&quot;,
+  &quot;trxAmount&quot;: &quot;1999.00&quot;,
+  &quot;authAmount&quot;: &quot;1999.00&quot;,
+  &quot;bankMessage&quot;: &quot;Onaylandı&quot;,
+  &quot;issuerBankCode&quot;: &quot;111&quot;,
+  &quot;installmentFeeRate&quot;: &quot;0.00&quot;,
+  &quot;installmentFeeAmount&quot;: &quot;0.00&quot;,
+  &quot;cardType&quot;: &quot;CreditCard&quot;,
+  &quot;paymentSystem&quot;: &quot;V&quot;
+}</code></pre></div>
+<div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">Node.js</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">PHP</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code>// createPayment isteğinde callbackUrl olarak verdiğiniz endpoint
+app.post(&#x27;/payment-callback&#x27;, async (req, res) =&gt; {
+  const referenceCode = req.body.REFERENCE_CODE || req.body.referenceCode;
+
+  if (!referenceCode) {
+    return res.status(400).send(&#x27;referenceCode zorunludur&#x27;);
+  }
+
+  // 1. İşlem kaydı oluştur (kendi DB&#x27;niz)
+  await saveTransactionRecord(req.body);
+
+  // 2. Validasyon / iş mantığı işlemleri
+  // ...
+
+  // 3. Ödemeyi tamamla
+  const response = await fetch(
+    &#x27;https://apitest.paynkolay.com.tr/marketplace/v1/payment/completePaymentExternal&#x27;,
+    {
+      method: &#x27;POST&#x27;,
+      headers: { &#x27;Content-Type&#x27;: &#x27;application/json&#x27; },
+      body: JSON.stringify({
+        referenceCode: referenceCode,
+        apiSecretKey: process.env.API_SECRET_KEY
+      })
+    }
+  );
+
+  const result = await response.json();
+
+  if (result.success &amp;&amp; result.responseCode === &#x27;2&#x27;) {
+    await updateOrderStatus(result.trxCode, &#x27;PAID&#x27;);
+  } else {
+    await updateOrderStatus(result.trxCode, &#x27;FAILED&#x27;);
+    console.error(&#x27;Ödeme tamamlanamadı:&#x27;, result.message || result.responseMessage);
+  }
+
+  res.status(200).send(result.responseMessage);
+});</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>&lt;?php
+// createPayment isteğinde callbackUrl olarak verdiğiniz endpoint
+$referenceCode = $_POST[&#x27;REFERENCE_CODE&#x27;] ?? $_POST[&#x27;referenceCode&#x27;] ?? &#x27;&#x27;;
+
+if ($referenceCode === &#x27;&#x27;) {
+    http_response_code(400);
+    exit(&#x27;referenceCode zorunludur&#x27;);
+}
+
+// 1. İşlem kaydı oluştur (kendi DB&#x27;niz)
+// 2. Validasyon / iş mantığı işlemleri
+// ...
+
+// 3. Ödemeyi tamamla
+$ch = curl_init(&#x27;https://apitest.paynkolay.com.tr/marketplace/v1/payment/completePaymentExternal&#x27;);
+curl_setopt_array($ch, [
+    CURLOPT_POST =&gt; true,
+    CURLOPT_RETURNTRANSFER =&gt; true,
+    CURLOPT_HTTPHEADER =&gt; [&#x27;Content-Type: application/json&#x27;],
+    CURLOPT_POSTFIELDS =&gt; json_encode([
+        &#x27;referenceCode&#x27; =&gt; $referenceCode,
+        &#x27;apiSecretKey&#x27; =&gt; getenv(&#x27;API_SECRET_KEY&#x27;),
+    ]),
+]);
+$result = json_decode(curl_exec($ch), true);
+curl_close($ch);
+
+if (($result[&#x27;success&#x27;] ?? false) &amp;&amp; ($result[&#x27;responseCode&#x27;] ?? &#x27;&#x27;) === &#x27;2&#x27;) {
+    // Siparişi onayla
+} else {
+    // Hata: $result[&#x27;message&#x27;] / $result[&#x27;responseMessage&#x27;]
+}</code></pre></div></div>
 
           <h2 id="teslimat">UpdateDeliveryDate</h2>
           <p>Teslimat bazlı valör (<code>valorCalculationType = "D"</code>) profiliyle çalışan satıcı işlemleri için teslim tarihini bildirir; bildirilmeden satıcıya ödeme yapılmaz.</p>
@@ -360,6 +588,86 @@ app.post('/payment-callback', (req, res) =&gt; {
   ]
 }</code></pre></div>
           <div class="callout callout--warn"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p><strong>Kurallar:</strong> <code>deliveryDate</code> her işlem için yalnızca 1 kez girilebilir ve sonradan değiştirilemez; her zaman güncellemenin yapıldığı günün tarihi olmalıdır (dd.MM.yyyy). Sepette birden çok satıcı varsa her satıcının teslimatı ayrı liste elemanı olarak bildirilir. Güncellenemeyen işlemlerin referansları yanıtın <code>message</code> alanında döner.</p></div></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;Gönderdiğiniz refCode ve trxCode bilgilerine ait bir ödeme işlemi kaydı bulunamadı.!&quot;
+}</code></pre></div>
+
+
+          <h2 id="ornek">Uçtan Uca Örnek</h2>
+          <p>Ödeme servislerini tek sınıfta toplayan çalışır Node.js örneği:</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">MarketplacePayment — Node.js (axios)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>class MarketplacePayment {
+  async processPayment(orderData) {
+    try {
+      // 1. Taksit seçeneklerini çek
+      const installments = await this.fetchInstallments(
+        orderData.cardNumber,
+        orderData.amount
+      );
+
+      // 2. Stopaj hesapla
+      const sellers = orderData.items.map(item =&gt; ({
+        sellerExternalId: item.sellerId,
+        trxAmount: item.price,
+        withholdingTax: this.calculateWithholdingTax(item.priceWithoutVAT),
+        sellerDiscountAmount: item.sellerDiscount || 0
+      }));
+
+      // 3. ApiKey hesapla
+      const apiKey = this.calculateApiKey(
+        orderData.orderId,
+        orderData.amount,
+        &#x27;TRY&#x27;,
+        &#x27;SALES&#x27;
+      );
+
+      // 4. Ödeme oluştur
+      const payment = await this.createPayment({
+        apiKey,
+        apiSecretKey: this.apiSecretKey,
+        bankCard: {
+          cardHolder: orderData.cardHolder,
+          cardNumber: orderData.cardNumber,
+          cvv: orderData.cvv,
+          expiryMonth: orderData.expiryMonth,
+          expiryYear: orderData.expiryYear,
+          isThreeD: true,
+          registerCard: orderData.saveCard
+        },
+        installment: orderData.selectedInstallment,
+        trxAmount: orderData.amount,
+        trxCode: orderData.orderId,
+        trxType: &#x27;SALES&#x27;,
+        trxCurrency: &#x27;TRY&#x27;,
+        callbackUrl: &#x27;https://yoursite.com/payment-callback&#x27;,
+        sellerList: sellers,
+        marketplaceCode: this.mpCode,
+        customerCardInfo: {
+          mpCustomerKey: orderData.customerId
+        }
+      });
+
+      // 5. 3D form&#x27;u göster
+      if (payment.data.form) {
+        const htmlForm = Buffer.from(
+          payment.data.form,
+          &#x27;base64&#x27;
+        ).toString(&#x27;utf-8&#x27;);
+        return { type: &#x27;3D_FORM&#x27;, html: htmlForm };
+      }
+
+      return { type: &#x27;SUCCESS&#x27;, data: payment.data };
+
+    } catch (error) {
+      console.error(&#x27;Payment error:&#x27;, error);
+      throw error;
+    }
+  }
+
+  calculateWithholdingTax(amountWithoutVAT) {
+    return amountWithoutVAT * 0.01; // %1 stopaj
+  }
+}</code></pre></div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
   <a class="pager__card" href="satici-yonetimi.html">
@@ -379,7 +687,7 @@ app.post('/payment-callback', (req, res) =&gt; {
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 5 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -419,6 +727,7 @@ app.post('/payment-callback', (req, res) =&gt; {
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/tocspy.js"></script>
   <script src="../assets/js/search.js"></script>
+  <script src="../assets/js/codetabs.js"></script>
   <script src="../assets/js/feedback.js"></script>
 </body>
 </html>
