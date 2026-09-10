@@ -175,6 +175,50 @@
             <p>Dönen yanıtta <code>responseCode = 2</code> ise işlem başarılıdır. Kısmi iade için <code>amount</code> alanına iade edilecek tutarı gönderin.</p>
           </div>
 
+
+          <h2 id="ornek">Örnek İstek ve Yanıt</h2>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek İstek — cURL (iade)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>curl -X <span class="tk-n">POST</span> <span class="tk-s">"https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/CancelRefundPayment"</span> \
+  -F <span class="tk-s">"sx=118591467|W8a1JLU8A5Cw…FbOO5A==|yDUZaCk6…"</span> \
+  -F <span class="tk-s">"referenceCode=IKSIRPF142277040"</span> \
+  -F <span class="tk-s">"type=refund"</span> \
+  -F <span class="tk-s">"amount=10.00"</span> \
+  -F <span class="tk-s">"trxDate=2026.09.03"</span> \
+  -F <span class="tk-s">"hashDatav2=lunnRyNfDu6pdpNjjlFrlATE4Pj…"</span></code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — 200</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  <span class="tk-k">"responseCode"</span>: <span class="tk-n">2</span>,   <span class="tk-c">// 2 = işlem başarılı</span>
+  <span class="tk-k">"responseData"</span>: <span class="tk-s">"…"</span>
+}</code></pre></div>
+
+          <h2 id="konsol">Deneme Konsolu</h2>
+          <p>Değerlerinizi girin: imza (<code>hashDatav2</code>) tarayıcınızda üretilir, kopyalanabilir cURL komutu hazırlanır; dilerseniz isteği doğrudan <strong>test ortamına</strong> gönderip yanıtı burada görün.</p>
+          <div class="callout callout--warn">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
+            <p>Hesaplama <strong>tamamen tarayıcınızda</strong> yapılır; "İsteği Gönder" yalnızca test ortamı ucuna çağrı yapar. Yine de canlı Secret Key'inizi yalnızca güvendiğiniz bir makinede girin.</p>
+          </div>
+          <form class="tool" id="cr-form">
+            <div class="tool__grid">
+              <div class="field field--full"><label for="cr-sx">sx <small>İptal sx değeriniz</small></label><input type="text" id="cr-sx" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="cr-ref">referenceCode</label><input type="text" id="cr-ref" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="cr-type">type</label><select id="cr-type"><option value="cancel">cancel — aynı gün iptal</option><option value="refund">refund — iade</option></select></div>
+              <div class="field"><label for="cr-amount">amount <small>nokta ile ondalık, ör. 10.00</small></label><input type="text" id="cr-amount" autocomplete="off" spellcheck="false"></div>
+              <div class="field"><label for="cr-trxdate">trxDate <small>yyyy.aa.gg</small></label><input type="text" id="cr-trxdate" autocomplete="off" spellcheck="false"></div>
+              <div class="field field--full"><label for="cr-secret">merchantSecretKey</label><input type="text" id="cr-secret" autocomplete="off" spellcheck="false"></div>
+            </div>
+            <div class="tool__actions">
+              <button class="btn btn--primary" type="submit">Hash + cURL Üret</button>
+              <button class="btn btn--ghost" type="button" id="cr-fill">Test değerlerini doldur</button>
+              <button class="btn btn--ghost" type="button" id="cr-send">İsteği Gönder (test ortamı)</button>
+            </div>
+            <div class="tool__out" id="out-cr" hidden>
+              <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hash String</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code id="cr-str"></code></pre></div>
+              <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">hashDatav2 (SHA-512 → Base64)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code id="cr-hash"></code></pre></div>
+              <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">cURL</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code id="cr-curl"></code></pre></div>
+            </div>
+            <div class="tool__out" id="out-cr-resp" hidden>
+              <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code id="cr-resp"></code></pre></div>
+            </div>
+          </form>
+
           <nav class="pager" aria-label="Sayfalar arası gezinme">
   <a class="pager__card" href="kayitli-karttan-odeme.html">
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
@@ -192,7 +236,7 @@
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 4 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -211,6 +255,8 @@
         <ul class="toc__list">
           <li><a class="is-active" href="#genel">Genel Bakış</a></li>
           <li><a href="#parametreler">Parametreler</a></li>
+          <li><a href="#ornek">Örnek İstek ve Yanıt</a></li>
+          <li><a href="#konsol">Deneme Konsolu</a></li>
         </ul>
       </aside>
 
@@ -226,6 +272,8 @@
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/tocspy.js"></script>
   <script src="../assets/js/search.js"></script>
+  <script src="../assets/js/copy.js"></script>
+  <script src="../assets/js/canceltool.js"></script>
   <script src="../assets/js/feedback.js"></script>
 </body>
 </html>

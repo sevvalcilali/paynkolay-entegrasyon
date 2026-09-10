@@ -1234,7 +1234,8 @@ a.chip:hover {
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.field select {
   width: 100%;
   padding: 9px var(--space-3);
   font-size: var(--text-base);
@@ -1252,7 +1253,8 @@ a.chip:hover {
 }
 
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+.field select:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--focus-ring);
