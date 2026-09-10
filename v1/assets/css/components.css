@@ -1090,6 +1090,12 @@ a.chip:hover {
   color: var(--text-heading);
 }
 
+/* Başka bölüme yönlendiren referans linkleri (Ek Bilgiler kısayolları) */
+.nav__link--ref .refarrow {
+  flex-shrink: 0;
+  color: var(--rail-muted);
+}
+
 /* Rayda o an bulunulan grup */
 .nav__group.is-current > .nav__group-btn {
   background: var(--rail-active);
