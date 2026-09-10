@@ -236,17 +236,25 @@
           <h2 id="parametreler">Parametreler</h2>
           <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
                 <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Size verilen satış (sx) değeriniz</td></tr>
-                <tr><td class="mono">clientRefCode</td><td>string</td><td>✅</td><td>Sizin ürettiğiniz tekil referans numarası</td></tr>
+                <tr><td class="mono">clientRefCode</td><td>string</td><td>✅</td><td>Sizin ürettiğiniz referans numarası — her işlem için benzersiz olmalı (aynı kod, sorgulama ve raporlamada işlemleri ayırt edilemez kılar); Türkçe karakter içermemeli, en fazla 1024 karakter</td></tr>
                 <tr><td class="mono">amount</td><td>decimal</td><td>✅</td><td>Tutar — kuruş ayıracı nokta (ör. 249.90)</td></tr>
                 <tr><td class="mono">successUrl</td><td>string</td><td>✅</td><td>Başarılı sonucun POST edileceği SSL'li adres</td></tr>
                 <tr><td class="mono">failUrl</td><td>string</td><td>✅</td><td>Başarısız sonucun POST edileceği SSL'li adres</td></tr>
-                <tr><td class="mono">use3D</td><td>boolean</td><td>✅</td><td>Ortak ödeme sayfasında 3D akışını belirler</td></tr>
-                <tr><td class="mono">transactionType</td><td>string</td><td>✅</td><td>sales gönderilmelidir</td></tr>
+                <tr><td class="mono">use3D</td><td>boolean</td><td>✅</td><td>true = 3D Secure zorunlu; boş bırakılırsa üye işyeri ayarınız uygulanır</td></tr>
+                <tr><td class="mono">transactionType</td><td>string</td><td>✅</td><td>SALES (satış) veya PRESALES (<a href="on-provizyon.html">ön provizyon</a>)</td></tr>
                 <tr><td class="mono">rnd</td><td>string</td><td>✅</td><td>İşlem zamanı — ör. 03-09-2026 15:04:22</td></tr>
                 <tr><td class="mono">hashData</td><td>string</td><td>✅</td><td>SHA-512 + Base64 istek imzası</td></tr>
-                <tr><td class="mono">instalments</td><td>string</td><td>—</td><td>Sunulacak taksit seçenekleri (ör. 1,2,3,6)</td></tr>
-                <tr><td class="mono">language</td><td>string</td><td>—</td><td>Ortak ödeme sayfası dili (tr / en)</td></tr>
-                <tr><td class="mono">customerKey</td><td>string</td><td>—</td><td>Kart saklanacaksa müşteri anahtarı</td></tr>
+                <tr><td class="mono">instalments</td><td>string</td><td>—</td><td>Taksit sayısı; 1 = tek çekim, boş bırakılırsa varsayılan taksit ayarlarınız uygulanır</td></tr>
+                <tr><td class="mono">language</td><td>string</td><td>—</td><td>Ortak ödeme sayfası dili — boş = Türkçe; en (İngilizce), ru (Rusça)</td></tr>
+                <tr><td class="mono">customerKey</td><td>string</td><td>—</td><td>Ortak ödeme sayfası üzerinden kart saklamak için müşteri anahtarı</td></tr>
+                <tr><td class="mono">currencyCode</td><td>string</td><td>—</td><td>Para birimi — boş = TL; USD için 840, EUR için 978</td></tr>
+                <tr><td class="mono">bin</td><td>string</td><td>—</td><td>Yalnızca belirli BIN'lerden (kartın ilk 6 hanesi) işlem kabul etmek için</td></tr>
+                <tr><td class="mono">cardcampaign</td><td>string</td><td>—</td><td>Kart şeması kampanyası — Visa için 4, Mastercard için 5</td></tr>
+                <tr><td class="mono">detail</td><td>string</td><td>—</td><td>true gönderilirse ortak ödeme sayfasında müşteriden ek bilgi alınır</td></tr>
+                <tr><td class="mono">second</td><td>string</td><td>—</td><td>Sepetin kalan süresi (saniye) — ödeme sayfasında geri sayım gösterilir</td></tr>
+                <tr><td class="mono">MerchantCustomerNo</td><td>string</td><td>—</td><td>Temsilci veya alt üye işyeri numaranız; panelde bu numarayla arama yapabilirsiniz</td></tr>
+                <tr><td class="mono">agentCode</td><td>string</td><td>—</td><td>Alt temsilcilik üzerinden çalışıyorsanız alt temsilcinizin kodu</td></tr>
+                <tr><td class="mono">ECOMM_PLATFORM</td><td>string</td><td>—</td><td>B2B yazılım geliştiriyorsanız platformunuzun adı</td></tr>
 </tbody></table></div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
@@ -266,7 +274,7 @@
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 3 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
         </article>
 
         <footer class="footer">
