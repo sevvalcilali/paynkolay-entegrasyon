@@ -184,6 +184,23 @@
 <tr><td class="mono">valorDateCount</td><td>Integer</td><td>✅</td><td>Para transferi için bekleme süresi (gün)</td></tr>
 <tr><td class="mono">valorCalculationType</td><td>String</td><td>✅</td><td>Valör tipi: W, H, M, T, D</td></tr>
 <tr><td class="mono">active</td><td>Boolean</td><td>❌</td><td>Profil aktif mi? (varsayılan: true)</td></tr></tbody></table></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: {
+    &quot;profileExternalId&quot;: &quot;IslemValor1&quot;,
+    &quot;marketplaceCode&quot;: &quot;MP12345&quot;,
+    &quot;name&quot;: &quot;Premium Satıcı Profili&quot;,
+    &quot;mpCommissionRate&quot;: 5.00,
+    &quot;mpCost&quot;: 0.50,
+    &quot;paymentDay&quot;: &quot;per&quot;,
+    &quot;valorDateCount&quot;: 1,
+    &quot;active&quot;: true,
+    &quot;createDate&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+    &quot;updateDate&quot;: &quot;2025-01-15T10:30:00Z&quot;
+  },
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
           <p>Örnekteki profil, işlem yapıldıktan 1 gün sonra ödeme yapan işlem-temelli (<code>T</code>) bir profildir. Yanıtta profil, <code>marketplaceCode</code> ve tarih alanlarıyla birlikte döner.</p>
 
           <h2 id="get">GetPaymentProfileById</h2>
@@ -191,22 +208,191 @@
 <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
   "profileExternalId": "IslemValor1"
 }</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: {
+    &quot;profileExternalId&quot;: &quot;IslemValor1&quot;,
+    &quot;marketplaceCode&quot;: &quot;MP12345&quot;,
+    &quot;name&quot;: &quot;Premium Satıcı Profili&quot;,
+    &quot;mpCommissionRate&quot;: 5.00,
+    &quot;mpCost&quot;: 0.50,
+    &quot;paymentDay&quot;: &quot;per&quot;,
+    &quot;valorDateCount&quot;: 1,
+    &quot;active&quot;: true,
+    &quot;createDate&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+    &quot;updateDate&quot;: &quot;2025-01-15T10:30:00Z&quot;
+  },
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
 
           <h2 id="update">UpdatePaymentProfile</h2>
 <div class="access"><p class="access__row"><span class="access__label">TEST</span><code>POST https://apitest.paynkolay.com.tr/marketplace/v1/paymentprofile/update</code></p><p class="access__row"><span class="access__label">PROD</span><code>POST https://api.paynkolay.com.tr/marketplace/v1/paymentprofile/update</code></p></div>
           <div class="callout"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p>Güncellemede <strong>tüm parametreler</strong> gönderilmelidir; değiştirmek istemediğiniz alanları mevcut değerleriyle yollayın.</p></div></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;profileExternalId&quot;: &quot;IslemValor1&quot;,
+  &quot;apiSecretKey&quot;: &quot;sx_value_here&quot;,
+  &quot;name&quot;: &quot;Güncellenmiş Premium Profil&quot;,
+  &quot;mpCommissionRate&quot;: 4.50,
+  &quot;mpCost&quot;: 0.30,
+  &quot;paymentDay&quot;: null,
+  &quot;valorDateCount&quot;: 2,
+  &quot;valorCalculationType&quot;: &quot;T&quot;,
+  &quot;active&quot;: true
+}</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: {
+    &quot;profileExternalId&quot;: &quot;IslemValor1&quot;,
+    &quot;marketplaceCode&quot;: &quot;MP12345&quot;,
+    &quot;name&quot;: &quot;Güncellenmiş Premium Profil&quot;,
+    &quot;mpCommissionRate&quot;: 4.50,
+    &quot;mpCost&quot;: 0.30,
+    &quot;paymentDay&quot;: &quot;per&quot;,
+    &quot;valorDateCount&quot;: 2,
+    &quot;active&quot;: true,
+    &quot;createDate&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+    &quot;updateDate&quot;: &quot;2025-01-16T14:20:00Z&quot;
+  },
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
 
           <h2 id="delete">DeletePaymentProfileById</h2>
 <div class="access"><p class="access__row"><span class="access__label">TEST</span><code>POST https://apitest.paynkolay.com.tr/marketplace/v1/paymentprofile/delete</code></p><p class="access__row"><span class="access__label">PROD</span><code>POST https://api.paynkolay.com.tr/marketplace/v1/paymentprofile/delete</code></p></div>
           <div class="callout callout--warn"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p>Aktif satıcılara atanmış profilleri silemezsiniz — önce satıcıları başka bir profile geçirmeniz gerekir.</p></div></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;profileExternalId&quot;: &quot;IslemValor1&quot;
+}</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: null,
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
 
           <h2 id="list">GetAllPaymentProfileByApiSecretKey</h2>
 <div class="access"><p class="access__row"><span class="access__label">TEST</span><code>POST https://apitest.paynkolay.com.tr/marketplace/v1/paymentprofile/list</code></p><p class="access__row"><span class="access__label">PROD</span><code>POST https://api.paynkolay.com.tr/marketplace/v1/paymentprofile/list</code></p></div>
 <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody><tr><td class="mono">apiSecretKey</td><td>String</td><td>✅</td><td>Pazaryerine ait SX değeri</td></tr>
 <tr><td class="mono">active</td><td>Boolean</td><td>❌</td><td>true = sadece aktif, false = sadece pasif, null = tümü</td></tr></tbody></table></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;apiSecretKey&quot;: &quot;sx_value_here&quot;,
+  &quot;active&quot;: true
+}</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: [
+    {
+      &quot;profileExternalId&quot;: &quot;Premium1&quot;,
+      &quot;marketplaceCode&quot;: &quot;MP12345&quot;,
+      &quot;name&quot;: &quot;Premium Satıcı Profili&quot;,
+      &quot;mpCommissionRate&quot;: 5.00,
+      &quot;mpCost&quot;: 0.50,
+      &quot;paymentDay&quot;: &quot;per&quot;,
+      &quot;valorDateCount&quot;: 1,
+      &quot;active&quot;: true,
+      &quot;createDate&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+      &quot;updateDate&quot;: &quot;2025-01-15T10:30:00Z&quot;
+    },
+    {
+      &quot;profileExternalId&quot;: &quot;Standard1&quot;,
+      &quot;marketplaceCode&quot;: &quot;MP12345&quot;,
+      &quot;name&quot;: &quot;Standart Satıcı Profili&quot;,
+      &quot;mpCommissionRate&quot;: 7.00,
+      &quot;mpCost&quot;: 1.00,
+      &quot;paymentDay&quot;: &quot;per&quot;,
+      &quot;valorDateCount&quot;: 3,
+      &quot;active&quot;: true,
+      &quot;createDate&quot;: &quot;2025-01-10T09:15:00Z&quot;,
+      &quot;updateDate&quot;: &quot;2025-01-10T09:15:00Z&quot;
+    }
+  ],
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
 
           <h2 id="senaryolar">Örnek Profil Kurguları</h2>
 <div class="envgrid"><div class="env"><span class="env__title">Premium Satıcı</span><ul><li>%3 komisyon, işlem ücreti yok</li><li><code>valorDateCount: 1</code> — ertesi gün ödeme</li><li><code>valorCalculationType: "T"</code></li></ul></div><div class="env"><span class="env__title">Standart Satıcı</span><ul><li>%5 komisyon + 0.50 TL işlem ücreti</li><li><code>valorDateCount: 3</code></li><li><code>valorCalculationType: "T"</code></li></ul></div><div class="env"><span class="env__title">Haftalık Ödemeli</span><ul><li>%5 komisyon</li><li><code>paymentDay: 1</code> — her pazartesi</li><li><code>valorCalculationType: "W"</code></li></ul></div><div class="env"><span class="env__title">Teslimat Sonrası</span><ul><li>%4 komisyon</li><li>Teslimattan 2 gün sonra ödeme</li><li><code>valorCalculationType: "D"</code> + UpdateDeliveryDate</li></ul></div></div>
+
+
+          <h2 id="ornek">Uçtan Uca Örnek</h2>
+          <p>Beş servisi tek sınıfta toplayan çalışır Node.js örneği:</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">PaymentProfileManager — Node.js (axios)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>const axios = require(&#x27;axios&#x27;);
+
+class PaymentProfileManager {
+  constructor(apiSecretKey, merchantSecretKey, baseURL) {
+    this.apiSecretKey = apiSecretKey;
+    this.merchantSecretKey = merchantSecretKey;
+    this.baseURL = baseURL;
+  }
+
+  async createProfile(profileData) {
+    const response = await axios.post(
+      `${this.baseURL}/paymentprofile`,
+      {
+        ...profileData,
+        apiSecretKey: this.apiSecretKey
+      }
+    );
+    return response.data;
+  }
+
+  async getProfile(profileExternalId) {
+    const response = await axios.post(
+      `${this.baseURL}/paymentprofile/get`,
+      { profileExternalId }
+    );
+    return response.data;
+  }
+
+  async updateProfile(profileData) {
+    const response = await axios.post(
+      `${this.baseURL}/paymentprofile/update`,
+      {
+        ...profileData,
+        apiSecretKey: this.apiSecretKey
+      }
+    );
+    return response.data;
+  }
+
+  async deleteProfile(profileExternalId) {
+    const response = await axios.post(
+      `${this.baseURL}/paymentprofile/delete`,
+      { profileExternalId }
+    );
+    return response.data;
+  }
+
+  async listProfiles(activeOnly = null) {
+    const response = await axios.post(
+      `${this.baseURL}/paymentprofile/list`,
+      {
+        apiSecretKey: this.apiSecretKey,
+        active: activeOnly
+      }
+    );
+    return response.data;
+  }
+}
+
+// Kullanım
+const manager = new PaymentProfileManager(
+  process.env.API_SECRET_KEY,
+  process.env.MERCHANT_SECRET_KEY,
+  &#x27;https://apitest.paynkolay.com.tr/marketplace/v1&#x27;
+);
+
+// Profil oluştur
+const newProfile = await manager.createProfile({
+  profileExternalId: &quot;PROFILE_001&quot;,
+  name: &quot;Test Profili&quot;,
+  mpCommissionRate: 5.00,
+  mpCost: 0.50,
+  valorDateCount: 2,
+  valorCalculationType: &quot;T&quot;,
+  active: true
+});</code></pre></div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
   <a class="pager__card" href="hash-hesaplama.html">
@@ -226,7 +412,7 @@
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 5 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
         </article>
 
         <footer class="footer">

@@ -193,6 +193,60 @@
 <tr><td class="mono">apiSecretKey</td><td>String</td><td>✅</td><td>Pazaryerine ait SX değeri</td></tr>
 <tr><td class="mono">active</td><td>Boolean</td><td>❌</td><td>Satıcı aktif mi? (varsayılan: true)</td></tr>
 <tr><td class="mono">mpPaymentProfileExternalId</td><td>String</td><td>✅</td><td>Atanacak ödeme profili ID'si</td></tr></tbody></table></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — Tüzel Kişi Şirketi</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;sellerExternalId&quot;: &quot;COMPANY_001&quot;,
+  &quot;nameSurname&quot;: &quot;Örnek Teknoloji A.Ş.&quot;,
+  &quot;sellerType&quot;: 3,
+  &quot;vkn&quot;: &quot;1234567890&quot;,
+  &quot;taxOffice&quot;: &quot;Kozyatağı&quot;,
+  &quot;contactPerson&quot;: &quot;Mehmet Kaya&quot;,
+  &quot;email&quot;: &quot;info@ornekteknoloji.com&quot;,
+  &quot;phoneNumber&quot;: &quot;5551112233&quot;,
+  &quot;city&quot;: &quot;34&quot;,
+  &quot;address&quot;: &quot;Atatürk Mah. Teknoloji Cad. No:100 Kadıköy&quot;,
+  &quot;iban&quot;: &quot;TR450006400000115638974521&quot;,
+  &quot;accountHolder&quot;: &quot;Örnek Teknoloji A.Ş.&quot;,
+  &quot;apiSecretKey&quot;: &quot;sx_value&quot;,
+  &quot;active&quot;: true,
+  &quot;mpPaymentProfileExternalId&quot;: &quot;PREMIUM_PROFILE&quot;
+}</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: {
+    &quot;sellerExternalId&quot;: &quot;SELLER_001&quot;,
+    &quot;active&quot;: true,
+    &quot;nameSurname&quot;: &quot;Ahmet Yılmaz&quot;,
+    &quot;sellerType&quot;: &quot;Gerçek Kişi&quot;,
+    &quot;tckn&quot;: &quot;12345678901&quot;,
+    &quot;birthDate&quot;: &quot;1985-05-15&quot;,
+    &quot;vkn&quot;: null,
+    &quot;contactPerson&quot;: &quot;Ahmet Yılmaz&quot;,
+    &quot;phoneNumber&quot;: &quot;5551234567&quot;,
+    &quot;city&quot;: &quot;34&quot;,
+    &quot;address&quot;: &quot;Atatürk Cad. No:123 Kadıköy&quot;,
+    &quot;iban&quot;: &quot;TR330006100519786457841326&quot;,
+    &quot;accountHolder&quot;: &quot;Ahmet Yılmaz&quot;,
+    &quot;paymentProfile&quot;: {
+      &quot;profileExternalId&quot;: &quot;PREMIUM_PROFILE&quot;,
+      &quot;marketplaceCode&quot;: &quot;MP12345&quot;,
+      &quot;name&quot;: &quot;Premium Satıcı Profili&quot;,
+      &quot;mpCommissionRate&quot;: 5.00,
+      &quot;mpCost&quot;: 0.50,
+      &quot;paymentDay&quot;: &quot;per&quot;,
+      &quot;valorDateCount&quot;: 1,
+      &quot;active&quot;: true,
+      &quot;createDate&quot;: &quot;2025-01-15T10:30:00Z&quot;,
+      &quot;updateDate&quot;: &quot;2025-01-15T10:30:00Z&quot;
+    },
+    &quot;marketplaceCode&quot;: &quot;MP12345&quot;,
+    &quot;taxOffice&quot;: &quot;Kadıköy&quot;,
+    &quot;createDate&quot;: &quot;2025-01-20T14:25:00Z&quot;,
+    &quot;updateDate&quot;: &quot;2025-01-20T14:25:00Z&quot;,
+    &quot;email&quot;: &quot;ahmet@example.com&quot;
+  },
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
           <p>Yanıtta satıcı, bağlı olduğu <code>paymentProfile</code> nesnesi ve <code>marketplaceCode</code> ile birlikte döner. Tüzel kişi için <code>sellerType: 3</code> + <code>vkn</code> gönderilir, <code>tckn</code> boş bırakılır.</p>
 
           <h2 id="get">GetSellerById</h2>
@@ -201,19 +255,85 @@
   "apiSecretKey": "sx_value",
   "sellerExternalId": "SELLER_001"
 }</code></pre></div>
+          <p>Yanıt, <a href="#create">CreateSeller</a> yanıtıyla aynı yapıdadır.</p>
 
           <h2 id="update">UpdateSeller</h2>
 <div class="access"><p class="access__row"><span class="access__label">TEST</span><code>POST https://apitest.paynkolay.com.tr/marketplace/v1/seller/update</code></p><p class="access__row"><span class="access__label">PROD</span><code>POST https://api.paynkolay.com.tr/marketplace/v1/seller/update</code></p></div>
           <div class="callout"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p>Tüm parametreler gönderilmelidir; <code>sellerType</code> ve <code>tckn</code>/<code>vkn</code> gibi temel kimlik bilgileri <strong>değiştirilemez</strong>. Güncellenmeyecek alanları mevcut değerleriyle yollayın.</p></div></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;sellerExternalId&quot;: &quot;SELLER_001&quot;,
+  &quot;nameSurname&quot;: &quot;Ahmet Yılmaz&quot;,
+  &quot;sellerType&quot;: 1,
+  &quot;tckn&quot;: &quot;12345678901&quot;,
+  &quot;birthDate&quot;: &quot;15.05.1985&quot;,
+  &quot;taxOffice&quot;: &quot;Kadıköy&quot;,
+  &quot;contactPerson&quot;: &quot;Ahmet Yılmaz&quot;,
+  &quot;email&quot;: &quot;ahmet.yeni@example.com&quot;,
+  &quot;phoneNumber&quot;: &quot;5559998877&quot;,
+  &quot;city&quot;: &quot;34&quot;,
+  &quot;address&quot;: &quot;Yeni Adres Bilgisi&quot;,
+  &quot;iban&quot;: &quot;TR330006100519786457841326&quot;,
+  &quot;accountHolder&quot;: &quot;Ahmet Yılmaz&quot;,
+  &quot;apiSecretKey&quot;: &quot;sx_value&quot;,
+  &quot;active&quot;: true,
+  &quot;mpPaymentProfileExternalId&quot;: &quot;STANDARD_PROFILE&quot;
+}</code></pre></div>
 
           <h2 id="delete">DeleteSellerById</h2>
 <div class="access"><p class="access__row"><span class="access__label">TEST</span><code>POST https://apitest.paynkolay.com.tr/marketplace/v1/seller/delete</code></p><p class="access__row"><span class="access__label">PROD</span><code>POST https://api.paynkolay.com.tr/marketplace/v1/seller/delete</code></p></div>
           <div class="callout callout--warn"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p>Bekleyen ödemesi olan satıcılar silinemez ve silme işlemi <strong>geri alınamaz</strong>. Satıcıyı silmek yerine <code>active: false</code> ile pasifleştirmeyi düşünün.</p></div></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;sellerExternalId&quot;: &quot;SELLER_001&quot;
+}</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: null,
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
 
           <h2 id="list">GetAllSellerByApiSecretKey</h2>
 <div class="access"><p class="access__row"><span class="access__label">TEST</span><code>POST https://apitest.paynkolay.com.tr/marketplace/v1/seller/sellers</code></p><p class="access__row"><span class="access__label">PROD</span><code>POST https://api.paynkolay.com.tr/marketplace/v1/seller/sellers</code></p></div>
 <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody><tr><td class="mono">apiSecretKey</td><td>String</td><td>✅</td><td>Pazaryerine ait SX değeri</td></tr>
 <tr><td class="mono">active</td><td>Boolean</td><td>❌</td><td>true = sadece aktif, false = sadece pasif, null = tümü</td></tr></tbody></table></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;apiSecretKey&quot;: &quot;sx_value&quot;,
+  &quot;active&quot;: true
+}</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Yanıt — JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  &quot;data&quot;: [
+    {
+      &quot;sellerExternalId&quot;: &quot;SELLER_001&quot;,
+      &quot;active&quot;: true,
+      &quot;nameSurname&quot;: &quot;Ahmet Yılmaz&quot;,
+      &quot;sellerType&quot;: &quot;Gerçek Kişi&quot;,
+      &quot;tckn&quot;: &quot;12345678901&quot;,
+      &quot;birthDate&quot;: &quot;1985-05-15&quot;,
+      &quot;paymentProfile&quot;: {
+        &quot;profileExternalId&quot;: &quot;PREMIUM_PROFILE&quot;,
+        &quot;name&quot;: &quot;Premium Satıcı Profili&quot;,
+        &quot;mpCommissionRate&quot;: 5.00
+      },
+      &quot;email&quot;: &quot;ahmet@example.com&quot;
+    },
+    {
+      &quot;sellerExternalId&quot;: &quot;COMPANY_001&quot;,
+      &quot;active&quot;: true,
+      &quot;nameSurname&quot;: &quot;Örnek Teknoloji A.Ş.&quot;,
+      &quot;sellerType&quot;: &quot;Tüzel Kişi&quot;,
+      &quot;vkn&quot;: &quot;1234567890&quot;,
+      &quot;paymentProfile&quot;: {
+        &quot;profileExternalId&quot;: &quot;STANDARD_PROFILE&quot;,
+        &quot;name&quot;: &quot;Standart Profil&quot;,
+        &quot;mpCommissionRate&quot;: 7.00
+      },
+      &quot;email&quot;: &quot;info@ornekteknoloji.com&quot;
+    }
+  ],
+  &quot;success&quot;: true,
+  &quot;responseCode&quot;: &quot;200&quot;,
+  &quot;responseMessage&quot;: &quot;SUCCESS&quot;
+}</code></pre></div>
 
           <h2 id="by-profile">GetSellersByPaymentProfile</h2>
           <p>Belirli bir ödeme profiline atanmış satıcıları listeler — örneğin bir profilin komisyonunu değiştirmeden önce hangi satıcıları etkileyeceğini görmek için.</p>
@@ -227,6 +347,145 @@
 
           <h2 id="dogrulama">Göndermeden Önce Doğrulayın</h2>
 <ul class="checklist"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>IBAN: <code>TR</code> ile başlamalı, 26 karakter olmalı (mod-97 kontrolü önerilir)</span></li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>TCKN: 11 hane, ilk hane 0 olamaz (checksum algoritmasıyla doğrulanabilir)</span></li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>VKN: 10 hane (checksum algoritmasıyla doğrulanabilir)</span></li></ul>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">IBAN Doğrulama — JavaScript (mod-97)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>function validateIBAN(iban) {
+  // TR ile başlamalı ve 26 karakter olmalı
+  if (!iban.startsWith(&#x27;TR&#x27;) || iban.length !== 26) {
+    throw new Error(&#x27;Geçersiz IBAN formatı&#x27;);
+  }
+
+  // IBAN mod-97 kontrolü
+  const rearranged = iban.substring(4) + iban.substring(0, 4);
+  const numericIBAN = rearranged.replace(/[A-Z]/g, (char) =&gt;
+    char.charCodeAt(0) - 55
+  );
+
+  // Büyük sayılarla çalışmak için
+  const remainder = BigInt(numericIBAN) % 97n;
+
+  if (remainder !== 1n) {
+    throw new Error(&#x27;IBAN doğrulama hatası&#x27;);
+  }
+
+  return true;
+}</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">TCKN Doğrulama — JavaScript</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>function validateTCKN(tckn) {
+  if (tckn.length !== 11) return false;
+
+  const digits = tckn.split(&#x27;&#x27;).map(Number);
+
+  // İlk hane 0 olamaz
+  if (digits[0] === 0) return false;
+
+  // 10. hane kontrolü
+  const sum10 = (
+    (digits[0] + digits[2] + digits[4] + digits[6] + digits[8]) * 7 -
+    (digits[1] + digits[3] + digits[5] + digits[7])
+  ) % 10;
+
+  if (sum10 !== digits[9]) return false;
+
+  // 11. hane kontrolü
+  const sum11 = digits.slice(0, 10).reduce((a, b) =&gt; a + b) % 10;
+
+  return sum11 === digits[10];
+}</code></pre></div>
+<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">VKN Doğrulama — JavaScript</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>function validateVKN(vkn) {
+  if (vkn.length !== 10) return false;
+
+  const v = vkn.split(&#x27;&#x27;).map(Number);
+  let sum = 0;
+
+  for (let i = 0; i &lt; 9; i++) {
+    let digit = (v[i] + (9 - i)) % 10;
+    sum += (digit * Math.pow(2, 9 - i)) % 9;
+    if (digit !== 0 &amp;&amp; (digit * Math.pow(2, 9 - i)) % 9 === 0) sum += 9;
+  }
+
+  return (10 - (sum % 10)) % 10 === v[9];
+}</code></pre></div>
+
+
+          <h2 id="ornek">Uçtan Uca Örnek</h2>
+          <p>Satıcı servislerini tek sınıfta toplayan çalışır Node.js örneği:</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">SellerManager — Node.js (axios)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>const axios = require(&#x27;axios&#x27;);
+
+class SellerManager {
+  constructor(apiSecretKey, baseURL) {
+    this.apiSecretKey = apiSecretKey;
+    this.baseURL = baseURL;
+  }
+
+  async createSeller(sellerData) {
+    const response = await axios.post(
+      `${this.baseURL}/seller`,
+      {
+        ...sellerData,
+        apiSecretKey: this.apiSecretKey
+      }
+    );
+    return response.data;
+  }
+
+  async getSeller(sellerExternalId) {
+    const response = await axios.post(
+      `${this.baseURL}/seller/get`,
+      {
+        apiSecretKey: this.apiSecretKey,
+        sellerExternalId
+      }
+    );
+    return response.data;
+  }
+
+  async updateSeller(sellerData) {
+    const response = await axios.post(
+      `${this.baseURL}/seller/update`,
+      {
+        ...sellerData,
+        apiSecretKey: this.apiSecretKey
+      }
+    );
+    return response.data;
+  }
+
+  async deleteSeller(sellerExternalId) {
+    const response = await axios.post(
+      `${this.baseURL}/seller/delete`,
+      { sellerExternalId }
+    );
+    return response.data;
+  }
+
+  async listSellers(activeOnly = null) {
+    const response = await axios.post(
+      `${this.baseURL}/seller/sellers`,
+      {
+        apiSecretKey: this.apiSecretKey,
+        active: activeOnly
+      }
+    );
+    return response.data;
+  }
+}
+
+// Kullanım
+const manager = new SellerManager(
+  process.env.API_SECRET_KEY,
+  &#x27;https://apitest.paynkolay.com.tr/marketplace/v1&#x27;
+);
+
+// Satıcı oluştur
+const newSeller = await manager.createSeller({
+  sellerExternalId: &quot;SELLER_123&quot;,
+  nameSurname: &quot;Test Satıcı&quot;,
+  sellerType: 1,
+  tckn: &quot;12345678901&quot;,
+  iban: &quot;TR330006100519786457841326&quot;,
+  accountHolder: &quot;Test Satıcı&quot;,
+  contactPerson: &quot;Test Satıcı&quot;,
+  mpPaymentProfileExternalId: &quot;PREMIUM_PROFILE&quot;,
+  active: true
+});</code></pre></div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
   <a class="pager__card" href="odeme-profili.html">
@@ -246,7 +505,7 @@
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="mailto:kolayposdestek@nkolay.com.tr">bize yazın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 5 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
         </article>
 
         <footer class="footer">
