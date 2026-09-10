@@ -211,93 +211,6 @@
   font-weight: 700;
 }
 
-/* Zengin menü (Hakkımızda): ikon kutusu + başlık + alt yazı */
-.dropdown__menu--rich {
-  min-width: 320px;
-}
-
-.richitem {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-md);
-}
-
-.richitem:hover {
-  background: var(--bg-soft);
-  text-decoration: none;
-}
-
-.richitem:hover .richitem__title {
-  color: var(--text-primary);
-}
-
-.richitem:hover .richitem__icon {
-  background: var(--accent);
-  color: #ffffff;
-}
-
-.richitem__icon,
-.richitem__title {
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
-}
-
-.richitem__icon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
-  background: var(--bg-soft);
-  color: var(--text-primary);
-}
-
-.richitem__text {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.richitem__title {
-  font-weight: 600;
-  color: var(--text-heading);
-}
-
-.richitem__desc {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-}
-
-/* Ürünlerimiz: iki sütunlu zengin menü + alt bağlantı şeridi */
-.dropdown__menu--products {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  min-width: 620px;
-}
-
-.dropdown__footer {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  margin-top: var(--space-2);
-  padding: var(--space-3);
-  border-top: 1px solid var(--border);
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.dropdown__footer:hover {
-  background: var(--bg-hover);
-  text-decoration: none;
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-}
-
 /* Açıkken chevron 180° döner */
 .dropdown > [data-dropdown] .chevron {
   transition: transform var(--dur) var(--ease);
@@ -305,76 +218,6 @@
 
 .dropdown.is-open > [data-dropdown] .chevron {
   transform: rotate(180deg);
-}
-
-/* ============================================================
-   ÜST MENÜ — kurumsal gezinme (Ürünlerimiz, Hakkımızda…)
-   ============================================================ */
-.mainnav {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  flex-shrink: 0;
-}
-
-.mainnav__btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--text-heading);
-  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
-}
-
-.mainnav__btn::after {
-  content: "";
-  position: absolute;
-  left: var(--space-3);
-  right: var(--space-3);
-  bottom: -8px;
-  height: 3px;
-  border-radius: var(--radius-pill);
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur) var(--ease);
-}
-
-.mainnav__btn:hover {
-  background: var(--bg-soft);
-  color: var(--text-primary);
-}
-
-.mainnav__btn:hover .chevron {
-  color: var(--text-primary);
-}
-
-.mainnav__btn:hover::after {
-  transform: scaleX(1);
-}
-
-.mainnav__btn .chevron {
-  color: var(--text-muted);
-}
-
-/* Aktif bölüm: mavi metin + altta imza çizgisi */
-.mainnav__btn.is-current {
-  color: var(--text-primary);
-}
-
-.mainnav__btn.is-current .chevron {
-  color: var(--text-primary);
-}
-
-/* Dar ekranda kurumsal menü gizlenir (çekmece esas menüdür) */
-@media (max-width: 1279px) {
-  .mainnav {
-    display: none;
-  }
 }
 
 /* ============================================================
@@ -2061,11 +1904,8 @@ a.chip:hover {
   border-left-color: var(--accent);
 }
 
-/* --- Tema anahtarı (Faz 1: görsel; işlev Faz 2) --- */
+/* --- Tema anahtarı (üst barda; dar ekranda sağ altta yüzer) --- */
 .theme-switch {
-  position: fixed;
-  right: var(--space-6);
-  bottom: var(--space-6);
   display: flex;
   align-items: center;
   gap: var(--space-1);
@@ -2073,8 +1913,16 @@ a.chip:hover {
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-card);
-  z-index: 30;
+}
+
+@media (max-width: 767px) {
+  .theme-switch {
+    position: fixed;
+    right: var(--space-6);
+    bottom: var(--space-6);
+    box-shadow: var(--shadow-card);
+    z-index: 30;
+  }
 }
 
 .theme-switch__btn {
