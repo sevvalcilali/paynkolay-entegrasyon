@@ -927,6 +927,59 @@
   transform: translateY(3px);
 }
 
+/* --- Belge kontrol listesi (işaretlenebilir to-do) --- */
+.doclist {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.doclist li {
+  background: var(--bg-page);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.doclist label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.doclist input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.doclist li.is-done {
+  background: var(--bg-soft);
+  border-color: var(--border-accent);
+}
+
+.doclist li.is-done label {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--gray-400);
+}
+
+.doclist__progress {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 650;
+  color: var(--text-primary);
+}
+
 /* --- Ortam karşılaştırma kartları --- */
 .envgrid {
   display: grid;

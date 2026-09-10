@@ -153,10 +153,52 @@
           <h2 id="surec">Başvuru Süreci</h2>
           <ol class="guide">
 <li><span class="guide__dot">1</span><span><span class="guide__title">Başvuru ve ön görüşme</span><span class="guide__desc">Başvurunuzun ardından satış temsilcimiz sizinle iletişime geçer, ihtiyacınızı dinler ve size en uygun çözümü birlikte belirlersiniz. <a href="https://paynkolay.nkolayislem.com.tr/onboarding/application-new" target="_blank" rel="noopener">Hemen başvurun →</a></span></span></li>
-<li><span class="guide__dot">2</span><span><span class="guide__title">Sözleşme ve hesap açılışı</span><span class="guide__desc">Şirket bilgileriniz ve belgeleriniz alınır, sözleşmeniz onaylanır; üye işyeri hesabınız açılır ve panel giriş bilgileriniz size iletilir. <a href="https://paynkolay.com.tr/basvuru-durumu-sorgula" target="_blank" rel="noopener">Başvuru durumunuzu sorgulayın →</a></span></span></li>
-<li><span class="guide__dot">3</span><span><span class="guide__title">Panel erişimi ve entegrasyon bilgileri</span><span class="guide__desc">Panelinize girip entegrasyonda kullanacağınız bilgileri edinirsiniz — aşağıdaki üç bilgi tüm yöntemlerin ortak anahtarıdır. <a href="ortamlar.html">Detayları görün →</a></span></span></li>
-<li><span class="guide__dot">4</span><span><span class="guide__title">Entegrasyon, test ve canlıya geçiş</span><span class="guide__desc">Seçtiğiniz yöntemi test ortamında uçtan uca deneyip onay sonrasında canlı bilgilerinizle yayına geçersiniz. <a href="kontrol-listesi.html">Canlıya geçiş listesi →</a></span></span></li>
+<li><span class="guide__dot">2</span><span><span class="guide__title">Başvuru için gerekli belgeler</span><span class="guide__desc">Hazırlamanız gereken evraklar şirket türünüze göre değişir; belgeleriniz tamamlanıp sözleşmeniz onaylandığında üye işyeri hesabınız açılır. <a href="#belgeler">Belge listesine gidin →</a></span></span></li>
+<li><span class="guide__dot">3</span><span><span class="guide__title">Başvuru durumunuzu takip edin</span><span class="guide__desc">Başvurunuzun onay durumunu dilediğiniz an çevrim içi sorgulayabilirsiniz; hesabınız açıldığında panel giriş bilgileriniz size iletilir. <a href="https://paynkolay.com.tr/basvuru-durumu-sorgula" target="_blank" rel="noopener">Başvuru durumunuzu sorgulayın →</a></span></span></li>
           </ol>
+
+
+          <h2 id="belgeler">Başvuru İçin Gerekli Belgeler</h2>
+          <p>Gerekli evraklar şirket türünüze göre değişir. Türünüzü seçin, belgeleri hazırladıkça işaretleyin — işaretleriniz bu tarayıcıda saklanır, sayfaya döndüğünüzde kaldığınız yerden devam edersiniz.</p>
+          <div class="tool">
+            <div class="field">
+              <label for="belge-tur">Şirket türünüz</label>
+              <select id="belge-tur"><option value="bireysel">Bireysel</option><option value="adi-ortaklik">Adi Ortaklık</option><option value="kollektif">Kollektif Şirket</option><option value="apartman">Apartman Yönetimi</option><option value="dernek-vakif">Dernek / Vakıf</option><option value="sahis">Şahıs Şirketi</option><option value="ltd">Limited Şirket (Ltd)</option><option value="as">Anonim Şirket (AŞ)</option></select>
+            </div>
+            <ul class="doclist" id="belge-listesi"></ul>
+            <p class="doclist__progress" id="belge-durum"></p>
+          </div>
+
+          <details class="faq">
+            <summary>Tüm şirket türlerinin belge tablosu<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="faq__body">
+              <div class="table-wrap"><table class="dtable"><thead><tr><th>Evrak</th><th>Bireysel</th><th>Adi Ortaklık</th><th>Kollektif Şirket</th><th>Apartman Yönetimi</th><th>Dernek / Vakıf</th><th>Şahıs Şirketi</th><th>Limited Şirket (Ltd)</th><th>Anonim Şirket (AŞ)</th></tr></thead><tbody>
+<tr><td>Vergi Levhası</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Banka Ticari Hesap Bilgileri</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Firma Yetkilileri & Ortaklarının Kimlik Önyüzü</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Firma Yetkilileri & Ortaklarının Kimlik Arkayüzü</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Gerçek Kişi Ortakların Kimlik Önyüzü ve Arkayüzü</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>İmza Sirküleri/Beyannamesi</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Karar Defteri Fotokopisi</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Müşteri Kimlik Önyüzü</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Müşteri Kimlik Arkayüzü</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Ortakların İmza Sirküleri/Beyannamesi</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Ortaklık Sözleşmesi</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Şirket Ortağı Firma İse Vergi Levhası</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Ticaret Sicili Gazetesi</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+<tr><td>Tüzel Kişi Ortak İçin Ortağın Vergi Levhası</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Vakıf Senedi / Dernek Karar Defteri</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Vakıf Sicil Belgesi / Dernek Faaliyet Belgesi</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Vergi Muafiyet Yazısı</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Vergi Numarasını Gösterir Belge</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Yetkili Kişilerin Kimlik Önyüzü</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Yetkili Kişilerin Kimlik Arkayüzü</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Yönetici Kimlik Belgesi Önyüzü</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Yönetici Kimlik Belgesi Arkayüzü</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Yöneticinin İmza Beyannamesi</td><td>—</td><td>—</td><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+              </tbody></table></div>
+            </div>
+          </details>
 
           <h2 id="bilgiler">Entegrasyon Bilgileriniz</h2>
           <p>Hangi tahsilat yöntemini seçerseniz seçin, aşağıdaki üç bilgi tüm isteklerin ortak anahtarıdır. Üçünü de panelinizden bir kez edinir, entegrasyon boyunca kullanırsınız; test ortamındaki hazır karşılıkları <a href="test-ortami.html">Test Ortamı (Sandbox)</a> sayfasındadır.</p>
@@ -221,6 +263,7 @@
         </p>
         <ul class="toc__list">
           <li><a class="is-active" href="#surec">Başvuru Süreci</a></li>
+          <li><a href="#belgeler">Gerekli Belgeler</a></li>
           <li><a href="#bilgiler">Entegrasyon Bilgileriniz</a></li>
         </ul>
       </aside>
@@ -235,6 +278,7 @@
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/tocspy.js"></script>
   <script src="../assets/js/search.js"></script>
+  <script src="../assets/js/belgeler.js"></script>
   <script src="../assets/js/feedback.js"></script>
 </body>
 </html>
