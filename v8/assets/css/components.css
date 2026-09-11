@@ -2258,12 +2258,6 @@ a.chip:hover {
   filter: brightness(0) invert(1); /* mavi logo koyu zeminde kaybolmasın */
 }
 
-:root[data-theme="dark"] body::before {
-  background:
-    repeating-radial-gradient(circle at 106% -12%, transparent 0 9px, rgba(143, 164, 255, 0.06) 9px 10px, transparent 10px 19px),
-    repeating-radial-gradient(circle at -8% 108%, transparent 0 11px, rgba(143, 164, 255, 0.05) 11px 12px, transparent 12px 23px);
-}
-
 :root[data-theme="dark"] ::selection {
   background: rgba(143, 164, 255, 0.3);
 }

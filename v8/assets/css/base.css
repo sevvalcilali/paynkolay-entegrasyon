@@ -1,5 +1,5 @@
 /* ============================================================
-   V8 BASE — reset, kağıt zemin + giyoş dokusu, tipografi
+   V8 BASE — reset, düz kağıt zemin, tipografi
    ============================================================ */
 
 *,
@@ -24,18 +24,6 @@ body {
   color: var(--text-body);
   background: var(--bg-page);
   -webkit-font-smoothing: antialiased;
-}
-
-/* Giyoş: köşelerde gravür halkaları (banknot dokusu) */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    repeating-radial-gradient(circle at 106% -12%, transparent 0 9px, rgba(12, 52, 231, 0.06) 9px 10px, transparent 10px 19px),
-    repeating-radial-gradient(circle at -8% 108%, transparent 0 11px, rgba(12, 52, 231, 0.05) 11px 12px, transparent 12px 23px);
 }
 
 h1,
