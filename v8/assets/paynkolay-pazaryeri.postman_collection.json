@@ -1,0 +1,1055 @@
+{
+	"info": {
+		"_postman_id": "c4295fc2-c7b1-4313-8f31-cc5588296c41",
+		"name": "Marketplace -  UAT 1470",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44305608"
+	},
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-authenticate: fetch a token when missing or expired.",
+					"// Runs before every request in the collection.",
+					"(function () {",
+					"    const authPath = '/authenticate';",
+					"    const requestUrl = pm.request.url.toString();",
+					"",
+					"    // Skip the auth dance for the authenticate request itself.",
+					"    if (requestUrl.indexOf(authPath) !== -1) {",
+					"        console.log('[auth] Skipping pre-request auth for /authenticate call.');",
+					"        return;",
+					"    }",
+					"",
+					"    const baseUrl = pm.collectionVariables.get('baseUrl');",
+					"    const username = pm.collectionVariables.get('username');",
+					"    const password = pm.collectionVariables.get('password');",
+					"",
+					"    if (!baseUrl || !username || !password) {",
+					"        console.error('[auth] Missing baseUrl/username/password collection variables.');",
+					"        return;",
+					"    }",
+					"",
+					"    function isTokenValid(token) {",
+					"        if (!token) return false;",
+					"        try {",
+					"            const parts = token.split('.');",
+					"            if (parts.length < 2) return false;",
+					"            const payload = JSON.parse(atob(parts[1].replace(/-/g, '+').replace(/_/g, '/')));",
+					"            // Refresh 60s before expiry to avoid edge cases.",
+					"            return (payload.exp * 1000) > (Date.now() + 60000);",
+					"        } catch (e) {",
+					"            return false;",
+					"        }",
+					"    }",
+					"",
+					"    function applyToken(token) {",
+					"        // Set in both scopes:",
+					"        //  - collectionVariables persists across requests",
+					"        //  - variables (local) wins over everything for THIS request,",
+					"        //    so the in-flight Authorization header picks up the new value",
+					"        //    even though we set it inside an async sendRequest callback.",
+					"        pm.collectionVariables.set('token', token);",
+					"        pm.variables.set('token', token);",
+					"    }",
+					"",
+					"    const currentToken = pm.collectionVariables.get('token');",
+					"    if (isTokenValid(currentToken)) {",
+					"        // Still mirror to local scope so resolution is deterministic.",
+					"        pm.variables.set('token', currentToken);",
+					"        return;",
+					"    }",
+					"",
+					"    console.log('[auth] Token missing or expired — fetching a new one from', baseUrl + authPath);",
+					"",
+					"    pm.sendRequest({",
+					"        url: baseUrl + authPath,",
+					"        method: 'POST',",
+					"        header: { 'Content-Type': 'application/json' },",
+					"        body: {",
+					"            mode: 'raw',",
+					"            raw: JSON.stringify({ username: username, password: password })",
+					"        }",
+					"    }, function (err, res) {",
+					"        if (err) {",
+					"            console.error('[auth] Auth request failed:', err);",
+					"            return;",
+					"        }",
+					"        console.log('[auth] Auth status:', res && res.code);",
+					"        let data;",
+					"        try { data = res.json(); } catch (e) { data = null; }",
+					"        // Try a few common shapes just in case.",
+					"        const token =",
+					"            (data && data.jwtToken) ||",
+					"            (data && data.data && data.data.token) ||",
+					"            (data && data.data && data.data.jwtToken) ||",
+					"            (data && data.token) ||",
+					"            (data && data.access_token);",
+					"        if (token) {",
+					"            applyToken(token);",
+					"            console.log('[auth] Token saved (length ' + token.length + ').');",
+					"        } else {",
+					"            console.error('[auth] No token in response body:', data);",
+					"        }",
+					"    });",
+					"})();"
+				]
+			}
+		}
+	],
+	"item": [
+		{
+			"name": "Seller - UAT",
+			"item": [
+				{
+					"name": "GetSellerById - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sellerExternalId\": \"TeslimSeller1\"  //satıcı unique id\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/seller/get",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"seller",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Seller - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sellerExternalId\": \"gilan-islem\",   //satıcı unique id\r\n    \"nameSurname\": \"Gilan Group A.Ş.\",   // satıcı vergi levha unvanı\r\n    \"sellerType\": 3, //1 → kişi ,2 → şahıs, 3 → Tüzel(vkn)\r\n    \"tckn\": \"\",  //kişi tckn -  sahış Tckn\r\n    \"vkn\": \"6315408071\", // firma vkn - sahış tckn\r\n    \"birthDate\": \"19.06.1906\",  // doğum - kuruluş tarihi\r\n    \"taxOffice\": \"34280\",  // Vergi dairesi kodu\r\n    \"contactPerson\": \"Komisyon Sıfır Valör\", // firma yetkili -kontak kişi adı\r\n    \"email\": \"attila.gokce@nkolay.com.tr\", //iletişim mail adresi\r\n    \"phoneNumber\": \"5345615319\",  // iletişim numarası 5 ile başlar; 10 hane\r\n    \"city\": \"34\",  // il kodu\r\n    \"address\": \"Maltepe Mah. Davutpaşa Cad. Cebe Ali Bey Sok. No:7 Zeytinburnu / İSTANBUL\", //satıcı adresi\r\n    \"iban\": \"TR890014300000000001636602\",  // satıcı ıban\r\n    \"accountHolder\": \"Gilan Group A.Ş.\",  // satıcı vergi levha unvanı\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\", //sx değeri\r\n    \"active\": true, // satışa açılması için true\r\n    \"mpPaymentProfileExternalId\": \"IslemProfilT1\"  //payment profil unique id\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/seller",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"seller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Seller By ApiSecretKey - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apiSecretKey\":\"{{apiSecretKey}}\", //sx değeri\r\n    \"active\": null  // aktif:true, pasif:false , null:hepsi\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/seller/sellers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"seller",
+								"sellers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Seller - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sellerExternalId\": \"gilan-islem\",   //satıcı unique id\r\n    \"nameSurname\": \"Gilan Group A.Ş.\",   // satıcı vergi levha unvanı\r\n    \"sellerType\": 3, //1 → kişi ,2 → şahıs, 3 → Tüzel(vkn)\r\n    \"tckn\": \"\",  //kişi tckn -  sahış Tckn\r\n    \"vkn\": \"6315408071\", // firma vkn - sahış tckn\r\n    \"birthDate\": \"19.06.1906\",  // doğum - kuruluş tarihi\r\n    \"taxOffice\": \"34280\",  // Vergi dairesi kodu\r\n    \"contactPerson\": \"Komisyon Sıfır Valör\", // firma yetkili -kontak kişi adı\r\n    \"email\": \"attila.gokce@nkolay.com.tr\", //iletişim mail adresi\r\n    \"phoneNumber\": \"5345615319\",  // iletişim numarası 5 ile başlar; 10 hane\r\n    \"city\": \"34\",  // il kodu\r\n    \"address\": \"Maltepe Mah. Davutpaşa Cad. Cebe Ali Bey Sok. No:7 Zeytinburnu / İSTANBUL\", //satıcı adresi\r\n    \"iban\": \"TR890014300000000001636602\",  // satıcı ıban\r\n    \"accountHolder\": \"Gilan Group A.Ş.\",  // satıcı vergi levha unvanı\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\", //sx değeri\r\n    \"active\": true, // satışa açılması için true\r\n    \"mpPaymentProfileExternalId\": \"IslemProfilT1\"  //payment profil unique id\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/seller/update",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"seller",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sellers By Payment Profile - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apiSecretKey\" : \"{{apiSecretKey}}\", //sx değeri\r\n    \"profileExternalId\": \"IslemValor5\", //payment profil unique id\r\n    \"active\" : null // aktif:true, pasif:false , null:hepsi\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/seller/sellers/byPaymentProfile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"seller",
+								"sellers",
+								"byPaymentProfile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PaymentProfile - UAT",
+			"item": [
+				{
+					"name": "Create Payment Profile - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profileExternalId\":\"YarimAylikProfilT1\",  //payment profil unique id\r\n    \"apiSecretKey\":\"{{apiSecretKey}}\", //sx değeri\r\n    \"name\" : \"Yarim Aylık Tarihi Bazlı T+1 Profil\", //payment profil adı\r\n    \"mpCommissionRate\" : 0.001,   //default komisyon oranı\r\n    \"mpCost\": 0.00,   // default işlem başı ücret\r\n    \"paymentDay\" :null,  //odeme gunu null: hepsi ; 1 → sadece pazartesi, 2 → sadece salı, 3 → sadece çarşamba, 4 →sadece perşembe, 5 →sadece cuma\r\n    \"valorDateCount\": 1, // odeme bekleme gün süresi 1 ertesi gün,\r\n    \"valorCalculationType\": \"H\", // valör hesaplama tipleri → T: İşlem, W: Haftalık, H: Yarım Aylık, M:Aylık, D: Teslim tarihi bazlı\r\n    \"active\":true  // aktif:true, pasif:false \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paymentprofile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymentprofile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment Profile By Profile External Id- UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profileExternalId\" : \"IslemValor13\" //payment profil unique id\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paymentprofile/get",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymentprofile",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Payment Profile By ApiSecretKey - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"apiSecretKey\": \"{{apiSecretKey}}\", //sx değeri\r\n\"active\": true  // aktif:true, pasif:false , null:hepsi\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paymentprofile/list",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymentprofile",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Payment Profile - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"profileExternalId\": \"IslemValor13\",\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\",\r\n    \"name\": \"İşlem Hesaplama 5\",\r\n    \"mpCommissionRate\": 3.00,\r\n    \"mpCost\": null,\r\n    \"paymentDay\": \"null\",\r\n    \"valorCalculationType\":\"T\",\r\n    \"valorDateCount\": 13,\r\n    \"active\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/paymentprofile/update",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"paymentprofile",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment - UAT",
+			"item": [
+				{
+					"name": "Create Payment - UAT",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Auto-compute the payment apiKey from THIS request's body + secret keys.",
+									"// apiKey = Base64(SHA512(apiSecretKey|merchantSecretKey|trxCode|cardAmount|trxCurrency|trxType))",
+									"// cardAmount = the amount charged to the card =",
+									"//   trxAmount + shippingCost + otherAmount - mpDiscountAmount",
+									"// (trxAmount itself must equal the sum of all sellerList[].trxAmount.)",
+									"(function () {",
+									"    const CryptoJS = require('crypto-js');",
+									"    const raw = (pm.request.body && pm.request.body.raw) ? pm.request.body.raw : '';",
+									"    // Read a top-level field's literal text from the raw JSON body (first match;",
+									"    // tolerates // comments and missing quotes).",
+									"    function field(name) {",
+									"        const m = raw.match(new RegExp('\"' + name + '\"\\\\s*:\\\\s*\"?([^\",\\\\r\\\\n]*)'));",
+									"        return m ? m[1].replace(/\\/\\/.*$/, '').trim() : '';",
+									"    }",
+									"    function num(name) { const v = parseFloat(field(name)); return isNaN(v) ? 0 : v; }",
+									"    // Total pulled from the card — also the amount the apiKey hash is built on.",
+									"    // toFixed(2) keeps the 2-decimal scale the server expects.",
+									"    const cardAmount = (num('trxAmount') + num('shippingCost') + num('otherAmount') - num('mpDiscountAmount')).toFixed(2);",
+									"    const parts = [",
+									"        pm.variables.get('apiSecretKey'),",
+									"        pm.variables.get('merchantSecretKey'),",
+									"        field('trxCode'),",
+									"        cardAmount,",
+									"        field('trxCurrency'),",
+									"        field('trxType')",
+									"    ];",
+									"    const apiKey = CryptoJS.SHA512(parts.join('|')).toString(CryptoJS.enc.Base64);",
+									"    pm.variables.set('apiKey', apiKey);",
+									"    console.log('[apiKey] payment apiKey: trxCode', field('trxCode'), 'cardAmount', cardAmount, '=', apiKey);",
+									"})();"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apiKey\": \"{{apiKey}}\",\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\",\r\n    \"bankCard\": {\r\n        \"cardHolder\": \"Pazaryeri Test\",\r\n        \"cardNumber\": \"Test Kart Numarası\",\r\n        \"cvv\": \"001\",\r\n        \"expiryMonth\": \"12\",\r\n        \"expiryYear\": \"2026\",\r\n        \"isThreeD\": \"false\",\r\n        \"registerCard\": false\r\n    },\r\n    \"installment\": 5,\r\n    \"isFetchInstallments\": false,\r\n    \"encodedValue\": \"\",\r\n    \"trxCurrency\": \"TRY\",\r\n    \"trxAmount\": 5000.00,\r\n    \"trxCode\": \"paynkolay-firstry\",\r\n    \"trxType\": \"SALES\",\r\n    \"callbackUrl\": \"https://paynkolay.com.tr/test/success\",\r\n    \"sellerList\": [\r\n        {\r\n            \"sellerExternalId\": \"gilan-islem\",\r\n            \"commissionRate\": null,\r\n            \"commissionAmount\": 0.00,\r\n            \"mpCost\": null,\r\n            \"trxAmount\": 5000.00,\r\n            \"withholdingTax\": 0.00,\r\n            \"sellerDiscountAmount\":0.00\r\n        }\r\n    ],\r\n    \"shippingCost\": 0,\r\n    \"otherAmount\": 0,\r\n    \"mpDiscountAmount\":0.00,\r\n    \"totalDiscountAmount\":0.00,\r\n    \"marketplaceCode\": \"{{marketplaceCode}}\",\r\n    \"customerCardInfo\": {\r\n        \"mpCustomerKey\": \"\",\r\n        \"cardAlias\": \"\",\r\n        \"cardTranId\": \"\",\r\n        \"cardToken\": \"\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payment/create",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payment",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Complete Payment External - UAT",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"referenceCode\": \"\", // callback'te REFERENCE_CODE alanında gelen base64 değer; TEK KULLANIMLIK\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\" // satış sx\r\n\r\n    // autoComplete=false üye işyerleri için: 3D/form akışı sonrası işlem PENDING kalır,\r\n    // bu servis çağrılınca tamamlanır. JWT token GEREKMEZ (server-to-server).\r\n    // Başarı: responseCode \"2\" + authCode dolu. Hata durumunda da HTTP 200 döner.\r\n    // DİKKAT: başarılı tamamlamadan sonra aynı referenceCode ile TEKRAR ÇAĞIRMAYIN —\r\n    // \"Aynı referans kodu ile birden fazla deneme yapılmıştır.\" hatası döner.\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payment/completePaymentExternal",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payment",
+								"completePaymentExternal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment Status -UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"trxCode\": \"V1codeH1\",\r\n    \"refCode\": \"IKSIRPF464790\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payment/status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payment",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Refund - UAT",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Auto-compute the refund apiKey from THIS request's body + secret keys.",
+									"// apiKey = Base64(SHA512(cancelApiSecretKey|merchantSecretKey|trxType|trxDate|amount|trxCurrency|referenceCode))",
+									"(function () {",
+									"    const CryptoJS = require('crypto-js');",
+									"    const raw = (pm.request.body && pm.request.body.raw) ? pm.request.body.raw : '';",
+									"    function field(name) {",
+									"        const m = raw.match(new RegExp('\"' + name + '\"\\\\s*:\\\\s*\"?([^\",\\\\r\\\\n]*)'));",
+									"        return m ? m[1].replace(/\\/\\/.*$/, '').trim() : '';",
+									"    }",
+									"    const parts = [",
+									"        pm.variables.get('cancelApiSecretKey'),",
+									"        pm.variables.get('merchantSecretKey'),",
+									"        field('trxType'),",
+									"        field('trxDate'),",
+									"        field('totalTrxAmount'),",
+									"        field('trxCurrency'),",
+									"        field('refCode')",
+									"    ];",
+									"    const apiKey = CryptoJS.SHA512(parts.join('|')).toString(CryptoJS.enc.Base64);",
+									"    pm.variables.set('apiKey', apiKey);",
+									"    console.log('[apiKey] refund apiKey computed for refCode', field('refCode'), '=', apiKey);",
+									"})();"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apiKey\": \"{{apiKey}}\",\r\n    \"apiSecretKey\": \"{{cancelApiSecretKey}}\",\r\n    \"mpCode\": \"{{marketplaceCode}}\",\r\n    \"refCode\": \"IKSIRPF456012\",\r\n    \"trxType\": \"refund\",\r\n    \"trxDate\": \"2025-10-30\",\r\n    \"totalTrxAmount\": \"2000.00\",\r\n    \"trxCurrency\": \"TRY\",\r\n    \"sellerList\": [\r\n        {\r\n            \"trxAmount\": \"2000.00\",\r\n            \"refundedCommissionAmount\": 100.00,\r\n            \"sellerExternalId\": \"aynkolay-islem\",\r\n            \"withholdingTax\": 20.00\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payment/refund",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payment",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Payment Cancel - UAT",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Auto-compute the cancel apiKey from THIS request's body + secret keys.",
+									"// apiKey = Base64(SHA512(cancelApiSecretKey|merchantSecretKey|trxType|trxDate|amount|trxCurrency|referenceCode))",
+									"(function () {",
+									"    const CryptoJS = require('crypto-js');",
+									"    const raw = (pm.request.body && pm.request.body.raw) ? pm.request.body.raw : '';",
+									"    function field(name) {",
+									"        const m = raw.match(new RegExp('\"' + name + '\"\\\\s*:\\\\s*\"?([^\",\\\\r\\\\n]*)'));",
+									"        return m ? m[1].replace(/\\/\\/.*$/, '').trim() : '';",
+									"    }",
+									"    const parts = [",
+									"        pm.variables.get('cancelApiSecretKey'),",
+									"        pm.variables.get('merchantSecretKey'),",
+									"        field('trxType'),",
+									"        field('trxDate'),",
+									"        field('totalTrxAmount'),",
+									"        field('trxCurrency'),",
+									"        field('refCode')",
+									"    ];",
+									"    const apiKey = CryptoJS.SHA512(parts.join('|')).toString(CryptoJS.enc.Base64);",
+									"    pm.variables.set('apiKey', apiKey);",
+									"    console.log('[apiKey] cancel apiKey computed for refCode', field('refCode'), '=', apiKey);",
+									"})();"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apiKey\":\"{{apiKey}}\",\r\n    \"apiSecretKey\":\"{{cancelApiSecretKey}}\",\r\n    \"mpCode\":\"{{marketplaceCode}}\",\r\n    \"refCode\":\"IKSIRPF464812\",\r\n    \"trxType\":\"cancel\",\r\n    \"trxDate\":\"2025-11-12\",\r\n    \"totalTrxAmount\":2000.00,\r\n    \"trxCurrency\":\"TRY\",\r\n    \"sellerList\":[{}]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payment/cancel",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payment",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Card Info List - UAT",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									"// Auto-compute the storedCardList apiKey from THIS request's body + secret keys.",
+									"// apiKey = Base64(SHA512(apiSecretKey|mpCustomerKey|merchantSecretKey))",
+									"// NOTE: card-storage hashData, NOT the payment formula (see TYNKOLAY-6101).",
+									"(function () {",
+									"    const CryptoJS = require('crypto-js');",
+									"    const raw = (pm.request.body && pm.request.body.raw) ? pm.request.body.raw : '';",
+									"    function field(name) {",
+									"        const m = raw.match(new RegExp('\"' + name + '\"\\\\s*:\\\\s*\"?([^\",\\\\r\\\\n]*)'));",
+									"        return m ? m[1].replace(/\\/\\/.*$/, '').trim() : '';",
+									"    }",
+									"    const parts = [",
+									"        pm.variables.get('apiSecretKey'),",
+									"        field('mpCustomerKey'),",
+									"        pm.variables.get('merchantSecretKey')",
+									"    ];",
+									"    const apiKey = CryptoJS.SHA512(parts.join('|')).toString(CryptoJS.enc.Base64);",
+									"    pm.variables.set('apiKey', apiKey);",
+									"    console.log('[apiKey] storedCardList apiKey for mpCustomerKey', field('mpCustomerKey'), '=', apiKey);",
+									"})();"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mpCode\": \"{{marketplaceCode}}\",\r\n    \"apiSecretKey\":\"{{apiSecretKey}}\",\r\n    \"mpCustomerKey\":\"Unique customer ID\",\r\n    \"apiKey\":\"{{apiKey}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payment/storedCardList",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payment",
+								"storedCardList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Payment Installments - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"mpCode\": \"{{marketplaceCode}}\",\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\",\r\n    \"cardNumber\": \"Test Kart Numarası\",\r\n    \"amount\": 1000.00,\r\n    \"isCardValid\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payment/fetchInstallments",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payment",
+								"fetchInstallments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Payment Commission - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\",\r\n    \"mpCode\": \"{{marketplaceCode}}\",\r\n    \"refCode\": \"IKSIRPF468320\",\r\n    \"trxCode\": \"V1codeH1\",\r\n    \"sellerList\": [\r\n        {\r\n            \"sellerExternalId\": \"IslemSeller3\",\r\n            \"commissionAmount\": 130.00,\r\n            \"trxAmount\":2300.00,\r\n            \"withholdingTax\": 20.00,\r\n            \"sellerDiscountAmount\":\"\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payment/updateCommission",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payment",
+								"updateCommission"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Delivery Date - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"apiSecretKey\": \"{{apiSecretKey}}\",  //satış sx\r\n    \"sellerTransactionList\": [\r\n        {\r\n            \"refCode\": \"IKSIRPF471619\", // deliveryDate yalnızca 1 kez girilebilir.\r\n            \"deliveryDate\": \"18.12.2025\", // deliveryDate her zaman güncelleme yapıldığı tarih olmalıdır.\r\n            \"sellerExternalId\": \"paynkolay-islem\" // Sepet içerisinde birden çok seller olabilir.\r\n        }\r\n    ]\r\n    // Teslimat tarihi güncellenmeyen işlem referans numaraları message içinde döner.\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transaction/update-delivery",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transaction",
+								"update-delivery"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction Report - UAT",
+			"item": [
+				{
+					"name": "Get Transaction Report - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"refCode\" : \"IKSIRPF474487\", // işleme ait paynkolay referans numarası\r\n    \"trxCode\": \"\", // client referans code, optional\r\n    \"marketplaceCode\": \"{{marketplaceCode}}\", // marketplace kodu\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\" // sx token\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transaction/report",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transaction",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  Seller Transaction Report By Date - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"from\": \"2026-01-08T00:00\", // raporlama başlangıç tarihi\r\n    \"to\": \"2026-01-08T23:59\", // raporlama bitiş tarihi\r\n    \"sellerExternalId\": \"paynkolay-islem\", //satıcı unique id\r\n    \"marketplaceCode\": \"{{marketplaceCode}}\", // marketplace kodu\r\n    \"trxType\":\"SALES\", // İşlem Kodu SALES, CANCEL, REFUND\r\n    \"trxStatus\":\"SUCCESS\", // başarılı işlemleri sorgular\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\"   // Satış Token or sx değeri\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transaction/seller/report",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transaction",
+								"seller",
+								"report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Satıcı Borç Görüntüleme - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"from\": \"2025-10-25T00:00\", \r\n    \"to\": \"2025-11-13T00:00\",\r\n    \"sellerExternalId\":\"paynkolay-islem\",\r\n    \"marketplaceCode\": \"{{marketplaceCode}}\",\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\" // sx token\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transaction/seller/debt-report",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transaction",
+								"seller",
+								"debt-report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Satıcı Hakediş Görüntüleme - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"to\": \"2026-01-01\",\r\n    \"from\": \"2026-01-30\",\r\n    \"sellerExternalId\":\"paynkolay-islem\",\r\n    \"marketplaceCode\": \"{{marketplaceCode}}\",\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\" // sx token\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/transaction/seller/payment-report",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"transaction",
+								"seller",
+								"payment-report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apply Penalty - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"sellerExternalId\": \"SELLER_001\", // ceza uygulanacak satıcı; AKTİF olmalı\r\n    \"amount\": \"2000.0\", // ceza/borç tutarı\r\n    \"description\": \"İade edilmeyen kargo cezası\",\r\n    \"debtDate\": \"2026-08-03\", // borç tarihi (yyyy-MM-dd)\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\" // satış sx\r\n}\r\n// Başarı: {\"success\":true,\"message\":\"İşlem başarılı\"}\r\n// Uygulanan ceza GetSellerDebtReport (transaction/seller/debt-report) ile görülür.",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/penalty",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"penalty"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HASH - UAT",
+			"item": [
+				{
+					"name": "Calculate Payment Hash - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apiSecretKey\": \"{{apiSecretKey}}\", // Satış Token\r\n    \"secretKey\": \"{{merchantSecretKey}}\", // merchantSecretKey\r\n    \"trxCode\": \"paynkolay-firstry\", // Pazaryeri tarafına ait takip numarası - ClientRefCode\r\n    \"totalTrxAmount\": \"5000.00\", // Satıcıya ödenecek + vergiler + komisyon\r\n    \"trxCurrency\": \"TRY\", // para birimi\r\n    \"trxType\": \"SALES\" //işlem tipi (SALES)\r\n\r\n    // \"apiKey\"  parametresi marketplace/v1/payment/create servisinde kullanılacaktır.\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/calculate-hash/payment",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"calculate-hash",
+								"payment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calculate Refund-Cancel Hash - UAT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"apiSecretKey\": \"{{cancelApiSecretKey}}\", // İptal Token\r\n    \"secretKey\": \"{{merchantSecretKey}}\",   // merchantSecretKey\r\n    \"trxType\": \"refund\",  // iptal için cancel, iade ya da kısmi iade için refund\r\n    \"trxDate\": \"2025-10-30\", // işlem tarihi\r\n    \"amount\": \"2000.00\",  // iptal için karttan çekilen tutar; tam iade için karttan çekilen tutar ; kısmi iade için müşteri kartına iade edilecek tutar\r\n    \"trxCurrency\": \"TRY\", // para birimi lira desteklenmektedir.\r\n    \"referenceCode\": \"IKSIRPF456012\" // işleme ait paynkolay referans numarası\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/calculate-hash/refund-cancel",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"calculate-hash",
+								"refund-cancel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Token - UAT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"// Persist token from a manual Get Token call.",
+							"try {",
+							"    const data = pm.response.json();",
+							"    const token =",
+							"        (data && data.jwtToken) ||",
+							"        (data && data.data && data.data.token) ||",
+							"        (data && data.data && data.data.jwtToken) ||",
+							"        (data && data.token) ||",
+							"        (data && data.access_token);",
+							"    if (token) {",
+							"        pm.collectionVariables.set('token', token);",
+							"        console.log('[auth] Token saved from manual Get Token call.');",
+							"    } else {",
+							"        console.error('[auth] No token in response:', data);",
+							"    }",
+							"} catch (e) {",
+							"    console.error('[auth] Could not parse response:', e);",
+							"}"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"{{username}}\",  // marketplace username\r\n    \"password\" : \"{{password}}\"   // marketplace password\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/authenticate",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://apitest.paynkolay.com.tr/marketplace/v1",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "marketplace_user_9400001470",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "marketplace_user_9400001470",
+			"type": "string"
+		},
+		{
+			"key": "marketplaceCode",
+			"value": "9400001470",
+			"type": "string"
+		},
+		{
+			"key": "apiSecretKey",
+			"value": "163066393|QvbbPtml0fikqcA5uwyaACCHqbGYWIFTos9XbEUa6zgUGZeYEuzt9AKgxg+KYH3lNKn0rh9XuXPN+gviqeAd3dhSEozSespThICdFi7/HKJkGLMdTrcyTlLsmqWtswOC68JVdw==",
+			"type": "string"
+		},
+		{
+			"key": "cancelApiSecretKey",
+			"value": "163066393|QvbbPtml0fikqcA5uwyaACCHqbGYWIFTos9XbEUa6zgUGZeYEuzt9AKgxg+KYH3lNKn0rh9XuXPN+gviqeAd3dhSEozSespThICdFi7/HKJkGLMdTrcyTlLsmqWtswOC68JVdw==|y2sxpJ6HmLdQ4JeE+pLczw/+TJA7C81X",
+			"type": "string"
+		},
+		{
+			"key": "merchantSecretKey",
+			"value": "_xh8kCgGWCAkjFjrgPy3s",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "apiKey",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

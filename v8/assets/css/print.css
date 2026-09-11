@@ -1,0 +1,61 @@
+/* ============================================================
+   PRINT — sunum/PDF çıktısı: gezinme gizlenir, içerik tam genişlik
+   ============================================================ */
+@page {
+  margin: 1.6cm;
+}
+
+.topbar,
+.sidebar,
+.overlay,
+.toc,
+.theme-switch,
+.version-pill,
+.pager,
+.copybtn,
+.search {
+  display: none !important;
+}
+
+body {
+  background: #ffffff;
+  color: #111111;
+}
+
+.shell,
+.content {
+  display: block;
+}
+
+main {
+  padding: 0;
+}
+
+.article {
+  max-width: none;
+}
+
+a {
+  color: #111111;
+  text-decoration: none;
+}
+
+/* Kod blokları: mürekkep dostu açık zemin */
+.codeblock__bar {
+  background: #eeeeee;
+  color: #111111;
+}
+
+.codeblock__code,
+.codeblock__code * {
+  background: #ffffff !important;
+  color: #111111 !important;
+}
+
+.codeblock,
+.faq,
+.seqdiag,
+.card,
+.env {
+  break-inside: avoid;
+}

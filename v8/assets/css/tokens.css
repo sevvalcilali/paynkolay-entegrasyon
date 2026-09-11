@@ -90,6 +90,8 @@
 
   /* --- Yerleşim --- */
   --content-max: 1080px;
+  --topbar-h: 58px;
+  --sidebar-w: 280px;
   --drawer-w: min(310px, 86vw);
 
   /* --- Hareket --- */

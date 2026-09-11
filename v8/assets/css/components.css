@@ -20,6 +20,17 @@
   width: auto;
 }
 
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--brand);
+  border: 1px solid var(--line-bright);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+}
+
 .topbar__spacer {
   flex: 1;
 }
@@ -51,13 +62,13 @@
   transform: translateY(-1px);
 }
 
-.btn--blue {
+.btn--primary {
   background: var(--brand-fill);
   color: #FFFFFF;
   border: 1px solid var(--brand-fill);
 }
 
-.btn--blue:hover {
+.btn--primary:hover {
   background: var(--brand-fill-hover);
 }
 
@@ -327,7 +338,7 @@
   text-overflow: ellipsis;
 }
 
-.copychip {
+.copybtn {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -343,8 +354,8 @@
     background var(--dur) var(--ease);
 }
 
-.copychip:hover,
-.copychip.is-done {
+.copybtn:hover,
+.copybtn.is-done {
   background: rgba(12, 52, 231, 0.08);
   border-color: var(--brand);
   color: var(--ink-900);
@@ -352,18 +363,19 @@
 
 /* --- Parametre tablosu --- */
 .table-wrap {
+  margin: var(--space-4) 0;
   overflow-x: auto;
   border: 1px solid var(--line-bright);
   border-radius: var(--radius-md);
   background: var(--paper);
 }
 
-.ptable {
+.dtable {
   width: 100%;
   font-size: var(--text-sm);
 }
 
-.ptable th {
+.dtable th {
   text-align: left;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -375,18 +387,18 @@
   white-space: nowrap;
 }
 
-.ptable td {
+.dtable td {
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px dashed var(--line-soft);
   vertical-align: top;
   color: var(--text-body);
 }
 
-.ptable tr:last-child td {
+.dtable tr:last-child td {
   border-bottom: none;
 }
 
-.ptable td:first-child {
+.dtable td:first-child {
   font-family: var(--font-mono);
   font-weight: 600;
   color: var(--ink-900);
@@ -433,13 +445,13 @@
 }
 
 /* Koyu plaka üzerindeki kopyalama hapı */
-.codeplate .copychip {
+.codeplate .copybtn {
   border-color: rgba(143, 164, 255, 0.5);
   color: var(--code-key);
 }
 
-.codeplate .copychip:hover,
-.codeplate .copychip.is-done {
+.codeplate .copybtn:hover,
+.codeplate .copybtn.is-done {
   background: rgba(143, 164, 255, 0.16);
   border-color: var(--code-key);
   color: #FFFFFF;
@@ -651,69 +663,6 @@
   }
 }
 
-/* --- Üst kurumsal menü (v2 ile aynı isimler; Gravür dili) --- */
-.mainnav {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  flex-shrink: 0;
-}
-
-.mainnav__btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: var(--space-2) 10px;
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--ink-700);
-  transition: color var(--dur) var(--ease), background var(--dur) var(--ease);
-}
-
-.mainnav__btn::after {
-  content: "";
-  position: absolute;
-  left: var(--space-3);
-  right: var(--space-3);
-  bottom: -6px;
-  height: 1.5px;
-  background: var(--brand);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur) var(--ease);
-}
-
-.mainnav__btn:hover {
-  background: var(--paper-soft);
-  color: var(--brand);
-}
-
-.mainnav__btn:hover::after {
-  transform: scaleX(1);
-}
-
-.mainnav__btn .chevron {
-  color: var(--ink-500);
-}
-
-.mainnav__btn:hover .chevron,
-.mainnav__btn.is-current .chevron {
-  color: var(--brand);
-}
-
-.mainnav__btn.is-current {
-  color: var(--brand);
-}
-
-@media (max-width: 1400px) {
-  .mainnav {
-    display: none;
-  }
-}
-
 /* --- Açılır menü --- */
 .dropdown {
   position: relative;
@@ -749,92 +698,6 @@
 
 .dropdown.is-open > [data-dropdown] .chevron {
   transform: rotate(180deg);
-}
-
-/* Zengin menü: ikon kutusu + başlık + alt yazı */
-.dropdown__menu--rich {
-  min-width: 320px;
-}
-
-.richitem {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
-}
-
-.richitem:hover {
-  background: var(--paper-soft);
-  text-decoration: none;
-}
-
-.richitem:hover .richitem__title {
-  color: var(--brand);
-}
-
-.richitem:hover .richitem__icon {
-  background: var(--brand-fill);
-  color: #ffffff;
-}
-
-.richitem__icon,
-.richitem__title {
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
-}
-
-.richitem__icon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--line-soft);
-  background: var(--paper-soft);
-  color: var(--brand);
-}
-
-.richitem__text {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.richitem__title {
-  font-weight: 600;
-  color: var(--ink-900);
-}
-
-.richitem__desc {
-  font-size: var(--text-sm);
-  color: var(--ink-500);
-}
-
-.dropdown__menu--products {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2px;
-  min-width: 620px;
-}
-
-.dropdown__footer {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  margin-top: var(--space-2);
-  padding: var(--space-3);
-  border-top: 1px solid var(--line-soft);
-  font-weight: 600;
-  color: var(--brand);
-}
-
-.dropdown__footer:hover {
-  background: var(--paper-soft);
-  text-decoration: none;
 }
 
 /* ============================================================
@@ -985,6 +848,19 @@
   transform: translateY(2px);
 }
 
+.guide li > span:not(.guide__dot) {
+  flex: 1;
+  min-width: 0;
+}
+
+.guide .shot {
+  display: block;
+  width: 100%;
+  margin-top: var(--space-3);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+}
+
 .guide__title {
   display: block;
   font-weight: 650;
@@ -1006,7 +882,7 @@
   background: var(--paper);
   border: 1px solid var(--line-bright);
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-4);
+  margin: var(--space-4) 0;
 }
 
 .access__row {
@@ -1203,12 +1079,12 @@
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
   background: var(--paper);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-pill);
-  font-size: var(--text-sm);
+  font-size: var(--text-base);
   font-weight: 600;
   color: var(--ink-900);
 }
@@ -1222,6 +1098,61 @@ a.chip:hover {
   border-color: var(--brand);
   color: var(--brand);
   text-decoration: none;
+}
+
+/* --- Belge kontrol listesi (işaretlenebilir) --- */
+.doclist {
+  list-style: none;
+  padding: 0;
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.doclist li {
+  background: var(--paper-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+
+.doclist label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ink-900);
+}
+
+.doclist input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--brand);
+  cursor: pointer;
+}
+
+.doclist li.is-done {
+  background: var(--paper);
+  border-color: var(--line-bright);
+}
+
+.doclist li.is-done label {
+  color: var(--ink-500);
+  text-decoration: line-through;
+  text-decoration-color: var(--line-bright);
+}
+
+.doclist__progress {
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--brand);
 }
 
 /* --- Avantaj ikonları --- */
@@ -1373,7 +1304,8 @@ a.chip:hover {
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.field select {
   width: 100%;
   padding: 9px var(--space-3);
   font-size: var(--text-base);
@@ -1391,7 +1323,8 @@ a.chip:hover {
 }
 
 .field input:focus,
-.field textarea:focus {
+.field textarea:focus,
+.field select:focus {
   outline: none;
   border-color: var(--brand);
   box-shadow: 0 0 0 3px var(--focus-ring);
@@ -1551,13 +1484,13 @@ a.chip:hover {
 }
 
 /* --- Parametre tablosu ekleri (göçen hücre türleri) --- */
-.ptable .mono {
+.dtable .mono {
   font-family: var(--font-mono);
   color: var(--ink-900);
   white-space: nowrap;
 }
 
-.ptable .cell-actions {
+.dtable .cell-actions {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -1745,16 +1678,13 @@ a.chip:hover {
   color: #F4F6FF;
 }
 
-.codeblock .copychip,
-.codetabs .copychip {
+.copybtn--dark {
   border-color: rgba(143, 164, 255, 0.5);
   color: var(--code-key);
 }
 
-.codeblock .copychip:hover,
-.codeblock .copychip.is-done,
-.codetabs .copychip:hover,
-.codetabs .copychip.is-done {
+.copybtn--dark:hover,
+.copybtn--dark.is-done {
   background: rgba(143, 164, 255, 0.16);
   border-color: var(--code-key);
   color: #FFFFFF;
@@ -1961,13 +1891,6 @@ a.chip:hover {
   color: var(--brand);
 }
 
-.folio__links a[aria-current="page"] {
-  color: var(--brand);
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .folios--map {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1976,20 +1899,6 @@ a.chip:hover {
   .folios--map {
     grid-template-columns: minmax(0, 1fr);
   }
-}
-
-/* Alt sayfa sonu: "Bu Bölümde" kartı */
-.folio--solo {
-  margin-top: var(--space-12);
-}
-
-.folio--solo .folio__title a {
-  color: inherit;
-}
-
-.folio--solo .folio__title a:hover {
-  color: var(--brand);
-  text-decoration: none;
 }
 
 /* --- Yolculuk durakları tıklanabilir --- */
@@ -2253,6 +2162,24 @@ a.chip:hover {
   outline: 1px solid var(--line-bright);
 }
 
+/* Dar ekranda üst bar sığsın: tema anahtarı sağ altta yüzer,
+   en dar ekranda Panel Giriş gizlenir */
+@media (max-width: 767px) {
+  .theme-switch {
+    position: fixed;
+    right: var(--space-4);
+    bottom: var(--space-4);
+    z-index: 30;
+    box-shadow: var(--shadow-panel);
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar .btn--ghost {
+    display: none;
+  }
+}
+
 /* --- Koyu tema ince ayarları (sabit renkli öğeler) --- */
 :root[data-theme="dark"] .brand__logo {
   filter: brightness(0) invert(1); /* mavi logo koyu zeminde kaybolmasın */
@@ -2325,123 +2252,133 @@ a.chip:hover {
 }
 
 /* ============================================================
-   AÇILIR SOL MENÜ (drawer) — hep açık değil; istenince açılır
+   SOL MENÜ — masaüstünde kalıcı ray, dar ekranda çekmece
+   (yerleşim layout.css'te)
    ============================================================ */
 .menu-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 36px;
   height: 36px;
-  padding: 0 var(--space-3);
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-sm);
-  font-size: var(--text-xs);
-  font-weight: 600;
-  color: var(--ink-700);
+  color: var(--brand);
   flex-shrink: 0;
-  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  transition: border-color var(--dur) var(--ease);
 }
 
 .menu-toggle:hover {
   border-color: var(--brand);
-  color: var(--brand);
 }
 
-.menu-toggle svg {
-  color: var(--brand);
-  flex-shrink: 0;
-}
-
-@media (max-width: 1100px) {
-  .menu-toggle__label {
+@media (min-width: 1024px) {
+  .menu-toggle {
     display: none;
   }
 }
 
-.drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100dvh;
-  width: var(--drawer-w);
-  transform: translateX(-100%);
-  transition: transform var(--dur) var(--ease);
-  z-index: 70;
-  background: var(--paper);
-  border-right: 1px solid var(--line-soft);
-  overflow-y: auto;
-  padding: var(--space-5) var(--space-4) var(--space-8);
+/* --- Dil kutusu (menü tepesi) --- */
+.dropdown--lang {
+  margin-bottom: var(--space-5);
 }
 
-.drawer.is-open {
-  transform: translateX(0);
-  box-shadow: var(--shadow-panel);
-}
-
-.drawer__head {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding-bottom: var(--space-4);
-  margin-bottom: var(--space-4);
-}
-
-/* Başlık altı ince gravür ayracı: kısa dolu + kesikli devam */
-.drawer__head::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: linear-gradient(90deg, var(--brand) 0 40px,
-    var(--line-bright) 40px 46px, transparent 46px);
-}
-
-.drawer__brand {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+.dropdown--lang .dropdown__menu {
+  width: 100%;
   min-width: 0;
 }
 
-.drawer__eyebrow {
+.lang {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 38px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--ink-900);
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--text-xs);
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.16em;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.lang:hover {
+  border-color: var(--brand);
   color: var(--brand);
 }
 
-.drawer__title {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  letter-spacing: 0.005em;
-  color: var(--ink-900);
-}
-
-.drawer__close {
-  display: flex;
-  width: 34px;
-  height: 34px;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--line-soft);
-  border-radius: var(--radius-pill);
+.lang .chevron {
   color: var(--ink-500);
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 
-.drawer__close:hover {
-  background: var(--brand);
+.dropdown__item {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--ink-700);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.dropdown__item:hover {
+  background: var(--paper-soft);
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.dropdown__item.is-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.dropdown__item.is-selected::after {
+  content: "✓";
+  font-weight: 700;
+}
+
+/* --- GitBook rozeti (menü altı) --- */
+.gitbook {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+  padding: var(--space-2) var(--space-3);
+  border: 1px dashed var(--line-soft);
+  border-radius: var(--radius-sm);
+  color: var(--ink-500);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+
+.gitbook:hover {
   border-color: var(--brand);
-  color: #ffffff;
-  transform: rotate(90deg);
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.gitbook svg {
+  flex-shrink: 0;
+}
+
+/* Başka bölümde açılan kısayol (↗) */
+.nav__link--ref .refarrow {
+  flex-shrink: 0;
+  color: var(--ink-500);
+}
+
+/* Ray içinde odak halkası içe oturur (kaydırma kutusunda kırpılmasın) */
+.sidebar :focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--focus-ring);
 }
 
 .overlay {
@@ -2627,16 +2564,4 @@ body.drawer-locked {
 /* Koyu temada karartma biraz daha derin */
 :root[data-theme="dark"] .overlay {
   background: rgba(0, 0, 0, 0.6);
-}
-
-/* --- Drawer açıkken arka plan sağa kayar (push) --- */
-.topbar,
-.content {
-  transition: transform var(--dur) var(--ease);
-  will-change: transform;
-}
-
-body.drawer-locked .topbar,
-body.drawer-locked .content {
-  transform: translateX(var(--drawer-w));
 }

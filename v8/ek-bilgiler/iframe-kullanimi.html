@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Web siteniz üzerinden Paynkolay'ın güvenli ödeme sayfasıyla satışınızı kolayca tamamlayın.">
-  <meta property="og:title" content="Ortak Ödeme Sayfası — Paynkolay Docs">
-  <meta property="og:description" content="Web siteniz üzerinden Paynkolay'ın güvenli ödeme sayfasıyla satışınızı kolayca tamamlayın.">
+  <meta name="description" content="Ortak ödeme sayfasını iframe ile kullanma: SameSite çerez ve X-Frame-Options çözümleri, CSP yapılandırması ve canlıya çıkış kontrol listesi.">
+  <meta property="og:title" content="iFrame Kullanımı — Paynkolay Docs">
+  <meta property="og:description" content="Ortak ödeme sayfasını iframe ile kullanma: SameSite çerez ve X-Frame-Options çözümleri, CSP yapılandırması ve canlıya çıkış kontrol listesi.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0C34E7">
-  <title>Ortak Ödeme Sayfası — Paynkolay Docs</title>
+  <title>iFrame Kullanımı — Paynkolay Docs</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
@@ -115,7 +115,7 @@
 
         <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="../open-source/index.html">Open Source Entegrasyonlar</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-opensource" aria-label="Open Source Entegrasyonlar alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-opensource"><div class="nav__sublist-inner"><a class="nav__link" href="../open-source/woocommerce.html">WooCommerce</a><a class="nav__link" href="../open-source/opencart.html">OpenCart</a><a class="nav__link" href="../open-source/magento-2-x.html">Magento 2.x</a><a class="nav__link" href="../open-source/magento-1-9.html">Magento 1.9</a><a class="nav__link" href="../open-source/prestashop.html">PrestaShop</a><a class="nav__link" href="../open-source/givewp.html">GiveWP</a><a class="nav__link" href="../open-source/whmcs.html">WHMCS</a></div></div></div>
 
-        <div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="../ek-bilgiler/index.html">Ek Bilgiler</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-ekbilgi" aria-label="Ek Bilgiler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-ekbilgi"><div class="nav__sublist-inner"><a class="nav__link nav__link--dl" href="../assets/paynkolay.postman_collection.json" download="paynkolay.postman_collection.json"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Postman Koleksiyonu</a><a class="nav__link nav__link--ref" href="../on-hazirlik/test-kartlari.html" title="Ön Hazırlık bölümünde açılır">Test Kartları<svg class="refarrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="nav__link" href="../ek-bilgiler/hash-araci.html">Hash Aracı</a><a class="nav__link" href="../ek-bilgiler/hata-kodlari.html">Hata Kodları</a><a class="nav__link" href="../ek-bilgiler/banka-kodlari.html">Banka Kodları</a><a class="nav__link" href="../ek-bilgiler/tls-hatalari.html">TLS Hataları</a><a class="nav__link" href="../ek-bilgiler/iframe-kullanimi.html">iFrame Kullanımı</a></div></div></div>
+        <div class="nav__group is-open is-current"><div class="nav__group-head"><a class="nav__link nav__link--top nav__group-link" href="index.html">Ek Bilgiler</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-ekbilgi" aria-label="Ek Bilgiler alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-ekbilgi"><div class="nav__sublist-inner"><a class="nav__link nav__link--dl" href="../assets/paynkolay.postman_collection.json" download="paynkolay.postman_collection.json"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 21h16"/></svg>Postman Koleksiyonu</a><a class="nav__link nav__link--ref" href="../on-hazirlik/test-kartlari.html" title="Ön Hazırlık bölümünde açılır">Test Kartları<svg class="refarrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a><a class="nav__link" href="hash-araci.html">Hash Aracı</a><a class="nav__link" href="hata-kodlari.html">Hata Kodları</a><a class="nav__link" href="banka-kodlari.html">Banka Kodları</a><a class="nav__link" href="tls-hatalari.html">TLS Hataları</a><a class="nav__link is-active" href="iframe-kullanimi.html" aria-current="page">iFrame Kullanımı</a></div></div></div>
 
         <a class="nav__link nav__link--top" href="../sss.html">Sıkça Sorulan Sorular</a>
       </nav>
@@ -135,30 +135,124 @@
     <div class="content" id="icerik">
       <main>
         <article class="article">
-          <p class="eyebrow"><a href="index.html">Ürünler</a></p>
-          <h1>Ortak Ödeme Sayfası</h1>
-          <p class="lead">Web siteniz üzerinden Paynkolay'ın güvenli ödeme sayfasıyla satışınızı kolayca tamamlayın.</p>
-          
-          <h2 id="genel">Genel Bakış</h2>
-          <p>Birden fazla kanaldan (web, mobil, link, QR) tek bir ödeme ekranıyla tahsilat almak isteyen işletmeler için: tek entegrasyonla kart ve taksit yöntemlerini yönetir, satış ekipleri ile bayilerin aynı standartta ödeme almasını sağlarsınız.</p>
+          <p class="eyebrow"><a href="index.html">Ek Bilgiler</a></p>
+          <h1>iFrame Kullanımı</h1>
+          <p class="lead">Ortak ödeme sayfasını kendi sitenizin içinde iframe ile açma: örnek kurulum, SameSite çerez ve X-Frame-Options sorunlarının çözümleri, canlıya çıkış kontrol listesi.</p>
 
-          <h2 id="ozellikler">Öne Çıkanlar</h2>
-          <ul class="checklist"><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Çok kanal, tek ödeme ekranı</span></li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Tek entegrasyonla kart ve taksit yönetimi</span></li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Ekip/bayi/şube için standart akış ve raporlama</span></li></ul>
+          <div class="callout callout--warn">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
+            <p><strong>Önerilmez:</strong> iframe kullanımını önermiyoruz — yönlendirme akışı hem daha basit hem daha sorunsuzdur. Yine de kullanacaksanız, düzgün çalışması için sunucu ve sayfa ayarlarınızda aşağıdaki yapılandırmalar gerekir.</p>
+          </div>
 
-          <h2 id="kart-saklama">Güvenli Kart Saklama</h2>
-          <p>Kart bilgileri <strong>PCI DSS Level-1</strong> uyumlu olarak, tokenizasyon algoritmalarıyla şifrelenip saklanır. Kart sahipleri bilgilerini yeniden girmeden <strong>tek tıkla</strong> öder; saklı kartlardan belirlediğiniz periyotlarda tahsilat yapabilirsiniz.</p>
+          <h2 id="ornek">Temel Kullanım</h2>
+          <p>Sanal POS'u iframe içinde açabilirsiniz; iframe'de yüklenen sayfa <strong>kendi sitenizde barındırdığınız ödeme formu</strong> olmalıdır (örnek form: <a href="../tahsilat-metodu/form-ile-odeme.html">Form ile Ödeme</a>). Paynkolay'ın <code>iframe-resizer</code> script'i, çerçevenin yüksekliğini içeriğe göre otomatik ayarlar:</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek — HTML</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;iframe&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-          <h2 id="dokuman">İlgili Doküman</h2>
-          <div class="cards"><a class="card" href="../tahsilat-metodu/form-ile-odeme.html"><span class="card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></span><span class="card__title">Form ile Ödeme Dokümantasyonu<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></span><span class="card__desc">Ortak ödeme sayfasına yönlendirme entegrasyonunun teknik detayları.</span></a></div>
+&lt;div class=&quot;container&quot;&gt;
+&lt;script src=&quot;https://paynkolaytest.nkolayislem.com.tr/VPos/js/paynkolay-iframe-resizer.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- iframe içinde çağırdığınız web sitesi sizin web siteniz olmalıdır.
+     Ödeme formu için Form ile Ödeme sayfasındaki örnek kullanılabilir. --&gt;
+&lt;iframe src=&quot;https://siteniz.com/odeme-formu&quot; id=&quot;paynkolayiframe&quot;
+        frameborder=&quot;0&quot; scrolling=&quot;no&quot; style=&quot;width: 100%;&quot;&gt;&lt;/iframe&gt;
+&lt;script&gt;iFrameResize({}, &#x27;#paynkolayiframe&#x27;);&lt;/script&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+
+          <h2 id="samesite">1. SameSite Çerez Kısıtlamaları (En Yaygın)</h2>
+          <p><strong>Belirti:</strong> müşteri iframe içinde ödemeyi tamamlıyor ama sitenize dönüşte oturumu kaybolmuş görünüyor; sepet boşalıyor ya da "yeniden giriş yapın" ekranı geliyor. Nedeni, tarayıcıların çerezleri varsayılan olarak <code>SameSite=Lax</code> sayması ve iframe içindeki cross-site isteklerde engellemesidir. Çözüm, oturum çerezini <code>SameSite=None; Secure</code> ile açmaktır (HTTPS zorunludur):</p>
+          <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">ASP.NET Core</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Node.js</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Django</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code>// PHP
+session_set_cookie_params([
+    &#x27;lifetime&#x27; =&gt; 0,
+    &#x27;path&#x27; =&gt; &#x27;/&#x27;,
+    &#x27;domain&#x27; =&gt; &#x27;.domain.com&#x27;,
+    &#x27;secure&#x27; =&gt; true,
+    &#x27;httponly&#x27; =&gt; true,
+    &#x27;samesite&#x27; =&gt; &#x27;None&#x27;
+]);
+session_start();</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>// ASP.NET Core
+services.AddSession(options =&gt;
+{
+    options.Cookie.SameSite = SameSiteMode.None;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>// Node.js / Express
+app.use(session({
+    secret: &#x27;your-secret-key&#x27;,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: true,
+        httpOnly: true,
+        sameSite: &#x27;none&#x27;
+    }
+}));</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code># Django (settings.py)
+SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SAMESITE = &#x27;None&#x27;
+SESSION_COOKIE_HTTPONLY = True</code></pre></div></div>
+
+          <h2 id="xframe">2. X-Frame-Options Engellemesi</h2>
+          <p><strong>Belirti:</strong> iframe boş kalıyor ya da konsolda "Refused to display … in a frame" hatası görünüyor. Kendi sayfanızın <code>X-Frame-Options</code> başlığı iframe'e gömülmeyi engelliyordur. Üç seçenek:</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Seçenek A — başlığı kaldırın</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code># Apache (.htaccess)
+Header unset X-Frame-Options
+
+# Nginx — mevcut add_header X-Frame-Options satırlarını kaldırın ya da yoruma alın</code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Seçenek B — yalnızca Paynkolay&#x27;a izin verin (eski tarayıcılar)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code># Apache
+Header set X-Frame-Options &quot;ALLOW-FROM https://paynkolaytest.nkolayislem.com.tr&quot;
+
+# Nginx
+add_header X-Frame-Options &quot;ALLOW-FROM https://paynkolaytest.nkolayislem.com.tr&quot;;</code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Seçenek C — önerilen: CSP frame-ancestors</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code># Apache
+Header set Content-Security-Policy &quot;frame-ancestors &#x27;self&#x27; https://paynkolaytest.nkolayislem.com.tr https://paynkolay.com.tr&quot;
+
+# Nginx
+add_header Content-Security-Policy &quot;frame-ancestors &#x27;self&#x27; https://paynkolaytest.nkolayislem.com.tr https://paynkolay.com.tr&quot;;</code></pre></div>
+          <p>Sunucu yapılandırmasına erişemiyorsanız CSP başlığını uygulama içinden de ekleyebilirsiniz:</p>
+          <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">ASP.NET Core</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">PHP</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code>// ASP.NET Core (Program.cs)
+app.Use(async (context, next) =&gt;
+{
+    context.Response.Headers.Add(&quot;Content-Security-Policy&quot;,
+        &quot;frame-ancestors &#x27;self&#x27; https://paynkolaytest.nkolayislem.com.tr https://paynkolay.com.tr&quot;);
+    await next();
+});</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>// PHP
+header(&quot;Content-Security-Policy: frame-ancestors &#x27;self&#x27; https://paynkolaytest.nkolayislem.com.tr https://paynkolay.com.tr&quot;);</code></pre></div></div>
+          <div class="callout">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+            <p><code>ALLOW-FROM</code> modern tarayıcılarda kullanımdan kalkmıştır; güncel çözüm <strong>Content-Security-Policy: frame-ancestors</strong> direktifidir. Canlıda <code>paynkolaytest</code> yerine canlı alan adını yazmayı unutmayın.</p>
+          </div>
+
+          <h2 id="kontrol">Canlıya Çıkış Kontrol Listesi</h2>
+          <ul class="checklist">
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Oturum çerezleri <code>SameSite=None</code> ve <code>Secure=true</code> ile yapılandırıldı</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Sitede HTTPS etkin (SameSite=None için zorunludur)</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>X-Frame-Options kaldırıldı ya da gömmeye izin verecek şekilde yapılandırıldı</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span><code>frame-ancestors</code> direktifiyle uygun Content-Security-Policy ayarlandı</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Başarı ve hata senaryoları dahil tam ödeme akışı test edildi</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Ödeme sonrası kullanıcı oturumlarının devam ettiği doğrulandı</span></li>
+<li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Chrome, Safari, Firefox ve Edge&#x27;de test edildi</span></li>
+          </ul>
+
+          <h2 id="teknik">Teknik Arka Plan</h2>
+          <p>Buradaki sorunlar, tarayıcıların kullanıcıları <strong>clickjacking</strong> ve cross-site veri sızıntısından korumak için getirdiği güvenlik iyileştirmelerinden kaynaklanır; ödeme sayfası gibi meşru iframe entegrasyonları bu yüzden dikkatli yapılandırma ister.</p>
+          <p><strong>SameSite</strong> çerez özelliği CSRF saldırılarını önlemek için tanıtıldı: tarayıcılar çerezleri varsayılan olarak <code>Lax</code> sayar ve iframe içindeki cross-site POST isteklerinde engeller. <code>SameSite=None</code> eski davranışı açıkça kabul eder; karşılığında çerezin yalnızca şifreli bağlantıda taşınması için <code>Secure</code> bayrağını zorunlu kılar.</p>
+          <p><strong>X-Frame-Options</strong> ve <strong>Content-Security-Policy</strong> başlıkları ise sayfalarınızı hangi sitelerin çerçeveye gömebileceğini kontrol ederek clickjacking'e karşı korur; doğru yaklaşım korumayı tamamen kapatmak değil, yalnızca güvenilen ödeme sağlayıcı alan adlarına izin vermektir.</p>
 
           <div class="rule rule--pager" aria-hidden="true"></div>
           <nav class="pager" aria-label="Sayfalar arası gezinme">
-  <a class="pager__card" href="cepnpos.html">
+  <a class="pager__card" href="tls-hatalari.html">
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
-    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">CepnPOS</span></span>
+    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">TLS Hataları</span></span>
   </a>
-  <a class="pager__card pager__card--next" href="para-transferi.html">
-    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Para Transferi</span></span>
+  <a class="pager__card pager__card--next" href="../sss.html">
+    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Sıkça Sorulan Sorular</span></span>
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
   </a>
 </nav>
@@ -169,7 +263,7 @@
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="https://paynkolay.com.tr/iletisim#bize-yazin" target="_blank" rel="noopener">bize ulaşın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 4 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -186,10 +280,11 @@
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#genel">Genel Bakış</a></li>
-          <li><a href="#ozellikler">Öne Çıkanlar</a></li>
-          <li><a href="#kart-saklama">Güvenli Kart Saklama</a></li>
-          <li><a href="#dokuman">İlgili Doküman</a></li>
+          <li><a class="is-active" href="#ornek">Temel Kullanım</a></li>
+          <li><a href="#samesite">SameSite Çerezleri</a></li>
+          <li><a href="#xframe">X-Frame-Options</a></li>
+          <li><a href="#kontrol">Kontrol Listesi</a></li>
+          <li><a href="#teknik">Teknik Arka Plan</a></li>
         </ul>
       </aside>
 
@@ -205,6 +300,8 @@
   <script src="../assets/js/dropdown.js"></script>
   <script src="../assets/js/tocspy.js"></script>
   <script src="../assets/js/search.js"></script>
+  <script src="../assets/js/copy.js"></script>
+  <script src="../assets/js/codetabs.js"></script>
   <script src="../assets/js/feedback.js"></script>
 </body>
 </html>
