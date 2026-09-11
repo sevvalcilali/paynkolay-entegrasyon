@@ -1,13 +1,11 @@
-/* Sol panel davranışı: accordion aç/kapa + mobil çekmece */
+/* Sol menü: accordion + masaüstünde aç/kapa (tercih hatırlanır) + mobil çekmece */
 (function () {
   "use strict";
 
   /* --- Accordion ---
      İki başlık biçimi desteklenir: düz buton (.nav__group-btn) ve
      sayfaya götüren etiket + ayrı chevron (.nav__group-toggle). */
-  var groups = document.querySelectorAll(".nav__group");
-
-  groups.forEach(function (group) {
+  document.querySelectorAll(".nav__group").forEach(function (group) {
     var btn = group.querySelector(".nav__group-btn, .nav__group-toggle");
     if (!btn) {
       return;
@@ -26,9 +24,7 @@
 
   /* Grup etiketi: alt başlıklar açıkken tıklanırsa gezinmek yerine kapatır;
      kapalıyken normal davranır (sayfaya gider, sayfa grubu açık getirir). */
-  var groupLinks = document.querySelectorAll(".nav__group-link");
-
-  groupLinks.forEach(function (link) {
+  document.querySelectorAll(".nav__group-link").forEach(function (link) {
     link.addEventListener("click", function (event) {
       var group = link.closest(".nav__group");
       if (group.classList.contains("is-open")) {
@@ -42,11 +38,29 @@
     });
   });
 
-  /* --- Mobil çekmece --- */
+  var root = document.documentElement;
   var sidebar = document.getElementById("sidebar");
-  var hamburger = document.getElementById("hamburger");
+  var toggle = document.getElementById("hamburger");
   var overlay = document.getElementById("overlay");
+  var desktop = window.matchMedia("(min-width: 1024px)");
 
+  function syncExpanded() {
+    var expanded = desktop.matches
+      ? !root.classList.contains("sidebar-collapsed")
+      : sidebar.classList.contains("is-open");
+    toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+  }
+
+  /* --- Masaüstü: menüyü daralt / aç --- */
+  function setCollapsed(collapsed) {
+    root.classList.toggle("sidebar-collapsed", collapsed);
+    try {
+      localStorage.setItem("pnk-sidebar", collapsed ? "collapsed" : "open");
+    } catch (e) { /* gizli pencere vb. */ }
+    syncExpanded();
+  }
+
+  /* --- Mobil çekmece --- */
   function openDrawer() {
     sidebar.classList.add("is-open");
     overlay.hidden = false;
@@ -55,14 +69,13 @@
       overlay.classList.add("is-visible");
     });
     document.body.classList.add("drawer-locked");
-    hamburger.setAttribute("aria-expanded", "true");
+    syncExpanded();
   }
 
   function closeDrawer() {
     sidebar.classList.remove("is-open");
     overlay.classList.remove("is-visible");
     document.body.classList.remove("drawer-locked");
-    hamburger.setAttribute("aria-expanded", "false");
     overlay.addEventListener(
       "transitionend",
       function () {
@@ -70,10 +83,13 @@
       },
       { once: true }
     );
+    syncExpanded();
   }
 
-  hamburger.addEventListener("click", function () {
-    if (sidebar.classList.contains("is-open")) {
+  toggle.addEventListener("click", function () {
+    if (desktop.matches) {
+      setCollapsed(!root.classList.contains("sidebar-collapsed"));
+    } else if (sidebar.classList.contains("is-open")) {
       closeDrawer();
     } else {
       openDrawer();
@@ -87,4 +103,14 @@
       closeDrawer();
     }
   });
+
+  /* Pencere mobil → masaüstü genişlerse açık çekmece kapanır */
+  desktop.addEventListener("change", function () {
+    if (desktop.matches && sidebar.classList.contains("is-open")) {
+      closeDrawer();
+    }
+    syncExpanded();
+  });
+
+  syncExpanded();
 })();

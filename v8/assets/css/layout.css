@@ -6,15 +6,36 @@
   position: sticky;
   top: 0;
   z-index: 40;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: var(--space-3);
+  column-gap: var(--space-5);
   height: var(--topbar-h);
   padding: 0 var(--space-5);
   background: var(--topbar-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line-bright);
+}
+
+.topbar__brand {
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.topbar .search {
+  grid-column: 2;
+}
+
+/* Arama gizlendiğinde de eylemler sağda kalsın */
+.topbar__actions {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 /* --- Kabuk: sol menü + içerik --- */
@@ -35,6 +56,7 @@
 }
 
 .wrap {
+  width: 100%;
   max-width: var(--content-max);
   margin: 0 auto;
   padding: var(--space-12) var(--space-6) var(--space-16);
@@ -62,6 +84,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 220px;
   gap: var(--space-12);
+  width: 100%;
   max-width: 1240px;
   margin: 0 auto;
   padding: var(--space-12) var(--space-6) var(--space-16);
@@ -90,6 +113,44 @@
 /* ============================================================
    KIRILIMLAR
    ============================================================ */
+
+/* Masaüstü: marka bölgesi sol menüyle aynı genişlikte (ayırıcı çizgisi
+   menünün kenarıyla hizalı); menü daraltılabilir, tercih menustate.js'te */
+@media (min-width: 1024px) {
+  .topbar {
+    grid-template-columns: calc(var(--sidebar-w) - var(--space-5)) minmax(0, 1fr) auto;
+  }
+
+  .topbar__brand {
+    align-self: stretch;
+    border-right: 1px solid var(--line-soft);
+    transition: border-color var(--dur) var(--ease);
+  }
+
+  .shell {
+    transition: grid-template-columns var(--dur) var(--ease);
+  }
+
+  .sidebar {
+    transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease),
+      padding var(--dur) var(--ease);
+  }
+
+  .sidebar-collapsed .shell {
+    grid-template-columns: 0 minmax(0, 1fr);
+  }
+
+  .sidebar-collapsed .sidebar {
+    opacity: 0;
+    visibility: hidden;
+    padding-inline: 0;
+    border-right-color: transparent;
+  }
+
+  .sidebar-collapsed .topbar__brand {
+    border-right-color: transparent;
+  }
+}
 
 /* Sol menüyle birlikte sağ kolona yer kalmayınca "Bu Sayfada" gizlenir */
 @media (max-width: 1399px) {
@@ -140,5 +201,23 @@
 
   .content {
     padding: var(--space-8) var(--space-4) var(--space-12);
+  }
+}
+
+/* Dar telefonlar: üst bar aralıkları daralır; en darında dekoratif
+   DOCS rozeti gizlenir */
+@media (max-width: 400px) {
+  .topbar {
+    column-gap: var(--space-2);
+  }
+
+  .topbar__brand {
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 360px) {
+  .topbar .badge {
+    display: none;
   }
 }

@@ -31,10 +31,6 @@
   padding: 2px 7px;
 }
 
-.topbar__spacer {
-  flex: 1;
-}
-
 .section__more {
   display: flex;
   justify-content: center;
@@ -142,6 +138,18 @@
 
 .hero h1 {
   margin-bottom: var(--space-5);
+}
+
+/* Dar ekranda panel boşluğu daralır, uzun başlık kelimesi ekrana sığar */
+@media (max-width: 767px) {
+  .plate {
+    padding: var(--space-6);
+  }
+
+  .hero h1 {
+    font-size: clamp(1.5rem, 8vw, var(--text-2xl));
+    overflow-wrap: break-word;
+  }
 }
 
 .hero h1 em {
@@ -636,6 +644,19 @@
   color: var(--text-muted);
 }
 
+/* Dar ekranda uzun e-posta düğmesi satır kırar */
+@media (max-width: 480px) {
+  .band .btn {
+    max-width: 100%;
+    height: auto;
+    min-height: 36px;
+    padding-block: var(--space-2);
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+}
+
 /* --- Versiyon rozeti --- */
 .version-pill {
   position: fixed;
@@ -707,8 +728,9 @@
 
 /* --- Üst barda arama --- */
 .search {
-  flex: 1;
-  max-width: 260px;
+  justify-self: center;
+  width: 100%;
+  max-width: 520px;
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -2145,8 +2167,8 @@ a.chip:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--radius-pill);
   color: var(--ink-500);
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
@@ -2270,12 +2292,6 @@ a.chip:hover {
 
 .menu-toggle:hover {
   border-color: var(--brand);
-}
-
-@media (min-width: 1024px) {
-  .menu-toggle {
-    display: none;
-  }
 }
 
 /* --- Dil kutusu (menü tepesi) --- */
