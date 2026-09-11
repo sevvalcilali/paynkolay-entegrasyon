@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Doğrulama sonrası adresinize POST edilen imzalı sonucu doğrulayın; 2 aşamalı modda CompletePayment ile provizyonu alın.">
-  <meta property="og:title" content="Ödeme Tamamlama — Paynkolay Docs">
-  <meta property="og:description" content="Doğrulama sonrası adresinize POST edilen imzalı sonucu doğrulayın; 2 aşamalı modda CompletePayment ile provizyonu alın.">
+  <meta name="description" content="3D Secure ödemenin durumunu PaymentList servisiyle sorgulayın: sonuç adresinize ulaşmadığında ya da 2 aşamalı işlemin tamamlanıp tamamlanmadığını teyit ederken.">
+  <meta property="og:title" content="Ödeme Sorgulama (3DS) — Paynkolay Docs">
+  <meta property="og:description" content="3D Secure ödemenin durumunu PaymentList servisiyle sorgulayın: sonuç adresinize ulaşmadığında ya da 2 aşamalı işlemin tamamlanıp tamamlanmadığını teyit ederken.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0C34E7">
-  <title>Ödeme Tamamlama — Paynkolay Docs</title>
+  <title>Ödeme Sorgulama (3DS) — Paynkolay Docs</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
@@ -105,7 +105,7 @@
           </div>
           <div class="nav__sublist" id="grp-tahsilat">
             <div class="nav__sublist-inner">
-<div class="nav__group is-open"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api.html">API (3D · NON3D)</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-api" aria-label="API (3D · NON3D) alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-api"><div class="nav__sublist-inner"><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-non3ds.html">Non-3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-non3ds" aria-label="Non-3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-non3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-non3ds-odeme-olusturma.html">Ödeme Oluşturma</a><a class="nav__link" href="api-non3ds-odeme-sorgulama.html">Ödeme Sorgulama</a></div></div></div><div class="nav__group is-open"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-3ds.html">3DS</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-3ds" aria-label="3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-3ds-baslatma.html">Ödeme Başlatma</a><a class="nav__link is-active" href="api-3ds-tamamlama.html" aria-current="page">Ödeme Tamamlama</a></div></div></div></div></div></div><a class="nav__link" href="form-ile-odeme.html">Form ile Ödeme</a><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="linkli-odeme.html">Linkli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-linkli" aria-label="Linkli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-linkli"><div class="nav__sublist-inner"><a class="nav__link" href="linkli-odeme-olusturma.html">Ödeme Linki Oluşturma</a><a class="nav__link" href="linkli-odeme-gonderme.html">Ödeme Linki Gönderme</a><a class="nav__link" href="linkli-odeme-silme.html">Ödeme Linki Silme</a></div></div></div><a class="nav__link" href="on-provizyon.html">Ön Provizyon</a><a class="nav__link" href="duzenli-odeme.html">Düzenli Ödeme</a><a class="nav__link" href="taksit-servisi.html">Taksit Servisi</a><a class="nav__link" href="sigorta-odemeleri.html">Sigorta Ödemeleri</a>
+<div class="nav__group is-open"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api.html">API (3D · NON3D)</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-api" aria-label="API (3D · NON3D) alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-api"><div class="nav__sublist-inner"><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-non3ds.html">Non-3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-non3ds" aria-label="Non-3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-non3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-non3ds-odeme-olusturma.html">Ödeme Oluşturma</a><a class="nav__link" href="api-non3ds-odeme-sorgulama.html">Ödeme Sorgulama</a></div></div></div><div class="nav__group is-open"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-3ds.html">3DS</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-3ds" aria-label="3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-3ds-odeme-olusturma.html">Ödeme Oluşturma</a><a class="nav__link is-active" href="api-3ds-odeme-sorgulama.html" aria-current="page">Ödeme Sorgulama</a></div></div></div></div></div></div><a class="nav__link" href="form-ile-odeme.html">Form ile Ödeme</a><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="linkli-odeme.html">Linkli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-linkli" aria-label="Linkli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-linkli"><div class="nav__sublist-inner"><a class="nav__link" href="linkli-odeme-olusturma.html">Ödeme Linki Oluşturma</a><a class="nav__link" href="linkli-odeme-gonderme.html">Ödeme Linki Gönderme</a><a class="nav__link" href="linkli-odeme-silme.html">Ödeme Linki Silme</a></div></div></div><a class="nav__link" href="on-provizyon.html">Ön Provizyon</a><a class="nav__link" href="duzenli-odeme.html">Düzenli Ödeme</a><a class="nav__link" href="taksit-servisi.html">Taksit Servisi</a><a class="nav__link" href="sigorta-odemeleri.html">Sigorta Ödemeleri</a>
             </div>
           </div>
         </div>
@@ -140,78 +140,55 @@
       <main>
         <article class="article">
           <p class="eyebrow"><a href="api-3ds.html">3DS</a></p>
-          <h1>Ödeme Tamamlama</h1>
-          <p class="lead">Banka doğrulaması sonrasında imzalı sonuç adresinize POST edilir; sonucu doğrular, 2 aşamalı moddaysanız ödemeyi <strong>CompletePayment</strong> ile provizyona alırsınız.</p>
-          <h2 id="donus">Sonucun Adresinize Dönüşü</h2>
-          <p>Doğrulama tamamlandığında sonuç, form POST olarak <code>successUrl</code> / <code>failUrl</code> adresinize gelir. Başlıca alanlar:</p>
-          <div class="table-wrap"><table class="dtable"><thead><tr><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
-                <tr><td class="mono">RESPONSE_CODE</td><td>İşlem sonucu — başarı için <strong>2</strong> olmalı</td></tr>
-                <tr><td class="mono">RESPONSE_DATA</td><td>Sonuç mesajı</td></tr>
-                <tr><td class="mono">AUTH_CODE</td><td>Banka onay kodu — boş, 0 ya da 00 ise işlem başarısızdır</td></tr>
-                <tr><td class="mono">REFERENCE_CODE</td><td>Paynkolay işlem referansı (iptal/iade ve tamamlama çağrılarında kullanılır)</td></tr>
-                <tr><td class="mono">CLIENT_REFERENCE_CODE</td><td>Sizin gönderdiğiniz clientRefCode</td></tr>
-                <tr><td class="mono">TRANSACTION_AMOUNT / AUTHORIZATION_AMOUNT</td><td>Gönderilen ve provizyonu alınan tutar — gönderdiğiniz tutarla karşılaştırın</td></tr>
-                <tr><td class="mono">INSTALLMENT</td><td>Taksit sayısı</td></tr>
-                <tr><td class="mono">USE_3D · RND</td><td>Akış bilgisi ve zaman değeri</td></tr>
-                <tr><td class="mono">hashDataV2</td><td>Yanıt imzası — doğrulanmadan sipariş onaylanmaz</td></tr>
-          </tbody></table></div>
-          <div class="callout callout--warn">
-            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
-            <p><strong>Altın Kural:</strong> yalnızca <code>RESPONSE_CODE=2</code>, geçerli bir <code>AUTH_CODE</code> ve doğrulanmış <code>hashDataV2</code> birlikteyse ödeme başarılıdır; <code>AUTHORIZATION_AMOUNT</code> da gönderdiğiniz tutarla eşleşmelidir. Hazır kontrol fonksiyonu <a href="../ek-servisler/odeme-sonucu.html">Ödeme Sonucu</a> sayfasındadır.</p>
-          </div>
+          <h1>Ödeme Sorgulama</h1>
+          <p class="lead">3D Secure ödemenin güncel durumunu <code>PaymentList</code> servisiyle sorgulayın — doğrulama sonucu adresinize ulaşmadığında ya da 2 aşamalı işlemin tamamlanıp tamamlanmadığını teyit etmek istediğinizde.</p>
+          <h2 id="nezaman">Ne Zaman Gerekir?</h2>
+          <ul class="checklist">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Müşteri 3D doğrulama sayfasını kapattıysa ya da bağlantı koptuysa imzalı sonuç <code>successUrl</code> / <code>failUrl</code> adresinize <strong>hiç ulaşmaz</strong> — işlemin gerçekleşip gerçekleşmediğini buradan doğrularsınız.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>2 aşamalı modda (<code>AUTOCOMPLETE=false</code>) doğrulanmış ama henüz tamamlanmamış işlemleri bulmak için — bu işlemler <code>STATUS=NEW</code> döner ve <a href="api-3ds-odeme-olusturma.html">CompletePayment</a> ile tamamlanır.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Muhasebe/uzlaştırma süreçlerinde işlemin banka tarafındaki nihai durumunu teyit etmek için.</span></li>
+          </ul>
 
-          <h2 id="complete">Ödeme Tamamlama — 2 Aşamalı 3D (CompletePayment)</h2>
-          <p>2 Aşamalı 3D Secure kullanılıyorsa (<code>AUTOCOMPLETE=false</code>) otomatik provizyon devre dışıdır: doğrulama adımından sonra ödemenin durumu <strong>TAMAMLANMAMIŞ İŞLEM</strong> olur. Bu durumdaki ödemeyi provizyona almak için <strong>CompletePayment</strong> çağrısı yaparsınız; provizyon, daha önce alınmış doğrulama verileriyle gerçekleştirilir.</p>
-
+          <h2 id="endpoint">Uç Nokta ve Parametreler</h2>
           <div class="access">
             <p class="access__row">
               <span class="access__label">Test</span>
-              <code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/CompletePayment</code>
+              <code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/Payment/PaymentList</code>
             </p>
             <p class="access__row">
-              <span class="access__label">Gövde</span>
-              <span><code>application/x-www-form-urlencoded</code></span>
+              <span class="access__label">Canlı</span>
+              <code>POST https://paynkolay.nkolayislem.com.tr/Vpos/Payment/PaymentList</code>
             </p>
           </div>
+          <div class="callout callout--warn">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
+            <p>Bu servis satış sx'inizle değil, <strong>sx List</strong> değerinizle çağrılır — üç sx'in ayrımı için <a href="../on-hazirlik/test-ortami.html">Test Ortamı</a> sayfasına bakın.</p>
+          </div>
+          <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
+                <tr><td class="mono">sx</td><td>✅</td><td><strong>sx List</strong> değeriniz (satış sx'inden farklıdır)</td></tr>
+                <tr><td class="mono">startDate</td><td>✅</td><td>Başlangıç tarihi (DD.MM.YYYY)</td></tr>
+                <tr><td class="mono">endDate</td><td>✅</td><td>Bitiş tarihi (DD.MM.YYYY)</td></tr>
+                <tr><td class="mono">clientRefCode</td><td>—</td><td>Sorgulanacak işlemin referans kodu; boş bırakılırsa aralıktaki tüm işlemler döner (en fazla 1 aylık aralık)</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>✅</td><td>Aşağıdaki formülle üretilen imza</td></tr>
+          </tbody></table></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hash Formülü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>hashDatav2 = Base64(SHA512(sx | startDate | endDate | clientRefCode | merchantSecretKey))</code></pre></div>
 
-          <div class="table-wrap">
-            <table class="dtable">
-              <thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead>
-              <tbody>
-                <tr><td class="mono">Sx</td><td>string</td><td>✅</td><td>Size verilen sx değeriniz</td></tr>
-                <tr><td class="mono">ReferenceCode</td><td>string</td><td>✅</td><td>Tamamlanacak işlemin referans kodu</td></tr>
-              </tbody>
-            </table>
+          <h2 id="yanit">Yanıt ve Durumlar</h2>
+          <p>Yanıttaki <code>LIST</code> dizisinde her işlem için <code>STATUS</code>, tutarlar, kart ve banka bilgileri döner; <code>IS_3D</code> alanı 3D Secure işlemleri ayırt eder:</p>
+          <div class="table-wrap"><table class="dtable"><thead><tr><th>STATUS</th><th>Anlamı</th></tr></thead><tbody>
+                <tr><td class="mono">SUCCESS</td><td>İşlem başarılı, para çekildi</td></tr>
+                <tr><td class="mono">ERROR</td><td>İşlem başarısız</td></tr>
+                <tr><td class="mono">NEW</td><td>Başlatılmış ama tamamlanmamış işlem — 3D doğrulama yarıda kalmış ya da 2 aşamalı işlem için CompletePayment çağrılmamış</td></tr>
+          </tbody></table></div>
+          <div class="callout">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+            <p>Servis yanıtının başarılı dönmesi işlemin başarılı olduğu anlamına gelmez — her kaydın <strong>STATUS</strong> değerini kontrol edin. Örnek yanıt ve alan listesi için <a href="../ek-servisler/islem-dogrulama.html">İşlem Doğrulama Servisi</a>, dönemsel raporlar için <a href="../ek-servisler/raporlama.html">Raporlama Servisi</a> sayfalarına bakın.</p>
           </div>
 
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek İstek — cURL</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>curl -X <span class="tk-n">POST</span> <span class="tk-s">"https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/CompletePayment"</span> \
-  -d <span class="tk-s">"Sx=118591467|W8a1JLU8A5Cw…FbOO5A=="</span> \
-  -d <span class="tk-s">"ReferenceCode=IKSIRPF142277040"</span></code></pre></div>
-
-          <h2 id="yanit">Yanıtlar</h2>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Başarılı Yanıt — 200</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
-  <span class="tk-k">"RESPONSE_CODE"</span>: <span class="tk-n">2</span>,
-  <span class="tk-k">"RESPONSE_DATA"</span>: <span class="tk-s">"İşlem Başarılı."</span>,
-  <span class="tk-k">"REFERENCE_CODE"</span>: <span class="tk-s">"IKSIRPF142277040"</span>,
-  <span class="tk-k">"USE_3D"</span>: <span class="tk-n">true</span>,
-  <span class="tk-k">"AUTH_CODE"</span>: <span class="tk-s">"345344"</span>,
-  <span class="tk-k">"CLIENT_REFERENCE_CODE"</span>: <span class="tk-s">"24809740|988922"</span>,
-  <span class="tk-k">"TRANSACTION_AMOUNT"</span>: <span class="tk-n">1</span>,
-  <span class="tk-k">"AUTHORIZATION_AMOUNT"</span>: <span class="tk-n">1</span>,
-  <span class="tk-k">"INSTALLMENT"</span>: <span class="tk-n">1</span>,
-  <span class="tk-k">"RND"</span>: <span class="tk-s">"1645700316156"</span>,
-  <span class="tk-k">"hashDataV2"</span>: <span class="tk-s">"lunnRyNfDu6pdpNjjlFrlATE4PjUluM8…"</span>
-}</code></pre></div>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hatalı Yanıt — ReferenceCode boş</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
-  <span class="tk-k">"RESPONSE_CODE"</span>: <span class="tk-n">0</span>,
-  <span class="tk-k">"RESPONSE_DATA"</span>: <span class="tk-s">"referenceCode boş veya null set edilemez"</span>
-}</code></pre></div>
-
-          <div class="rule rule--pager" aria-hidden="true"></div>
           <nav class="pager" aria-label="Sayfalar arası gezinme">
-  <a class="pager__card" href="api-3ds-baslatma.html">
+  <a class="pager__card" href="api-3ds-odeme-olusturma.html">
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
-    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">Ödeme Başlatma</span></span>
+    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">Ödeme Oluşturma</span></span>
   </a>
   <a class="pager__card pager__card--next" href="form-ile-odeme.html">
     <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Form ile Ödeme</span></span>
@@ -225,7 +202,7 @@
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="https://paynkolay.com.tr/iletisim#bize-yazin" target="_blank" rel="noopener">bize ulaşın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 11 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -242,9 +219,9 @@
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#donus">Sonucun Dönüşü</a></li>
-          <li><a href="#complete">CompletePayment</a></li>
-          <li><a href="#yanit">Yanıtlar</a></li>
+          <li><a class="is-active" href="#nezaman">Ne Zaman Gerekir?</a></li>
+          <li><a href="#endpoint">Uç Nokta ve Parametreler</a></li>
+          <li><a href="#yanit">Yanıt ve Durumlar</a></li>
         </ul>
       </aside>
 
