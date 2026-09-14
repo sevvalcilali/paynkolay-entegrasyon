@@ -2360,8 +2360,8 @@ a.chip:hover {
   font-weight: 700;
 }
 
-/* --- GitBook rozeti (menü altı) --- */
-.gitbook {
+/* --- Postman koleksiyonu indirme (menü altı) --- */
+.sidebar-postman {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -2375,13 +2375,13 @@ a.chip:hover {
   transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 
-.gitbook:hover {
+.sidebar-postman:hover {
   border-color: var(--brand);
   color: var(--brand);
   text-decoration: none;
 }
 
-.gitbook svg {
+.sidebar-postman svg {
   flex-shrink: 0;
 }
 
