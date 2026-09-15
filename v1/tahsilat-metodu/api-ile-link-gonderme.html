@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Daha önce oluşturduğunuz ödeme linkini geçersiz kılar.">
-  <meta property="og:title" content="Ödeme Linki Silme — Paynkolay Docs">
-  <meta property="og:description" content="Daha önce oluşturduğunuz ödeme linkini geçersiz kılar.">
+  <meta name="description" content="Linki üretir ve müşterinize SMS / e-posta ile Paynkolay gönderir — siz yalnızca isteği atarsınız.">
+  <meta property="og:title" content="API ile Link Gönderme — Paynkolay Docs">
+  <meta property="og:description" content="Linki üretir ve müşterinize SMS / e-posta ile Paynkolay gönderir — siz yalnızca isteği atarsınız.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0C34E7">
-  <title>Ödeme Linki Silme — Paynkolay Docs</title>
+  <title>API ile Link Gönderme — Paynkolay Docs</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
   <link rel="stylesheet" href="../assets/css/tokens.css">
   <link rel="stylesheet" href="../assets/css/base.css">
@@ -114,7 +114,7 @@
           </div>
           <div class="nav__sublist" id="grp-tahsilat">
             <div class="nav__sublist-inner">
-<div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api.html">API (3D · NON3D)</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-api" aria-label="API (3D · NON3D) alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-api"><div class="nav__sublist-inner"><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-non3ds.html">Non-3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-non3ds" aria-label="Non-3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-non3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-non3ds-taksit-bilgisi-size-ait.html">Taksit Bilgisi Size Ait</a><a class="nav__link" href="api-non3ds-taksit-bilgisi-paynkolaya-ait.html">Taksit Bilgisi Paynkolay'a Ait</a></div></div></div><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-3ds.html">3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-3ds" aria-label="3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-3ds-taksit-bilgisi-size-ait.html">Taksit Bilgisi Size Ait</a><a class="nav__link" href="api-3ds-taksit-bilgisi-paynkolaya-ait.html">Taksit Bilgisi Paynkolay'a Ait</a></div></div></div></div></div></div><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="guvenli-odeme.html">Güvenli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-guvenli" aria-label="Güvenli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-guvenli"><div class="nav__sublist-inner"><a class="nav__link" href="form-ile-guvenli-odeme.html">Form ile Güvenli Ödeme</a><a class="nav__link" href="server-ile-guvenli-odeme.html">Server ile Güvenli Ödeme</a></div></div></div><div class="nav__group is-open"><div class="nav__group-head"><a class="nav__link nav__group-link" href="linkli-odeme.html">Linkli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-linkli" aria-label="Linkli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-linkli"><div class="nav__sublist-inner"><a class="nav__link" href="linkli-odeme-gonderme.html">Ödeme Linki Gönderme</a><a class="nav__link is-active" href="linkli-odeme-silme.html" aria-current="page">Ödeme Linki Silme</a></div></div></div><a class="nav__link" href="on-provizyon.html">Ön Provizyon</a><a class="nav__link" href="duzenli-odeme.html">Düzenli Ödeme</a><a class="nav__link" href="taksit-servisi.html">Taksit Servisi</a><a class="nav__link" href="sigorta-odemeleri.html">Sigorta Ödemeleri</a>
+<div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api.html">API (3D · NON3D)</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-api" aria-label="API (3D · NON3D) alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-api"><div class="nav__sublist-inner"><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-non3ds.html">Non-3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-non3ds" aria-label="Non-3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-non3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-non3ds-taksit-bilgisi-size-ait.html">Taksit Bilgisi Size Ait</a><a class="nav__link" href="api-non3ds-taksit-bilgisi-paynkolaya-ait.html">Taksit Bilgisi Paynkolay'a Ait</a></div></div></div><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="api-3ds.html">3DS</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-3ds" aria-label="3DS alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-3ds"><div class="nav__sublist-inner"><a class="nav__link" href="api-3ds-taksit-bilgisi-size-ait.html">Taksit Bilgisi Size Ait</a><a class="nav__link" href="api-3ds-taksit-bilgisi-paynkolaya-ait.html">Taksit Bilgisi Paynkolay'a Ait</a></div></div></div></div></div></div><div class="nav__group"><div class="nav__group-head"><a class="nav__link nav__group-link" href="guvenli-odeme.html">Güvenli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="false" aria-controls="grp-guvenli" aria-label="Güvenli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-guvenli"><div class="nav__sublist-inner"><a class="nav__link" href="form-ile-guvenli-odeme.html">Form ile Güvenli Ödeme</a><a class="nav__link" href="server-ile-guvenli-odeme.html">Server ile Güvenli Ödeme</a></div></div></div><div class="nav__group is-open"><div class="nav__group-head"><a class="nav__link nav__group-link" href="linkli-odeme.html">Linkli Ödeme</a><button class="nav__group-toggle" type="button" aria-expanded="true" aria-controls="grp-linkli" aria-label="Linkli Ödeme alt başlıkları"><svg class="chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button></div><div class="nav__sublist" id="grp-linkli"><div class="nav__sublist-inner"><a class="nav__link is-active" href="api-ile-link-gonderme.html" aria-current="page">API ile Link Gönderme</a><a class="nav__link" href="panel-ile-link-gonderme.html">Panel ile Link Gönderme</a></div></div></div><a class="nav__link" href="on-provizyon.html">Ön Provizyon</a><a class="nav__link" href="duzenli-odeme.html">Düzenli Ödeme</a><a class="nav__link" href="taksit-servisi.html">Taksit Servisi</a><a class="nav__link" href="sigorta-odemeleri.html">Sigorta Ödemeleri</a>
             </div>
           </div>
         </div>
@@ -148,48 +148,63 @@
       <main>
         <article class="article">
           <p class="eyebrow"><a href="linkli-odeme.html">Linkli Ödeme</a></p>
-          <h1>Ödeme Linki Silme</h1>
-          <p class="lead">Daha önce oluşturduğunuz ödeme linkini geçersiz kılar.</p>
+          <h1>API ile Link Gönderme</h1>
+          <p class="lead">Linki üretir ve müşterinize SMS / e-posta ile Paynkolay gönderir — siz yalnızca isteği atarsınız.</p>
           
           <h2 id="genel">Genel Bakış</h2>
-          <p>Oluşturulmuş bir ödeme linkini silmek için bu servisi kullanırsınız. <code>q</code> parametresi, link oluşturulurken yanıtta dönen <strong>referans numarasıdır</strong>.</p>
-
-          <div class="callout callout--warn">
-            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
-            <p><strong>Silme işlemi geri alınamaz.</strong> Hash hesaplaması doğru yapılmazsa işlem başarısız olur.</p>
-          </div>
+          <p>Bu servisle ödeme linki oluşturulur ve <strong>SMS ve/veya e-posta</strong> ile müşterinize iletilir. <code>LINK_AMOUNT_FIXING_TYPE=NOT_FIXED</code> gönderilirse tutar kontrolü yapılmaz, tutarı müşteri girer. Ödeme formunda görsel de göstermek isterseniz <code>IMAGE_URL</code> ile Base64 kodlanmış resim gönderebilirsiniz; <code>CALLBACK_URL</code> gönderilirse işlem sonucu bu adrese POST edilir.</p>
 
           <h2 id="endpoint">Uç Nokta</h2>
           <div class="access">
-            <p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/by-link-url-remove</code></p>
+            <p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/pay-by-link-create</code></p>
             <p class="access__row"><span class="access__label">Gövde</span><span><code>multipart/form-data</code></span></p>
           </div>
 
           <h2 id="istek">Örnek İstek</h2>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek İstek — cURL</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>curl -X <span class="tk-n">POST</span> <span class="tk-s">"https://paynkolaytest.nkolayislem.com.tr/Vpos/by-link-url-remove"</span> \
-  -F <span class="tk-s">"sx=118591467|W8a1JLU8A5Cw…FbOO5A=="</span> \
-  -F <span class="tk-s">"q=by6353337820250825153001"</span> \
-  -F <span class="tk-s">"hashDatav2=lunnRyNfDu6pdpNjjlFrlATE…"</span></code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — form-data</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-c"># POST https://paynkolaytest.nkolayislem.com.tr/Vpos/pay-by-link-create (form-data)</span>
+<span class="tk-k">TOKEN</span>=<span class="tk-s">118591467|W8a1JLU8A5Cw…FbOO5A==</span>
+<span class="tk-k">FULL_NAME</span>=<span class="tk-s">Ayşe Yılmaz</span>
+<span class="tk-k">EMAIL</span>=<span class="tk-s">ayse@mail.com</span>  <span class="tk-k">GSM</span>=<span class="tk-s">5553900000</span>
+<span class="tk-k">LINK_AMOUNT_FIXING_TYPE</span>=<span class="tk-s">FIXED</span>  <span class="tk-k">AMOUNT</span>=<span class="tk-n">100.00</span>
+<span class="tk-k">LINK_EXPIRATION_TIME</span>=<span class="tk-s">2026-09-30</span>
+<span class="tk-k">IS_3D_MUST</span>=<span class="tk-n">true</span>
+<span class="tk-k">PAYMENT_SUBJECT</span>=<span class="tk-s">Eylül ayı aidatı</span>
+<span class="tk-k">SEND_SMS</span>=<span class="tk-n">true</span>  <span class="tk-k">SEND_EMAIL</span>=<span class="tk-n">true</span>
+<span class="tk-k">CLIENT_REFERENCE_CODE</span>=<span class="tk-s">SIP-2026-000125</span>
+<span class="tk-k">hashDatav2</span>=<span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE…</span></code></pre></div>
           <div class="callout">
             <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
-            <p>Bu servisin imza formülü: <code>sx|q|merchantSecretKey</code> → SHA-512 → Base64.</p>
+            <p>Bu servisin imza formülü farklıdır: <code>sx|FULL_NAME|EMAIL|GSM|AMOUNT|LINK_EXPIRATION_TIME|merchantSecretKey</code> → SHA-512 → Base64.</p>
           </div>
 
           <h2 id="parametreler">Parametreler</h2>
           <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
-                <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Size verilen sx değeriniz</td></tr>
-                <tr><td class="mono">q</td><td>string</td><td>✅</td><td>Silinecek linkin referans numarası (oluşturma yanıtında döner)</td></tr>
+                <tr><td class="mono">TOKEN</td><td>string</td><td>✅</td><td>Size verilen sx değeriniz</td></tr>
+                <tr><td class="mono">FULL_NAME</td><td>string</td><td>✅</td><td>Müşterinin adı soyadı (en fazla 100 karakter)</td></tr>
+                <tr><td class="mono">EMAIL</td><td>string</td><td>✅</td><td>Müşterinin e-posta adresi</td></tr>
+                <tr><td class="mono">GSM</td><td>string</td><td>✅</td><td>Müşterinin cep telefonu</td></tr>
+                <tr><td class="mono">LINK_AMOUNT_FIXING_TYPE</td><td>string</td><td>✅</td><td>FIXED veya NOT_FIXED — NOT_FIXED ise tutarı müşteri girer</td></tr>
+                <tr><td class="mono">AMOUNT</td><td>decimal</td><td>✅</td><td>İşlem tutarı</td></tr>
+                <tr><td class="mono">LINK_EXPIRATION_TIME</td><td>string</td><td>✅</td><td>Linkin son kullanım tarihi (YYYY-AA-GG)</td></tr>
+                <tr><td class="mono">IS_3D_MUST</td><td>boolean</td><td>✅</td><td>3D Secure kullanılacaksa true</td></tr>
                 <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>SHA-512 + Base64 istek imzası</td></tr>
-                <tr><td class="mono">cardHolderIP</td><td>string</td><td>—</td><td>Müşterinin IP adresi (IPv4/IPv6)</td></tr>
+                <tr><td class="mono">PAYMENT_SUBJECT</td><td>string</td><td>—</td><td>Ödemenin başlığı</td></tr>
+                <tr><td class="mono">EXPLANATION</td><td>string</td><td>—</td><td>Açıklama</td></tr>
+                <tr><td class="mono">SEND_SMS / SEND_EMAIL</td><td>boolean</td><td>—</td><td>Gönderim kanalları</td></tr>
+                <tr><td class="mono">CALLBACK_URL</td><td>string</td><td>—</td><td>İşlem sonucunun POST edileceği adres</td></tr>
+                <tr><td class="mono">IMAGE_URL</td><td>string</td><td>—</td><td>Base64 kodlanmış görsel (ödeme formunda gösterilir)</td></tr>
+                <tr><td class="mono">CLIENT_REFERENCE_CODE</td><td>string</td><td>—</td><td>Kendi referans numaranız</td></tr>
+                <tr><td class="mono">INSTALLMENT</td><td>integer</td><td>—</td><td>Taksit sayısı</td></tr>
+                <tr><td class="mono">cardHolderIP</td><td>string</td><td>—</td><td>Müşterinin IP adresi</td></tr>
 </tbody></table></div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
-  <a class="pager__card" href="linkli-odeme-gonderme.html">
+  <a class="pager__card" href="linkli-odeme.html">
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
-    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">Ödeme Linki Gönderme</span></span>
+    <span class="pager__meta"><span class="pager__label">Önceki</span><span class="pager__title">Linkli Ödeme</span></span>
   </a>
-  <a class="pager__card pager__card--next" href="on-provizyon.html">
-    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Ön Provizyon</span></span>
+  <a class="pager__card pager__card--next" href="panel-ile-link-gonderme.html">
+    <span class="pager__meta"><span class="pager__label">Sonraki</span><span class="pager__title">Panel ile Link Gönderme</span></span>
     <svg class="chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
   </a>
 </nav>
