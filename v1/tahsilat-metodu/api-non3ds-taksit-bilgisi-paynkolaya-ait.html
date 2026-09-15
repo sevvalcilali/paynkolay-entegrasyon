@@ -188,6 +188,59 @@
             <p>Taksit tablosu sizde değil Paynkolay'dadır; bu yüzden <code>Payment</code> çağrısından önce <code>PaymentInstallments</code> zorunludur ve <code>EncodedValue</code> olmadan ödeme yapılamaz. <code>EncodedValue</code> tutar ve taksit bilgisini imzalı taşıdığı için istemci tarafında taksit/tutar manipülasyonunu da engeller.</p>
           </div>
 
+          <h2 id="istek-yanit">İstek ve Yanıt</h2>
+          <p>Akış iki istek–yanıt çiftinden oluşur: önce taksit seçenekleri alınır, seçilen seçeneğin <code>EncodedValue</code> değeri ödeme isteğine eklenir; ödeme sonucu aynı HTTP yanıtında döner.</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">1 → İstek · POST /Vpos/Payment/PaymentInstallments (form-data)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">sx</span>=<span class="tk-s">SX_DEGERINIZ</span>
+<span class="tk-k">amount</span>=<span class="tk-n">6.00</span>
+<span class="tk-k">cardNumber</span>=<span class="tk-n">4546711234567894</span>
+<span class="tk-k">hosturl</span>=<span class="tk-s">https://siteniz.com</span>
+<span class="tk-k">iscardvalid</span>=<span class="tk-n">false</span></code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">1 ← Yanıt · JSON (kısaltılmış)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  <span class="tk-k">"PAYMENT_BANK_LIST"</span>: [
+    {
+      <span class="tk-k">"INSTALLMENT"</span>: <span class="tk-n">1</span>,
+      <span class="tk-k">"TRANSACTION_AMOUNT"</span>: <span class="tk-n">6.00</span>,
+      <span class="tk-k">"EncodedValue"</span>: <span class="tk-s">"UnBVK2tLNDYzbjZ2OE5VZ3Y3Vzl3MlRKTmVlZnlOdm1FNi9H…"</span>
+    }
+  ],
+  <span class="tk-k">"RESPONSE_CODE"</span>: <span class="tk-n">2</span>,
+  <span class="tk-k">"RESPONSE_DATA"</span>: <span class="tk-s">"İşlem Başarılı."</span>
+}</code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">2 → İstek · POST /Vpos/Payment/Payment (form-data)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">EncodedValue</span>=<span class="tk-s">UnBVK2tLNDYzbjZ2OE5VZ3Y3Vzl3MlRKTmVlZnlOdm1FNi9H…</span>
+<span class="tk-k">installmentNo</span>=<span class="tk-n">1</span>
+<span class="tk-k">amount</span>=<span class="tk-n">6.00</span>
+<span class="tk-k">sx</span>=<span class="tk-s">SX_DEGERINIZ</span>
+<span class="tk-k">clientRefCode</span>=<span class="tk-s">789456|AB76</span>
+<span class="tk-k">successUrl</span>=<span class="tk-s">https://siteniz.com/payment/success</span>
+<span class="tk-k">failUrl</span>=<span class="tk-s">https://siteniz.com/payment/fail</span>
+<span class="tk-k">cardHolderName</span>=<span class="tk-s">Tuna Çınar</span>
+<span class="tk-k">month</span>=<span class="tk-n">12</span>
+<span class="tk-k">year</span>=<span class="tk-n">2026</span>
+<span class="tk-k">cvv</span>=<span class="tk-n">001</span>
+<span class="tk-k">cardNumber</span>=<span class="tk-n">4546711234567894</span>
+<span class="tk-k">use3D</span>=<span class="tk-n">false</span>
+<span class="tk-k">transactionType</span>=<span class="tk-s">SALES</span>
+<span class="tk-k">cardHolderIP</span>=<span class="tk-s">85.100.20.15</span>
+<span class="tk-k">rnd</span>=<span class="tk-s">15-09-2026 14:25:11</span>
+<span class="tk-k">hashDatav2</span>=<span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE…</span>
+<span class="tk-k">environment</span>=<span class="tk-s">API</span></code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">2 ← Yanıt · JSON</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
+  <span class="tk-k">"RESPONSE_CODE"</span>: <span class="tk-n">2</span>,
+  <span class="tk-k">"RESPONSE_DATA"</span>: <span class="tk-s">"İşlem Başarılı"</span>,
+  <span class="tk-k">"REFERENCE_CODE"</span>: <span class="tk-s">"IKSIRPF102168"</span>,
+  <span class="tk-k">"CLIENT_REFERENCE_CODE"</span>: <span class="tk-s">"789456|AB76"</span>,
+  <span class="tk-k">"AUTH_CODE"</span>: <span class="tk-s">"S00586"</span>,
+  <span class="tk-k">"USE_3D"</span>: <span class="tk-n">false</span>,
+  <span class="tk-k">"TRANSACTION_AMOUNT"</span>: <span class="tk-n">6.00</span>,
+  <span class="tk-k">"AUTHORIZATION_AMOUNT"</span>: <span class="tk-n">6.00</span>,
+  <span class="tk-k">"INSTALLMENT"</span>: <span class="tk-n">1</span>,
+  <span class="tk-k">"hashDataV2"</span>: <span class="tk-s">"lunnRyNfDu6pdpNjjlFrlATE…"</span>
+}</code></pre></div>
+          <div class="callout">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+            <p>Yanıt örnekleri <a href="taksit-servisi.html">Taksit Servisi</a> ve <a href="../ek-servisler/odeme-sonucu.html">Ödeme Sonucu</a> sayfalarındaki belgelenmiş yanıtlardan kısaltılmıştır; değerler temsilidir.</p>
+          </div>
+
           <h2 id="ornek-kod">Örnek Kod</h2>
           <p>İki adımlı akışın dört dilde çalışır örneği. Taksit listesi boş dönerse ödeme adımına geçilmez. <code>SX_DEGERINIZ</code> ve <code>SECRET_KEY_DEGERINIZ</code> yerine kendi değerlerinizi yazın.</p>
           <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">C# (.NET)</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Python</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Node.js</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code>&lt;?php
@@ -813,6 +866,7 @@ http.createServer(async (req, res) =&gt; {
           <li><a class="is-active" href="#taksit-sorgulama">Adım 1 — Taksit Sorgulama</a></li>
           <li><a href="#odeme">Adım 2 — Ödeme</a></li>
           <li><a href="#v1-farki">V1'den Farkı</a></li>
+          <li><a href="#istek-yanit">İstek ve Yanıt</a></li>
           <li><a href="#ornek-kod">Örnek Kod</a></li>
         </ul>
       </aside>

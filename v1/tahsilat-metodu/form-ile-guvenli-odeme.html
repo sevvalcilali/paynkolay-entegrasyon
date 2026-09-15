@@ -216,6 +216,44 @@
             </div>
           </div>
 
+          <h2 id="istek-yanit">İstek ve Yanıt</h2>
+          <p>Formu müşterinin tarayıcısı Paynkolay'a POST eder; bu isteğin yanıtı JSON değil, Paynkolay ortak ödeme sayfasıdır. Müşteri kart bilgilerini orada girer ve sonuç <code>successUrl</code> / <code>failUrl</code> adresinize form POST olarak döner.</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">1 → İstek · Form POST https://paynkolaytest.nkolayislem.com.tr/Vpos</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">sx</span>=<span class="tk-s">SX_DEGERINIZ</span>
+<span class="tk-k">successUrl</span>=<span class="tk-s">https://paynkolay.com.tr/test/success</span>
+<span class="tk-k">failUrl</span>=<span class="tk-s">https://paynkolay.com.tr/test/fail</span>
+<span class="tk-k">amount</span>=<span class="tk-n">5.00</span>
+<span class="tk-k">currencyCode</span>=<span class="tk-n">949</span>
+<span class="tk-k">clientRefCode</span>=<span class="tk-n">2352345</span>
+<span class="tk-k">use3D</span>=<span class="tk-n">true</span>
+<span class="tk-k">rnd</span>=<span class="tk-s">15-09-2026 14:25:11</span>
+<span class="tk-k">agentCode</span>=<span class="tk-n">1236</span>
+<span class="tk-k">transactionType</span>=<span class="tk-s">SALES</span>
+<span class="tk-k">hashDataV2</span>=<span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE…</span>
+<span class="tk-k">cardHolderIP</span>=<span class="tk-s">85.100.20.15</span>
+<span class="tk-k">instalments</span>=<span class="tk-s"></span></code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">1 ← Yanıt · HTML</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-c"># JSON dönmez: tarayıcı Paynkolay ortak ödeme sayfasına geçer</span>
+<span class="tk-c"># müşteri kart bilgilerini bu sayfada girer ve 3D doğrulamasını tamamlar</span></code></pre></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">2 → Sonuç · POST https://paynkolay.com.tr/test/success</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-c"># form POST — JSON değil</span>
+<span class="tk-k">RESPONSE_CODE</span>=<span class="tk-n">2</span>
+<span class="tk-k">RESPONSE_DATA</span>=<span class="tk-s">İşlem Başarılı.</span>
+<span class="tk-k">REFERENCE_CODE</span>=<span class="tk-s">IKSIRPF142277040</span>
+<span class="tk-k">USE_3D</span>=<span class="tk-n">true</span>
+<span class="tk-k">AUTH_CODE</span>=<span class="tk-n">345344</span>
+<span class="tk-k">CLIENT_REFERENCE_CODE</span>=<span class="tk-n">2352345</span>
+<span class="tk-k">TRANSACTION_AMOUNT</span>=<span class="tk-n">5.00</span>
+<span class="tk-k">AUTHORIZATION_AMOUNT</span>=<span class="tk-n">5.00</span>
+<span class="tk-k">INSTALLMENT</span>=<span class="tk-n">1</span>
+<span class="tk-k">RND</span>=<span class="tk-n">1645700316156</span>
+<span class="tk-k">hashDataV2</span>=<span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE…</span></code></pre></div>
+          <div class="callout callout--warn">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
+            <p>Sonuç adresinize geldiğinde siparişi onaylamadan önce <code>hashDataV2</code> imzasını doğrulayın; ödeme yalnızca <code>RESPONSE_CODE=2</code> ve geçerli bir <code>AUTH_CODE</code> ile başarılıdır — bkz. <a href="../ek-servisler/odeme-sonucu.html">Ödeme Sonucu</a>.</p>
+          </div>
+          <div class="callout">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+            <p>Sonuç alanları <a href="../ek-servisler/odeme-sonucu.html">Ödeme Sonucu</a> sayfasındaki belgelenmiş dönüşten kısaltılmıştır; değerler temsilidir.</p>
+          </div>
+
           <h2 id="ornek">Örnek Kod</h2>
           <p>Aşağıdaki örnekler <strong>çalışır durumda tam sayfalardır</strong>: test bilgileriyle hash'i sunucu tarafında üretir, müşteri IP'sini tespit eder ve ortak ödeme sayfasına gönderen formu basar. Canlıya geçerken form action adresi <code>https://paynkolay.nkolayislem.com.tr/Vpos</code> olur; <code>sx</code> ve <code>merchantSecretKey</code> panelinizdeki canlı değerlerle değiştirilir.</p>
           <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">.NET C#</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">.NET CSHTML</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Python</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Node.js</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code>&lt;!doctype html&gt;
@@ -818,6 +856,7 @@ app.listen(port, () =&gt; {
           <li><a href="#avantajlar">Avantajlar</a></li>
           <li><a href="#akis">Ödeme Akışı</a></li>
           <li><a href="#kullanim">Kullanım Seçenekleri</a></li>
+          <li><a href="#istek-yanit">İstek ve Yanıt</a></li>
           <li><a href="#ornek">Örnek Kod</a></li>
           <li><a href="#parametreler">Parametreler</a></li>
           <li><a href="#link-silme">Ödeme Linki Silme</a></li>

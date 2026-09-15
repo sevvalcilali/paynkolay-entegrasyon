@@ -208,6 +208,22 @@ function hashDatav2(sx, clientRefCode, amount, successUrl, failUrl, rnd, custome
 </tbody></table></div>
 
           <h2 id="istek">Örnek İstek</h2>
+          <p>İstek sunucunuzdan tek bir POST ile gider ve sonuç aynı HTTP yanıtında JSON olarak döner. Aşağıdaki form-data isteğinin yanıtı, <a href="#yanit">Yanıt</a> bölümündeki örnektir:</p>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — form-data</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-c"># POST https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/Payment (form-data)</span>
+<span class="tk-k">sx</span>=<span class="tk-s">118591467|W8a1JLU8A5Cw…FbOO5A==</span>
+<span class="tk-k">clientRefCode</span>=<span class="tk-s">SIP-2026-000123</span>
+<span class="tk-k">amount</span>=<span class="tk-n">249.90</span>
+<span class="tk-k">successUrl</span>=<span class="tk-s">https://magaza.com/odeme/basarili</span>
+<span class="tk-k">failUrl</span>=<span class="tk-s">https://magaza.com/odeme/hata</span>
+<span class="tk-k">use3D</span>=<span class="tk-n">false</span>
+<span class="tk-k">cardNumber</span>=<span class="tk-s">4546711234567894</span>
+<span class="tk-k">cardHolderName</span>=<span class="tk-s">Ayşe Yılmaz</span>
+<span class="tk-k">month</span>=<span class="tk-n">12</span>  <span class="tk-k">year</span>=<span class="tk-n">2026</span>  <span class="tk-k">cvv</span>=<span class="tk-n">000</span>
+<span class="tk-k">installmentNo</span>=<span class="tk-n">1</span>
+<span class="tk-k">transactionType</span>=<span class="tk-s">SALES</span>  <span class="tk-k">environment</span>=<span class="tk-s">API</span>  <span class="tk-k">currencyNumber</span>=<span class="tk-n">949</span>
+<span class="tk-k">cardHolderIP</span>=<span class="tk-s">85.100.20.15</span>
+<span class="tk-k">rnd</span>=<span class="tk-s">03-09-2026 14:25:11</span>
+<span class="tk-k">hashDatav2</span>=<span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE4Pj…</span></code></pre></div>
           <p>Aynı non-3D ödemenin dört dilde çalışır örneği. <code>use3D=false</code> olduğu için sonuç bu yanıtın içinde döner; 3D formu, banka ekranı ve callback yoktur. <code>SX_DEGERINIZ</code> ve <code>SECRET_KEY_DEGERINIZ</code> yerine kendi değerlerinizi yazın.</p>
           <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">C# (.NET)</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Python</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Node.js</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code>&lt;?php
 <span class="tk-c">// === NON-3D FLOW — Paynkolay V1 ===</span>
@@ -687,7 +703,7 @@ http.createServer(async (req, res) =&gt; {
         </p>
         <ul class="toc__list">
           <li><a class="is-active" href="#endpoint">Uç Nokta</a></li>
-          <li><a href="#hash">İstek İmzası</a></li>
+          <li><a href="#hash">İstek İmzası (hashDatav2)</a></li>
           <li><a href="#parametreler">Parametreler</a></li>
           <li><a href="#istek">Örnek İstek</a></li>
           <li><a href="#yanit">Yanıt</a></li>
