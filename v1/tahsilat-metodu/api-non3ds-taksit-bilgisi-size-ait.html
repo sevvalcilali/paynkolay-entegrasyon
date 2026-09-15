@@ -162,7 +162,7 @@
             </p>
             <p class="access__row">
               <span class="access__label">Gövde</span>
-              <span><code>application/x-www-form-urlencoded</code></span>
+              <span><code>multipart/form-data</code></span>
             </p>
           </div>
           <div class="callout callout--warn">
@@ -208,21 +208,430 @@ function hashDatav2(sx, clientRefCode, amount, successUrl, failUrl, rnd, custome
 </tbody></table></div>
 
           <h2 id="istek">Örnek İstek</h2>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">İstek — form-data</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-c"># POST https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/Payment (form-data)</span>
-<span class="tk-k">sx</span>=<span class="tk-s">118591467|W8a1JLU8A5Cw…FbOO5A==</span>
-<span class="tk-k">clientRefCode</span>=<span class="tk-s">SIP-2026-000123</span>
-<span class="tk-k">amount</span>=<span class="tk-n">249.90</span>
-<span class="tk-k">successUrl</span>=<span class="tk-s">https://magaza.com/odeme/basarili</span>
-<span class="tk-k">failUrl</span>=<span class="tk-s">https://magaza.com/odeme/hata</span>
-<span class="tk-k">use3D</span>=<span class="tk-n">false</span>
-<span class="tk-k">cardNumber</span>=<span class="tk-s">4546711234567894</span>
-<span class="tk-k">cardHolderName</span>=<span class="tk-s">Ayşe Yılmaz</span>
-<span class="tk-k">month</span>=<span class="tk-n">12</span>  <span class="tk-k">year</span>=<span class="tk-n">2026</span>  <span class="tk-k">cvv</span>=<span class="tk-n">000</span>
-<span class="tk-k">installmentNo</span>=<span class="tk-n">1</span>
-<span class="tk-k">transactionType</span>=<span class="tk-s">SALES</span>  <span class="tk-k">environment</span>=<span class="tk-s">API</span>  <span class="tk-k">currencyNumber</span>=<span class="tk-n">949</span>
-<span class="tk-k">cardHolderIP</span>=<span class="tk-s">85.100.20.15</span>
-<span class="tk-k">rnd</span>=<span class="tk-s">03-09-2026 14:25:11</span>
-<span class="tk-k">hashDatav2</span>=<span class="tk-s">lunnRyNfDu6pdpNjjlFrlATE4Pj…</span></code></pre></div>
+          <p>Aynı non-3D ödemenin dört dilde çalışır örneği. <code>use3D=false</code> olduğu için sonuç bu yanıtın içinde döner; 3D formu, banka ekranı ve callback yoktur. <code>SX_DEGERINIZ</code> ve <code>SECRET_KEY_DEGERINIZ</code> yerine kendi değerlerinizi yazın.</p>
+          <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">C# (.NET)</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Python</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">Node.js</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code>&lt;?php
+<span class="tk-c">// === NON-3D FLOW — Paynkolay V1 ===</span>
+<span class="tk-c">// Çalıştırma: php -S localhost:8000 example.php  →  http://localhost:8000</span>
+<span class="tk-c">// Not: Canlı uç (https://paynkolay.nkolayislem.com.tr/Vpos/v1/Payment) localhost'tan gelen istekleri reddeder.</span>
+
+date_default_timezone_set('Europe/Istanbul'); <span class="tk-c">// rnd Türkiye saatiyle üretilmeli</span>
+
+$merchantSecretKey = "SECRET_KEY_DEGERINIZ";
+$sx                = "SX_DEGERINIZ";
+$clientRefCode     = "789456|AB76";                        <span class="tk-c">// her işlemde benzersiz olmalı (ör. "ORDER-" . uniqid())</span>
+$amount            = "6.00";
+$successUrl        = "https://siteniz.com/payment/success"; <span class="tk-c">// non-3D'de çağrılmaz ama zorunludur ve hash'e girer</span>
+$failUrl           = "https://siteniz.com/payment/fail";
+$rnd               = date("d-m-Y H:i:s");
+$customerKey       = "";                                   <span class="tk-c">// kart saklanmıyorsa boş</span>
+
+<span class="tk-c">// Müşteri IP'si: önce proxy başlıkları, yoksa bağlantı adresi</span>
+function getClientIp(): string
+{
+    foreach (['HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP'] as $header) {
+        if (!empty($_SERVER[$header])) {
+            $ip = trim(explode(',', $_SERVER[$header])[0]);
+            if (filter_var($ip, FILTER_VALIDATE_IP)) {
+                return $ip;
+            }
+        }
+    }
+    return $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
+}
+
+<span class="tk-c">// Hash: sx|clientRefCode|amount|successUrl|failUrl|rnd|customerKey|secretKey → SHA512 (ham bayt) → Base64</span>
+$hashstr    = "$sx|$clientRefCode|$amount|$successUrl|$failUrl|$rnd|$customerKey|$merchantSecretKey";
+$hashDataV2 = base64_encode(hash("sha512", $hashstr, true));
+
+$postData = [
+    'sx'                 =&gt; $sx,
+    'clientRefCode'      =&gt; $clientRefCode,
+    'successUrl'         =&gt; $successUrl,
+    'failUrl'            =&gt; $failUrl,
+    'amount'             =&gt; $amount,
+    'installmentNo'      =&gt; '1',
+    'cardHolderName'     =&gt; 'Tuna Çınar',
+    'month'              =&gt; '12',
+    'year'               =&gt; '2026',
+    'cvv'                =&gt; '001',
+    'cardNumber'         =&gt; '4546711234567894',
+    'use3D'              =&gt; 'false',             <span class="tk-c">// ← non-3D'yi belirleyen tek satır</span>
+    'transactionType'    =&gt; 'SALES',
+    'cardHolderIP'       =&gt; getClientIp(),
+    'hashDatav2'         =&gt; $hashDataV2,
+    'rnd'                =&gt; $rnd,
+    'environment'        =&gt; 'API',
+    'currencyNumber'     =&gt; '949',
+    'MerchantCustomerNo' =&gt; '',                  <span class="tk-c">// opsiyonel: temsilci / alt üye işyeri no</span>
+];
+
+<span class="tk-c">// POSTFIELDS dizi olarak verilince istek multipart/form-data gider</span>
+$curl = curl_init('https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/Payment');
+curl_setopt_array($curl, [
+    CURLOPT_RETURNTRANSFER =&gt; true,
+    CURLOPT_POST           =&gt; true,
+    CURLOPT_POSTFIELDS     =&gt; $postData,
+    CURLOPT_TIMEOUT        =&gt; 30,
+]);
+$response = curl_exec($curl);
+$error    = curl_error($curl);
+curl_close($curl);
+
+header('Content-Type: text/plain; charset=utf-8');
+
+if ($response === false) {
+    exit("Bağlantı hatası: " . $error);
+}
+
+<span class="tk-c">// === Non-3D'ye özgü kısım: sonuç bu response'ta, form/callback yok ===</span>
+$data = json_decode($response, true);
+
+if (isset($data['RESPONSE_CODE']) &amp;&amp; $data['RESPONSE_CODE'] == '2') {
+    echo "Ödeme başarılı. Referans: " . ($data['REFERENCE_CODE'] ?? '-');
+    <span class="tk-c">// Siparişi burada COMPLETED yap — callback bekleme</span>
+} else {
+    echo "Ödeme başarısız: " . ($data['RESPONSE_DATA'] ?? $response);
+}</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code><span class="tk-c">// Paynkolay Sanal POS V1 — NON-3D ödeme örneği (.NET minimal API)</span>
+<span class="tk-c">// Kurulum: dotnet new web -n PaynkolayNon3D → bu dosyayı Program.cs ile değiştirin → dotnet run</span>
+<span class="tk-c">// Test: tarayıcıda http://localhost:&lt;port&gt;/odeme (port konsolda yazar)</span>
+<span class="tk-c">// Not: Canlı uç localhost'tan gelen istekleri reddeder; canlıda sunucunuzdan çalıştırın.</span>
+using System.Globalization;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.Json;
+
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddHttpClient();
+var app = builder.Build();
+
+<span class="tk-c">// Kimlik bilgileri (size verilen değerler)</span>
+const string Sx = "SX_DEGERINIZ";
+const string MerchantSecretKey = "SECRET_KEY_DEGERINIZ";
+
+<span class="tk-c">// Test ucu — canlı: https://paynkolay.nkolayislem.com.tr/Vpos/v1/Payment</span>
+const string ApiUrl = "https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/Payment";
+
+app.MapGet("/odeme", async (HttpContext ctx, IHttpClientFactory httpFactory) =&gt;
+{
+    <span class="tk-c">// Sipariş ve kart bilgileri (gerçekte ödeme formunuzdan gelir)</span>
+    var clientRefCode = "789456|AB76";                     <span class="tk-c">// her işlemde benzersiz olmalı (ör. "ORDER-" + Guid)</span>
+    var amount = "6.00";
+    var successUrl = "https://siteniz.com/payment/success"; <span class="tk-c">// non-3D'de çağrılmaz ama zorunludur ve hash'e girer</span>
+    var failUrl = "https://siteniz.com/payment/fail";
+    var customerKey = "";                                  <span class="tk-c">// kart saklanmıyorsa boş</span>
+
+    <span class="tk-c">// rnd: Türkiye saatiyle (UTC+3) dd-MM-yyyy HH:mm:ss</span>
+    var rnd = DateTime.UtcNow.AddHours(3).ToString("dd-MM-yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+    <span class="tk-c">// hashDatav2: alanlar | ile birleşir → SHA512 (ham bayt) → Base64</span>
+    var hashStr = string.Join("|", Sx, clientRefCode, amount, successUrl, failUrl, rnd, customerKey, MerchantSecretKey);
+    var hashDatav2 = Convert.ToBase64String(SHA512.HashData(Encoding.UTF8.GetBytes(hashStr)));
+
+    var fields = new Dictionary&lt;string, string&gt;
+    {
+        ["sx"] = Sx,
+        ["clientRefCode"] = clientRefCode,
+        ["successUrl"] = successUrl,
+        ["failUrl"] = failUrl,
+        ["amount"] = amount,
+        ["installmentNo"] = "1",
+        ["cardHolderName"] = "Tuna Çınar",
+        ["month"] = "12",
+        ["year"] = "2026",
+        ["cvv"] = "001",
+        ["cardNumber"] = "4546711234567894",
+        ["use3D"] = "false",                 <span class="tk-c">// ← non-3D'yi belirleyen tek satır</span>
+        ["transactionType"] = "SALES",
+        ["cardHolderIP"] = GetClientIp(ctx),
+        ["rnd"] = rnd,
+        ["hashDatav2"] = hashDatav2,
+        ["environment"] = "API",
+        ["currencyNumber"] = "949",
+        ["MerchantCustomerNo"] = "",         <span class="tk-c">// opsiyonel: temsilci / alt üye işyeri no</span>
+    };
+
+    <span class="tk-c">// Body: multipart/form-data</span>
+    using var form = new MultipartFormDataContent();
+    foreach (var (key, value) in fields)
+    {
+        form.Add(new StringContent(value), key);
+    }
+
+    var http = httpFactory.CreateClient();
+    http.Timeout = TimeSpan.FromSeconds(30);
+
+    string body;
+    try
+    {
+        using var response = await http.PostAsync(ApiUrl, form);
+        body = await response.Content.ReadAsStringAsync();
+    }
+    catch (Exception ex) when (ex is HttpRequestException or TaskCanceledException)
+    {
+        return Results.Text($"Bağlantı hatası: {ex.Message}", "text/plain; charset=utf-8", statusCode: 502);
+    }
+
+    <span class="tk-c">// Non-3D'ye özgü kısım: sonuç bu yanıtta, form/callback yok</span>
+    try
+    {
+        using var json = JsonDocument.Parse(body);
+        var root = json.RootElement;
+
+        if (root.TryGetProperty("RESPONSE_CODE", out var code) &amp;&amp; code.ToString() == "2")
+        {
+            <span class="tk-c">// Siparişi burada COMPLETED yap — callback bekleme</span>
+            var reference = root.TryGetProperty("REFERENCE_CODE", out var refCode) ? refCode.ToString() : "-";
+            return Results.Text($"Ödeme başarılı. Referans: {reference}", "text/plain; charset=utf-8");
+        }
+
+        var message = root.TryGetProperty("RESPONSE_DATA", out var data) ? data.ToString() : body;
+        return Results.Text($"Ödeme başarısız: {message}", "text/plain; charset=utf-8", statusCode: 400);
+    }
+    catch (JsonException)
+    {
+        return Results.Text($"Ödeme başarısız: {body}", "text/plain; charset=utf-8", statusCode: 400);
+    }
+});
+
+app.Run();
+
+<span class="tk-c">// Müşteri IP'si: önce proxy başlıkları, yoksa bağlantı adresi</span>
+static string GetClientIp(HttpContext ctx)
+{
+    foreach (var header in new[] { "CF-Connecting-IP", "X-Forwarded-For", "X-Real-IP" })
+    {
+        var value = ctx.Request.Headers[header].ToString();
+        if (string.IsNullOrWhiteSpace(value)) continue;
+
+        var ip = value.Split(',')[0].Trim();
+        if (IPAddress.TryParse(ip, out _)) return ip;
+    }
+
+    var remote = ctx.Connection.RemoteIpAddress;
+    if (remote is null) return "127.0.0.1";
+    return (remote.IsIPv4MappedToIPv6 ? remote.MapToIPv4() : remote).ToString();
+}</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code><span class="tk-c"># Paynkolay Sanal POS V1 — NON-3D ödeme örneği (Python + requests)</span>
+<span class="tk-c"># Kurulum: pip install requests</span>
+<span class="tk-c"># Çalıştırma: python3 example.py  →  http://localhost:8000/odeme</span>
+<span class="tk-c"># Not: Canlı uç localhost'tan gelen istekleri reddeder; canlıda sunucunuzdan çalıştırın.</span>
+import base64
+import hashlib
+import ipaddress
+from datetime import datetime, timedelta, timezone
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+import requests
+
+<span class="tk-c"># Kimlik bilgileri (size verilen değerler)</span>
+SX = "SX_DEGERINIZ"
+MERCHANT_SECRET_KEY = "SECRET_KEY_DEGERINIZ"
+
+<span class="tk-c"># Test ucu — canlı: https://paynkolay.nkolayislem.com.tr/Vpos/v1/Payment</span>
+API_URL = "https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/Payment"
+
+
+def client_ip(handler):
+    """Müşteri IP'si: önce proxy başlıkları, yoksa bağlantı adresi."""
+    for header in ("CF-Connecting-IP", "X-Forwarded-For", "X-Real-IP"):
+        value = handler.headers.get(header)
+        if value:
+            ip = value.split(",")[0].strip()
+            try:
+                ipaddress.ip_address(ip)
+                return ip
+            except ValueError:
+                pass
+    return handler.client_address[0]
+
+
+def pay(card_holder_ip):
+    <span class="tk-c"># Sipariş ve kart bilgileri (gerçekte ödeme formunuzdan gelir)</span>
+    client_ref_code = "789456|AB76"  <span class="tk-c"># her işlemde benzersiz olmalı (ör. "ORDER-" + uuid)</span>
+    amount = "6.00"
+    success_url = "https://siteniz.com/payment/success"  <span class="tk-c"># non-3D'de çağrılmaz ama zorunludur ve hash'e girer</span>
+    fail_url = "https://siteniz.com/payment/fail"
+    customer_key = ""  <span class="tk-c"># kart saklanmıyorsa boş</span>
+
+    <span class="tk-c"># rnd: Türkiye saatiyle (UTC+3) dd-MM-yyyy HH:mm:ss</span>
+    rnd = datetime.now(timezone(timedelta(hours=3))).strftime("%d-%m-%Y %H:%M:%S")
+
+    <span class="tk-c"># hashDatav2: alanlar | ile birleşir → SHA512 (ham bayt) → Base64</span>
+    hash_str = "|".join([SX, client_ref_code, amount, success_url, fail_url, rnd, customer_key, MERCHANT_SECRET_KEY])
+    hash_datav2 = base64.b64encode(hashlib.sha512(hash_str.encode("utf-8")).digest()).decode("ascii")
+
+    fields = {
+        "sx": SX,
+        "clientRefCode": client_ref_code,
+        "successUrl": success_url,
+        "failUrl": fail_url,
+        "amount": amount,
+        "installmentNo": "1",
+        "cardHolderName": "Tuna Çınar",
+        "month": "12",
+        "year": "2026",
+        "cvv": "001",
+        "cardNumber": "4546711234567894",
+        "use3D": "false",  <span class="tk-c"># ← non-3D'yi belirleyen tek satır</span>
+        "transactionType": "SALES",
+        "cardHolderIP": card_holder_ip,
+        "rnd": rnd,
+        "hashDatav2": hash_datav2,
+        "environment": "API",
+        "currencyNumber": "949",
+        "MerchantCustomerNo": "",  <span class="tk-c"># opsiyonel: temsilci / alt üye işyeri no</span>
+    }
+
+    <span class="tk-c"># files=(None, değer) biçimi isteği multipart/form-data gönderir</span>
+    response = requests.post(API_URL, files={k: (None, v) for k, v in fields.items()}, timeout=30)
+
+    <span class="tk-c"># Non-3D'ye özgü kısım: sonuç bu yanıtta, form/callback yok</span>
+    try:
+        data = response.json()
+    except ValueError:
+        return False, "Ödeme başarısız: " + response.text
+
+    if str(data.get("RESPONSE_CODE")) == "2":
+        <span class="tk-c"># Siparişi burada COMPLETED yap — callback bekleme</span>
+        return True, "Ödeme başarılı. Referans: {}".format(data.get("REFERENCE_CODE", "-"))
+    return False, "Ödeme başarısız: {}".format(data.get("RESPONSE_DATA") or response.text)
+
+
+class Handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        if self.path != "/odeme":
+            return self.reply(404, "Ödeme için /odeme adresini açın.")
+        try:
+            ok, message = pay(client_ip(self))
+            self.reply(200 if ok else 400, message)
+        except requests.RequestException as exc:
+            self.reply(502, "Bağlantı hatası: {}".format(exc))
+
+    def reply(self, status, text):
+        body = text.encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "text/plain; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+
+if __name__ == "__main__":
+    print("http://localhost:8000/odeme")
+    HTTPServer(("0.0.0.0", 8000), Handler).serve_forever()</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code><span class="tk-c">// Paynkolay Sanal POS V1 — NON-3D ödeme örneği (Node.js + axios + form-data)</span>
+<span class="tk-c">// Kurulum: npm install axios form-data</span>
+<span class="tk-c">// Çalıştırma: node example.js  →  http://localhost:8000/odeme</span>
+<span class="tk-c">// Not: Canlı uç localhost'tan gelen istekleri reddeder; canlıda sunucunuzdan çalıştırın.</span>
+const http = require('http');
+const net = require('net');
+const crypto = require('crypto');
+const axios = require('axios');
+const FormData = require('form-data');
+
+<span class="tk-c">// Kimlik bilgileri (size verilen değerler)</span>
+const SX = 'SX_DEGERINIZ';
+const MERCHANT_SECRET_KEY = 'SECRET_KEY_DEGERINIZ';
+
+<span class="tk-c">// Test ucu — canlı: https://paynkolay.nkolayislem.com.tr/Vpos/v1/Payment</span>
+const API_URL = 'https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/Payment';
+
+<span class="tk-c">// Müşteri IP'si: önce proxy başlıkları, yoksa bağlantı adresi</span>
+function clientIp(req) {
+  for (const header of ['cf-connecting-ip', 'x-forwarded-for', 'x-real-ip']) {
+    const value = req.headers[header];
+    if (value) {
+      const ip = String(value).split(',')[0].trim();
+      if (net.isIP(ip)) return ip;
+    }
+  }
+  return (req.socket.remoteAddress || '127.0.0.1').replace(/^::ffff:/, '');
+}
+
+<span class="tk-c">// rnd: Türkiye saatiyle (UTC+3) dd-MM-yyyy HH:mm:ss</span>
+function turkeyTime() {
+  const d = new Date(Date.now() + 3 * 60 * 60 * 1000);
+  const p = (n) =&gt; String(n).padStart(2, '0');
+  return `${p(d.getUTCDate())}-${p(d.getUTCMonth() + 1)}-${d.getUTCFullYear()} ` +
+    `${p(d.getUTCHours())}:${p(d.getUTCMinutes())}:${p(d.getUTCSeconds())}`;
+}
+
+async function pay(cardHolderIP) {
+  <span class="tk-c">// Sipariş ve kart bilgileri (gerçekte ödeme formunuzdan gelir)</span>
+  const clientRefCode = '789456|AB76';                     <span class="tk-c">// her işlemde benzersiz olmalı (ör. 'ORDER-' + Date.now())</span>
+  const amount = '6.00';
+  const successUrl = 'https://siteniz.com/payment/success'; <span class="tk-c">// non-3D'de çağrılmaz ama zorunludur ve hash'e girer</span>
+  const failUrl = 'https://siteniz.com/payment/fail';
+  const customerKey = '';                                  <span class="tk-c">// kart saklanmıyorsa boş</span>
+  const rnd = turkeyTime();
+
+  <span class="tk-c">// hashDatav2: alanlar | ile birleşir → SHA512 (ham bayt) → Base64</span>
+  const hashStr = [SX, clientRefCode, amount, successUrl, failUrl, rnd, customerKey, MERCHANT_SECRET_KEY].join('|');
+  const hashDatav2 = crypto.createHash('sha512').update(hashStr, 'utf8').digest('base64');
+
+  const fields = {
+    sx: SX,
+    clientRefCode,
+    successUrl,
+    failUrl,
+    amount,
+    installmentNo: '1',
+    cardHolderName: 'Tuna Çınar',
+    month: '12',
+    year: '2026',
+    cvv: '001',
+    cardNumber: '4546711234567894',
+    use3D: 'false',              <span class="tk-c">// ← non-3D'yi belirleyen tek satır</span>
+    transactionType: 'SALES',
+    cardHolderIP,
+    rnd,
+    hashDatav2,
+    environment: 'API',
+    currencyNumber: '949',
+    MerchantCustomerNo: '',      <span class="tk-c">// opsiyonel: temsilci / alt üye işyeri no</span>
+  };
+
+  <span class="tk-c">// Body: multipart/form-data</span>
+  const form = new FormData();
+  for (const [key, value] of Object.entries(fields)) form.append(key, value);
+
+  const response = await axios.post(API_URL, form, {
+    headers: form.getHeaders(),
+    timeout: 30000,
+    responseType: 'text',
+    validateStatus: () =&gt; true, <span class="tk-c">// HTTP durum kodundan bağımsız gövdeyi okuyalım</span>
+  });
+  const body = response.data;
+
+  <span class="tk-c">// Non-3D'ye özgü kısım: sonuç bu yanıtta, form/callback yok</span>
+  let data;
+  try {
+    data = JSON.parse(body);
+  } catch {
+    return { ok: false, message: `Ödeme başarısız: ${body}` };
+  }
+
+  if (String(data.RESPONSE_CODE) === '2') {
+    <span class="tk-c">// Siparişi burada COMPLETED yap — callback bekleme</span>
+    return { ok: true, message: `Ödeme başarılı. Referans: ${data.REFERENCE_CODE ?? '-'}` };
+  }
+  return { ok: false, message: `Ödeme başarısız: ${data.RESPONSE_DATA || body}` };
+}
+
+http.createServer(async (req, res) =&gt; {
+  const reply = (status, text) =&gt; {
+    res.writeHead(status, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end(text);
+  };
+
+  if (req.url !== '/odeme') return reply(404, 'Ödeme için /odeme adresini açın.');
+
+  try {
+    const { ok, message } = await pay(clientIp(req));
+    reply(ok ? 200 : 400, message);
+  } catch (err) {
+    reply(502, `Bağlantı hatası: ${err.message}`);
+  }
+}).listen(8000, () =&gt; console.log('http://localhost:8000/odeme'));</code></pre></div></div>
 
           <h2 id="yanit">Yanıt</h2>
           <p>Yanıttaki <code>hashDataV2</code> imzasını doğrulamadan siparişi onaylamayın; başarı kuralları için <a href="../ek-servisler/odeme-sonucu.html">Altın Kural</a>'a bakın.</p>
@@ -260,7 +669,7 @@ function hashDatav2(sx, clientRefCode, amount, successUrl, failUrl, rnd, custome
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="https://paynkolay.com.tr/iletisim#bize-yazin" target="_blank" rel="noopener">bize ulaşın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 10 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 15 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -298,5 +707,6 @@ function hashDatav2(sx, clientRefCode, amount, successUrl, failUrl, rnd, custome
   <script src="../assets/js/tocspy.js"></script>
   <script src="../assets/js/search.js"></script>
   <script src="../assets/js/feedback.js"></script>
+  <script src="../assets/js/codetabs.js"></script>
 </body>
 </html>
