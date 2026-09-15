@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="3D Secure ödemeyi PHP ile başlatın: use3D=true ile istek gönderin, banka formunu tarayıcıya basın ve sonucu callback adresinizde doğrulayın.">
+  <meta name="description" content="3D Secure ödemenin durumunu PaymentList servisiyle sorgulayın: sonuç adresinize ulaşmadığında ya da 2 aşamalı işlemin tamamlanıp tamamlanmadığını teyit ederken.">
   <meta property="og:title" content="Taksit Bilgisi Paynkolay'a Ait (3DS) — Paynkolay Docs">
-  <meta property="og:description" content="3D Secure ödemeyi PHP ile başlatın: use3D=true ile istek gönderin, banka formunu tarayıcıya basın ve sonucu callback adresinizde doğrulayın.">
+  <meta property="og:description" content="3D Secure ödemenin durumunu PaymentList servisiyle sorgulayın: sonuç adresinize ulaşmadığında ya da 2 aşamalı işlemin tamamlanıp tamamlanmadığını teyit ederken.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0C34E7">
   <title>Taksit Bilgisi Paynkolay'a Ait (3DS) — Paynkolay Docs</title>
@@ -149,90 +149,49 @@
         <article class="article">
           <p class="eyebrow"><a href="api-3ds.html">3DS</a></p>
           <h1>Taksit Bilgisi Paynkolay'a Ait</h1>
-          <p class="lead">3D Secure ödemeyi PHP ile başlatın: isteği <code>use3D=true</code> ile gönderin, dönen banka formunu tarayıcıya basın ve sonucu callback adresinizde doğrulayın.</p>
-          <h2 id="odeme-istegi">3D Ödeme İsteği</h2>
-          <p>Kart bilgileri formunuzdan gelen değerlerle imzalı isteği <code>/Vpos/v1/Payment</code> ucuna gönderin. Yanıtta dönen <code>BANK_REQUEST_MESSAGE</code> bir HTML formudur; tarayıcıya bastığınızda müşteri bankanın 3D doğrulama sayfasına yönlenir.</p>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">PHP — 3D ödeme isteği</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>&lt;?php
-<span class="tk-c">// === 3D-ONLY FLOW — Paynkolay V1 ===</span>
+          <p class="lead">3D Secure ödemenin güncel durumunu <code>PaymentList</code> servisiyle sorgulayın — doğrulama sonucu adresinize ulaşmadığında ya da 2 aşamalı işlemin tamamlanıp tamamlanmadığını teyit etmek istediğinizde.</p>
+          <h2 id="nezaman">Ne Zaman Gerekir?</h2>
+          <ul class="checklist">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Müşteri 3D doğrulama sayfasını kapattıysa ya da bağlantı koptuysa imzalı sonuç <code>successUrl</code> / <code>failUrl</code> adresinize <strong>hiç ulaşmaz</strong> — işlemin gerçekleşip gerçekleşmediğini buradan doğrularsınız.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>2 aşamalı modda (<code>AUTOCOMPLETE=false</code>) doğrulanmış ama henüz tamamlanmamış işlemleri bulmak için — bu işlemler <code>STATUS=NEW</code> döner ve <a href="api-3ds-taksit-bilgisi-size-ait.html">CompletePayment</a> ile tamamlanır.</span></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8.5 12 2.5 2.5 5-5"/></svg><span>Muhasebe/uzlaştırma süreçlerinde işlemin banka tarafındaki nihai durumunu teyit etmek için.</span></li>
+          </ul>
 
-$merchantSecretKey = "SECRET_KEY";
-$sx                = "SX_DEGERI";
-$clientRefCode     = "ORDER-" . uniqid();
-$amount            = "10.00";
-$successUrl        = "https://siteniz.com/payment/callback"; <span class="tk-c">// 3D sonucu buraya düşer</span>
-$failUrl           = "https://siteniz.com/payment/callback";
-$rnd               = date("d-m-Y H:i:s");
-$customerKey       = "";
-
-<span class="tk-c">// Hash: sx|clientRefCode|amount|successUrl|failUrl|rnd|customerKey|secretKey → SHA512 → Base64</span>
-$hashstr    = "$sx|$clientRefCode|$amount|$successUrl|$failUrl|$rnd|$customerKey|$merchantSecretKey";
-$hashDataV2 = base64_encode(hash("sha512", mb_convert_encoding($hashstr, 'UTF-8'), true));
-
-$postData = [
-    'sx'              =&gt; $sx,
-    'clientRefCode'   =&gt; $clientRefCode,
-    'successUrl'      =&gt; $successUrl,
-    'failUrl'         =&gt; $failUrl,
-    'amount'          =&gt; $amount,
-    'installmentNo'   =&gt; '1',
-    'cardHolderName'  =&gt; $_POST['cardHolderName'],
-    'month'           =&gt; $_POST['month'],
-    'year'            =&gt; $_POST['year'],
-    'cvv'             =&gt; $_POST['cvv'],
-    'cardNumber'      =&gt; $_POST['cardNumber'],
-    'use3D'           =&gt; 'true',              <span class="tk-c">// ← 3D akışını açan tek satır</span>
-    'transactionType' =&gt; 'SALES',
-    'cardHolderIP'    =&gt; $_SERVER['REMOTE_ADDR'],
-    'hashDatav2'      =&gt; $hashDataV2,
-    'rnd'             =&gt; $rnd,
-    'environment'     =&gt; 'API',
-    'currencyNumber'  =&gt; '949',
-];
-
-$curl = curl_init('https://paynkolaytest.nkolayislem.com.tr/Vpos/v1/Payment');
-curl_setopt_array($curl, [
-    CURLOPT_RETURNTRANSFER =&gt; true,
-    CURLOPT_POST           =&gt; true,
-    CURLOPT_POSTFIELDS     =&gt; http_build_query($postData),
-    CURLOPT_TIMEOUT        =&gt; 30,
-]);
-$response = curl_exec($curl);
-curl_close($curl);
-
-$data = json_decode($response, true);
-
-<span class="tk-c">// === 3D'ye özgü kısım: HTML formu tarayıcıya bas ===</span>
-if (!empty($data['BANK_REQUEST_MESSAGE'])) {
-    header('Content-Type: text/html; charset=utf-8');
-    echo $data['BANK_REQUEST_MESSAGE'];  <span class="tk-c">// banka ACS'ye auto-submit olur</span>
-    exit;
-}
-
-echo "3D formu alınamadı: " . htmlspecialchars($response);</code></pre></div>
-          <div class="callout">
-            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
-            <p>3D akışını açan tek fark <code>use3D=true</code> satırıdır; diğer alanlar Non-3DS isteğiyle aynıdır. <code>SECRET_KEY</code> ve <code>SX_DEGERI</code> yerine kendi bilgilerinizi yazın.</p>
+          <h2 id="endpoint">Uç Nokta ve Parametreler</h2>
+          <div class="access">
+            <p class="access__row">
+              <span class="access__label">Test</span>
+              <code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/Payment/PaymentList</code>
+            </p>
+            <p class="access__row">
+              <span class="access__label">Canlı</span>
+              <code>POST https://paynkolay.nkolayislem.com.tr/Vpos/Payment/PaymentList</code>
+            </p>
           </div>
-
-          <h2 id="callback">3D Callback</h2>
           <div class="callout callout--warn">
             <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></svg>
-            <p>Bu adım olmadan 3D akışı eksik kalır. Banka doğrulama sonucunu <code>successUrl</code> / <code>failUrl</code> adresinize <strong>POST</strong> eder; siparişi onaylamadan önce gelen veriyi mutlaka doğrulayın.</p>
+            <p>Bu servis satış sx'inizle değil, <strong>sx List</strong> değerinizle çağrılır — üç sx'in ayrımı için <a href="../on-hazirlik/test-ortami.html">Test Ortamı</a> sayfasına bakın.</p>
           </div>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">PHP — payment/callback.php</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>&lt;?php
-<span class="tk-c">// payment/callback.php — banka buraya POST eder</span>
-$params = $_POST;
+          <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
+                <tr><td class="mono">sx</td><td>✅</td><td><strong>sx List</strong> değeriniz (satış sx'inden farklıdır)</td></tr>
+                <tr><td class="mono">startDate</td><td>✅</td><td>Başlangıç tarihi (DD.MM.YYYY)</td></tr>
+                <tr><td class="mono">endDate</td><td>✅</td><td>Bitiş tarihi (DD.MM.YYYY)</td></tr>
+                <tr><td class="mono">clientRefCode</td><td>—</td><td>Sorgulanacak işlemin referans kodu; boş bırakılırsa aralıktaki tüm işlemler döner (en fazla 1 aylık aralık)</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>✅</td><td>Aşağıdaki formülle üretilen imza</td></tr>
+          </tbody></table></div>
+          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hash Formülü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>hashDatav2 = Base64(SHA512(sx | startDate | endDate | clientRefCode | merchantSecretKey))</code></pre></div>
 
-<span class="tk-c">// 1. Hash yanıtını doğrula (05-hash-response formülüyle) — atlanırsa sahte POST'la sipariş onaylatılabilir</span>
-<span class="tk-c">// 2. RESPONSE_CODE / RESPONSE_DATA kontrol et</span>
-<span class="tk-c">// 3. Şüphede kalırsan İşlem Doğrulama Servisi'nden (10-verification-service) teyit al</span>
-<span class="tk-c">// 4. Siparişi ancak bu doğrulamalardan sonra COMPLETED yap</span></code></pre></div>
-          <ol class="guide">
-            <li><span class="guide__dot">1</span><span><span class="guide__title">Hash yanıtını doğrulayın</span><span class="guide__desc">Gelen imzayı <a href="../ek-servisler/odeme-sonucu.html">Ödeme Sonucu</a> sayfasındaki formülle kontrol edin. Bu adım atlanırsa sahte bir POST ile sipariş onaylatılabilir.</span></span></li>
-            <li><span class="guide__dot">2</span><span><span class="guide__title">Sonuç kodunu kontrol edin</span><span class="guide__desc"><code>RESPONSE_CODE</code> ve <code>RESPONSE_DATA</code> alanlarıyla işlemin başarılı olup olmadığına bakın.</span></span></li>
-            <li><span class="guide__dot">3</span><span><span class="guide__title">Şüphede teyit alın</span><span class="guide__desc">Emin olamadığınız durumlarda <a href="../ek-servisler/islem-dogrulama.html">İşlem Doğrulama Servisi</a> ile işlemin durumunu sorgulayın.</span></span></li>
-            <li><span class="guide__dot">4</span><span><span class="guide__title">Siparişi tamamlayın</span><span class="guide__desc">Siparişi ancak bu doğrulamalardan sonra <code>COMPLETED</code> durumuna alın.</span></span></li>
-          </ol>
+          <h2 id="yanit">Yanıt ve Durumlar</h2>
+          <p>Yanıttaki <code>LIST</code> dizisinde her işlem için <code>STATUS</code>, tutarlar, kart ve banka bilgileri döner; <code>IS_3D</code> alanı 3D Secure işlemleri ayırt eder:</p>
+          <div class="table-wrap"><table class="dtable"><thead><tr><th>STATUS</th><th>Anlamı</th></tr></thead><tbody>
+                <tr><td class="mono">SUCCESS</td><td>İşlem başarılı, para çekildi</td></tr>
+                <tr><td class="mono">ERROR</td><td>İşlem başarısız</td></tr>
+                <tr><td class="mono">NEW</td><td>Başlatılmış ama tamamlanmamış işlem — 3D doğrulama yarıda kalmış ya da 2 aşamalı işlem için CompletePayment çağrılmamış</td></tr>
+          </tbody></table></div>
+          <div class="callout">
+            <svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+            <p>Servis yanıtının başarılı dönmesi işlemin başarılı olduğu anlamına gelmez — her kaydın <strong>STATUS</strong> değerini kontrol edin. Örnek yanıt ve alan listesi için <a href="../ek-servisler/islem-dogrulama.html">İşlem Doğrulama Servisi</a>, dönemsel raporlar için <a href="../ek-servisler/raporlama.html">Raporlama Servisi</a> sayfalarına bakın.</p>
+          </div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
   <a class="pager__card" href="api-3ds-taksit-bilgisi-size-ait.html">
@@ -251,7 +210,7 @@ $params = $_POST;
             <span class="feedback__thanks feedback__thanks--up" hidden>Teşekkürler! 🎉</span>
             <span class="feedback__thanks feedback__thanks--down" hidden>Teşekkürler — geliştirmemiz için <a href="https://paynkolay.com.tr/iletisim#bize-yazin" target="_blank" rel="noopener">bize ulaşın</a>.</span>
           </div>
-          <p class="updated">Son güncelleme: 15 Eylül 2026</p>
+          <p class="updated">Son güncelleme: 11 Eylül 2026</p>
         </article>
 
         <footer class="footer">
@@ -268,8 +227,9 @@ $params = $_POST;
           Bu Sayfada
         </p>
         <ul class="toc__list">
-          <li><a class="is-active" href="#odeme-istegi">3D Ödeme İsteği</a></li>
-          <li><a href="#callback">3D Callback</a></li>
+          <li><a class="is-active" href="#nezaman">Ne Zaman Gerekir?</a></li>
+          <li><a href="#endpoint">Uç Nokta ve Parametreler</a></li>
+          <li><a href="#yanit">Yanıt ve Durumlar</a></li>
         </ul>
       </aside>
 
