@@ -186,7 +186,19 @@ Merchant Secret Key: _XW3IhD1rFsmlQfQTYewe</code></pre></div>
 
           <h2 id="hash">Hash Hesaplama</h2>
           <p>Sigorta ödemelerinde <code>hashDataV2</code>, standart formülden farklı olarak BIN, son dört hane ve TCKN'yi de içerir:</p>
-<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Formül</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>sx | clientRefCode | amount | successUrl | failUrl | rnd | CardBinNumber | CardLastFour | CardHolderIdentity | MerchantSecretKey</code></pre></div>
+<div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>SX değeriniz</td></tr>
+<tr><td>2</td><td class="mono">clientRefCode</td><td>İşleme ait referans numaranız</td></tr>
+<tr><td>3</td><td class="mono">amount</td><td>Ödeme tutarı (nokta ile ondalık, ör. 30.00)</td></tr>
+<tr><td>4</td><td class="mono">successUrl</td><td>Başarılı / başarısız işlem sonrası yönlendirme adresleri</td></tr>
+<tr><td>5</td><td class="mono">failUrl</td><td>Başarılı / başarısız işlem sonrası yönlendirme adresleri</td></tr>
+<tr><td>6</td><td class="mono">rnd</td><td>Zaman damgası (ör. 2026-03-05T15:27:05.597196)</td></tr>
+<tr><td>7</td><td class="mono">CardBinNumber</td><td>Kartın ilk 8 hanesi (BIN)</td></tr>
+<tr><td>8</td><td class="mono">CardLastFour</td><td>Kartın son 4 hanesi</td></tr>
+<tr><td>9</td><td class="mono">CardHolderIdentity</td><td>Kart sahibinin TCKN'si</td></tr>
+<tr><td>10</td><td class="mono">MerchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
 <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">PHP</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>$hashstr = $sx . '|' . $clientRefCode . '|' . $amount . '|' . $successUrl . '|' . $failUrl . '|' . $rnd
          . '|' . $CardBinNumber . '|' . $CardLastFour . '|' . $CardHolderIdentity . '|' . $merchantSecretKey;
 

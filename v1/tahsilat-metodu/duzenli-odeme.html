@@ -184,19 +184,33 @@
                 <tr><td class="mono">PaymentStartDate</td><td>string</td><td>✅</td><td>İlk ödeme tarihi (DD/MM/YYYY) — 1 seçildiyse bugünün tarihi</td></tr>
                 <tr><td class="mono">Email / Gsm</td><td>string</td><td>✅</td><td>Müşteri e-posta ve cep telefonu</td></tr>
                 <tr><td class="mono">Amount</td><td>decimal</td><td>✅</td><td>Her bir ödemenin tutarı</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|Gsm|Amount|ClientRefCode|merchantSecretKey</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — aşağıdaki hash tablosuyla üretilir</td></tr>
                 <tr><td class="mono">cardHolderIP</td><td>string</td><td>✅</td><td>Müşterinin IP adresi</td></tr>
                 <tr><td class="mono">Description / language</td><td>string</td><td>—</td><td>Açıklama; dil boşsa Türkçe</td></tr>
 </tbody></table></div>
+          <div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>Size verilen sx değeriniz</td></tr>
+<tr><td>2</td><td class="mono">Gsm</td><td>Müşteri e-posta ve cep telefonu</td></tr>
+<tr><td>3</td><td class="mono">Amount</td><td>Her bir ödemenin tutarı</td></tr>
+<tr><td>4</td><td class="mono">ClientRefCode</td><td>Kendi referans numaranız — benzersiz gönderin</td></tr>
+<tr><td>5</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
 
           <h2 id="iptal">Talimat İptal</h2>
           <div class="access"><p class="access__row"><span class="access__label">Test</span><code>POST https://paynkolaytest.nkolayislem.com.tr/Vpos/api/RecurringPaymentCancel</code></p><p class="access__row"><span class="access__label">Gövde</span><span><code>application/json</code></span></p></div>
           <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Tip</th><th>Zorunlu</th><th>Açıklama</th></tr></thead><tbody>
                 <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Size verilen sx değeriniz</td></tr>
                 <tr><td class="mono">InstructionNumber</td><td>string</td><td>✅</td><td>İptal edilecek talimat numarası</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|InstructionNumber|merchantSecretKey</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — aşağıdaki hash tablosuyla üretilir</td></tr>
                 <tr><td class="mono">cardHolderIP</td><td>string</td><td>✅</td><td>Müşterinin IP adresi</td></tr>
 </tbody></table></div>
+          <div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>Size verilen sx değeriniz</td></tr>
+<tr><td>2</td><td class="mono">InstructionNumber</td><td>İptal edilecek talimat numarası</td></tr>
+<tr><td>3</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
 
           <h2 id="listeleme">Talimat Listeleme</h2>
           <p>Bu servis <strong>sx-list</strong> değerini kullanır. Opsiyonel filtrelerle (ad-soyad, GSM ya da talimat numarası) sonuçları daraltabilirsiniz.</p>

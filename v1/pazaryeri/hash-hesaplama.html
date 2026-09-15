@@ -151,7 +151,15 @@
 
           <h2 id="odeme">Ödeme İşlemleri için ApiKey</h2>
           <p>CreatePayment ile tüm Payment Profile ve Seller servislerinde kullanılır:</p>
-<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Formül</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>apiKey = Base64(SHA512(apiSecretKey + "|" + merchantSecretKey + "|" + trxCode + "|" + totalTrxAmount + "|" + trxCurrency + "|" + trxType))</code></pre></div>
+<div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">apiSecretKey</td></tr>
+<tr><td>2</td><td class="mono">merchantSecretKey</td></tr>
+<tr><td>3</td><td class="mono">trxCode</td></tr>
+<tr><td>4</td><td class="mono">totalTrxAmount</td></tr>
+<tr><td>5</td><td class="mono">trxCurrency</td></tr>
+<tr><td>6</td><td class="mono">trxType</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>apiKey</code>.</p>
 <div class="table-wrap"><table class="dtable"><thead><tr><th>Parametre</th><th>Açıklama</th><th>Nereden Alınır</th></tr></thead><tbody><tr><td class="mono">apiSecretKey</td><td>SX değeri</td><td>Paynkolay tarafından verilir</td></tr>
 <tr><td class="mono">merchantSecretKey</td><td>Merchant gizli anahtarı</td><td>Paynkolay tarafından verilir</td></tr>
 <tr><td class="mono">trxCode</td><td>İşlem takip numarası (Client Reference Code)</td><td>Siz belirlersiniz</td></tr>
@@ -198,7 +206,12 @@ public static string CalculatePaymentApiKey(string apiSecretKey, string merchant
 
           <h2 id="sakli-kart">Saklı Kart Listeleme için ApiKey</h2>
           <p><code>/payment/storedCardList</code> servisinin <code>apiKey</code> parametresi ödeme formülünden farklıdır ve yalnızca üç alandan oluşur:</p>
-<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Formül</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>apiKey = Base64(SHA512(apiSecretKey + "|" + mpCustomerKey + "|" + merchantSecretKey))</code></pre></div>
+<div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">apiSecretKey</td><td>SX değeri</td></tr>
+<tr><td>2</td><td class="mono">mpCustomerKey</td><td>—</td></tr>
+<tr><td>3</td><td class="mono">merchantSecretKey</td><td>Merchant gizli anahtarı</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>apiKey</code>.</p>
 <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek Kod — PHP</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>function calculateStoredCardApiKey($apiSecretKey, $mpCustomerKey, $merchantSecretKey) {
     $hashString = $apiSecretKey . &#x27;|&#x27; . $mpCustomerKey . &#x27;|&#x27; . $merchantSecretKey;
     return base64_encode(hash(&#x27;sha512&#x27;, $hashString, true));
@@ -210,7 +223,16 @@ $apiKey = calculateStoredCardApiKey($apiSecretKey, $mpCustomerKey, $merchantSecr
 
           <h2 id="iptal-iade">İptal/İade İşlemleri için ApiKey</h2>
           <p>PaymentRefund ve PaymentCancel servislerinde kullanılır; formül aynıdır ancak <strong>iptal SX</strong> değeriyle imzalanır:</p>
-<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Formül</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>apiKey = Base64(SHA512(apiSecretKey_iptal + "|" + merchantSecretKey + "|" + trxType + "|" + trxDate + "|" + amount + "|" + trxCurrency + "|" + referenceCode))</code></pre></div>
+<div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">apiSecretKey_iptal</td></tr>
+<tr><td>2</td><td class="mono">merchantSecretKey</td></tr>
+<tr><td>3</td><td class="mono">trxType</td></tr>
+<tr><td>4</td><td class="mono">trxDate</td></tr>
+<tr><td>5</td><td class="mono">amount</td></tr>
+<tr><td>6</td><td class="mono">trxCurrency</td></tr>
+<tr><td>7</td><td class="mono">referenceCode</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>apiKey</code>.</p>
 <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek Kod — JavaScript</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>function calculateRefundCancelApiKey(apiSecretKey_iptal, merchantSecretKey,
                                     trxType, trxDate, amount, trxCurrency, referenceCode) {
     const hashString = apiSecretKey_iptal + &#x27;|&#x27; + merchantSecretKey + &#x27;|&#x27; + trxType + &#x27;|&#x27;
@@ -266,12 +288,26 @@ $apiKey = calculateStoredCardApiKey($apiSecretKey, $mpCustomerKey, $merchantSecr
 
           <h2 id="callback">Callback Hash Doğrulama</h2>
           <p>Ödeme tamamlandığında <code>callbackUrl</code> adresinize POST edilen verinin bütünlüğünü mutlaka doğrulayın:</p>
-<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Callback Hash Formülü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>expectedHash = Base64(SHA512(
-    apiSecretKey | statusCode | refCode | authCode | trxCode |
-    commissionRate | commissionAmount | installment | trxAmount |
-    authAmount | timestamp | currencyCode | cardType | issuerBankCode |
-    installmentFeeRate | installmentFeeAmount | paymentSystem
-))</code></pre></div>
+<div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">apiSecretKey</td></tr>
+<tr><td>2</td><td class="mono">statusCode</td></tr>
+<tr><td>3</td><td class="mono">refCode</td></tr>
+<tr><td>4</td><td class="mono">authCode</td></tr>
+<tr><td>5</td><td class="mono">trxCode</td></tr>
+<tr><td>6</td><td class="mono">commissionRate</td></tr>
+<tr><td>7</td><td class="mono">commissionAmount</td></tr>
+<tr><td>8</td><td class="mono">installment</td></tr>
+<tr><td>9</td><td class="mono">trxAmount</td></tr>
+<tr><td>10</td><td class="mono">authAmount</td></tr>
+<tr><td>11</td><td class="mono">timestamp</td></tr>
+<tr><td>12</td><td class="mono">currencyCode</td></tr>
+<tr><td>13</td><td class="mono">cardType</td></tr>
+<tr><td>14</td><td class="mono">issuerBankCode</td></tr>
+<tr><td>15</td><td class="mono">installmentFeeRate</td></tr>
+<tr><td>16</td><td class="mono">installmentFeeAmount</td></tr>
+<tr><td>17</td><td class="mono">paymentSystem</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>expectedHash</code>.</p>
 <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Doğrulama — JavaScript (Express)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>function verifyCallbackHash(cb, apiSecretKey) {
   const hashString = [
     apiSecretKey, cb.statusCode, cb.refCode, cb.authCode, cb.trxCode,

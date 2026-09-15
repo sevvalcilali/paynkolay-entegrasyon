@@ -159,7 +159,14 @@
 <tr><td class="mono">endDate</td><td>✅</td><td>Bitiş tarihi (DD.MM.YYYY)</td></tr>
 <tr><td class="mono">clientRefCode</td><td>❌</td><td>Kendi referans kodunuz</td></tr>
 <tr><td class="mono">hashDatav2</td><td>✅</td><td>Aşağıdaki formülle üretilen imza</td></tr></tbody></table></div>
-<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hash Formülü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>hashDatav2 = Base64(SHA512(sx | startDate | endDate | clientRefCode | merchantSecretKey))</code></pre></div>
+<div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td><strong>sx Listeleme</strong> değeriniz (satış sx'inden farklıdır)</td></tr>
+<tr><td>2</td><td class="mono">startDate</td><td>Başlangıç tarihi (DD.MM.YYYY)</td></tr>
+<tr><td>3</td><td class="mono">endDate</td><td>Bitiş tarihi (DD.MM.YYYY)</td></tr>
+<tr><td>4</td><td class="mono">clientRefCode</td><td>Kendi referans kodunuz</td></tr>
+<tr><td>5</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
 
           <h2 id="yanit">Yanıt</h2>
 <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek Yanıt (kısaltılmış)</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{

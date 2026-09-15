@@ -165,8 +165,19 @@
 
           <h2 id="imza">Yanıt İmzasını Doğrulama (Response Hash)</h2>
           <p>Yanıttaki <code>hashDataV2</code>, aşağıdaki alanlardan üretilir; aynı imzayı kendiniz hesaplayıp karşılaştırmadan sonucu güvenilir saymayın:</p>
-          <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Response Hash Formülü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>MERCHANT_NO | REFERENCE_CODE | AUTH_CODE | RESPONSE_CODE | USE_3D | RND | INSTALLMENT | AUTHORIZATION_AMOUNT | CURRENCY_CODE | merchantSecretKey
-<span class="tk-c"># SHA-512 → Base64 (UTF-8)</span></code></pre></div>
+          <div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">MERCHANT_NO</td><td>Üye işyeri numarası</td></tr>
+<tr><td>2</td><td class="mono">REFERENCE_CODE</td><td>Paynkolay işlem referansı</td></tr>
+<tr><td>3</td><td class="mono">AUTH_CODE</td><td>Banka onay kodu</td></tr>
+<tr><td>4</td><td class="mono">RESPONSE_CODE</td><td>İşlem sonucu — başarı için 2</td></tr>
+<tr><td>5</td><td class="mono">USE_3D</td><td>İşlemin 3D Secure ile yapılıp yapılmadığı</td></tr>
+<tr><td>6</td><td class="mono">RND</td><td>İstekte ya da yanıtta dönen rnd değeri</td></tr>
+<tr><td>7</td><td class="mono">INSTALLMENT</td><td>Taksit sayısı</td></tr>
+<tr><td>8</td><td class="mono">AUTHORIZATION_AMOUNT</td><td>Provizyonu alınan tutar</td></tr>
+<tr><td>9</td><td class="mono">CURRENCY_CODE</td><td>Para birimi kodu</td></tr>
+<tr><td>10</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDataV2 (yanıttakiyle karşılaştırılır)</code>.</p>
           <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Doğrulama — PHP</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code><span class="tk-k">$hashstr</span> = <span class="tk-k">$MERCHANT_NO</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$REFERENCE_CODE</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$AUTH_CODE</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$RESPONSE_CODE</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$USE_3D</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$RND</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$INSTALLMENT</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$AUTHORIZATION_AMOUNT</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$CURRENCY_CODE</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$merchantSecretKey</span>;
 <span class="tk-k">$beklenen</span> = base64_encode(hash(<span class="tk-s">"sha512"</span>, <span class="tk-k">$hashstr</span>, <span class="tk-n">true</span>));
 <span class="tk-c">// $beklenen, yanıttaki hashDataV2 ile birebir aynı olmalı</span></code></pre></div>

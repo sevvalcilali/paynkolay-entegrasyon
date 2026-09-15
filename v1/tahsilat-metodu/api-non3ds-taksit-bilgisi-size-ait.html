@@ -172,6 +172,17 @@
 
           <h2 id="hash">İstek İmzası (hashDatav2)</h2>
           <p>Alanlar <code>|</code> ile birleştirilir, SHA-512 ile özetlenip Base64'e çevrilir. İmza her zaman <strong>sunucu tarafında</strong> üretilir:</p>
+          <div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>Size verilen satış (sx) değeriniz</td></tr>
+<tr><td>2</td><td class="mono">clientRefCode</td><td>Sizin ürettiğiniz referans numarası — her işlem için benzersiz olmalı; Türkçe karakter içermemeli, en fazla 1024 karakter</td></tr>
+<tr><td>3</td><td class="mono">amount</td><td>Tutar — kuruş ayıracı nokta (ör. 249.90)</td></tr>
+<tr><td>4</td><td class="mono">successUrl</td><td>Başarılı sonucun POST edileceği SSL'li adres</td></tr>
+<tr><td>5</td><td class="mono">failUrl</td><td>Başarısız sonucun POST edileceği SSL'li adres</td></tr>
+<tr><td>6</td><td class="mono">rnd</td><td>İşlem zamanı, Türkiye saatiyle (UTC+3) — ör. 03-09-2026 14:25:11</td></tr>
+<tr><td>7</td><td class="mono">customerKey</td><td>Kart saklanmıyorsa boş bırakılır — borusu korunur</td></tr>
+<tr><td>8</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
           <div class="codeblock codetabs" data-codetabs><div class="codeblock__bar codetabs__bar"><div class="codetabs__tabs" role="tablist"><button class="codetabs__tab is-active" type="button" role="tab" aria-selected="true">PHP</button><button class="codetabs__tab" type="button" role="tab" aria-selected="false">JavaScript</button></div><button class="copybtn copybtn--dark codetabs__copy" type="button"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><div class="codetabs__panel is-active"><pre class="codeblock__code"><code><span class="tk-c">// customerKey kart saklanmıyorsa boş string olarak hash'e girer</span>
 <span class="tk-k">$hashstr</span> = <span class="tk-k">$sx</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$clientRefCode</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$amount</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$successUrl</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$failUrl</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$rnd</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$customerKey</span>.<span class="tk-s">"|"</span>.<span class="tk-k">$merchantSecretKey</span>;
 <span class="tk-k">$hashDatav2</span> = base64_encode(hash(<span class="tk-s">"sha512"</span>, <span class="tk-k">$hashstr</span>, <span class="tk-n">true</span>));</code></pre></div><div class="codetabs__panel"><pre class="codeblock__code"><code>const crypto = require('crypto');

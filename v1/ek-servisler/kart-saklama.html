@@ -169,9 +169,16 @@
                 <tr><td class="mono">expirateMonth / expirationYear</td><td>string</td><td>✅</td><td>Son kullanma ayı ve yılı</td></tr>
                 <tr><td class="mono">cvv</td><td>string</td><td>✅</td><td>Kartın güvenlik kodu</td></tr>
                 <tr><td class="mono">referanceCode</td><td>string</td><td>✅</td><td>Aynı gün yapılmış 3D Secure çekimin IKSIRPF numarası</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|cardNumber|cvv|merchantSecretKey</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — aşağıdaki hash tablosuyla üretilir</td></tr>
                 <tr><td class="mono">cardHolderIP</td><td>string</td><td>—</td><td>Müşterinin IP adresi</td></tr>
 </tbody></table></div>
+          <div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>Size verilen sx değeriniz</td></tr>
+<tr><td>2</td><td class="mono">cardNumber</td><td>Kart numarası</td></tr>
+<tr><td>3</td><td class="mono">cvv</td><td>Kartın güvenlik kodu</td></tr>
+<tr><td>4</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
 
           <h2 id="listeleme">Kayıtlı Kartları Listeleme</h2>
           <p>Belirli bir müşteriye ait saklı kartları (token bilgileriyle) listeler.</p>
@@ -190,7 +197,14 @@
 <tr><td class="mono">tranId</td><td>✅*</td><td>Silinecek kartın tranId değeri (token yerine kullanılabilir)</td></tr>
 <tr><td class="mono">token</td><td>✅*</td><td>Silinecek kartın token değeri (tranId yerine kullanılabilir)</td></tr>
 <tr><td class="mono">hashDatav2</td><td>✅</td><td>Aşağıdaki formülle üretilen imza</td></tr></tbody></table></div>
-<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hash Formülü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>hashDatav2 = Base64(SHA512(sx | customerKey | tranId | token | merchantSecretKey))</code></pre></div>
+<div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>Satış sx değeriniz</td></tr>
+<tr><td>2</td><td class="mono">customerKey</td><td>Müşteri kimliği (TCKN / cep no / pasaport no)</td></tr>
+<tr><td>3</td><td class="mono">tranId</td><td>Silinecek kartın tranId değeri (token yerine kullanılabilir)</td></tr>
+<tr><td>4</td><td class="mono">token</td><td>Silinecek kartın token değeri (tranId yerine kullanılabilir)</td></tr>
+<tr><td>5</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
           <div class="callout callout--warn"><svg class="callout__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg><div><p>Yalnızca biriyle silseniz bile <strong>boş alanın borusu korunur</strong> — ör. token ile silerken <code>sx|customerKey||token|secret</code>. Boru kayarsa servis <code>hashDatav2:error</code> döner.</p></div></div>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">

@@ -176,8 +176,15 @@
                 <tr><td class="mono">sx</td><td>string</td><td>✅</td><td>Listeleme (sx-list) değeriniz — satış sx'inden farklıdır</td></tr>
                 <tr><td class="mono">startDate</td><td>string</td><td>✅</td><td>Başlangıç tarihi (YYYY-MM-DD)</td></tr>
                 <tr><td class="mono">endDate</td><td>string</td><td>✅</td><td>Bitiş tarihi (YYYY-MM-DD) — aralık en fazla 30 gün</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|endDate|startDate|merchantSecretKey</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — aşağıdaki hash tablosuyla üretilir</td></tr>
 </tbody></table></div>
+          <div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>Listeleme (sx-list) değeriniz — satış sx'inden farklıdır</td></tr>
+<tr><td>2</td><td class="mono">endDate</td><td>Bitiş tarihi (YYYY-MM-DD) — aralık en fazla 30 gün</td></tr>
+<tr><td>3</td><td class="mono">startDate</td><td>Başlangıç tarihi (YYYY-MM-DD)</td></tr>
+<tr><td>4</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
           <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Başarılı Yanıt — 200</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
   <span class="tk-k">"RAPOR_LIST"</span>: [
     {
@@ -204,9 +211,17 @@
                 <tr><td class="mono">referenceCode</td><td>string</td><td>✅</td><td>Ön provizyon işleminin referans kodu</td></tr>
                 <tr><td class="mono">trxDate</td><td>string</td><td>✅</td><td>Ön provizyon tarihi (YYYY-MM-DD)</td></tr>
                 <tr><td class="mono">transactionType</td><td>string</td><td>✅</td><td>Onaylama için SALE</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|trxDate|amount|referenceCode|merchantSecretKey</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — aşağıdaki hash tablosuyla üretilir</td></tr>
                 <tr><td class="mono">cardHolderIP</td><td>string</td><td>—</td><td>Müşterinin IP adresi</td></tr>
 </tbody></table></div>
+          <div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>Size verilen sx değeriniz</td></tr>
+<tr><td>2</td><td class="mono">trxDate</td><td>Ön provizyon tarihi (YYYY-MM-DD)</td></tr>
+<tr><td>3</td><td class="mono">amount</td><td>Onaylanacak tutar</td></tr>
+<tr><td>4</td><td class="mono">referenceCode</td><td>Ön provizyon işleminin referans kodu</td></tr>
+<tr><td>5</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
 
           <h2 id="iptal">Ön Provizyon İptali</h2>
           <p>Bloke edilen tutarı serbest bırakır.</p>
@@ -217,8 +232,17 @@
                 <tr><td class="mono">referenceCode</td><td>string</td><td>✅</td><td>Ön provizyon işleminin referans kodu</td></tr>
                 <tr><td class="mono">trxDate</td><td>string</td><td>✅</td><td>Ön provizyon tarihi (YYYY-MM-DD)</td></tr>
                 <tr><td class="mono">transactionType</td><td>string</td><td>✅</td><td>İptal için cancel</td></tr>
-                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — formül: sx|trxDate|amount|referenceCode|transactionType|merchantSecretKey</td></tr>
+                <tr><td class="mono">hashDatav2</td><td>string</td><td>✅</td><td>İmza — aşağıdaki hash tablosuyla üretilir</td></tr>
 </tbody></table></div>
+          <div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td>Size verilen sx değeriniz</td></tr>
+<tr><td>2</td><td class="mono">trxDate</td><td>Ön provizyon tarihi (YYYY-MM-DD)</td></tr>
+<tr><td>3</td><td class="mono">amount</td><td>Ön provizyon tutarı</td></tr>
+<tr><td>4</td><td class="mono">referenceCode</td><td>Ön provizyon işleminin referans kodu</td></tr>
+<tr><td>5</td><td class="mono">transactionType</td><td>İptal için cancel</td></tr>
+<tr><td>6</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
 
           <nav class="pager" aria-label="Sayfalar arası gezinme">
   <a class="pager__card" href="panel-ile-link-gonderme.html">

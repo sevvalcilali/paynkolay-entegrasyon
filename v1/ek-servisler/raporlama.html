@@ -161,7 +161,15 @@
 <tr><td class="mono">pageCount</td><td>❌</td><td>Sayfa indeksi (1'den başlar)</td></tr>
 <tr><td class="mono">pageSize</td><td>❌</td><td>Sayfa başına sonuç sayısı</td></tr>
 <tr><td class="mono">hashDatav2</td><td>✅</td><td>Aşağıdaki formülle üretilen imza</td></tr></tbody></table></div>
-<div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Hash Formülü</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>hashDatav2 = Base64(SHA512(sx | startDate | endDate | clientReferenceCode | referenceCode | merchantSecretKey))</code></pre></div>
+<div class="table-wrap"><table class="dtable hashtable"><thead><tr><th>Sıra</th><th>Alan</th><th>Açıklama</th></tr></thead><tbody>
+<tr><td>1</td><td class="mono">sx</td><td><strong>sx Listeleme</strong> değeriniz</td></tr>
+<tr><td>2</td><td class="mono">startDate</td><td>Başlangıç tarihi (DD.MM.YYYY)</td></tr>
+<tr><td>3</td><td class="mono">endDate</td><td>Bitiş tarihi (DD.MM.YYYY) — en fazla 1 aylık aralık</td></tr>
+<tr><td>4</td><td class="mono">clientReferenceCode</td><td>Kendi referans kodunuz</td></tr>
+<tr><td>5</td><td class="mono">referenceCode</td><td>Paynkolay referans kodu (ör. IKSIRPF…)</td></tr>
+<tr><td>6</td><td class="mono">merchantSecretKey</td><td>Size özel gizli anahtar; yalnızca sunucuda tutulur</td></tr>
+</tbody></table></div>
+          <p>Alanlar bu sırayla <code>|</code> ile birleştirilir; UTF-8 metin SHA-512 ile özetlenip Base64'e çevrilir → <code>hashDatav2</code>.</p>
 
           <h2 id="yanit">Yanıt</h2>
 <div class="codeblock"><div class="codeblock__bar"><span class="codeblock__title">Örnek Yanıt</span><button class="copybtn copybtn--dark" type="button" data-copy-code><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span>Kopyala</span></button></div><pre class="codeblock__code"><code>{
